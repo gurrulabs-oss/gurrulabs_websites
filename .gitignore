@@ -1,0 +1,7 @@
+
+# Agent hub board state (not code)
+.lead/tickets/T-*.md
+.lead/designs/
+.lead/attachments/
+.lead/scratch/
+.DS_Store
