@@ -11,3 +11,5 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - Cloudflare Pages preview deploys get `<hash>.<project>.pages.dev` URLs: the Mixpanel gate must match the exact production host, not `*.pages.dev`.
 - Related Leads can only be asked during ticket runs (`node <hub>/scripts/ask-lead.mjs <project-id> "<q>"`), not in chats.
 - `.lead/attachments/`, `.lead/designs/`, `.lead/scratch/` are gitignored; mockups go in `.lead/designs/T-NNN/`.
+- Headless runs can Read other repos (incl. images) but `cp` from them, `node --check` and headless Chrome need approval (blocked); copy real assets at execution or ask the owner.
+- Pulse look/rules: TimeMaster `docs/design-system.md`, `docs/tone-of-voice.md`, mockups `.lead/designs/T-007/` (d5 Exact, d8 Reaction, shared/pulse.css); Outfit font at `.lead/designs/T-019/img/outfit.ttf`; icon `app/src/main/res/drawable/new_app_logo.png`; old Play shots `.lead/attachments/T-019/before-0N.png`.
