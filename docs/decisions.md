@@ -11,4 +11,6 @@ Newest at the bottom. One entry: date, decision, why.
 - 2026-11-04 · Shared Gurru Labs websites Mixpanel project, production hostname only · one place for all
   web metrics; overrides PULSE-023's "no Mixpanel".
 - 2026-11-04 · Launch in en/es/fr/pt · same as the apps and Raffy Web; 4x search surface.
+- 2026-11-04 · GitHub account `gurrulabs-oss`; nothing ever goes to MonkeyTaps/work accounts · personal project, kept apart
+  from the owner's job.
 - 2026-11-04 · Same stack as Raffy Web (static, no framework, no npm deps) · proven, zero build, zero cost.

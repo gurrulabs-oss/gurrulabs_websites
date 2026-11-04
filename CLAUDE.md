@@ -35,6 +35,8 @@ app (e.g. `/en/pulse/`), shared `assets/`, `styles.css`, `script.js`, plus `site
 - Health/medical claims for any app: educational, no promises.
 - Never touch: other projects' repos (read only, or ask their Lead), secrets/tokens other than the public
   Mixpanel token, `.lead/tickets/T-*.md` in commits.
+- Personal project: code lives only under the `gurrulabs-oss` GitHub account. Never push to or create repos
+  under `undimonkey`, MonkeyTaps or any work account (the `gh` login on this Mac is `undimonkey`).
 - Never push, never commit to `main` (once T-003 is done, a push to `main` deploys to production).
   Work on the branch you were given.
 
