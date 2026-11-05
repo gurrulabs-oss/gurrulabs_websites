@@ -39,8 +39,9 @@ app (e.g. `/en/pulse/`), shared `assets/`, `styles.css`, `script.js`, plus `site
   Mixpanel token, `.lead/tickets/T-*.md` in commits.
 - Personal project: code lives only under the `gurrulabs-oss` GitHub account. Never push to or create repos
   under `undimonkey`, MonkeyTaps or any work account (the `gh` login on this Mac is `undimonkey`).
-- Never push, never commit to `main` (once T-003 is done, a push to `main` deploys to production).
-  Work on the branch you were given.
+- Never push, never commit to `main`: a push to `main` deploys to production. Work on the branch you were given.
+  Deploys go through the hub: Unai presses **Merge and deploy**, the hub pushes `main`, waits for Cloudflare and
+  checks the pages, rolling back on failure (`docs/deploy.md`). Set `qa: yes/no` as the run prompt asks.
 
 ## Agent infra
 - Agents: `worker` (implements one subtask), `reviewer` (reviews branch diff). Skills: `verify`, `ticket`.

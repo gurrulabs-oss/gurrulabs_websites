@@ -4,10 +4,26 @@ Production: https://gurrulabs.pages.dev (Cloudflare Pages project `gurrulabs`, G
 `gurrulabs-oss/gurrulabs_websites`). Set up in T-003 (2026-11-04/05). Cost $0.
 
 ## How it works
-- **Merge to `main` = production.** Cloudflare rebuilds on every push to `main` (no build step; it serves the repo root).
+- **Merge to `main` = production.** Cloudflare rebuilds on every push to `main`: build command `sh build.sh`, output
+  `dist/`. `build.sh` copies everything except dot-folders, `docs/`, `CLAUDE.md`, `README.md`, `build.sh`; with
+  output `/` Cloudflare published the whole repo (CLAUDE.md, .lead/, docs/ were public until 2026-11-05).
+- `404.html` at the root makes unknown URLs return a real 404. Without it Cloudflare serves the home page with 200
+  for every path (soft 404s, and the hub's post-deploy check could never fail). Keep it.
+- `.html` URLs redirect (308) to the extensionless path (`/foo.html` → `/foo`); link without `.html`.
+- Cloudflare reports each build on GitHub as a check run named **Cloudflare Pages** on the pushed commit:
+  `curl -s https://api.github.com/repos/gurrulabs-oss/gurrulabs_websites/commits/<sha>/check-runs` (public repo).
+
+## Deploying from the board (hub)
+- `gurrulabs-web` has a `deploy` block (`kind: cloudflare-pages`) in the hub config, like Raffy Web.
+- Review → **Merge and deploy**: the hub merges, pushes `main` as `gurrulabs-oss`, waits for that check run,
+  then loads `/` and every `.html` the merge changed (200 + `<title>` + ≥500 bytes). Fail or 20 min timeout →
+  automatic revert + push, ticket back to Review with a Deploy report from the Lead. **Merge without deploying**
+  also exists.
+- The deploy dialog warns "internal files would become public" for `docs/`/`CLAUDE.md`: a false alarm here,
+  `build.sh` keeps them out. Dot-folders and new internal files are only safe if `build.sh` excludes them.
 - Any other pushed branch gets a preview at `https://<hash>.gurrulabs.pages.dev` (and `<branch>.gurrulabs.pages.dev`).
   Previews never track: the Mixpanel gate matches the exact host `gurrulabs.pages.dev`.
-- Lead runs never push; only Unai merges/pushes `main`.
+- Lead runs never push; Unai deploys with the hub's Merge and deploy button (below).
 
 ## Clicks for a new site (what was actually done for this one)
 1. **GitHub repo** under `gurrulabs-oss` (never `undimonkey`/work accounts): github.com → New repository → public,

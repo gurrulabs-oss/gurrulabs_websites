@@ -16,3 +16,6 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - Headless runs: `gh repo create --public` (even with the gurrulabs-oss GH_TOKEN) is denied by the auto-mode classifier ("Create Public Surface"); the owner creates repos, or must explicitly allow it.
 - Production is https://gurrulabs.pages.dev (Cloudflare Pages, Git integration on `main`); before the first merge it returns 404 (repo `main` had no index.html, 2026-11-05).
 - Search Console verification file `google48eac797f8133411.html` lives at repo root: never delete or rename it.
+- Deploy (2026-11-05): hub `deploy` block `cloudflare-pages`; Merge and deploy pushes, waits for the "Cloudflare Pages" check run, smoke-checks, auto-rolls back. Details `docs/deploy.md`.
+- Cloudflare publishes `dist/` from `build.sh` (not the repo root). A new top-level internal file/folder must be added to `build.sh`'s exclude list or it goes live; check with `curl -s -o /dev/null -w '%{http_code}' https://gurrulabs.pages.dev/<path>` → 404.
+- `404.html` gives real 404s; without it every path is 200 with the home page. `/foo.html` 308s to `/foo`. Verify pages by status code, not just "it loads".
