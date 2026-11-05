@@ -24,10 +24,17 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
 - Installs: Play links carry an install referrer so Play Console > Acquisition shows web installs. Follow Raffy
   Web's pattern (`script.js` `withPlayReferrer`, adds the referrer at runtime, HTML hrefs stay clean):
   `referrer=utm_source=gurrulabs_web&utm_medium=web&utm_campaign=<page>&utm_content=<cta location>&utm_term=<locale>`.
-  (PULSE-023 proposed `utm_source=pulse_web`; `gurrulabs_web` keeps one source for the whole site; confirm in T-002.)
 - Web analytics: shared Mixpanel project "Gurru Labs websites" (EU host `https://api-eu.mixpanel.com`; public token
   in raffy_webpage `script.js:131`). Event prefix `Gurrulabs Web - ` so it never mixes with `Raffy Webpage - `.
   Track only when `location.hostname` is the production host (Raffy gates the same way, `script.js:156`).
+- Events (all fired by the shared `script.js`; this list is the naming source of truth):
+  - View: `Gurrulabs Web - <Page>`, props `locale`. `<Page>` comes from the page slug in `<body data-page="<slug>">`:
+    words split on `-`, capitalised, joined by a space (`home` → `Home`, `pulse` → `Pulse`,
+    `cyberpunk-detective` → `Cyberpunk Detective`). Slug = the page's folder name, `home` for the locale root.
+  - `Gurrulabs Web - Download Button Clicked` on any Play link, props `app` (`data-app`), `cta` (`data-cta`),
+    `locale`, `page` (slug), `result` (only on test result links, `"<verdict> <score>"`).
+- A new page declares only `<body data-page="<slug>" data-locale="<locale>">`, loads `/script.js` and gives every
+  Play link `data-cta` + `data-app`; `scripts/validate.mjs` fails it otherwise. `utm_campaign` = the same slug.
 - Search: Google Search Console, URL-prefix property `https://gurrulabs.pages.dev/` verified by `google48eac797f8133411.html`
   at the repo root (never delete it); sitemap submitted once `sitemap.xml` is live.
 

@@ -1,7 +1,7 @@
 // Gurrulabs site: Play referrer, Mixpanel (production host only) and the two browser tests on the Pulse page.
 (() => {
   'use strict';
-  const PAGE = document.body.dataset.page;      // home | pulse
+  const PAGE = document.body.dataset.page;      // page slug: home | pulse | cyberpunk-detective ...
   const LOCALE = document.body.dataset.locale;  // en | es | fr | pt
 
   // ── Mixpanel: public token of the shared "Gurru Labs websites" project, EU host. Production hostname only:
@@ -71,7 +71,8 @@
   });
 
   initMixpanel();
-  track(PAGE === 'home' ? 'Home' : 'Pulse', { locale: LOCALE });
+  // View event named from the slug (pulse → Pulse, cyberpunk-detective → Cyberpunk Detective); naming rule in docs/domain.md
+  track(PAGE.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '), { locale: LOCALE });
 
   // ── The tests (Pulse page only)
   const panel = document.getElementById('game');
