@@ -2,7 +2,7 @@
 
 Studio website for Gurrulabs (Unai's app studio): a home page with one card per app and one page per app.
 Single goal: bring people in from organic search (playable browser hooks, useful pages) and send them to each
-app on Google Play. Stage (2026-11-04): empty repo; first work is hosting (T-003) and the home + Pulse page (T-002).
+app on Google Play. Stage (2026-11-05): hosting live (T-003); home + Pulse page built (T-002).
 Launch apps: Pulse, Raffy (card links out to raffyparenting.com), Cyberpunk Detective, Lull (not on Play yet).
 
 ## Stack
@@ -17,12 +17,13 @@ Launch apps: Pulse, Raffy (card links out to raffyparenting.com), Cyberpunk Dete
 ## Commands
 - Build: `sh build.sh` copies the site (everything except dot-folders, `docs/`, `CLAUDE.md`, `README.md`) into
   `dist/`, which Cloudflare publishes. Agent files must never go live; add new internal files to its exclude list.
-- Test / lint: none yet. Add a validator script when the first pages land; then update the `verify` skill.
+- Generate pages: `node scripts/build.mjs` (all copy lives there; never hand-edit the generated `xx/**/index.html`,
+  root `index.html`, `sitemap.xml`, `robots.txt`). Validate: `node scripts/validate.mjs` (must print `validate: OK`).
 - Run locally: `python3 -m http.server 8000` from repo root, open `http://localhost:8000/`.
 
 ## Layout
-Empty so far beyond agent infra. Planned (decided at T-002 planning): one folder per locale, one subfolder per
-app (e.g. `/en/pulse/`), shared `assets/`, `styles.css`, `script.js`, plus `sitemap.xml` and `robots.txt`.
+One folder per locale with one subfolder per app (`/en/`, `/en/pulse/`), shared `assets/`, `styles.css`, `script.js`
+(Play referrer, gated Mixpanel, Pulse browser tests), `sitemap.xml`, `robots.txt`; generator/validator in `scripts/`.
 - `docs/` — domain and decisions (index: `docs/README.md`).
 - `.lead/` — Lead instructions, notes, tickets (hub board state), designs, attachments.
 
