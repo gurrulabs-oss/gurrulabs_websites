@@ -34,3 +34,4 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - T-007: game panel `<div class="game" id="game" data-mode="react|exact" data-solo>` starts in that mode with no tabs.
 - T-007 sources: doi.org/Wiley/APA/ScienceDirect return 403 to plain curl (200 with a browser User-Agent); PubMed returns 203; World Athletics rules PDF 404s on HEAD but 200 on GET. Check sources with GET + browser UA. Verified figures: `.lead/attachments/T-007/sources.md` in the main project folder. World Athletics TR 16.6 (0.100 s) confirmed by eye, 2026 PDF printed p.108 (render PDF pages with a PDFKit swift script; no poppler).
 - IndexNow key file `4b17cdc9ad4f7fc753c24b7ffb7504fe.txt` at root: never delete/rename (Bing/Yandex verify it).
+- Design runs (2026-11-05, T-010): WebSearch needs approval (denied); headless Chrome screenshot of file:// works only as a single command (no chained ls).
