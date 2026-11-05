@@ -26,3 +26,4 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - In execute runs the hub installs `.lead/pending-claude/` into the worktree's `.claude/` without committing (runner.mjs installPendingClaude).
 - T-002 (2026-11-05): ticket showed Done/"Merged into main" but `main` was never pushed (origin/main 4 behind), so nothing deployed. After any merge, check `git log origin/main..main` is empty and the changed pages load on gurrulabs.pages.dev; if not, tell Unai.
 - Design runs (2026-11-05, T-008): `node <script>`, `sed`/`cd && …` chains and `cp -R` need approval; plain `cp a b dir/` and `mkdir -p` work. Build mockups by `cp` of real files + Edit/Write.
+- T-006: view event name derives from `<body data-page>` slug in `script.js`; `scripts/validate.mjs` checks only pages in its `PAGES` array — add new pages there.
