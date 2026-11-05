@@ -45,6 +45,8 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | Reaction test | reaction time test / test de tiempo de reacción / test de temps de réaction / teste de tempo de reação | online reflex test, measure reaction time | wants to play now | no "by age"/"average": that is the guide |
 | Age guide | average reaction time by age / tiempo de reacción medio por edad / temps de réaction moyen par âge / tempo de reação médio por idade | normal reaction time, what is a good reaction time | wants to know / compare | no game; links to the test instead |
 | 3 s challenge | 3 second challenge / reto de los 3 segundos / défi des 3 secondes / desafio dos 3 segundos | stop the stopwatch at 3 seconds, count seconds without looking | wants a challenge | time sense, not reflexes: no keywords shared with the test |
+| Cyberpunk Detective app | cyberpunk detective game / juego de detectives cyberpunk / jeu de détective cyberpunk / jogo de detetive cyberpunk | detective mystery game Android, audio crime stories, solve a case | wants an app | no "reaction", "reflex" or "tinnitus" keywords; no overlap with Pulse rows |
+| Lull app (coming soon) | tinnitus sleep sounds app / app de sonidos para dormir con acúfenos / application sons pour dormir acouphènes / app de sons para dormir com zumbido | sleep with tinnitus, daily check-in; email sign-up (no install CTA) | wants to know / be told at launch | no "cure/eliminate/treat/reduce" wording; no Pulse or Cyberpunk keywords |
 
 ## Clusters per app (next batches, by priority)
 | # | App | Cluster | Intent | Page type | Priority | Ticket |
@@ -52,7 +54,7 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | 1 | Pulse | reaction & timing tests (batch 1: test, age guide, 3 s challenge) | play now / know | playable test, guide | done | GWEB-007 |
 | 2 | Pulse | more playable tests: aim/lights wall (Batak), rhythm/interval tapping, "count seconds in your head" | play now | playable test + short guide | high | GWEB-009 |
 | 3 | Pulse | "best reaction time / reflex app for Android" | choose an app | comparison ("best app") with honest criteria | medium | GWEB-010 |
-| 4 | Cyberpunk Detective | detective / mystery puzzle games, "solve a case" playable hook | play now / choose a game | playable mini case, comparison | medium (needs the app page, GWEB-004) | GWEB-011 |
+| 4 | Cyberpunk Detective | detective / mystery puzzle games, "solve a case" playable hook | play now / choose a game | playable mini case, comparison | medium (app page live since GWEB-004) | GWEB-011 |
 | 5 | Lull | tinnitus and sleep: educational guides (sounds for sleep, habits) | know / cope | guide with sources | low (not on Play; no install CTA) | GWEB-012 |
 | - | Raffy | none here: Raffy's SEO lives on raffyparenting.com; this site only links out | - | - | - | - |
 

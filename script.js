@@ -70,6 +70,12 @@
     track('Download Button Clicked', props);
   });
 
+  // Lull sign-up: a mailto link (no backend). Track the click only; never touch the href.
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href^="mailto:"][data-cta]');
+    if (a) track('Signup Clicked', { app: a.dataset.app, cta: a.dataset.cta, locale: LOCALE, page: PAGE });
+  });
+
   // Raffy links: pass this visitor's Mixpanel ID so raffyparenting.com keeps the same user (gl_mp_id, read by Raffy Web)
   document.addEventListener('click', e => {
     const a = e.target.closest && e.target.closest('a[href*="raffyparenting.com"]');
