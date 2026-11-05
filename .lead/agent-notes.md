@@ -19,3 +19,8 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - Deploy (2026-11-05): hub `deploy` block `cloudflare-pages`; Merge and deploy pushes, waits for the "Cloudflare Pages" check run, smoke-checks, auto-rolls back. Details `docs/deploy.md`.
 - Cloudflare publishes `dist/` from `build.sh` (not the repo root). A new top-level internal file/folder must be added to `build.sh`'s exclude list or it goes live; check with `curl -s -o /dev/null -w '%{http_code}' https://gurrulabs.pages.dev/<path>` → 404.
 - `404.html` gives real 404s; without it every path is 200 with the home page. `/foo.html` 308s to `/foo`. Verify pages by status code, not just "it loads".
+- T-002 (2026-11-05): `cp` from other repos, `curl` downloads and headless Chrome all worked in an execute run; screenshots/interaction via CDP (`--remote-debugging-port`, Node's global WebSocket) on localhost.
+- Pages are generated: edit copy in `scripts/build.mjs`, rerun it, then `node scripts/validate.mjs`. Output must stay byte-identical on rerun.
+- Grid children with fixed width (e.g. the 384px `.game`) need `minmax(0, 1fr)` columns or they overflow at 390 px.
+- Google Play badges: `https://play.google.com/intl/en_us/badges/static/images/badges/<en|es|fr|pt-br>_badge_web_generic.png` (646x250, padding); crop `sips -c 198 594` keeps the rounded border.
+- In execute runs the hub installs `.lead/pending-claude/` into the worktree's `.claude/` without committing (runner.mjs installPendingClaude).

@@ -6,7 +6,7 @@ set -e
 rm -rf dist && mkdir dist
 for f in *; do
   case "$f" in
-    dist|docs|CLAUDE.md|README.md|build.sh) ;;
+    dist|docs|scripts|CLAUDE.md|README.md|build.sh) ;;
     *) cp -R "$f" dist/ ;;
   esac
 done
