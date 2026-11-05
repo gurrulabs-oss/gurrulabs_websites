@@ -6,6 +6,9 @@ This site is its acquisition hub: one URL that accumulates search traffic and tr
 site per app. Each app page exists to send visitors to Google Play. It can also be the Play Console
 "developer website".
 
+## Production URL
+https://gurrulabs.pages.dev (Cloudflare Pages; previews `<hash>.gurrulabs.pages.dev` never track). Setup: `deploy.md`.
+
 ## Apps at launch (decided 2026-11-04)
 | App | Package | State | Hub project / repo | Site role |
 |---|---|---|---|---|
@@ -25,7 +28,8 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
 - Web analytics: shared Mixpanel project "Gurru Labs websites" (EU host `https://api-eu.mixpanel.com`; public token
   in raffy_webpage `script.js:131`). Event prefix `Gurrulabs Web - ` so it never mixes with `Raffy Webpage - `.
   Track only when `location.hostname` is the production host (Raffy gates the same way, `script.js:156`).
-- Search: Google Search Console (sitemap submitted once the site is live).
+- Search: Google Search Console, URL-prefix property `https://gurrulabs.pages.dev/` verified by `google48eac797f8133411.html`
+  at the repo root (never delete it); sitemap submitted once `sitemap.xml` is live.
 
 ## Copy rules
 - 4 locales: en, es, fr, pt (Brazilian Portuguese). Native, not literal translations.

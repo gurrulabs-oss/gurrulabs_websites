@@ -8,7 +8,8 @@ Launch apps: Pulse, Raffy (card links out to raffyparenting.com), Cyberpunk Dete
 ## Stack
 - Hand-written static HTML/CSS/vanilla JS. No framework, no bundler, no npm dependencies; Node scripts
   (`.mjs`, `node:` built-ins only) only when a page set needs generating or validating.
-- Hosting: Cloudflare Pages, free `*.pages.dev` subdomain, deployed from a GitHub repo (both set up in T-003).
+- Hosting: Cloudflare Pages project `gurrulabs`, production https://gurrulabs.pages.dev, deployed from
+  `gurrulabs-oss/gurrulabs_websites` on every push to `main` (setup and clicks: `docs/deploy.md`).
 - Analytics: the shared "Gurru Labs websites" Mixpanel project (EU host), events prefixed `Gurrulabs Web - `,
   tracking only on the production hostname. Installs measured via Play UTM referrer; search via Search Console.
 - Locales: en, es, fr, pt (pt = Brazilian), with hreflang.
