@@ -1,0 +1,27 @@
+# Gurrulabs
+
+> Independent one-person Android app studio. Apps: Pulse (reaction time and timing game), Raffy (baby tracker), Cyberpunk Detective (detective mysteries), Lull (tinnitus sleep sounds, not on Google Play yet).
+
+## Studio
+
+- [Gurrulabs](https://gurrulabs.pages.dev/en/): Studio home: the four apps and where to get each one.
+
+## Pulse
+
+- [Pulse](https://gurrulabs.pages.dev/en/pulse/): Android game with 5 modes: Exact Time, Hidden Clock, Interval, Reaction, Batak. No account, works offline. Includes a browser version of two modes.
+- [Reaction time test](https://gurrulabs.pages.dev/en/pulse/reaction-time-test/): Browser reaction time test: tap when the lights go out; the result is in seconds (perfect up to 0.30 s, pass under 0.40 s).
+- [Average reaction time by age](https://gurrulabs.pages.dev/en/pulse/average-reaction-time-by-age/): Guide: average simple reaction time by age group, 18 to 65 (Woods et al. 2015, Table 2), what changes it, with sources.
+- [3 second challenge](https://gurrulabs.pages.dev/en/pulse/3-second-challenge/): Browser game: stop a stopwatch at exactly 3.00 s (pass window ±0.10 s).
+- [Pulse on Google Play](https://play.google.com/store/apps/details?id=com.gurrulabs.pulse): Android download page.
+
+## Other apps
+
+- [Raffy](https://raffyparenting.com/): baby tracker for feeds, sleep and growth, with WHO charts.
+- [Cyberpunk Detective](https://play.google.com/store/apps/details?id=com.gurrulabs.miniaicrimes): detective mystery game for Android, on Google Play.
+- Lull: sleep sounds and a daily diary for people with tinnitus. Not on Google Play yet.
+
+## Optional
+
+- [Español](https://gurrulabs.pages.dev/es/): studio home in Español.
+- [Français](https://gurrulabs.pages.dev/fr/): studio home in Français.
+- [Português](https://gurrulabs.pages.dev/pt/): studio home in Português.

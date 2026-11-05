@@ -30,7 +30,8 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
 - Events (all fired by the shared `script.js`; this list is the naming source of truth):
   - View: `Gurrulabs Web - <Page>`, props `locale`. `<Page>` comes from the page slug in `<body data-page="<slug>">`:
     words split on `-`, capitalised, joined by a space (`home` → `Home`, `pulse` → `Pulse`,
-    `cyberpunk-detective` → `Cyberpunk Detective`). Slug = the page's folder name, `home` for the locale root.
+    `cyberpunk-detective` → `Cyberpunk Detective`). Slug = the page's `dataPage` in `scripts/pages.mjs` (stable English id, e.g. `pulse-reaction-test`,
+    even though URLs are translated), `home` for the locale root.
   - `Gurrulabs Web - Download Button Clicked` on any Play link, props `app` (`data-app`), `cta` (`data-cta`),
     `locale`, `page` (slug), `result` (only on test result links, `"<verdict> <score>"`).
 - A new page declares only `<body data-page="<slug>" data-locale="<locale>">`, loads `/script.js` and gives every
