@@ -43,7 +43,7 @@
       firstScript = documentRef.getElementsByTagName('script')[0];
       firstScript.parentNode.insertBefore(script, firstScript);
     })(document, window.mixpanel || []);
-    window.mixpanel.init(MIXPANEL_TOKEN, { api_host: 'https://api-eu.mixpanel.com', disable_persistence: true });
+    window.mixpanel.init(MIXPANEL_TOKEN, { api_host: 'https://api-eu.mixpanel.com', persistence: 'localStorage' });
     tracking = true;
   }
   const track = (event, props) => { if (tracking && window.mixpanel && typeof window.mixpanel.track === 'function') window.mixpanel.track('Gurrulabs Web - ' + event, props); };
@@ -68,6 +68,15 @@
     const props = { app: a.dataset.app, cta: a.dataset.cta || 'unknown', locale: LOCALE, page: PAGE };
     if (a.dataset.result) props.result = a.dataset.result; // set on the result sheet's links: "<verdict> <score>"
     track('Download Button Clicked', props);
+  });
+
+  // Raffy links: pass this visitor's Mixpanel ID so raffyparenting.com keeps the same user (gl_mp_id, read by Raffy Web)
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href*="raffyparenting.com"]');
+    if (!a || !tracking || typeof window.mixpanel.get_distinct_id !== 'function') return;
+    const url = new URL(a.href);
+    url.searchParams.set('gl_mp_id', window.mixpanel.get_distinct_id());
+    a.href = url.toString();
   });
 
   initMixpanel();
