@@ -30,6 +30,9 @@ One folder per locale with one subfolder per app (`/en/`, `/en/pulse/`), shared 
 ## Rules
 - Every page ships in all 4 locales in the same ticket; natural native copy per locale.
 - Every app page pushes to its Play listing; every Play link carries the UTM referrer (see `docs/domain.md`).
+- Every page is tracked: `<body data-page="<slug>" data-locale="<locale>">` and loads `/script.js`, which fires the view
+  event `Gurrulabs Web - <Page>`; every Play link has `data-cta` and `data-app`. Naming: `docs/domain.md` Measurement;
+  `scripts/validate.mjs` fails an untracked page.
 - Analytics stay real: no Mixpanel on localhost, `file://` or Cloudflare preview URLs (`<hash>.<project>.pages.dev`);
   gate on the exact production hostname in code. Never fire test events at the shared project.
 - App facts (store texts, screenshots, colours, package ids, claims allowed) come from that app's Lead or repo,
