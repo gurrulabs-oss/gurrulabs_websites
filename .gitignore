@@ -5,3 +5,6 @@
 .lead/attachments/
 .lead/scratch/
 .DS_Store
+
+# Cloudflare Pages build output (build.sh)
+dist/

@@ -15,7 +15,8 @@ Launch apps: Pulse, Raffy (card links out to raffyparenting.com), Cyberpunk Dete
 - Locales: en, es, fr, pt (pt = Brazilian), with hreflang.
 
 ## Commands
-- Build: none (static).
+- Build: `sh build.sh` copies the site (everything except dot-folders, `docs/`, `CLAUDE.md`, `README.md`) into
+  `dist/`, which Cloudflare publishes. Agent files must never go live; add new internal files to its exclude list.
 - Test / lint: none yet. Add a validator script when the first pages land; then update the `verify` skill.
 - Run locally: `python3 -m http.server 8000` from repo root, open `http://localhost:8000/`.
 

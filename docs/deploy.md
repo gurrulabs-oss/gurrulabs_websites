@@ -19,7 +19,7 @@ Production: https://gurrulabs.pages.dev (Cloudflare Pages project `gurrulabs`, G
    (URL `<name>.<account>.workers.dev`, needs a `wrangler` config) — not what we want. Scroll to the bottom:
    "Looking to deploy Pages? Get started" → Import an existing Git repository → install/authorise the GitHub app on
    `gurrulabs-oss`, this repo only → project name (becomes `<name>.pages.dev`) → framework preset None, build
-   command empty, output directory `/` → production branch `main` → Save and Deploy. (A Worker created by mistake:
+   command `sh build.sh`, output directory `dist` (never `/`: it publishes CLAUDE.md, docs/ and .lead/) → production branch `main` → Save and Deploy. (A Worker created by mistake:
    delete it under Workers & Pages → the Worker → Settings → Delete.)
 4. Check: `curl -sI https://<name>.pages.dev/` → `HTTP/2 200` once `main` has an `index.html`.
 5. **Search Console** (Unai's personal Gurrulabs Google account, the Play developer one): search.google.com/search-console
