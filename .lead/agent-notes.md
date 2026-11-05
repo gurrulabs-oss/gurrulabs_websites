@@ -14,3 +14,5 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - Headless runs can Read other repos (incl. images) but `cp` from them, `node --check` and headless Chrome need approval (blocked); copy real assets at execution or ask the owner.
 - Pulse look/rules: TimeMaster `docs/design-system.md`, `docs/tone-of-voice.md`, mockups `.lead/designs/T-007/` (d5 Exact, d8 Reaction, shared/pulse.css); Outfit font at `.lead/designs/T-019/img/outfit.ttf`; icon `app/src/main/res/drawable/new_app_logo.png`; old Play shots `.lead/attachments/T-019/before-0N.png`.
 - Headless runs: `gh repo create --public` (even with the gurrulabs-oss GH_TOKEN) is denied by the auto-mode classifier ("Create Public Surface"); the owner creates repos, or must explicitly allow it.
+- Production is https://gurrulabs.pages.dev (Cloudflare Pages, Git integration on `main`); before the first merge it returns 404 (repo `main` had no index.html, 2026-11-05).
+- Search Console verification file `google48eac797f8133411.html` lives at repo root: never delete or rename it.
