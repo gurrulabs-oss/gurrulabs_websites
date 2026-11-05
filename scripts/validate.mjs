@@ -6,7 +6,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { SITE as HOST, LOCALES as DIRS, HREFLANG, PAGES, path, url, fileOf } from './pages.mjs';
 
-const BANNED = /\b(cure[sd]?|eliminat\w*|free|no ads|F1)\b/i;
+const BANNED = /\b(cure[sd]?|eliminat\w*|free|no ads|F1|gratis|gratuit\w*|grátis|gratuito|sin anuncios|sans pub\w*|sem anúncios)\b/i;
 const BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Bingbot'];
 
 const attr = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1];
@@ -24,6 +24,8 @@ const times = html => [...html.matchAll(/<time datetime="(\d{4}-\d{2}-\d{2})"/g)
 assert.equal(attr('<link rel="canonical" href="x">', 'href'), 'x');
 assert.equal(text('<p>a<script>free</script>b</p>').includes('free'), false);
 assert.ok(BANNED.test('No ads here') && BANNED.test('cures') && !BANNED.test('carefree') && !BANNED.test('freedom'));
+assert.ok(BANNED.test('Juega gratis') && BANNED.test('appli gratuite') && BANNED.test('jogo grátis') && BANNED.test('test gratuito') && BANNED.test('sin anuncios')
+  && BANNED.test('sans publicité') && BANNED.test('sem anúncios') && !BANNED.test('gratitude') && !BANNED.test('anuncios de Pulse'));
 assert.equal(h1Text('<h1 class="x">A <em>b</em> &amp; c</h1>'), 'A b & c');
 assert.equal(h1Text('<p>no h1</p>'), null);
 assert.deepEqual(ldBlocks('<script type="application/ld+json">{"a":"\\u003c"}</script><script type="application/ld+json">{bad</script>').map(b => b.a ?? 'err'), ['<', 'err']);
@@ -97,6 +99,10 @@ for (const { p, loc, own, shown, html, alts } of pages) {
 
   // JSON-LD
   const ld = ldBlocks(html), of = type => ld.find(b => b['@type'] === type);
+  // JSON-LD dates of a content page = registry dates = a visible <time datetime>
+  const ldDates = (type, o) => { const shownDates = times(html);
+    if (o.datePublished !== p.published || !shownDates.includes(o.datePublished)) f(`${type} datePublished ${o.datePublished} must equal registry (${p.published}) and a visible <time datetime>`);
+    if (o.dateModified !== p.modified || !shownDates.includes(o.dateModified)) f(`${type} dateModified ${o.dateModified} must equal registry (${p.modified}) and a visible <time datetime>`); };
   const h1 = h1Text(html);
   if (!ld.length) f('no JSON-LD');
   else if (ld.some(b => b.error)) f(`JSON-LD not parseable: ${ld.find(b => b.error).error}`);
@@ -106,17 +112,12 @@ for (const { p, loc, own, shown, html, alts } of pages) {
     if (p.type !== 'home' && !of('BreadcrumbList')) f('JSON-LD BreadcrumbList missing');
     if (p.type === 'test' || p.type === 'challenge') {
       const w = of('WebApplication');
-      if (!w) f('JSON-LD WebApplication missing'); else if (w.name !== h1) f(`JSON-LD name "${w.name}" differs from visible <h1> "${h1}"`);
+      if (!w) f('JSON-LD WebApplication missing'); else { if (w.name !== h1) f(`JSON-LD name "${w.name}" differs from visible <h1> "${h1}"`); ldDates('WebApplication', w); }
     }
     if (p.type === 'guide') {
       const a = of('Article');
       if (!a) f('JSON-LD Article missing');
-      else {
-        if (a.headline !== h1) f(`JSON-LD headline "${a.headline}" differs from visible <h1> "${h1}"`);
-        const shownDates = times(html);
-        if (a.datePublished !== p.published || !shownDates.includes(a.datePublished)) f(`Article datePublished ${a.datePublished} must equal registry (${p.published}) and a visible <time datetime>`);
-        if (a.dateModified !== p.modified || !shownDates.includes(a.dateModified)) f(`Article dateModified ${a.dateModified} must equal registry (${p.modified}) and a visible <time datetime>`);
-      }
+      else { if (a.headline !== h1) f(`JSON-LD headline "${a.headline}" differs from visible <h1> "${h1}"`); ldDates('Article', a); }
     }
   }
 

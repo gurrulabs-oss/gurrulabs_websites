@@ -47,14 +47,14 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | 3 s challenge | 3 second challenge / reto de los 3 segundos / défi des 3 secondes / desafio dos 3 segundos | stop the stopwatch at 3 seconds, count seconds without looking | wants a challenge | time sense, not reflexes: no keywords shared with the test |
 
 ## Clusters per app (next batches, by priority)
-| # | App | Cluster | Page type | Priority | Ticket |
-|---|---|---|---|---|---|
-| 1 | Pulse | reaction & timing tests (batch 1: test, age guide, 3 s challenge) | playable test, guide | done | GWEB-007 |
-| 2 | Pulse | more playable tests: aim/lights wall (Batak), rhythm/interval tapping, "count seconds in your head" | playable test + short guide | high | GWEB-009 |
-| 3 | Pulse | "best reaction time / reflex app for Android" | comparison ("best app") with honest criteria | medium | GWEB-010 |
-| 4 | Cyberpunk Detective | detective / mystery puzzle games, "solve a case" playable hook | playable mini case, comparison | medium (needs the app page, GWEB-004) | GWEB-011 |
-| 5 | Lull | tinnitus and sleep: educational guides (sounds for sleep, habits) | guide with sources | low (not on Play; no install CTA) | GWEB-012 |
-| - | Raffy | none here: Raffy's SEO lives on raffyparenting.com; this site only links out | - | - | - |
+| # | App | Cluster | Intent | Page type | Priority | Ticket |
+|---|---|---|---|---|---|---|
+| 1 | Pulse | reaction & timing tests (batch 1: test, age guide, 3 s challenge) | play now / know | playable test, guide | done | GWEB-007 |
+| 2 | Pulse | more playable tests: aim/lights wall (Batak), rhythm/interval tapping, "count seconds in your head" | play now | playable test + short guide | high | GWEB-009 |
+| 3 | Pulse | "best reaction time / reflex app for Android" | choose an app | comparison ("best app") with honest criteria | medium | GWEB-010 |
+| 4 | Cyberpunk Detective | detective / mystery puzzle games, "solve a case" playable hook | play now / choose a game | playable mini case, comparison | medium (needs the app page, GWEB-004) | GWEB-011 |
+| 5 | Lull | tinnitus and sleep: educational guides (sounds for sleep, habits) | know / cope | guide with sources | low (not on Play; no install CTA) | GWEB-012 |
+| - | Raffy | none here: Raffy's SEO lives on raffyparenting.com; this site only links out | - | - | - | - |
 
 ## AI-presence baseline (run monthly)
 Fresh logged-out session per assistant, web search on, no memory. Paste the prompt verbatim; record `Y/N`

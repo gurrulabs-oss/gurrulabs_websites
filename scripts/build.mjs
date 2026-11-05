@@ -53,7 +53,7 @@ const T = {
     pulse_title: 'Pulse app: reflex and timing game for Android | Gurrulabs',
     pulse_desc: 'Pulse is a reflex and sense-of-time game for Android: 5 modes, no account, works offline. Try two of its modes right in your browser.',
     guides_h: 'Tests and guides', guides_p: 'Play in your browser or read what the studies say.', read_h: 'Keep reading', faq_h: 'FAQ', edu: 'Educational content.', edu_med: 'Educational content, not medical advice.',
-    foot: ['Reaction test', '3 s challenge', 'Reaction by age'], pulse_card: ['The Pulse app', 'Five modes to train'],
+    foot: ['Reaction test', '3 s challenge', 'Reaction by age'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
   },
   es: {
     home_h1: 'Apps pequeñas que hacen <em>una cosa</em> bien.', kick: 'Estudio independiente de apps Android',
@@ -87,11 +87,11 @@ const T = {
     pub: 'Publicado', upd: 'Actualizado', src_h: 'Fuentes', keep_h: 'Sigue probando', bc: 'Ruta de navegación',
     months: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'], date: (d, m, y) => `${d} de ${m} de ${y}`,
     home_title: 'Gurrulabs: estudio independiente de apps Android',
-    home_desc: 'Gurrulabs es un estudio de una sola persona que crea juegos y herramientas para Android: Pulse, Raffy, Cyberpunk Detective y Lull. Prueba Pulse en el navegador.',
+    home_desc: 'Gurrulabs es un estudio de una persona que crea juegos y herramientas para Android: Pulse, Raffy, Cyberpunk Detective y Lull. Prueba Pulse en el navegador.',
     pulse_title: 'App Pulse: juego de reflejos para Android | Gurrulabs',
     pulse_desc: 'Pulse es un juego de reflejos y sentido del tiempo para Android: 5 modos, sin cuenta y funciona sin conexión. Prueba dos de sus modos en el navegador.',
     guides_h: 'Pruebas y guías', guides_p: 'Juega en el navegador o aprende qué dicen los estudios.', read_h: 'Sigue leyendo', faq_h: 'Preguntas frecuentes', edu: 'Contenido educativo.', edu_med: 'Contenido educativo, no consejo médico.',
-    foot: ['Test de reacción', 'Reto 3 s', 'Reacción por edad'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'],
+    foot: ['Test de reacción', 'Reto 3 s', 'Reacción por edad'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
   },
   fr: {
     home_h1: 'De petites applis qui font <em>une seule chose</em>, et bien.', kick: 'Studio indépendant d’applis Android',
@@ -125,11 +125,11 @@ const T = {
     pub: 'Publié', upd: 'Mis à jour', src_h: 'Sources', keep_h: 'Continue à tester', bc: 'Fil d’Ariane',
     months: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'], date: (d, m, y) => `${d} ${m} ${y}`,
     home_title: 'Gurrulabs : studio indépendant d’applis Android',
-    home_desc: 'Gurrulabs est un studio d’une seule personne qui crée des jeux et des outils pour Android : Pulse, Raffy, Cyberpunk Detective et Lull. Essaie Pulse dans ton navigateur.',
+    home_desc: 'Gurrulabs, studio d’une seule personne, crée des jeux et outils Android : Pulse, Raffy, Cyberpunk Detective et Lull. Essaie Pulse dans ton navigateur.',
     pulse_title: 'Appli Pulse : jeu de réflexes pour Android | Gurrulabs',
     pulse_desc: 'Pulse est un jeu de réflexes et de sens du temps pour Android : 5 modes, sans compte, fonctionne hors ligne. Essaie deux de ses modes dans ton navigateur.',
     guides_h: 'Tests et guides', guides_p: 'Joue dans ton navigateur ou découvre ce que disent les études.', read_h: 'Continue à lire', faq_h: 'Questions fréquentes', edu: 'Contenu éducatif.', edu_med: 'Contenu éducatif, pas un avis médical.',
-    foot: ['Test de réaction', 'Défi 3 s', 'Réaction par âge'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'],
+    foot: ['Test de réaction', 'Défi 3 s', 'Réaction par âge'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
   },
   pt: {
     home_h1: 'Apps pequenos que fazem <em>uma coisa</em> bem.', kick: 'Estúdio independente de apps Android',
@@ -167,7 +167,7 @@ const T = {
     pulse_title: 'App Pulse: jogo de reflexos para Android | Gurrulabs',
     pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Experimente dois dos modos no navegador.',
     guides_h: 'Testes e guias', guides_p: 'Jogue no navegador ou veja o que dizem os estudos.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
-    foot: ['Teste de reação', 'Desafio 3 s', 'Reação por idade'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'],
+    foot: ['Teste de reação', 'Desafio 3 s', 'Reação por idade'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
   },
 };
 
@@ -189,6 +189,7 @@ function i18n(t) {
 //    `sources` (shared by the locales) feeds the Sources list, the Article citation and the #src-<key> anchors.
 const byId = Object.fromEntries(PAGES.map(p => [p.id, p]));
 const to = (loc, id) => path(loc, byId[id]);
+const PULSE_CONTENT = PAGES.filter(p => p.app === 'pulse' && p.slug); // Pulse's content pages in registry order (link cards, footer)
 const SRC = {
   woods: { cite: 'Woods et al., 2015', url: 'https://doi.org/10.3389/fnhum.2015.00131',
     ref: 'Woods DL, Wyma JM, Yund EW, Herron TJ, Reed B. Factors influencing the latency of simple reaction time. <i>Frontiers in Human Neuroscience</i>, 2015; 9:131.' },
@@ -237,7 +238,7 @@ const CONTENT = {
       kick: 'Online test · no sign-up', sub: 'Three lights come on one by one. When they go out, tap. Your time is shown in seconds, to the hundredth.',
       facts: ['No account', 'Mouse, finger or space bar'],
       body: `<h2>What is a good reaction time?</h2>
-    <div class="answer">In a simple visual test like this one, adults aged 18 to 24 averaged <b>0.218 s</b> in a large lab study ${R('woods')}. In a second experiment of the same study, with adults aged 18 to 82, the average was <b>0.238 s</b>, and another study measured <b>0.248 s</b> in students aged 18 to 20, taking each person’s best of five tries ${R('jain')}.</div>
+    <div class="answer">In a simple visual test like this one, adults aged 18 to 24 averaged <b>0.218 s</b> in a large lab study ${R('woods')}. In a second experiment of the same study, with adults aged 18 to 82, the average was <b>0.238 s</b> ${R('woods')}, and another study measured <b>0.248 s</b> in students aged 18 to 20, taking each person’s best of five tries ${R('jain')}.</div>
     <p>Each study uses its own equipment, so treat these as a guide, not a grade. In Pulse, times up to 0.30 s count as <strong>perfect</strong> and times under 0.40 s as a <strong>pass</strong>; those are the game’s rules, not a medical norm. Tapping before the lights go out is a <strong>false start</strong>.</p>
     <h2>How the test works</h2>
     <p>It is a simple reaction test: one signal (the lights go out) and one response (your tap).</p>
@@ -253,15 +254,15 @@ const CONTENT = {
       push: ['Train your reflexes in Pulse', 'Reaction, Batak and three timing games, offline.'],
       faq: [['Can you improve your reaction time?', `Partly. On fast choice tasks, action video game players responded 11% faster than non-players with the same accuracy, and some training studies indicate that playing can speed up responses ${R('dye')}. Sleep loss, on the other hand, slows you down ${R('lim')}.`],
         ['Is a phone or a computer better?', 'Either works. What matters is comparing your scores on the same device, because every screen and mouse adds its own delay.'],
-        ['Do you save my results?', 'No. The test needs no account and keeps no history of your times: reload the page and you start from scratch.']],
+        ['Do you save my results?', 'No account needed, and the test keeps no history of your times: reload the page and you start from scratch.']],
       band: ['Your best is waiting', 'Reaction, Batak and a daily challenge in the app.'] },
-    es: { title: 'Test de tiempo de reacción online: mide tus reflejos | Gurrulabs',
+    es: { title: 'Test de tiempo de reacción: mide tus reflejos | Gurrulabs',
       desc: 'Mide tu tiempo de reacción en el navegador con luces de salida. Mira qué es un buen tiempo según los estudios y entrena después en Pulse para Android.',
       name: 'Test de tiempo de reacción', h1: 'Test de tiempo de reacción', card: 'Tres luces: mide tus reflejos',
       kick: 'Test online · sin registro', sub: 'Tres luces se encienden una a una. Cuando se apagan, toca. Tu tiempo sale en segundos, con centésimas.',
       facts: ['Sin cuenta', 'Ratón, dedo o barra espaciadora'],
       body: `<h2>¿Qué es un buen tiempo de reacción?</h2>
-    <div class="answer">En una prueba visual simple como esta, los adultos de 18 a 24 años midieron de media <b>0,218 s</b> en un gran estudio de laboratorio ${R('woods')}. En un segundo experimento del mismo estudio, con adultos de 18 a 82 años, la media fue de <b>0,238 s</b>, y otro estudio midió <b>0,248 s</b> en estudiantes de 18 a 20 años, quedándose con el mejor de cinco intentos de cada persona ${R('jain')}.</div>
+    <div class="answer">En una prueba visual simple como esta, los adultos de 18 a 24 años tardaron de media <b>0,218 s</b> en un gran estudio de laboratorio ${R('woods')}. En un segundo experimento del mismo estudio, con adultos de 18 a 82 años, la media fue de <b>0,238 s</b> ${R('woods')}, y otro estudio midió <b>0,248 s</b> en estudiantes de 18 a 20 años, quedándose con el mejor de cinco intentos de cada persona ${R('jain')}.</div>
     <p>Cada estudio usa su propio equipo, así que tómalo como orientación, no como una nota. En Pulse cuentan como <strong>perfecto</strong> los tiempos hasta 0,30 s y como <strong>superado</strong> los que bajan de 0,40 s; son las reglas del juego, no una norma médica. Si tocas antes de que se apaguen las luces es <strong>salida falsa</strong>.</p>
     <h2>Cómo funciona el test</h2>
     <p>Es una prueba de reacción simple: una señal (las luces se apagan) y una respuesta (tu toque).</p>
@@ -277,7 +278,7 @@ const CONTENT = {
       push: ['Entrena tus reflejos en Pulse', 'Reacción, Batak y tres juegos de tiempo, sin conexión.'],
       faq: [['¿Se puede mejorar el tiempo de reacción?', `En parte. En tareas de elección rápida, los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan, con la misma precisión, y algunos estudios de entrenamiento indican que jugar puede acelerar las respuestas ${R('dye')}. Dormir poco, en cambio, te hace más lento ${R('lim')}.`],
         ['¿Es mejor usar el móvil o el ordenador?', 'Cualquiera sirve. Lo importante es comparar tus marcas en el mismo aparato, porque cada pantalla y cada ratón añaden su propio retraso.'],
-        ['¿Guardáis mis resultados?', 'No. El test no pide cuenta ni guarda un historial de tus tiempos: si recargas la página, empiezas de cero.']],
+        ['¿Guardáis mis resultados?', 'No hace falta cuenta y el test no guarda un historial de tus tiempos: si recargas la página, empiezas de cero.']],
       band: ['Tu mejor marca te espera', 'Reacción, Batak y un reto diario en la app.'] },
     fr: { title: 'Test de temps de réaction : mesure tes réflexes | Gurrulabs',
       desc: 'Mesure ton temps de réaction en ligne : touche quand les feux s’éteignent, vois ce qu’est un bon temps selon les études, puis entraîne-toi dans Pulse.',
@@ -285,11 +286,11 @@ const CONTENT = {
       kick: 'Test en ligne · sans inscription', sub: 'Trois feux s’allument un par un. Quand ils s’éteignent, touche. Ton temps s’affiche en secondes, au centième.',
       facts: ['Sans compte', 'Souris, doigt ou barre d’espace'],
       body: `<h2>Qu’est-ce qu’un bon temps de réaction ?</h2>
-    <div class="answer">Dans un test visuel simple comme celui-ci, les adultes de 18 à 24 ans ont obtenu en moyenne <b>0,218 s</b> dans une grande étude en laboratoire ${R('woods')}. Dans une deuxième expérience de la même étude, avec des adultes de 18 à 82 ans, la moyenne était de <b>0,238 s</b>, et une autre étude a mesuré <b>0,248 s</b> chez des étudiants de 18 à 20 ans, en gardant le meilleur de cinq essais de chacun ${R('jain')}.</div>
+    <div class="answer">Dans un test visuel simple comme celui-ci, les adultes de 18 à 24 ans ont obtenu en moyenne <b>0,218 s</b> dans une grande étude en laboratoire ${R('woods')}. Dans une deuxième expérience de la même étude, avec des adultes de 18 à 82 ans, la moyenne était de <b>0,238 s</b> ${R('woods')}, et une autre étude a mesuré <b>0,248 s</b> chez des étudiants de 18 à 20 ans, en gardant le meilleur de cinq essais de chacun ${R('jain')}.</div>
     <p>Chaque étude utilise son propre matériel : prends ces chiffres comme un repère, pas comme une note. Dans Pulse, un temps jusqu’à 0,30 s compte comme <strong>parfait</strong> et sous 0,40 s comme <strong>réussi</strong> ; ce sont les règles du jeu, pas une norme médicale. Si tu touches avant l’extinction des feux, c’est un <strong>faux départ</strong>.</p>
     <h2>Comment fonctionne le test</h2>
-    <p>C’est un test de réaction simple : un signal (les feux s’éteignent) et une réponse (ton toucher).</p>
-    <ol><li>Appuie sur <strong>Démarrer</strong>. Les trois feux s’allument un par un à un rythme irrégulier, pour que tu ne puisses pas deviner le moment.</li><li>Quand ils sont tous éteints, touche n’importe où sur le panneau ou appuie sur la barre d’espace.</li><li>Le temps va de l’extinction des feux à ton toucher. Fais plusieurs essais et regarde ta moyenne, pas un essai isolé.</li></ol>
+    <p>C’est un test de réaction simple : un signal (les feux s’éteignent) et une réponse (ton appui).</p>
+    <ol><li>Appuie sur <strong>Démarrer</strong>. Les trois feux s’allument un par un à un rythme irrégulier, pour que tu ne puisses pas deviner le moment.</li><li>Quand ils sont tous éteints, touche n’importe où sur le panneau ou appuie sur la barre d’espace.</li><li>Le temps va de l’extinction des feux à ton appui. Fais plusieurs essais et regarde ta moyenne, pas un essai isolé.</li></ol>
     <h2>Pourquoi ton résultat peut varier</h2>
     <p>Parce que le temps de réaction dépend de toi, mais aussi de ton appareil. Parmi les facteurs qui peuvent le faire varier : l’âge, le sexe, l’entraînement et la fatigue ${R('jain')}.</p>
     <p>L’âge pèse peu : environ 0,5 ms de plus par an entre 18 et 65 ans ${R('woods')}. Le sommeil compte aussi : le manque de sommeil ralentit les réponses et rend plus fréquentes les absences de plus d’une demi-seconde ${R('lim')}. Même au cours d’une longue séance, les réponses ralentissent un peu : de 228,1 ms dans le premier bloc de 20 essais à 237,2 ms dans le dernier ${R('woods')}.</p>
@@ -301,15 +302,15 @@ const CONTENT = {
       push: ['Entraîne tes réflexes dans Pulse', 'Réaction, Batak et trois jeux de timing, hors ligne.'],
       faq: [['Peut-on améliorer son temps de réaction ?', `En partie. Sur des tâches de choix rapide, les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs, avec la même précision, et des études d’entraînement indiquent que jouer peut accélérer les réponses ${R('dye')}. À l’inverse, le manque de sommeil te ralentit ${R('lim')}.`],
         ['Mieux vaut un téléphone ou un ordinateur ?', 'Les deux conviennent. L’important est de comparer tes scores sur le même appareil, car chaque écran et chaque souris ajoutent leur propre délai.'],
-        ['Vous enregistrez mes résultats ?', 'Non. Le test ne demande pas de compte et ne garde pas d’historique de tes temps : recharge la page et tu repars de zéro.']],
+        ['Vous enregistrez mes résultats ?', 'Pas besoin de compte, et le test ne garde pas d’historique de tes temps : recharge la page et tu repars de zéro.']],
       band: ['Ton record t’attend', 'Réaction, Batak et un défi chaque jour dans l’appli.'] },
-    pt: { title: 'Teste de tempo de reação online: meça seus reflexos | Gurrulabs',
+    pt: { title: 'Teste de tempo de reação: meça seus reflexos | Gurrulabs',
       desc: 'Meça seu tempo de reação no navegador: toque quando as luzes apagarem. Veja o que é um bom tempo segundo os estudos e treine depois no Pulse para Android.',
       name: 'Teste de tempo de reação', h1: 'Teste de tempo de reação', card: 'Três luzes: meça seus reflexos',
       kick: 'Teste online · sem cadastro', sub: 'Três luzes acendem uma a uma. Quando apagarem, toque. Seu tempo aparece em segundos, no centésimo.',
       facts: ['Sem conta', 'Mouse, dedo ou barra de espaço'],
       body: `<h2>O que é um bom tempo de reação?</h2>
-    <div class="answer">Num teste visual simples como este, adultos de 18 a 24 anos tiveram média de <b>0,218 s</b> num grande estudo de laboratório ${R('woods')}. Num segundo experimento do mesmo estudo, com adultos de 18 a 82 anos, a média foi de <b>0,238 s</b>, e outro estudo mediu <b>0,248 s</b> em estudantes de 18 a 20 anos, usando a melhor de cinco tentativas de cada pessoa ${R('jain')}.</div>
+    <div class="answer">Num teste visual simples como este, adultos de 18 a 24 anos tiveram média de <b>0,218 s</b> num grande estudo de laboratório ${R('woods')}. Num segundo experimento do mesmo estudo, com adultos de 18 a 82 anos, a média foi de <b>0,238 s</b> ${R('woods')}, e outro estudo mediu <b>0,248 s</b> em estudantes de 18 a 20 anos, usando a melhor de cinco tentativas de cada pessoa ${R('jain')}.</div>
     <p>Cada estudo usa seu próprio equipamento, então use esses números como referência, não como nota. No Pulse, tempos de até 0,30 s contam como <strong>perfeito</strong> e abaixo de 0,40 s como <strong>passou</strong>; são as regras do jogo, não uma norma médica. Se você tocar antes de as luzes apagarem, é <strong>largada falsa</strong>.</p>
     <h2>Como o teste funciona</h2>
     <p>É um teste de reação simples: um sinal (as luzes apagam) e uma resposta (seu toque).</p>
@@ -325,7 +326,7 @@ const CONTENT = {
       push: ['Treine seus reflexos no Pulse', 'Reação, Batak e três jogos de tempo, offline.'],
       faq: [['Dá para melhorar o tempo de reação?', `Em parte. Em tarefas de escolha rápida, jogadores de videogames de ação responderam 11% mais rápido que não jogadores, com a mesma precisão, e alguns estudos de treino indicam que jogar pode acelerar as respostas ${R('dye')}. Já dormir pouco deixa você mais lento ${R('lim')}.`],
         ['É melhor usar o celular ou o computador?', 'Qualquer um serve. O importante é comparar suas marcas no mesmo aparelho, porque cada tela e cada mouse têm seu próprio atraso.'],
-        ['Vocês guardam meus resultados?', 'Não. O teste não pede conta nem guarda um histórico dos seus tempos: recarregue a página e você começa do zero.']],
+        ['Vocês guardam meus resultados?', 'Não precisa de conta, e o teste não guarda um histórico dos seus tempos: recarregue a página e você começa do zero.']],
       band: ['Seu recorde está esperando', 'Reação, Batak e um desafio diário no app.'] } },
 
   'age-guide': { sources: [SRC.woods, SRC.lim, SRC.dye, SRC.derdeary],
@@ -356,7 +357,7 @@ const CONTENT = {
         ['Do video games improve reflexes?', `On fast choice tasks, action video game players responded 11% faster than non-players, with the same accuracy. Some training studies indicate that playing can speed up responses ${R('dye')}.`],
         ['What is the difference between simple and choice reaction time?', `Simple reaction has one signal and one response, like our test. Choice reaction has several signals, each with its own response. In a study of 7,130 adults, simple reaction time showed little slowing until around 50, whereas choice reaction time slowed throughout adulthood ${R('derdeary')}.`]],
       band: ['Train your reflexes every day', 'Pulse for Android: no account, works offline.'] },
-    es: { title: 'Tiempo de reacción medio por edad: tabla y estudios | Gurrulabs',
+    es: { title: 'Tiempo de reacción medio por edad: tabla | Gurrulabs',
       desc: 'Cuánto tarda en reaccionar una persona a cada edad, según un estudio con 1.469 adultos. Tabla de 18 a 65 años, qué lo cambia y un test para medir el tuyo.',
       name: 'Tiempo de reacción por edad', h1: 'Tiempo de reacción medio por edad', card: 'Medias de los estudios, con fuentes',
       kick: 'Guía · Tiempo de reacción', sub: 'Qué midió un estudio con 1.469 adultos, grupo de edad a grupo de edad, y por qué unas milésimas no deberían preocuparte.',
@@ -381,9 +382,9 @@ const CONTENT = {
     <p>Las medias de la tabla se midieron en laboratorio con un equipo calibrado; tu navegador y tu pantalla añaden su propio retraso, así que compárate sobre todo contigo mismo. Si notas que tus reflejos han cambiado de golpe, coméntalo con un profesional sanitario.</p>`,
       faq: [['¿A qué edad es más rápido el tiempo de reacción?', `En el grupo más joven del estudio, de 18 a 24 años: 217,9 ms de media. A partir de ahí, la media subió en cada grupo de edad hasta los 65 ${R('woods', 'tabla 2')}.`],
         ['¿Los videojuegos mejoran los reflejos?', `En tareas de elección rápida, los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan, con la misma precisión. Algunos estudios de entrenamiento indican que jugar puede acelerar las respuestas ${R('dye')}.`],
-        ['¿Qué diferencia hay entre reacción simple y de elección?', `En la simple hay una señal y una respuesta, como en nuestro test. En la de elección hay varias señales y una respuesta distinta para cada una. En un estudio con 7.130 adultos, la reacción simple apenas se frenó hasta cerca de los 50 años, mientras que la de elección se frenó durante toda la vida adulta ${R('derdeary')}.`]],
+        ['¿Qué diferencia hay entre reacción simple y de elección?', `En la simple hay una señal y una respuesta, como en nuestro test. En la de elección hay varias señales y una respuesta distinta para cada una. En un estudio con 7.130 adultos, la reacción simple apenas se ralentizó hasta cerca de los 50 años, mientras que la de elección se ralentizó durante toda la vida adulta ${R('derdeary')}.`]],
       band: ['Entrena tus reflejos cada día', 'Pulse para Android: sin cuenta, funciona sin conexión.'] },
-    fr: { title: 'Temps de réaction moyen par âge : tableau et études | Gurrulabs',
+    fr: { title: 'Temps de réaction moyen par âge : tableau | Gurrulabs',
       desc: 'Le temps de réaction selon l’âge, d’après une étude sur 1 469 adultes : tableau de 18 à 65 ans, ce qui le fait varier et un test pour mesurer le tien.',
       name: 'Temps de réaction par âge', h1: 'Temps de réaction moyen par âge', card: 'Moyennes des études, avec sources',
       kick: 'Guide · Temps de réaction', sub: 'Ce qu’une étude sur 1 469 adultes a mesuré, tranche d’âge par tranche d’âge, et pourquoi quelques millisecondes ne doivent pas t’inquiéter.',
@@ -410,7 +411,7 @@ const CONTENT = {
         ['Les jeux vidéo améliorent-ils les réflexes ?', `Sur des tâches de choix rapide, les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs, avec la même précision. Des études d’entraînement indiquent que jouer peut accélérer les réponses ${R('dye')}.`],
         ['Quelle différence entre réaction simple et réaction de choix ?', `La réaction simple, c’est un signal et une réponse, comme dans notre test. La réaction de choix, ce sont plusieurs signaux, chacun avec sa propre réponse. Dans une étude sur 7 130 adultes, la réaction simple ralentissait peu jusque vers 50 ans, alors que la réaction de choix ralentissait tout au long de la vie adulte ${R('derdeary')}.`]],
       band: ['Entraîne tes réflexes chaque jour', 'Pulse pour Android : sans compte, fonctionne hors ligne.'] },
-    pt: { title: 'Tempo de reação médio por idade: tabela e estudos | Gurrulabs',
+    pt: { title: 'Tempo de reação médio por idade: tabela | Gurrulabs',
       desc: 'Quanto uma pessoa demora para reagir em cada idade, segundo um estudo com 1.469 adultos. Tabela dos 18 aos 65, o que muda e um teste para medir o seu.',
       name: 'Tempo de reação por idade', h1: 'Tempo de reação médio por idade', card: 'Médias dos estudos, com fontes',
       kick: 'Guia · Tempo de reação', sub: 'O que um estudo com 1.469 adultos mediu, faixa etária por faixa etária, e por que alguns milissegundos não devem preocupar você.',
@@ -445,8 +446,9 @@ const CONTENT = {
       kick: 'Stopwatch challenge', sub: 'Stop the stopwatch at exactly 3.00 s. Looks easy until you try: you have a ±0.10 s window, and hitting 3.00 on the dot is another story.',
       facts: ['No account', 'Space bar to stop'],
       body: `<h2>The rules</h2>
-    <div class="answer ex">Press <b>Start</b>, count three seconds and press <b>Stop</b>. The clock is in view, so the challenge is not guessing, it is <b>not missing by rushing or hesitating</b>.</div>
     ${rulesBlock(['Perfect: dead on, to the hundredth', 'Pass: within ±0.10 s', 'Miss: too early or too late'])}
+    <h2>How to play</h2>
+    <div class="answer ex">Press <b>Start</b>, count three seconds and press <b>Stop</b>. The clock is in view, so the challenge is not guessing, it is <b>not missing by rushing or hesitating</b>.</div>
     <h2>Why hitting 3 seconds is so hard</h2>
     <p>Because the brain has no exact stopwatch: estimating an interval always involves some error, and that error tends to grow with the duration.</p>
     <p>This is called the scalar property of timing. In animals, the spread of their timing is proportional to the interval: a constant coefficient of variation ${R('gibbon')}. In people, a study with intervals from 0.1 to 3.2 s found that Weber’s law (the smallest difference you notice grows in proportion to the duration) best described sensitivity to changes in duration, although time perception is not entirely scalar ${R('haigh')}.</p>
@@ -459,14 +461,15 @@ const CONTENT = {
         ['Why 3 seconds?', 'Because 3 s is an Exact Time target in the app and each try is short. Pulse has more targets.'],
         ['Does it work on a phone?', 'Yes, in any browser. Tap the button to start and to stop; on a computer you can also stop with the space bar.']],
       band: ['Your best is waiting', 'More targets, a hidden clock and a daily challenge in the app.'] },
-    es: { title: 'Reto de los 3 segundos: para el cronómetro en 3.00 s | Gurrulabs',
+    es: { title: 'Reto de los 3 segundos: para el reloj en 3.00 s | Gurrulabs',
       desc: '¿Puedes parar el cronómetro en 3.00 s exactos? Juega en el navegador, con margen de ±0.10 s, y descubre por qué cuesta tanto clavarlo.',
       name: 'Reto de los 3 segundos', h1: 'Reto de los 3 segundos', card: 'Para el cronómetro en 3.00 s exactos',
       kick: 'Reto de cronómetro', sub: 'Para el cronómetro en 3.00 s exactos. Parece fácil hasta que lo intentas: tienes ±0.10 s de margen, y clavar el 3.00 es otra historia.',
       facts: ['Sin cuenta', 'Barra espaciadora para parar'],
       body: `<h2>Las reglas</h2>
-    <div class="answer ex">Pulsa <b>Iniciar</b>, cuenta tres segundos y pulsa <b>Parar</b>. El reloj está a la vista, así que el reto no es adivinar, sino <b>no fallar por anticiparte o por dudar</b>.</div>
     ${rulesBlock(['Perfecto: clavado a la centésima', 'Superado: dentro de ±0.10 s', 'Fallo: demasiado pronto o tarde'])}
+    <h2>Cómo se juega</h2>
+    <div class="answer ex">Pulsa <b>Iniciar</b>, cuenta tres segundos y pulsa <b>Parar</b>. El reloj está a la vista, así que el reto no es adivinar, sino <b>no fallar por anticiparte o por dudar</b>.</div>
     <h2>Por qué es tan difícil clavar 3 segundos</h2>
     <p>Porque el cerebro no lleva un cronómetro exacto: al estimar un intervalo siempre hay algo de error, y ese error tiende a crecer con la duración.</p>
     <p>Es la llamada propiedad escalar del tiempo. En animales, la variación de sus estimaciones es proporcional al intervalo: un coeficiente de variación constante ${R('gibbon')}. En personas, un estudio con intervalos de 0,1 a 3,2 s encontró que la ley de Weber (la diferencia mínima que notas crece en proporción a la duración) era la que mejor describía la sensibilidad a los cambios de duración, aunque la percepción del tiempo no es del todo escalar ${R('haigh')}.</p>
@@ -485,8 +488,9 @@ const CONTENT = {
       kick: 'Défi chrono', sub: 'Arrête le chrono pile à 3.00 s. Ça paraît facile jusqu’à ce que tu essaies : tu as ±0.10 s de marge, et tomber pile sur 3.00, c’est une autre histoire.',
       facts: ['Sans compte', 'Barre d’espace pour arrêter'],
       body: `<h2>Les règles</h2>
-    <div class="answer ex">Appuie sur <b>Démarrer</b>, compte trois secondes et appuie sur <b>Arrêter</b>. Le chrono est visible : le défi n’est pas de deviner, mais de <b>ne pas rater en te précipitant ou en hésitant</b>.</div>
     ${rulesBlock(['Parfait : pile au centième', 'Réussi : à ±0.10 s près', 'Raté : trop tôt ou trop tard'])}
+    <h2>Comment jouer</h2>
+    <div class="answer ex">Appuie sur <b>Démarrer</b>, compte trois secondes et appuie sur <b>Arrêter</b>. Le chrono est visible : le défi n’est pas de deviner, mais de <b>ne pas rater en te précipitant ou en hésitant</b>.</div>
     <h2>Pourquoi c’est si dur de tomber pile sur 3 secondes</h2>
     <p>Parce que le cerveau n’a pas de chronomètre exact : estimer un intervalle comporte toujours une erreur, et cette erreur tend à grandir avec la durée.</p>
     <p>C’est ce qu’on appelle la propriété scalaire du temps. Chez l’animal, la dispersion des estimations est proportionnelle à l’intervalle : un coefficient de variation constant ${R('gibbon')}. Chez l’humain, une étude avec des intervalles de 0,1 à 3,2 s a montré que la loi de Weber (la plus petite différence perçue grandit en proportion de la durée) décrivait le mieux la sensibilité aux changements de durée, même si la perception du temps n’est pas entièrement scalaire ${R('haigh')}.</p>
@@ -499,14 +503,15 @@ const CONTENT = {
         ['Pourquoi 3 secondes ?', 'Parce que 3 s est une cible d’Exact Time dans l’appli et que chaque essai est court. Pulse propose plus de cibles.'],
         ['Ça marche sur téléphone ?', 'Oui, dans n’importe quel navigateur. Touche le bouton pour démarrer et pour arrêter ; sur ordinateur, tu peux aussi arrêter avec la barre d’espace.']],
       band: ['Ton record t’attend', 'Plus de cibles, une horloge cachée et un défi chaque jour dans l’appli.'] },
-    pt: { title: 'Desafio dos 3 segundos: pare o cronômetro em 3.00 s | Gurrulabs',
+    pt: { title: 'Desafio dos 3 segundos: pare o relógio em 3.00 s | Gurrulabs',
       desc: 'Você consegue parar o cronômetro em 3.00 s exatos? Jogue no navegador, com margem de ±0.10 s, e descubra por que é tão difícil acertar.',
       name: 'Desafio dos 3 segundos', h1: 'Desafio dos 3 segundos', card: 'Pare o cronômetro em 3.00 s exatos',
       kick: 'Desafio de cronômetro', sub: 'Pare o cronômetro em 3.00 s exatos. Parece fácil até você tentar: você tem ±0.10 s de margem, e cravar o 3.00 é outra história.',
       facts: ['Sem conta', 'Barra de espaço para parar'],
       body: `<h2>As regras</h2>
-    <div class="answer ex">Toque em <b>Iniciar</b>, conte três segundos e toque em <b>Parar</b>. O relógio está à vista, então o desafio não é adivinhar, e sim <b>não errar por se adiantar ou por hesitar</b>.</div>
     ${rulesBlock(['Perfeito: cravado no centésimo', 'Passou: dentro de ±0.10 s', 'Errou: cedo ou tarde demais'])}
+    <h2>Como jogar</h2>
+    <div class="answer ex">Toque em <b>Iniciar</b>, conte três segundos e toque em <b>Parar</b>. O relógio está à vista, então o desafio não é adivinhar, e sim <b>não errar por se adiantar ou por hesitar</b>.</div>
     <h2>Por que é tão difícil cravar 3 segundos</h2>
     <p>Porque o cérebro não tem um cronômetro exato: estimar um intervalo sempre envolve algum erro, e esse erro tende a crescer com a duração.</p>
     <p>É a chamada propriedade escalar do tempo. Em animais, a variação das estimativas é proporcional ao intervalo: um coeficiente de variação constante ${R('gibbon')}. Em pessoas, um estudo com intervalos de 0,1 a 3,2 s concluiu que a lei de Weber (a menor diferença que você percebe cresce na proporção da duração) era a que melhor descrevia a sensibilidade a mudanças de duração, embora a percepção do tempo não seja totalmente escalar ${R('haigh')}.</p>
@@ -552,7 +557,7 @@ function schema(loc, p) {
   const out = [];
   if (p.type === 'home') out.push({ ...org, email: 'gurrulabs@gmail.com' });
   if (p.type === 'app') out.push(pulseApp);
-  if (p.type === 'test' || p.type === 'challenge') out.push({ '@type': 'WebApplication', name: c.h1, url: me, applicationCategory: 'GameApplication', browserRequirements: 'Requires JavaScript', inLanguage: HREFLANG[loc] });
+  if (p.type === 'test' || p.type === 'challenge') out.push({ '@type': 'WebApplication', name: c.h1, url: me, applicationCategory: 'GameApplication', browserRequirements: 'Requires JavaScript', inLanguage: HREFLANG[loc], datePublished: p.published, dateModified: p.modified });
   if (p.type === 'guide') out.push({ '@type': 'Article', headline: c.h1, url: me, inLanguage: HREFLANG[loc], datePublished: p.published, dateModified: p.modified,
     author: org, publisher: org, citation: CONTENT[p.id].sources.map(s => s.url), about: { '@type': 'MobileApplication', name: 'Pulse', url: PLAY_URL('pulse') } });
   if (p.type !== 'home') {
@@ -599,7 +604,7 @@ function header(loc, p, t) {
 }
 
 // Every page links every app (internal links help search engines find the app pages); Pulse pages also list Pulse's tests and guide
-const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? ['reaction-test', '3s-challenge', 'age-guide'].map((id, i) => `<a href="${to(loc, id)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://raffyparenting.com/">Raffy</a><a href="https://play.google.com/store/apps/details?id=${PKG.cyberpunk_detective}" target="_blank" rel="noopener" data-cta="footer" data-app="cyberpunk_detective">Cyberpunk Detective</a><span>Lull · ${t.soon}</span></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
+const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://raffyparenting.com/">Raffy</a><a href="https://play.google.com/store/apps/details?id=${PKG.cyberpunk_detective}" target="_blank" rel="noopener" data-cta="footer" data-app="cyberpunk_detective">Cyberpunk Detective</a><span>Lull · ${t.soon}</span></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
 
 // ── Home
 function home(loc) {
@@ -684,7 +689,7 @@ ${header(loc, p, t)}
 
   <section class="blk"><h2>${t.modes_h}</h2><p class="lead">${t.modes_p}</p><div class="modes">${t.m.map(([n, r], i) => `<div class="mrow" style="--c:var(--m-${modes[i]})"><span class="mi">${ic(modes[i])}</span><div class="tx"><b>${n}</b><span>${r}</span></div></div>`).join('')}</div></section>
 
-  <section class="blk" id="guides"><h2>${t.guides_h}</h2><p class="lead">${t.guides_p}</p>${relBlock(loc, ['reaction-test', '3s-challenge', 'age-guide'])}</section>
+  <section class="blk" id="guides"><h2>${t.guides_h}</h2><p class="lead">${t.guides_p}</p>${relBlock(loc, PULSE_CONTENT.map(q => q.id))}</section>
 
   <section class="blk"><h2>${t.shots_h}</h2><div class="shots">${shots}</div></section>
 
@@ -699,17 +704,17 @@ ${footer(loc, t, p)}
 
 // ── Content pages (layout of the T-007 mockups). Everything is static HTML; only the game panel needs JS.
 const fmtDate = (loc, iso) => { const [y, m, d] = iso.split('-').map(Number); return T[loc].date(d, T[loc].months[m - 1], y); };
-const dated = (loc, p) => `<div class="dates"><span>${T[loc].pub} <b><time datetime="${p.published}">${fmtDate(loc, p.published)}</time></b></span><span>${T[loc].upd} <b><time datetime="${p.modified}">${fmtDate(loc, p.modified)}</time></b></span></div>`;
+// Reading time (guide): visible words of the article at 200 words/min, deterministic
+const readMin = c => Math.max(1, Math.round([c.answer, c.body, c.after, ...c.faq.flat()].join(' ').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / 200));
+const dated = (loc, p, extra = '') => `<div class="dates"><span>${T[loc].pub} <b><time datetime="${p.published}">${fmtDate(loc, p.published)}</time></b></span><span>${T[loc].upd} <b><time datetime="${p.modified}">${fmtDate(loc, p.modified)}</time></b></span>${extra ? `<span>${extra}</span>` : ''}</div>`;
 const SRC_KEY = new Map(Object.entries(SRC).map(([k, s]) => [s, k]));
 const sourcesBlock = (loc, p) => `<section class="sources" id="sources" aria-labelledby="src-h"><h2 id="src-h">${T[loc].src_h}</h2><ol>${CONTENT[p.id].sources.map(s => `<li id="src-${SRC_KEY.get(s)}">${s.ref} <a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.url.replace('https://', ''))}</a></li>`).join('')}</ol><p class="note">${p.type === 'guide' ? T[loc].edu_med : T[loc].edu}</p></section>`;
 const crumbBlock = (loc, p) => `<nav class="bc" aria-label="${T[loc].bc}"><a href="${path(loc, byId.home)}">${T[loc].back}</a><span aria-hidden="true">›</span><a href="${path(loc, byId.pulse)}">Pulse</a><span aria-hidden="true">›</span><span>${CONTENT[p.id][loc].name}</span></nav>`;
 // Link cards to the content pages and the Pulse page (internal links), coloured by Pulse mode
-const CARD = { 'reaction-test': ['reaction', 'm-reaction'], '3s-challenge': ['exact', 'm-exact'], 'age-guide': ['chart', 'm-interval'] };
 const relCard = (loc, id) => id === 'pulse'
   ? `<a href="${to(loc, 'pulse')}" style="--c:var(--m-hidden)"><span class="mi">${ICON.pulse}</span><b>${T[loc].pulse_card[0]}</b><span>${T[loc].pulse_card[1]}</span></a>`
-  : `<a href="${to(loc, id)}" style="--c:var(--${CARD[id][1]})"><span class="mi">${ic(CARD[id][0])}</span><b>${CONTENT[id][loc].name}</b><span>${CONTENT[id][loc].card}</span></a>`;
+  : `<a href="${to(loc, id)}" style="--c:var(--${byId[id].card[1]})"><span class="mi">${ic(byId[id].card[0])}</span><b>${CONTENT[id][loc].name}</b><span>${CONTENT[id][loc].card}</span></a>`;
 const relBlock = (loc, ids) => `<div class="rel">${ids.map(id => relCard(loc, id)).join('')}</div>`;
-const KEEP = { 'reaction-test': ['3s-challenge', 'age-guide'], 'age-guide': ['reaction-test', '3s-challenge'], '3s-challenge': ['reaction-test', 'age-guide'] };
 const faqBlock = (loc, faq) => `<h2>${T[loc].faq_h}</h2>
     <div class="faq">${faq.map(([q, a], i) => `<details${i ? '' : ' open'}><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>`;
 // Test/challenge: Play link to Pulse. Guide: featured link to the reaction test.
@@ -723,7 +728,7 @@ function contentPage(loc, p) {
     <div class="app"><div class="ic">${ICON.pulse}</div><span>${c.kick}</span></div>
     <h1>${esc(c.h1)}</h1>
     <p class="sub">${c.sub}</p>
-    ${dated(loc, p)}
+    ${dated(loc, p, t.read(readMin(c)))}
   </header>
   <div class="answer">${c.answer}</div>`
     : `<section class="p-hero">
@@ -751,7 +756,7 @@ ${header(loc, p, t)}
     ${c.after ? c.after + '\n    ' : ''}${faqBlock(loc, c.faq)}
   </article>
   ${sourcesBlock(loc, p)}
-  <section class="blk"><h2>${guide ? t.read_h : t.keep_h}</h2>${relBlock(loc, [...KEEP[p.id], 'pulse'])}</section>
+  <section class="blk"><h2>${guide ? t.read_h : t.keep_h}</h2>${relBlock(loc, [...PULSE_CONTENT.filter(q => q !== p).map(q => q.id), 'pulse'])}</section>
   <section class="band"><div><h2>${c.band[0]}</h2><p>${c.band[1]}</p></div><div>${play(loc, 'pulse', 'footer_band')}</div></section>
 </main>
 ${footer(loc, t, p)}${guide ? '' : `\n<script type="application/json" id="i18n">${i18n(t)}</script>`}
