@@ -24,3 +24,4 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - Grid children with fixed width (e.g. the 384px `.game`) need `minmax(0, 1fr)` columns or they overflow at 390 px.
 - Google Play badges: `https://play.google.com/intl/en_us/badges/static/images/badges/<en|es|fr|pt-br>_badge_web_generic.png` (646x250, padding); crop `sips -c 198 594` keeps the rounded border.
 - In execute runs the hub installs `.lead/pending-claude/` into the worktree's `.claude/` without committing (runner.mjs installPendingClaude).
+- T-002 (2026-11-05): ticket showed Done/"Merged into main" but `main` was never pushed (origin/main 4 behind), so nothing deployed. After any merge, check `git log origin/main..main` is empty and the changed pages load on gurrulabs.pages.dev; if not, tell Unai.
