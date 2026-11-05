@@ -18,17 +18,21 @@ Launch apps: Pulse, Raffy (card links out to raffyparenting.com), Cyberpunk Dete
 - Build: `sh build.sh` copies the site (everything except dot-folders, `docs/`, `CLAUDE.md`, `README.md`) into
   `dist/`, which Cloudflare publishes. Agent files must never go live; add new internal files to its exclude list.
 - Generate pages: `node scripts/build.mjs` (all copy lives there; never hand-edit the generated `xx/**/index.html`,
-  root `index.html`, `sitemap.xml`, `robots.txt`). Validate: `node scripts/validate.mjs` (must print `validate: OK`).
+  root `index.html`, `sitemap.xml`, `robots.txt`, `llms.txt`). Validate: `node scripts/validate.mjs` (must print `validate: OK`).
 - Run locally: `python3 -m http.server 8000` from repo root, open `http://localhost:8000/`.
 
 ## Layout
 One folder per locale with one subfolder per app (`/en/`, `/en/pulse/`), shared `assets/`, `styles.css`, `script.js`
-(Play referrer, gated Mixpanel, Pulse browser tests), `sitemap.xml`, `robots.txt`; generator/validator in `scripts/`.
+(Play referrer, gated Mixpanel, Pulse browser tests), generated `sitemap.xml`, `robots.txt`, `llms.txt`, IndexNow key
+`<key>.txt` (`.github/workflows/indexnow.yml` pings IndexNow after each deploy); generator/validator in `scripts/`.
 - `docs/` — domain and decisions (index: `docs/README.md`).
 - `.lead/` — Lead instructions, notes, tickets (hub board state), designs, attachments.
 
 ## Rules
 - Every page ships in all 4 locales in the same ticket; natural native copy per locale.
+- SEO: every new or changed page follows `docs/seo-strategy.md` (own keyword, real checked sources, visible date),
+  is regenerated with `node scripts/build.mjs` (pages, sitemap, llms.txt, robots, JSON-LD from `scripts/pages.mjs`)
+  and passes `node scripts/validate.mjs`; a ticket that touches pages is not done without it.
 - Every app page pushes to its Play listing; every Play link carries the UTM referrer (see `docs/domain.md`).
 - Every page is tracked: `<body data-page="<slug>" data-locale="<locale>">` and loads `/script.js`, which fires the view
   event `Gurrulabs Web - <Page>`; every Play link has `data-cta` and `data-app`. Naming: `docs/domain.md` Measurement;

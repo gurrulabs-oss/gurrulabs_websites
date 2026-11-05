@@ -142,7 +142,8 @@
       labels: ['0', I.rwin, '0.60 s'] }); };
 
   // Screens of the panel, by state
-  const tabs = mode => `<div class="tabs" role="tablist"><button data-a="tab-exact" class="${mode === 'exact' ? 'on' : ''}" style="--c:var(--m-exact)">${ic('exact')}${I.t_exact}</button><button data-a="tab-react" class="${mode === 'react' ? 'on' : ''}" style="--c:var(--m-reaction)">${ic('reaction')}${I.t_react}</button></div>`;
+  const solo = 'solo' in panel.dataset; // data-solo: single-mode page (no tabs); data-mode="react|exact" picks the mode
+  const tabs = mode => solo ? '' : `<div class="tabs" role="tablist"><button data-a="tab-exact" class="${mode === 'exact' ? 'on' : ''}" style="--c:var(--m-exact)">${ic('exact')}${I.t_exact}</button><button data-a="tab-react" class="${mode === 'react' ? 'on' : ''}" style="--c:var(--m-reaction)">${ic('reaction')}${I.t_react}</button></div>`;
   const S = {
     exactReady: () => tabs('exact') + `<div class="stage">${watch(0, readyFace)}</div><p class="hint">${I.h_exact}</p><button class="go" data-a="start">${I.start}</button>`,
     exactRun: t => tabs('exact') + `<div class="stage">${watch(t, runFace(t))}</div><p class="hint">&nbsp;</p><button class="go" data-a="stop">${I.stop}</button>`,
@@ -154,7 +155,7 @@
   };
 
   // Live panel: state machine. Replaces the no-JS fallback that is in the HTML.
-  let mode = 'exact', raf = 0, t0 = 0, timers = [], phase = 'idle';
+  let mode = panel.dataset.mode === 'react' ? 'react' : 'exact', raf = 0, t0 = 0, timers = [], phase = 'idle';
   const clear = () => { cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers = []; };
   const show = (html, slide) => {
     const hadFocus = panel.contains(document.activeElement);
