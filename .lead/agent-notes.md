@@ -26,4 +26,5 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - In execute runs the hub installs `.lead/pending-claude/` into the worktree's `.claude/` without committing (runner.mjs installPendingClaude).
 - T-002 (2026-11-05): ticket showed Done/"Merged into main" but `main` was never pushed (origin/main 4 behind), so nothing deployed. After any merge, check `git log origin/main..main` is empty and the changed pages load on gurrulabs.pages.dev; if not, tell Unai.
 - Design runs (2026-11-05, T-008): `node <script>`, `sed`/`cd && …` chains and `cp -R` need approval; plain `cp a b dir/` and `mkdir -p` work. Build mockups by `cp` of real files + Edit/Write.
+- T-008 (2026-11-05): headless Chrome + CDP worked again; quick game test = click [data-a=start], wait, click [data-a=stop], read #game innerText.
 - Design runs (2026-11-05, T-007): headless Chrome `--screenshot` of `file://` mockups works without approval; starting `python3 -m http.server` (background) needs approval, so real-page Before shots (absolute `/assets/` paths) wait for execution. Chrome headless renders ≥~500 px wide: check 390 px via the mockup iframes, not `--window-size=390`.

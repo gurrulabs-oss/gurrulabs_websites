@@ -92,7 +92,7 @@
   const GP = '<svg viewBox="0 0 26 28"><path d="M1 1l13 13L1 27z" fill="#00D7FE"/><path d="M1 1l17 9.5-4 3.5z" fill="#00F076"/><path d="M1 27l17-9.5-4-3.5z" fill="#F63448"/><path d="M18 10.5l6 3.5-6 3.5-4-3.5z" fill="#FFC900"/></svg>';
 
   // Exact Time watch: a full turn of the ring = the target
-  const TARGET = 10, WIN = 0.10, C = 2 * Math.PI * 128;
+  const TARGET = 3, WIN = 0.10, C = 2 * Math.PI * 128;
   const watch = (t, face, v = '') => `<div class="watch ${v ? 'v ' + v : ''}"><div class="ticks"></div><svg class="ring" viewBox="0 0 272 272"><circle class="track" cx="136" cy="136" r="128"/><circle class="prog" cx="136" cy="136" r="128" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - Math.min(t / TARGET, 1))}"/></svg><div class="face">${face}</div></div>`;
   const readyFace = `<small>${I.stop_at}</small><div class="n tnum">${fmt(TARGET)}<span>s</span></div>`;
   const runFace = t => `<div class="n tnum">${fmt(t)}<span>s</span></div><small class="tnum">${fill(I.of, fmt(TARGET))}</small>`;

@@ -109,7 +109,7 @@ body.light { --bg1:#FFFFFF; --bg2:#F5F4FF; --surface:#FFFFFF; --surface2:#ECEAFF
 .pring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
 .pring .tr { fill: none; stroke: var(--line); stroke-width: 2; }
 .pring .pg { fill: none; stroke: var(--m-exact); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 754; stroke-dashoffset: 754;
-             animation: sweep 10s linear infinite; filter: drop-shadow(0 0 8px color-mix(in srgb, var(--m-exact) 60%, transparent)); }
+             animation: sweep 3s linear infinite; filter: drop-shadow(0 0 8px color-mix(in srgb, var(--m-exact) 60%, transparent)); }
 @keyframes sweep { to { stroke-dashoffset: 0; } }
 .pring small { display: block; font-size: 13px; color: var(--text3); }
 .pring b { font: 200 66px/1 Outfit, system-ui, sans-serif; letter-spacing: -.03em; } .pring b span { margin-left: 3px; font-size: 22px; color: var(--text2); }
