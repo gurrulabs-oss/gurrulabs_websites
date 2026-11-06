@@ -869,6 +869,8 @@ const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, 
 const PLAY_URL = app => `https://play.google.com/store/apps/details?id=${PKG[app]}`;
 const play = (loc, app, cta) => `<a class="gp" href="${PLAY_URL(app)}" target="_blank" rel="noopener" data-cta="${cta}" data-app="${app}"><img src="/assets/play-badge-${loc}.webp" width="594" height="198" alt="${BADGE_ALT[loc]}"></a>`;
 const alternates = p => [...LOCALES.map(l => `<link rel="alternate" hreflang="${HREFLANG[l]}" href="${url(l, p)}">`), `<link rel="alternate" hreflang="x-default" href="${url('en', p)}">`].join('\n');
+// Path → page id of every page, so script.js reports internal link targets by stable English id, not translated URL
+const PAGE_IDS = `<script type="application/json" id="pages">${JSON.stringify(Object.fromEntries(PAGES.flatMap(p => LOCALES.map(l => [path(l, p), p.dataPage]))))}</script>`;
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', ...o }).replace(/</g, '\\u003c')}</script>`;
 
 // JSON-LD per page type. Names/headlines are the visible h1; dates are the visible <time> values (validator compares).
@@ -915,6 +917,7 @@ ${alternates(p)}
 <link rel="preload" href="/assets/outfit.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/styles.css">
 ${schema(loc, p).map(jsonLd).join('\n')}
+${PAGE_IDS}
 <script src="/script.js" defer></script>
 </head>`;
 }
