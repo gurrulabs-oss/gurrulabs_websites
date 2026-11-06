@@ -12,6 +12,7 @@
 - [Reaction time test](https://gurrulabs.pages.dev/en/pulse/reaction-time-test/): Browser reaction time test: tap when the lights go out; the result is in seconds (perfect up to 0.30 s, pass under 0.40 s).
 - [3 second challenge](https://gurrulabs.pages.dev/en/pulse/3-second-challenge/): Browser game: stop a stopwatch at exactly 3.00 s (pass window ±0.10 s).
 - [Average reaction time by age](https://gurrulabs.pages.dev/en/pulse/average-reaction-time-by-age/): Guide: average simple reaction time by age group, 18 to 65 (Woods et al. 2015, Table 2), what changes it, with sources.
+- [Best reaction time apps for Android](https://gurrulabs.pages.dev/en/pulse/best-reaction-time-apps/): Comparison: 5 reaction time apps for Android (Pulse, Reaction training, Reaction Time, Lumosity, Peak) on price, ads, modes, account and offline use, from their Google Play listings checked 2026-11-06. Gurrulabs makes Pulse.
 - [Pulse on Google Play](https://play.google.com/store/apps/details?id=com.gurrulabs.pulse): Android download page.
 
 ## Other apps
