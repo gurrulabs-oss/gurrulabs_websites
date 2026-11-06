@@ -7,6 +7,7 @@
 //   published, modified   hand-set 'YYYY-MM-DD'; change `modified` only when the page's text changes (feeds <lastmod>, Article dates)
 //   dataPage  <body data-page> slug (names the Mixpanel view event)
 //   card      content pages: [icon, Pulse mode colour] of its link card; registry order = card and footer order
+//   listing   optional: the page quotes Play listings (price/ads labels), so the validator allows "free"/"no ads" words there
 //   llms      optional EN one-liner for /llms.txt (facts only). llms.txt lists the EN URL of every page; the validator
 //             treats a page as "in llms.txt" when its EN URL is listed (locale roots are listed under Optional).
 export const SITE = 'https://gurrulabs.pages.dev';
@@ -28,6 +29,9 @@ export const PAGES = [
   { id: 'age-guide', app: 'pulse', type: 'guide', published: D, modified: D, dataPage: 'pulse-age-guide', card: ['chart', 'm-interval'],
     slug: { en: 'average-reaction-time-by-age', es: 'tiempo-de-reaccion-por-edad', fr: 'temps-de-reaction-par-age', pt: 'tempo-de-reacao-por-idade' },
     llms: 'Guide: average simple reaction time by age group, 18 to 65 (Woods et al. 2015, Table 2), what changes it, with sources.' },
+  { id: 'best-apps', app: 'pulse', type: 'guide', published: '2026-11-06', modified: '2026-11-06', dataPage: 'pulse-best-apps', listing: true, card: ['batak', 'm-batak'],
+    slug: { en: 'best-reaction-time-apps', es: 'mejores-apps-de-reflejos', fr: 'meilleures-applis-temps-de-reaction', pt: 'melhores-apps-de-reflexo' },
+    llms: 'Comparison: 5 reaction time apps for Android (Pulse, Reaction training, Reaction Time, Lumosity, Peak) on price, ads, modes, account and offline use, from their Google Play listings checked 2026-11-06. Gurrulabs makes Pulse.' },
 ];
 
 // /en/, /en/pulse/, /en/pulse/reaction-time-test/

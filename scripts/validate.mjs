@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import { SITE as HOST, LOCALES as DIRS, HREFLANG, PAGES, path, url, fileOf } from './pages.mjs';
 
 const BANNED = /\b(cure[sd]?|eliminat\w*|free|no ads|F1|gratis|gratuit\w*|grátis|gratuito|sin anuncios|sans pub\w*|sem anúncios)\b/i;
+const LISTING_BANNED = /\b(cure[sd]?|eliminat\w*|F1)\b/i;
 const BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Bingbot'];
 
 const attr = (tag, name) => tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1];
@@ -88,10 +89,12 @@ for (const { p, loc, own, shown, html, alts } of pages) {
   }
   const untracked = tracked(html, p.dataPage, loc);
   if (untracked) f(untracked);
-  for (const a of tags(html, /<a\b[^>]*play\.google\.com[^>]*>/g))
+  // Play links in .sources are citations of store listings, not install CTAs
+  for (const a of tags(html.replace(/<section class="sources"[\s\S]*?<\/section>/, ''), /<a\b[^>]*play\.google\.com[^>]*>/g))
     if (!attr(a, 'data-cta') || !attr(a, 'data-app')) f(`Play link without data-cta/data-app: ${a.slice(0, 120)}`);
   if (/mixpanel/i.test(html)) f('mixpanel referenced in HTML (must live only in script.js behind the gate)');
-  const bad = text(html).match(BANNED);
+  // p.listing: comparison page quoting Play price/ads labels; cure/eliminate/F1 stay banned there too
+  const bad = text(html).match(p.listing ? LISTING_BANNED : BANNED);
   if (bad) f(`banned claim "${bad[0]}"`);
 
   // Internal hrefs must resolve to a file or page

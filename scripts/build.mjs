@@ -53,7 +53,7 @@ const T = {
     pulse_title: 'Pulse app: reflex and timing game for Android | Gurrulabs',
     pulse_desc: 'Pulse is a reflex and sense-of-time game for Android: 5 modes, no account, works offline. Try two of its modes right in your browser.',
     guides_h: 'Tests and guides', guides_p: 'Play in your browser or read what the studies say.', read_h: 'Keep reading', faq_h: 'FAQ', edu: 'Educational content.', edu_med: 'Educational content, not medical advice.',
-    foot: ['Reaction test', '3 s challenge', 'Reaction by age'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
+    foot: ['Reaction test', '3 s challenge', 'Reaction by age', 'Best reflex apps'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
   },
   es: {
     home_h1: 'Apps pequeñas que hacen <em>una cosa</em> bien.', kick: 'Estudio independiente de apps Android',
@@ -91,7 +91,7 @@ const T = {
     pulse_title: 'App Pulse: juego de reflejos para Android | Gurrulabs',
     pulse_desc: 'Pulse es un juego de reflejos y sentido del tiempo para Android: 5 modos, sin cuenta y funciona sin conexión. Prueba dos de sus modos en el navegador.',
     guides_h: 'Pruebas y guías', guides_p: 'Juega en el navegador o aprende qué dicen los estudios.', read_h: 'Sigue leyendo', faq_h: 'Preguntas frecuentes', edu: 'Contenido educativo.', edu_med: 'Contenido educativo, no consejo médico.',
-    foot: ['Test de reacción', 'Reto 3 s', 'Reacción por edad'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
+    foot: ['Test de reacción', 'Reto 3 s', 'Reacción por edad', 'Mejores apps de reflejos'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
   },
   fr: {
     home_h1: 'De petites applis qui font <em>une seule chose</em>, et bien.', kick: 'Studio indépendant d’applis Android',
@@ -129,7 +129,7 @@ const T = {
     pulse_title: 'Appli Pulse : jeu de réflexes pour Android | Gurrulabs',
     pulse_desc: 'Pulse est un jeu de réflexes et de sens du temps pour Android : 5 modes, sans compte, fonctionne hors ligne. Essaie deux de ses modes dans ton navigateur.',
     guides_h: 'Tests et guides', guides_p: 'Joue dans ton navigateur ou découvre ce que disent les études.', read_h: 'Continue à lire', faq_h: 'Questions fréquentes', edu: 'Contenu éducatif.', edu_med: 'Contenu éducatif, pas un avis médical.',
-    foot: ['Test de réaction', 'Défi 3 s', 'Réaction par âge'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
+    foot: ['Test de réaction', 'Défi 3 s', 'Réaction par âge', 'Meilleures applis de réflexes'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
   },
   pt: {
     home_h1: 'Apps pequenos que fazem <em>uma coisa</em> bem.', kick: 'Estúdio independente de apps Android',
@@ -167,7 +167,7 @@ const T = {
     pulse_title: 'App Pulse: jogo de reflexos para Android | Gurrulabs',
     pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Experimente dois dos modos no navegador.',
     guides_h: 'Testes e guias', guides_p: 'Jogue no navegador ou veja o que dizem os estudos.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
-    foot: ['Teste de reação', 'Desafio 3 s', 'Reação por idade'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
+    foot: ['Teste de reação', 'Desafio 3 s', 'Reação por idade', 'Melhores apps de reflexo'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
   },
 };
 
@@ -184,7 +184,7 @@ function i18n(t) {
 
 // ── Content pages (Pulse test, age guide, 3 s challenge). Figures come ONLY from the T-007 sources check
 //    (.lead/attachments/T-007/sources.md, SUPPORTED wording) and each one sits next to its citation R(key).
-//    Per page id and locale: { title, desc, name (breadcrumb / card), h1, card (card one-liner), kick, sub, facts (test/challenge),
+//    Per page id and locale: { title, desc, name (breadcrumb / card), h1, card (card one-liner), kick, upd (optional: replaces the "Updated" label), note (optional: appended to the Sources note), sub, facts (test/challenge),
 //    answer (guide), body, push [b, s, link label (guide → test)], after (guide), faq [[q, a]], band [h, p] }.
 //    `sources` (shared by the locales) feeds the Sources list, the Article citation and the #src-<key> anchors.
 const byId = Object.fromEntries(PAGES.map(p => [p.id, p]));
@@ -209,6 +209,16 @@ const SRC = {
     ref: 'Haigh A, Apthorp D, Bizo LA. The role of Weber’s law in human time perception. <i>Attention, Perception, &amp; Psychophysics</i>, 2021; 83(1):435–447.' },
   poppel: { cite: 'Pöppel, 1997', url: 'https://doi.org/10.1016/S1364-6613(97)01008-5',
     ref: 'Pöppel E. A hierarchical model of temporal perception. <i>Trends in Cognitive Sciences</i>, 1997; 1(2):56–61.' },
+  gp_pulse: { cite: 'Google Play: Pulse', url: 'https://play.google.com/store/apps/details?id=com.gurrulabs.pulse&hl=en_US&gl=US',
+    ref: 'Google Play listing: Pulse (Gurrulabs), checked 6 Nov 2026.' },
+  gp_nix: { cite: 'Google Play: Reaction training', url: 'https://play.google.com/store/apps/details?id=com.nixgames.reaction&hl=en_US&gl=US',
+    ref: 'Google Play listing: Reaction training (nixGames), checked 6 Nov 2026.' },
+  gp_banen: { cite: 'Google Play: Reaction Time', url: 'https://play.google.com/store/apps/details?id=darksacor.reactiontime&hl=en_US&gl=US',
+    ref: 'Google Play listing: Reaction Time (Banensoft), checked 6 Nov 2026.' },
+  gp_lumo: { cite: 'Google Play: Lumosity', url: 'https://play.google.com/store/apps/details?id=com.lumoslabs.lumosity&hl=en_US&gl=US',
+    ref: 'Google Play listing: Lumosity (Lumos Labs), checked 6 Nov 2026.' },
+  gp_peak: { cite: 'Google Play: Peak', url: 'https://play.google.com/store/apps/details?id=com.brainbow.peak.app&hl=en_US&gl=US',
+    ref: 'Google Play listing: Peak (Synaptic Labs), checked 6 Nov 2026.' },
 };
 function cite(k, extra) { return `<a class="ref" href="#src-${k}">${SRC[k].cite}${extra ? ', ' + extra : ''}</a>`; }
 function R(k, extra) { return `(${cite(k, extra)})`; }
@@ -229,6 +239,22 @@ function ageTable(loc, [hAge, hMean, hSd, hSrc, all, cap, t2]) {
 function rulesBlock(r) {
   return `<div class="rules"><div><b class="v-perfect tnum">3.00</b><span>${r[0]}</span></div><div><b class="v-pass tnum">2.90–3.10</b><span>${r[1]}</span></div><div><b class="v-miss tnum">&lt; 2.90 · &gt; 3.10</b><span>${r[2]}</span></div></div>`;
 }
+
+// Comparison page: facts from each app's Google Play listing (US, English), checked 2026-11-06. L = localized labels and cell texts.
+// Cells "not stated" / "No" get class n, the offline "Yes" of Peak gets y.
+function cmpTable(L) {
+  const td = (v, cls) => `<td${cls ? ` class="${cls}"` : ''}>${v}</td>`;
+  const row = (us, name, dev, price, ads, modes, off) => `<tr${us ? ' class="us"' : ''}><td><b>${name}</b><small>${dev}</small></td>${td(price)}${ads === L.no ? td(ads, 'n') : td(ads)}${td(modes)}${td(L.ns, 'n')}${off ? td(off, 'y') : td(L.ns, 'n')}</tr>`;
+  return `<div class="tbl cmp"><table>
+      <thead><tr>${L.head.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>${[row(1, 'Pulse', L.us, L.free, L.yes, L.modes[0]), row(0, 'Reaction training', 'nixGames', L.iap, L.yes, L.modes[1]),
+        row(0, 'Reaction Time', 'Banensoft', L.iap, L.yes, L.modes[2]), row(0, 'Lumosity', 'Lumos Labs', L.sub, L.no, L.modes[3]),
+        row(0, 'Peak', 'Synaptic Labs', L.iap, L.yes, L.modes[4], L.offl)].join('\n        ')}</tbody>
+      <caption>${L.cap}</caption>
+    </table></div>`;
+}
+const critList = c => `<ul class="crit">${c.map(([b, r]) => `<li><strong>${b}</strong>${r}</li>`).join('')}</ul>`;
+const picks = p => `<div class="picks">${p.map(([e, b, t]) => `<div><em>${e}</em><b>${b}</b><p>${t}</p></div>`).join('')}</div>`;
 
 const CONTENT = {
   'reaction-test': { sources: [SRC.woods, SRC.jain, SRC.lim, SRC.wa, SRC.dye],
@@ -437,6 +463,104 @@ const CONTENT = {
       faq: [['Em que idade o tempo de reação é mais rápido?', `No grupo mais jovem do estudo, de 18 a 24 anos: 217,9 ms de média. A partir daí, a média subiu em cada faixa etária até os 65 ${R('woods', 'tabela 2')}.`],
         ['Videogames melhoram os reflexos?', `Em tarefas de escolha rápida, jogadores de videogames de ação responderam 11% mais rápido que não jogadores, com a mesma precisão. Alguns estudos de treino indicam que jogar pode acelerar as respostas ${R('dye')}.`],
         ['Qual a diferença entre reação simples e de escolha?', `Na simples há um sinal e uma resposta, como no nosso teste. Na de escolha há vários sinais, cada um com sua resposta. Num estudo com 7.130 adultos, a reação simples quase não ficou mais lenta até por volta dos 50 anos, enquanto a de escolha ficou mais lenta ao longo de toda a vida adulta ${R('derdeary')}.`]],
+      band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
+
+  'best-apps': { sources: [SRC.gp_pulse, SRC.gp_nix, SRC.gp_banen, SRC.gp_lumo, SRC.gp_peak, SRC.woods, SRC.dye],
+    en: { title: 'Best reaction time apps for Android (2026), compared | Gurrulabs',
+      desc: 'Best reaction time app Android? Five apps compared on price, ads, modes and offline use, from their Google Play listings. We make one of them and say so.',
+      name: 'Best reaction time apps for Android', h1: 'Best reaction time apps for Android', card: 'Five apps compared, with sources',
+      kick: 'Comparison · Reaction time', upd: 'Listings checked', note: 'Gurrulabs makes Pulse.',
+      sub: 'Five apps compared on what their Google Play listings actually say: price, ads, modes, account and offline use. We make one of them, and say so.',
+      answer: `If you only want to measure your reaction time, <b>Reaction Time</b> (Banensoft) is a simple reaction test plus a minigame; <b>Reaction training</b> (nixGames) adds 55+ reflex and puzzle challenges and a two-player mode; <b>Pulse</b> pairs a reaction test and Batak with two timing modes; <b>Lumosity</b> and <b>Peak</b> are general brain-training suites (Lumosity lists speed as one of its skill areas). All five are free to install; all but Lumosity show Play’s “Contains ads” label, and Lumosity offers Premium subscriptions. Full disclosure: <b>Pulse is made by Gurrulabs</b>, the authors of this page.`,
+      body: `<h2>How we compared</h2>
+    <p>Every fact in the table, ours included, comes from each app’s Google Play listing on the date above, nothing else. Where a listing does not say something, the table says “not stated” instead of guessing. The only exception is the Pulse card below: as its makers we add that it needs no account and works offline, which its listing does not state.</p>
+    ${critList([['Price', ': free, free with in-app purchases, or subscription, as Play shows it.'], ['Ads', ': Play’s “Contains ads” label.'], ['Reaction modes', ': the kinds of test the description lists.'], ['Account', ' and <strong>offline use</strong>: only if the listing states it.']])}
+    <h2>Comparison table</h2>
+    ${cmpTable({ head: ['App', 'Price', 'Ads', 'Reaction modes', 'Account', 'Offline'], us: 'Gurrulabs · our app', free: 'Free', iap: 'Free + in-app purchases', sub: 'Free + subscription', yes: 'Yes', no: 'No', ns: 'Not stated', offl: 'Yes (offline mode)',
+      modes: ['4 listed on Play: Reaction Time Test, Batak, Stop the Timer, Time Perception', '55+ puzzle and reflex challenges, incl. a colour-change test and a start-lights test; two-player mode', '1 reaction test (tap when the screen turns green) + a minigame', '40+ brain games; speed is one area, no reaction test named', '45+ brain games; no reaction test named'],
+      cap: 'Source: each app’s Google Play listing (US, English), checked 6 November 2026 (links below).' })}
+    <h2>Which one fits you</h2>
+    ${picks([['A SIMPLE QUICK TEST', 'Reaction Time', 'One test: tap when the screen turns green. Free with in-app purchases and ads, plus an online leaderboard.'], ['MANY DRILLS, OR PLAY A FRIEND', 'Reaction training', '55+ challenges, including a start-lights test, and a two-player mode on one phone.'],
+      ['REFLEXES AND TIMING', 'Pulse', 'A reaction test and Batak plus two timing modes. Our app; it needs no account and works offline.'], ['GENERAL BRAIN TRAINING', 'Lumosity or Peak', 'Brain games across memory, attention and more; Lumosity lists speed as one area. Lumosity offers Premium subscriptions; Peak lists an offline mode.']])}`,
+      push: ['Try before you install anything', 'Reaction test in your browser, no account.', 'Take the test'],
+      after: `<h2>What an app cannot tell you</h2>
+    <p>Phones add their own touch and screen delay: screens, mice and software can add up to 100 ms to the measured time ${R('woods')}. So a time in one app is not comparable to the millisecond with another app or with lab figures. Compare yourself with yourself, on the same phone. See <a href="${to('en', 'age-guide')}">average reaction time by age</a> for what labs measure.</p>
+    <p>This page is <strong>educational</strong>: no app here diagnoses anything.</p>`,
+      faq: [['Is there a free reaction time app with no ads?', 'Of the five we compared, only Lumosity has no “Contains ads” label on Google Play, and it offers Premium subscriptions. The other four, Pulse included, show the label.'],
+        ['Can a reflex app make me faster?', `Practice makes your own average more stable. On fast choice tasks, action video game players responded 11% faster than non-players with the same accuracy, and some training studies indicate that playing can speed up responses ${R('dye')}. No app can promise a specific gain.`],
+        ['Why did you include your own app?', 'Because it is a reaction time app for Android. We compare it on the same criteria as the others.']],
+      band: ['Train your reflexes every day', 'Pulse for Android: no account, works offline.'] },
+    es: { title: 'Mejores apps de reflejos para Android (2026): comparativa | Gurrulabs',
+      desc: '¿Cuál es la mejor app de reflejos Android? Cinco apps comparadas en precio, anuncios, modos y uso sin conexión, según Google Play. Hacemos una y lo decimos.',
+      name: 'Mejores apps de reflejos para Android', h1: 'Mejores apps de reflejos para Android', card: 'Cinco apps comparadas, con fuentes',
+      kick: 'Comparativa · Tiempo de reacción', upd: 'Fichas revisadas', note: 'Gurrulabs crea Pulse.',
+      sub: 'Cinco apps comparadas según lo que dicen realmente sus fichas de Google Play: precio, anuncios, modos, cuenta y uso sin conexión. Hacemos una de ellas y lo decimos.',
+      answer: `Si solo quieres medir tu tiempo de reacción, <b>Reaction Time</b> (Banensoft) es un test de reacción sencillo con un minijuego; <b>Reaction training</b> (nixGames) añade más de 55 retos de reflejos y puzles y un modo para dos jugadores; <b>Pulse</b> combina un test de reacción y Batak con dos modos de tiempo; <b>Lumosity</b> y <b>Peak</b> son suites generales de entrenamiento mental (Lumosity incluye la velocidad entre sus áreas). Las cinco son gratis de instalar; todas menos Lumosity muestran la etiqueta «Contiene anuncios» de Play, y Lumosity ofrece suscripciones Premium. Transparencia total: <b>Pulse es de Gurrulabs</b>, los autores de esta página.`,
+      body: `<h2>Cómo las comparamos</h2>
+    <p>Cada dato de la tabla, también los de nuestra app, sale de la ficha de Google Play de cada app en la fecha indicada arriba, y de nada más. Cuando una ficha no dice algo, la tabla pone «no indicado» en vez de adivinar. La única excepción es la tarjeta de Pulse de más abajo: como sus creadores, añadimos que no necesita cuenta y funciona sin conexión, algo que su ficha no indica.</p>
+    ${critList([['Precio', ': gratis, gratis con compras en la app o suscripción, tal como lo muestra Play.'], ['Anuncios', ': la etiqueta «Contiene anuncios» de Play.'], ['Modos de reacción', ': los tipos de prueba que enumera la descripción.'], ['Cuenta', ' y <strong>uso sin conexión</strong>: solo si la ficha lo dice.']])}
+    <h2>Tabla comparativa</h2>
+    ${cmpTable({ head: ['App', 'Precio', 'Anuncios', 'Modos de reacción', 'Cuenta', 'Sin conexión'], us: 'Gurrulabs · nuestra app', free: 'Gratis', iap: 'Gratis + compras en la app', sub: 'Gratis + suscripción', yes: 'Sí', no: 'No', ns: 'No indicado', offl: 'Sí (modo sin conexión)',
+      modes: ['4 en la ficha de Play: Reaction Time Test, Batak, Stop the Timer, Time Perception', 'Más de 55 retos de puzles y reflejos, incl. una prueba de cambio de color y otra de luces de salida; modo para dos jugadores', '1 test de reacción (toca cuando la pantalla se pone verde) + un minijuego', 'Más de 40 juegos mentales; la velocidad es un área, sin ningún test de reacción mencionado', 'Más de 45 juegos mentales; sin ningún test de reacción mencionado'],
+      cap: 'Fuente: la ficha de Google Play de cada app (EE. UU., en inglés), revisada el 6 de noviembre de 2026 (enlaces abajo).' })}
+    <h2>Cuál te conviene</h2>
+    ${picks([['UN TEST RÁPIDO Y SENCILLO', 'Reaction Time', 'Una prueba: toca cuando la pantalla se pone verde. Gratis con compras en la app y anuncios, más una clasificación online.'], ['MUCHOS EJERCICIOS, O JUGAR CON UN AMIGO', 'Reaction training', 'Más de 55 retos, incluida una prueba de luces de salida, y un modo para dos jugadores en un mismo móvil.'],
+      ['REFLEJOS Y TIEMPO', 'Pulse', 'Un test de reacción y Batak, más dos modos de tiempo. Es nuestra app; no necesita cuenta y funciona sin conexión.'], ['ENTRENAMIENTO MENTAL GENERAL', 'Lumosity o Peak', 'Juegos mentales de memoria, atención y más; Lumosity incluye la velocidad como un área. Lumosity ofrece suscripciones Premium; Peak indica un modo sin conexión.']])}`,
+      push: ['Pruébalo antes de instalar nada', 'Test de reacción en el navegador, sin cuenta.', 'Hacer el test'],
+      after: `<h2>Lo que una app no puede decirte</h2>
+    <p>Los móviles añaden su propio retraso de pantalla y de toque: pantallas, ratones y software pueden sumar hasta 100 ms al tiempo medido ${R('woods')}. Por eso un tiempo en una app no se puede comparar al milisegundo con el de otra app ni con las cifras de laboratorio. Compárate contigo mismo, en el mismo móvil. Mira el <a href="${to('es', 'age-guide')}">tiempo de reacción medio por edad</a> para saber qué miden los laboratorios.</p>
+    <p>Esta página es <strong>educativa</strong>: ninguna app de aquí diagnostica nada.</p>`,
+      faq: [['¿Hay una app de tiempo de reacción gratis y sin anuncios?', 'De las cinco que comparamos, solo Lumosity no tiene la etiqueta «Contiene anuncios» en Google Play, y ofrece suscripciones Premium. Las otras cuatro, Pulse incluida, muestran la etiqueta.'],
+        ['¿Una app de reflejos puede hacerme más rápido?', `La práctica hace que tu propia media sea más estable. En tareas de elección rápida, los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan, con la misma precisión, y algunos estudios de entrenamiento indican que jugar puede acelerar las respuestas ${R('dye')}. Ninguna app puede prometer una mejora concreta.`],
+        ['¿Por qué incluís vuestra propia app?', 'Porque es una app de tiempo de reacción para Android. La comparamos con los mismos criterios que a las demás.']],
+      band: ['Entrena tus reflejos cada día', 'Pulse para Android: sin cuenta, funciona sin conexión.'] },
+    fr: { title: 'Meilleures applis de temps de réaction sur Android (2026) : comparatif | Gurrulabs',
+      desc: 'Quelle meilleure application temps de réaction Android ? Cinq applis comparées (prix, pubs, modes, hors ligne) d’après Google Play. On en fait une, et on le dit.',
+      name: 'Meilleures applis de temps de réaction sur Android', h1: 'Meilleures applis de temps de réaction sur Android', card: 'Cinq applis comparées, avec sources',
+      kick: 'Comparatif · Temps de réaction', upd: 'Fiches vérifiées le', note: 'Gurrulabs développe Pulse.',
+      sub: 'Cinq applis comparées d’après ce que disent vraiment leurs fiches Google Play : prix, publicités, modes, compte et usage hors ligne. On en fait une, et on le dit.',
+      answer: `Si tu veux seulement mesurer ton temps de réaction, <b>Reaction Time</b> (Banensoft) est un test de réaction simple avec un mini-jeu ; <b>Reaction training</b> (nixGames) ajoute plus de 55 défis de réflexes et de puzzles et un mode deux joueurs ; <b>Pulse</b> associe un test de réaction et Batak à deux modes autour du temps ; <b>Lumosity</b> et <b>Peak</b> sont des suites générales d’entraînement cérébral (Lumosity cite la vitesse parmi ses domaines). Les cinq sont gratuites à installer ; toutes sauf Lumosity affichent la mention « Contient des annonces » de Play, et Lumosity propose des abonnements Premium. Transparence : <b>Pulse est fait par Gurrulabs</b>, les auteurs de cette page.`,
+      body: `<h2>Comment on a comparé</h2>
+    <p>Chaque information du tableau, y compris celles sur notre appli, vient de la fiche Google Play de chaque appli à la date indiquée plus haut, et de rien d’autre. Quand une fiche ne dit rien, le tableau écrit « non précisé » au lieu de deviner. La seule exception est la carte de Pulse plus bas : en tant que créateurs, on ajoute qu’elle n’a pas besoin de compte et fonctionne hors ligne, ce que sa fiche ne précise pas.</p>
+    ${critList([['Prix', ' : gratuit, gratuit avec achats intégrés ou abonnement, comme l’affiche Play.'], ['Publicités', ' : la mention « Contient des annonces » de Play.'], ['Modes de réaction', ' : les types de test que la description énumère.'], ['Compte', ' et <strong>usage hors ligne</strong> : seulement si la fiche le précise.']])}
+    <h2>Tableau comparatif</h2>
+    ${cmpTable({ head: ['Appli', 'Prix', 'Pubs', 'Modes de réaction', 'Compte', 'Hors ligne'], us: 'Gurrulabs · notre appli', free: 'Gratuit', iap: 'Gratuit + achats intégrés', sub: 'Gratuit + abonnement', yes: 'Oui', no: 'Non', ns: 'Non précisé', offl: 'Oui (mode hors ligne)',
+      modes: ['4 listés sur Play : Reaction Time Test, Batak, Stop the Timer, Time Perception', 'Plus de 55 défis de puzzles et de réflexes, dont un test de changement de couleur et un test de feux de départ ; mode deux joueurs', '1 test de réaction (touche quand l’écran devient vert) + un mini-jeu', 'Plus de 40 jeux cérébraux ; la vitesse est un domaine, aucun test de réaction cité', 'Plus de 45 jeux cérébraux ; aucun test de réaction cité'],
+      cap: 'Source : la fiche Google Play de chaque appli (États-Unis, en anglais), vérifiée le 6 novembre 2026 (liens ci-dessous).' })}
+    <h2>Laquelle te convient</h2>
+    ${picks([['UN TEST RAPIDE ET SIMPLE', 'Reaction Time', 'Un seul test : touche quand l’écran devient vert. Gratuit avec achats intégrés et pubs, plus un classement en ligne.'], ['BEAUCOUP D’EXERCICES, OU JOUER À DEUX', 'Reaction training', 'Plus de 55 défis, dont un test de feux de départ, et un mode deux joueurs sur un seul téléphone.'],
+      ['RÉFLEXES ET TEMPS', 'Pulse', 'Un test de réaction et Batak, plus deux modes autour du temps. C’est notre appli ; elle n’a pas besoin de compte et fonctionne hors ligne.'], ['ENTRAÎNEMENT CÉRÉBRAL GÉNÉRAL', 'Lumosity ou Peak', 'Des jeux cérébraux de mémoire, d’attention et plus ; Lumosity cite la vitesse comme un domaine. Lumosity propose des abonnements Premium ; Peak indique un mode hors ligne.']])}`,
+      push: ['Essaie avant d’installer quoi que ce soit', 'Test de réaction dans ton navigateur, sans compte.', 'Faire le test'],
+      after: `<h2>Ce qu’une appli ne peut pas te dire</h2>
+    <p>Les téléphones ajoutent leur propre délai d’écran et de toucher : écrans, souris et logiciels peuvent ajouter jusqu’à 100 ms au temps mesuré ${R('woods')}. Un temps obtenu dans une appli ne se compare donc pas à la milliseconde près à celui d’une autre appli ni aux chiffres de laboratoire. Compare-toi à toi-même, sur le même téléphone. Va voir le <a href="${to('fr', 'age-guide')}">temps de réaction moyen par âge</a> pour savoir ce que mesurent les laboratoires.</p>
+    <p>Cette page est <strong>éducative</strong> : aucune appli ici ne pose de diagnostic.</p>`,
+      faq: [['Existe-t-il une appli de temps de réaction gratuite et sans pubs ?', 'Parmi les cinq comparées, seule Lumosity n’a pas la mention « Contient des annonces » sur Google Play, et elle propose des abonnements Premium. Les quatre autres, Pulse comprise, affichent la mention.'],
+        ['Une appli de réflexes peut-elle me rendre plus rapide ?', `L’entraînement rend ta propre moyenne plus stable. Sur des tâches de choix rapide, les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs, avec la même précision, et des études d’entraînement indiquent que jouer peut accélérer les réponses ${R('dye')}. Aucune appli ne peut promettre un gain précis.`],
+        ['Pourquoi avoir inclus votre propre appli ?', 'Parce que c’est une appli de temps de réaction pour Android. On la compare avec les mêmes critères que les autres.']],
+      band: ['Entraîne tes réflexes chaque jour', 'Pulse pour Android : sans compte, fonctionne hors ligne.'] },
+    pt: { title: 'Melhores apps de reflexo para Android (2026): comparativo | Gurrulabs',
+      desc: 'Qual o melhor app de reflexo Android? Cinco apps comparados em preço, anúncios, modos e uso offline, pelo Google Play. Fazemos um deles e dizemos isso.',
+      name: 'Melhores apps de reflexo para Android', h1: 'Melhores apps de reflexo para Android', card: 'Cinco apps comparados, com fontes',
+      kick: 'Comparativo · Tempo de reação', upd: 'Fichas conferidas', note: 'A Gurrulabs faz o Pulse.',
+      sub: 'Cinco apps comparados pelo que as fichas do Google Play realmente dizem: preço, anúncios, modos, conta e uso offline. Fazemos um deles e dizemos isso.',
+      answer: `Se você só quer medir seu tempo de reação, o <b>Reaction Time</b> (Banensoft) é um teste de reação simples com um minijogo; o <b>Reaction training</b> (nixGames) acrescenta mais de 55 desafios de reflexo e quebra-cabeça e um modo para dois jogadores; o <b>Pulse</b> reúne um teste de reação e o Batak com dois modos de tempo; o <b>Lumosity</b> e o <b>Peak</b> são suítes gerais de treino cerebral (o Lumosity lista a velocidade entre suas áreas). Os cinco são grátis para instalar; todos menos o Lumosity mostram o selo “Contém anúncios” do Google Play, e o Lumosity oferece assinaturas Premium. Transparência total: o <b>Pulse é feito pela Gurrulabs</b>, autora desta página.`,
+      body: `<h2>Como comparamos</h2>
+    <p>Cada dado da tabela, inclusive os do nosso app, vem da ficha do Google Play de cada app na data indicada acima, e de mais nada. Quando uma ficha não diz algo, a tabela escreve “não informado” em vez de chutar. A única exceção é o card do Pulse abaixo: como criadores dele, acrescentamos que não precisa de conta e funciona offline, o que a ficha não informa.</p>
+    ${critList([['Preço', ': grátis, grátis com compras no app ou assinatura, como o Play mostra.'], ['Anúncios', ': o selo “Contém anúncios” do Play.'], ['Modos de reação', ': os tipos de teste que a descrição lista.'], ['Conta', ' e <strong>uso offline</strong>: só se a ficha informar.']])}
+    <h2>Tabela comparativa</h2>
+    ${cmpTable({ head: ['App', 'Preço', 'Anúncios', 'Modos de reação', 'Conta', 'Offline'], us: 'Gurrulabs · nosso app', free: 'Grátis', iap: 'Grátis + compras no app', sub: 'Grátis + assinatura', yes: 'Sim', no: 'Não', ns: 'Não informado', offl: 'Sim (modo offline)',
+      modes: ['4 listados no Play: Reaction Time Test, Batak, Stop the Timer, Time Perception', 'Mais de 55 desafios de quebra-cabeça e reflexo, incl. um teste de mudança de cor e um de luzes de largada; modo para dois jogadores', '1 teste de reação (toque quando a tela ficar verde) + um minijogo', 'Mais de 40 jogos cerebrais; velocidade é uma área, nenhum teste de reação citado', 'Mais de 45 jogos cerebrais; nenhum teste de reação citado'],
+      cap: 'Fonte: a ficha do Google Play de cada app (EUA, em inglês), conferida em 6 de novembro de 2026 (links abaixo).' })}
+    <h2>Qual combina com você</h2>
+    ${picks([['UM TESTE RÁPIDO E SIMPLES', 'Reaction Time', 'Um teste: toque quando a tela ficar verde. Grátis com compras no app e anúncios, mais um ranking online.'], ['MUITOS EXERCÍCIOS, OU JOGAR COM UM AMIGO', 'Reaction training', 'Mais de 55 desafios, incluindo um teste de luzes de largada, e um modo para dois jogadores no mesmo celular.'],
+      ['REFLEXOS E TEMPO', 'Pulse', 'Um teste de reação e o Batak, mais dois modos de tempo. É o nosso app; não precisa de conta e funciona offline.'], ['TREINO CEREBRAL GERAL', 'Lumosity ou Peak', 'Jogos cerebrais de memória, atenção e mais; o Lumosity lista a velocidade como uma área. O Lumosity oferece assinaturas Premium; o Peak informa um modo offline.']])}`,
+      push: ['Teste antes de instalar qualquer coisa', 'Teste de reação no navegador, sem conta.', 'Fazer o teste'],
+      after: `<h2>O que um app não pode dizer</h2>
+    <p>Os celulares acrescentam o próprio atraso de tela e de toque: telas, mouses e software podem somar até 100 ms ao tempo medido ${R('woods')}. Por isso um tempo num app não se compara ao milissegundo com o de outro app nem com os números de laboratório. Compare-se com você mesmo, no mesmo celular. Veja o <a href="${to('pt', 'age-guide')}">tempo de reação médio por idade</a> para saber o que os laboratórios medem.</p>
+    <p>Esta página é <strong>educativa</strong>: nenhum app daqui diagnostica nada.</p>`,
+      faq: [['Existe um app de tempo de reação grátis e sem anúncios?', 'Dos cinco que comparamos, só o Lumosity não tem o selo “Contém anúncios” no Google Play, e ele oferece assinaturas Premium. Os outros quatro, Pulse inclusive, mostram o selo.'],
+        ['Um app de reflexo pode me deixar mais rápido?', `A prática deixa sua própria média mais estável. Em tarefas de escolha rápida, jogadores de videogames de ação responderam 11% mais rápido que não jogadores, com a mesma precisão, e alguns estudos de treino indicam que jogar pode acelerar as respostas ${R('dye')}. Nenhum app pode prometer um ganho específico.`],
+        ['Por que vocês incluíram o próprio app?', 'Porque é um app de tempo de reação para Android. Comparamos com os mesmos critérios dos outros.']],
       band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
 
   '3s-challenge': { sources: [SRC.gibbon, SRC.haigh, SRC.poppel],
@@ -706,9 +830,9 @@ ${footer(loc, t, p)}
 const fmtDate = (loc, iso) => { const [y, m, d] = iso.split('-').map(Number); return T[loc].date(d, T[loc].months[m - 1], y); };
 // Reading time (guide): visible words of the article at 200 words/min, deterministic
 const readMin = c => Math.max(1, Math.round([c.answer, c.body, c.after, ...c.faq.flat()].join(' ').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / 200));
-const dated = (loc, p, extra = '') => `<div class="dates"><span>${T[loc].pub} <b><time datetime="${p.published}">${fmtDate(loc, p.published)}</time></b></span><span>${T[loc].upd} <b><time datetime="${p.modified}">${fmtDate(loc, p.modified)}</time></b></span>${extra ? `<span>${extra}</span>` : ''}</div>`;
+const dated = (loc, p, extra = '') => `<div class="dates"><span>${T[loc].pub} <b><time datetime="${p.published}">${fmtDate(loc, p.published)}</time></b></span><span>${CONTENT[p.id][loc].upd || T[loc].upd} <b><time datetime="${p.modified}">${fmtDate(loc, p.modified)}</time></b></span>${extra ? `<span>${extra}</span>` : ''}</div>`;
 const SRC_KEY = new Map(Object.entries(SRC).map(([k, s]) => [s, k]));
-const sourcesBlock = (loc, p) => `<section class="sources" id="sources" aria-labelledby="src-h"><h2 id="src-h">${T[loc].src_h}</h2><ol>${CONTENT[p.id].sources.map(s => `<li id="src-${SRC_KEY.get(s)}">${s.ref} <a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.url.replace('https://', ''))}</a></li>`).join('')}</ol><p class="note">${p.type === 'guide' ? T[loc].edu_med : T[loc].edu}</p></section>`;
+const sourcesBlock = (loc, p) => `<section class="sources" id="sources" aria-labelledby="src-h"><h2 id="src-h">${T[loc].src_h}</h2><ol>${CONTENT[p.id].sources.map(s => `<li id="src-${SRC_KEY.get(s)}">${s.ref} <a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.url.replace('https://', ''))}</a></li>`).join('')}</ol><p class="note">${p.type === 'guide' ? T[loc].edu_med : T[loc].edu}${CONTENT[p.id][loc].note ? ' ' + CONTENT[p.id][loc].note : ''}</p></section>`;
 const crumbBlock = (loc, p) => `<nav class="bc" aria-label="${T[loc].bc}"><a href="${path(loc, byId.home)}">${T[loc].back}</a><span aria-hidden="true">›</span><a href="${path(loc, byId.pulse)}">Pulse</a><span aria-hidden="true">›</span><span>${CONTENT[p.id][loc].name}</span></nav>`;
 // Link cards to the content pages and the Pulse page (internal links), coloured by Pulse mode
 const relCard = (loc, id) => id === 'pulse'

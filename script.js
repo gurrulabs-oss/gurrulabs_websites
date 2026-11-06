@@ -49,7 +49,7 @@
   const track = (event, props) => { if (tracking && window.mixpanel && typeof window.mixpanel.track === 'function') window.mixpanel.track('Gurrulabs Web - ' + event, props); };
 
   // ── Play links: clean href in the HTML; the install referrer is added on load and again on press (links created by the test)
-  const PLAY_SEL = 'a[href*="play.google.com/store/apps/details"]';
+  const PLAY_SEL = 'a[href*="play.google.com/store/apps/details"]:not(.sources a)'; // source citations are not install CTAs
   function withPlayReferrer(a) {
     const referrer = new URLSearchParams({
       utm_source: 'gurrulabs_web', utm_medium: 'web', utm_campaign: PAGE,
