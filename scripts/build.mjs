@@ -12,6 +12,7 @@ const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const OG_LOCALE = { en: 'en_US', es: 'es_ES', fr: 'fr_FR', pt: 'pt_BR' };
 const BADGE_ALT = { en: 'Get it on Google Play', es: 'Disponible en Google Play', fr: 'Disponible sur Google Play', pt: 'Disponível no Google Play' };
 const SHOT_ALT = { en: 'Pulse screenshot', es: 'Captura de Pulse', fr: 'Capture de Pulse', pt: 'Captura do Pulse' };
+const OG_IMAGE = { pulse: 'pulse-icon', 'cyberpunk-detective': 'cyberpunk-icon', lull: 'lull-tonight' };
 const PKG = { pulse: 'com.gurrulabs.pulse', raffy: 'com.gurrulabs.raffy', cyberpunk_detective: 'com.gurrulabs.miniaicrimes' };
 
 // ── Copy. Test strings and mode names/rules are the Pulse app's own (strings.xml); card one-liners come from the app Leads.
@@ -32,6 +33,8 @@ const T = {
     raffy_p: 'Log feeds, sleep and growth in seconds, with WHO charts.', raffy_cta: 'Visit raffyparenting.com',
     cyber_p: 'Solve neon-noir crime cases and catch the culprit.', lull_p: 'Sleep sounds and a daily diary so tinnitus bothers you less.',
     soon: 'Coming soon',
+    cyber_page: 'Cyberpunk Detective page', lull_page: 'Lull page', q_h: 'Questions', more_h: 'More from Gurrulabs',
+    rel: [['All our apps', 'The Gurrulabs studio home'], ['Pulse', 'Test your reaction time in the browser'], ['Cyberpunk Detective', 'Neon-noir mystery game'], ['Lull', 'Calmer nights with tinnitus · coming soon']],
     p_kicker: 'Reaction time challenge', p_h1: 'Stop the clock at exactly 3.00 s', facts: ['No account', 'Works offline'],
     t_exact: 'Exact Time', t_react: 'Reaction', start: 'Start', stop: 'Stop', stop_at: 'Stop at', of: t => `of ${t} s`,
     h_exact: 'Pass within ±0.10 s. Perfect to the hundredth.', h_react: 'Tap anywhere when the lights go out', wait: 'Wait for lights out', too_soon: 'Too soon', reaction: 'reaction',
@@ -70,6 +73,8 @@ const T = {
     raffy_p: 'Registra tomas, sueño y crecimiento en segundos, con curvas OMS.', raffy_cta: 'Visitar raffyparenting.com',
     cyber_p: 'Resuelve crímenes en una ciudad de neón y atrapa al culpable.', lull_p: 'Sonidos para dormir y un diario para que el acúfeno moleste menos.',
     soon: 'Próximamente',
+    cyber_page: 'Página de Cyberpunk Detective', lull_page: 'Página de Lull', q_h: 'Preguntas', more_h: 'Más de Gurrulabs',
+    rel: [['Todas nuestras apps', 'La página principal de Gurrulabs'], ['Pulse', 'Mide tu tiempo de reacción en el navegador'], ['Cyberpunk Detective', 'Juego de misterio neon-noir'], ['Lull', 'Noches más tranquilas con acúfenos · próximamente']],
     p_kicker: 'Reto de tiempo de reacción', p_h1: 'Para el reloj en 3.00 s exactos', facts: ['Sin cuenta', 'Funciona sin conexión'],
     t_exact: 'Exact Time', t_react: 'Reacción', start: 'Iniciar', stop: 'Parar', stop_at: 'Para en', of: t => `de ${t} s`,
     h_exact: 'Pasas con ±0.10 s. Perfecto a la centésima.', h_react: 'Toca donde quieras cuando se apaguen las luces', wait: 'Espera a que se apaguen', too_soon: 'Demasiado pronto', reaction: 'reacción',
@@ -108,6 +113,8 @@ const T = {
     raffy_p: 'Note tétées, sommeil et croissance, avec les courbes de l’OMS.', raffy_cta: 'Aller sur raffyparenting.com',
     cyber_p: 'Résous des crimes dans une ville néon et trouve le coupable.', lull_p: 'Des sons pour dormir et un journal pour que l’acouphène gêne moins.',
     soon: 'Bientôt disponible',
+    cyber_page: 'Page de Cyberpunk Detective', lull_page: 'Page de Lull', q_h: 'Questions', more_h: 'Plus de Gurrulabs',
+    rel: [['Toutes nos applis', 'L’accueil du studio Gurrulabs'], ['Pulse', 'Teste ton temps de réaction dans le navigateur'], ['Cyberpunk Detective', 'Jeu d’enquête néo-noir'], ['Lull', 'Des nuits plus calmes avec les acouphènes · bientôt disponible']],
     p_kicker: 'Défi de temps de réaction', p_h1: 'Arrête le chrono pile à 3.00 s', facts: ['Sans compte', 'Fonctionne hors ligne'],
     t_exact: 'Exact Time', t_react: 'Réaction', start: 'Démarrer', stop: 'Arrêter', stop_at: 'Arrête à', of: t => `sur ${t} s`,
     h_exact: 'Réussi à ±0.10 s près. Parfait au centième.', h_react: 'Touche n’importe où quand les feux s’éteignent', wait: 'Attends l’extinction', too_soon: 'Trop tôt', reaction: 'réaction',
@@ -146,6 +153,8 @@ const T = {
     raffy_p: 'Registre mamadas, sono e crescimento em segundos, com curvas da OMS.', raffy_cta: 'Visitar raffyparenting.com',
     cyber_p: 'Resolva crimes numa cidade neon e encontre o culpado.', lull_p: 'Sons para dormir e um diário para o zumbido incomodar menos.',
     soon: 'Em breve',
+    cyber_page: 'Página do Cyberpunk Detective', lull_page: 'Página do Lull', q_h: 'Perguntas', more_h: 'Mais da Gurrulabs',
+    rel: [['Todos os nossos apps', 'A página inicial da Gurrulabs'], ['Pulse', 'Teste seu tempo de reação no navegador'], ['Cyberpunk Detective', 'Jogo de mistério neon-noir'], ['Lull', 'Noites mais tranquilas com zumbido · em breve']],
     p_kicker: 'Desafio de tempo de reação', p_h1: 'Pare o cronômetro em 3.00 s exatos', facts: ['Sem conta', 'Funciona offline'],
     t_exact: 'Exact Time', t_react: 'Reação', start: 'Iniciar', stop: 'Parar', stop_at: 'Pare em', of: t => `de ${t} s`,
     h_exact: 'Passa com ±0.10 s. Perfeito no centésimo.', h_react: 'Toque em qualquer lugar quando as luzes apagarem', wait: 'Espere as luzes apagarem', too_soon: 'Cedo demais', reaction: 'reação',
@@ -525,8 +534,197 @@ const CONTENT = {
         ['Funciona no celular?', 'Sim, em qualquer navegador. Toque no botão para iniciar e para parar; no computador, você também pode parar com a barra de espaço.']],
       band: ['Seu recorde está esperando', 'Mais alvos, um relógio escondido e um desafio diário no app.'] } },
 };
+// ── New app pages (T-004): Cyberpunk Detective and Lull. Facts ONLY from .lead/attachments/T-004/facts.md. Per app and locale.
+//    Cyberpunk: { title, desc, tag, h1, sub, chips, ans [q, a], steps_h, steps_p, steps [[b, s]], cases_h, cases_p, kick [detective, audio],
+//      cases [[teaser, tags]] (order of CASES), note, shot [prefix, alts], faq [[q, a]], band [h, p] }
+//    Lull: { title, desc, tag, pill, h1, sub, btn, fine, chips, hero_alt, ans [q, a], feat_h, feat_p, feats [[b, p, alt]], stat_h, stat, faq,
+//      disc, checked, band [h, p], subject, mail (body lines: hello, language, sent from) }
+//    Lull wording rules (validator enforces): no cure / eliminate / treat (except the disclaimer) / reduce; never "tinnitus therapy".
+const CASES = [['vienna', 'Shadows in Vienna', 0], ['gaps', 'Gaps Along the Way', 0], ['selene', 'Cold Dust on Selene-9', 0], ['coyote', 'The Coyote and the Wind', 15], ['redline', 'Red Line', 15], ['mossleigh', 'The Echo of Mossleigh', 25]];
+const LULL_MAIL = 'gurrulabs@gmail.com';
+const S1 = '<sup><a href="#s1">[1]</a></sup>', S2 = '<sup><a href="#s2">[2]</a></sup>';
+const LULL_SRC = [
+  ['Jarach CM, Lugo A, Scala M, et al. Global prevalence and incidence of tinnitus: a systematic review and meta-analysis. <i>JAMA Neurology</i> 2022;79(9):888–900.', 'https://doi.org/10.1001/jamaneurol.2022.2189'],
+  ['Fuller T, Cima R, Langguth B, et al. Cognitive behavioural therapy for tinnitus. <i>Cochrane Database of Systematic Reviews</i> 2020;1:CD012614.', 'https://doi.org/10.1002/14651858.CD012614.pub2'],
+];
+const FEAT_ICON = ['M3 12h3l3-7 4 14 3-7h5', 'M12 3v18M8 7v10M4 10v4M16 7v10M20 10v4', 'M5 12l5 5 9-10', 'M4 18l5-6 4 3 7-9'];
+const FEAT_IMG = ['match', 'sounds', 'checkin', 'patterns'];
+const APP = {
+  'cyberpunk-detective': {
+    en: { title: 'Cyberpunk Detective Game for Android | Gurrulabs',
+      desc: 'Cyberpunk Detective is a free cyberpunk detective game for Android: gather clues, question suspects, accuse the culprit. 6 cases, no account, offline.',
+      name: 'Cyberpunk Detective', tag: 'Detective mystery game · Android', h1: 'Read the clues. <em>Catch the killer.</em>',
+      sub: 'A neon-noir cyberpunk detective game: walk the crime scene, question every suspect and name the culprit.',
+      chips: ['Free', 'No account', 'Cases work offline', '6 cases'],
+      ans: ['What is Cyberpunk Detective?', 'It is a free cyberpunk detective game for Android that mixes detective cases you solve (gather clues, question suspects, accuse the culprit) with audio crime stories you listen to, in a neon-noir world.'],
+      steps_h: 'How a case plays', steps_p: 'Three steps, one culprit.',
+      steps: [['Search the scene', 'Visit the locations and examine the evidence. Every clue goes into your clue diary.'], ['Question the suspects', 'Each interrogation has three rounds of two questions. Pick one per round: the other is gone for good.'], ['Accuse', 'Name the killer. The right call closes the case; a wrong one gets its own ending and locks the case for an hour.']],
+      cases_h: 'The cases', cases_p: 'Three detective cases you play, three audio cases you listen to.', kick: ['Detective case', 'Audio case'],
+      cases: [['In 1983 Vienna, the art world’s sharpest tongue just met its deadliest critic.', ['1983 Vienna', 'Art world']], ['A missing girl returns after five years, and her sister’s fate hides in the clues she left behind.', ['Missing person']],
+        ['A mining accident on the Moon, or the first murder off Earth?', ['The Moon', 'Sci-fi']], ['In a county where sand erases footprints, micro-clues force a killer into the light.', ['American West']],
+        ['A young man vanishes by the sea, and his family’s search unravels the truth under the waves.', ['Disappearance']], ['A rookie cop finds a face from a vanished past, and Mossleigh’s secrets rise to the surface.', ['Cold case']]],
+      note: 'More cases are on the way in the app. No dates promised.',
+      shot: ['Cyberpunk Detective screenshot: ', ['choose Detective or Podcast mode', 'crime podcasts list, solved and unsolved', 'clue diary during a case', 'audio case player with captions', 'share a solved case']],
+      faq: [['Is Cyberpunk Detective free?', 'Yes. It is free on Google Play, with ads and no in-app purchases. You don’t need an account.'],
+        ['Does it work offline?', 'Yes. Every case, its art and its audio ship inside the app, so you can play without a connection once it is installed.'],
+        ['What languages is it in?', 'The game text is in English, Spanish and French. The audio cases are narrated in English, with English captions.'],
+        ['Why does the app say "Mini AI Crimes"?', 'On phones set to Spanish or French, the app’s icon may read Mini AI Crimes. It is the same game.'],
+        ['How long is a case?', 'Audio cases run 15 to 25 minutes. Detective cases have no set length: you play at your own pace.']],
+      band: ['The case is open', 'Six mysteries, one detective: you.'] },
+    es: { title: 'Juego de detectives cyberpunk para Android | Gurrulabs',
+      desc: 'Cyberpunk Detective, juego de detectives cyberpunk gratis para Android: reúne pistas, interroga a sospechosos y acusa al culpable. 6 casos, sin cuenta.',
+      name: 'Cyberpunk Detective', tag: 'Juego de detectives · Android', h1: 'Lee las pistas. <em>Atrapa al asesino.</em>',
+      sub: 'Un juego de detectives cyberpunk de estilo neon-noir: recorre la escena del crimen, interroga a cada sospechoso y señala al culpable.',
+      chips: ['Gratis', 'Sin cuenta', 'Los casos funcionan sin conexión', '6 casos'],
+      ans: ['¿Qué es Cyberpunk Detective?', 'Es un juego de detectives cyberpunk gratuito para Android que combina casos de detective que resuelves tú (reúne pistas, interroga a los sospechosos y acusa al culpable) con historias de crímenes en audio que escuchas, en un mundo neon-noir.'],
+      steps_h: 'Cómo se juega un caso', steps_p: 'Tres pasos, un culpable.',
+      steps: [['Investiga la escena', 'Visita los lugares y examina las pruebas. Cada pista se guarda en tu diario de pistas.'], ['Interroga a los sospechosos', 'Cada interrogatorio tiene tres rondas de dos preguntas. Elige una por ronda: la otra se pierde para siempre.'], ['Acusa', 'Señala al asesino. Si aciertas, el caso se cierra; si fallas, tiene su propio final y el caso se bloquea durante una hora.']],
+      cases_h: 'Los casos', cases_p: 'Tres casos de detective que juegas y tres casos en audio que escuchas.', kick: ['Caso de detective', 'Caso en audio'],
+      cases: [['En la Viena de 1983, la lengua más afilada del mundo del arte acaba de conocer a su crítico más letal.', ['Viena 1983', 'Mundo del arte']], ['Una niña desaparecida regresa tras cinco años, y el destino de su hermana está oculto en las pistas que dejó.', ['Persona desaparecida']],
+        ['Un accidente minero en la Luna, ¿o el primer asesinato fuera de la Tierra?', ['La Luna', 'Ciencia ficción']], ['En un condado donde la arena borra las huellas, las micropistas obligan a un asesino a salir a la luz.', ['Oeste americano']],
+        ['Un joven desaparece junto al mar y la búsqueda de su familia desvela la verdad que yace bajo las olas.', ['Desaparición']], ['Un policía novato reconoce un rostro de un pasado desaparecido, y los secretos de Mossleigh salen a la superficie.', ['Caso sin resolver']]],
+      note: 'Habrá más casos en la app. Sin fechas prometidas.',
+      shot: ['Captura de Cyberpunk Detective: ', ['elegir el modo Detective o Pódcast', 'lista de pódcasts de crímenes, resueltos y sin resolver', 'diario de pistas durante un caso', 'reproductor de caso en audio con subtítulos', 'compartir un caso resuelto']],
+      faq: [['¿Cyberpunk Detective es gratis?', 'Sí. Es gratis en Google Play, con anuncios y sin compras dentro de la app. No necesitas cuenta.'],
+        ['¿Funciona sin conexión?', 'Sí. Cada caso, su arte y su audio vienen dentro de la app, así que puedes jugar sin conexión una vez instalada.'],
+        ['¿En qué idiomas está?', 'El texto del juego está en inglés, español y francés. Los casos en audio están narrados en inglés, con subtítulos en inglés.'],
+        ['¿Por qué la app se llama "Mini AI Crimes"?', 'En móviles configurados en español o francés, el icono de la app puede mostrar Mini AI Crimes. Es el mismo juego.'],
+        ['¿Cuánto dura un caso?', 'Los casos en audio duran de 15 a 25 minutos. Los casos de detective no tienen duración fija: juegas a tu ritmo.']],
+      band: ['El caso está abierto', 'Seis misterios, un detective: tú.'] },
+    fr: { title: 'Jeu de détective cyberpunk pour Android | Gurrulabs',
+      desc: 'Cyberpunk Detective : jeu de détective cyberpunk gratuit pour Android. Rassemble les indices, interroge les suspects, accuse le coupable. Sans compte.',
+      name: 'Cyberpunk Detective', tag: 'Jeu de détective · Android', h1: 'Lis les indices. <em>Attrape le tueur.</em>',
+      sub: 'Un jeu de détective cyberpunk néo-noir : parcours la scène de crime, interroge chaque suspect et désigne le coupable.',
+      chips: ['Gratuit', 'Sans compte', 'Les enquêtes fonctionnent hors ligne', '6 enquêtes'],
+      ans: ['Qu’est-ce que Cyberpunk Detective ?', 'C’est un jeu de détective cyberpunk gratuit sur Android qui mêle des enquêtes à résoudre (rassemble les indices, interroge les suspects, accuse le coupable) et des histoires criminelles audio à écouter, dans un monde néo-noir.'],
+      steps_h: 'Comment se déroule une enquête', steps_p: 'Trois étapes, un coupable.',
+      steps: [['Fouille la scène', 'Visite les lieux et examine les preuves. Chaque indice rejoint ton carnet d’indices.'], ['Interroge les suspects', 'Chaque interrogatoire compte trois tours de deux questions. Choisis-en une par tour : l’autre est perdue pour de bon.'], ['Accuse', 'Désigne le tueur. Si tu as raison, l’enquête est close ; sinon, elle a sa propre fin et se verrouille pendant une heure.']],
+      cases_h: 'Les enquêtes', cases_p: 'Trois enquêtes à mener toi-même, trois enquêtes audio à écouter.', kick: ['Enquête de détective', 'Enquête audio'],
+      cases: [['Dans la Vienne de 1983, la langue la plus acérée du monde de l’art vient de rencontrer son critique le plus redoutable.', ['Vienne 1983', 'Monde de l’art']], ['Une jeune fille disparue revient après cinq ans, et le sort de sa sœur se cache dans les indices qu’elle a laissés.', ['Personne disparue']],
+        ['Un accident minier sur la Lune, ou le premier meurtre hors de la Terre ?', ['La Lune', 'Science-fiction']], ['Dans un comté où le sable efface les empreintes, des micro-indices forcent un tueur à sortir de l’ombre.', ['Ouest américain']],
+        ['Un jeune homme disparaît au bord de la mer, et les recherches de sa famille révèlent la vérité cachée sous les vagues.', ['Disparition']], ['Un jeune policier reconnaît un visage d’un passé révolu, et les secrets enfouis de Mossleigh remontent à la surface.', ['Affaire non résolue']]],
+      note: 'D’autres enquêtes arrivent dans l’appli. Aucune date promise.',
+      shot: ['Capture de Cyberpunk Detective : ', ['choix du mode Détective ou Podcast', 'liste des podcasts criminels, résolus et non résolus', 'carnet d’indices pendant une enquête', 'lecteur d’enquête audio avec sous-titres', 'partage d’une enquête résolue']],
+      faq: [['Cyberpunk Detective est-il gratuit ?', 'Oui. Il est gratuit sur Google Play, avec des publicités et sans achats intégrés. Aucun compte n’est nécessaire.'],
+        ['Fonctionne-t-il hors ligne ?', 'Oui. Chaque enquête, ses images et son audio sont inclus dans l’appli : tu peux jouer sans connexion une fois l’appli installée.'],
+        ['Dans quelles langues est-il disponible ?', 'Le texte du jeu est en anglais, en espagnol et en français. Les enquêtes audio sont racontées en anglais, avec des sous-titres anglais.'],
+        ['Pourquoi l’appli s’appelle-t-elle "Mini AI Crimes" ?', 'Sur un téléphone réglé en espagnol ou en français, l’icône de l’appli peut afficher Mini AI Crimes. C’est le même jeu.'],
+        ['Combien de temps dure une enquête ?', 'Les enquêtes audio durent de 15 à 25 minutes. Les enquêtes de détective n’ont pas de durée fixe : tu joues à ton rythme.']],
+      band: ['L’enquête est ouverte', 'Six mystères, un détective : toi.'] },
+    pt: { title: 'Jogo de detetive cyberpunk para Android | Gurrulabs',
+      desc: 'Cyberpunk Detective: jogo de detetive cyberpunk grátis para Android. Reúna pistas, interrogue suspeitos e acuse o culpado. 6 casos, sem conta.',
+      name: 'Cyberpunk Detective', tag: 'Jogo de detetive · Android', h1: 'Leia as pistas. <em>Pegue o assassino.</em>',
+      sub: 'Um jogo de detetive cyberpunk neon-noir: examine a cena do crime, interrogue cada suspeito e aponte o culpado.',
+      chips: [['globe', 'Jogo em inglês, espanhol e francês'], 'Grátis', 'Sem conta', 'Os casos funcionam offline', '6 casos'],
+      ans: ['O que é o Cyberpunk Detective?', 'É um jogo de detetive cyberpunk gratuito para Android que mistura casos de detetive que você resolve (reúna pistas, interrogue suspeitos e acuse o culpado) com histórias de crime em áudio que você ouve, num mundo neon-noir.'],
+      steps_h: 'Como funciona um caso', steps_p: 'Três passos, um culpado.',
+      steps: [['Vasculhe a cena', 'Visite os locais e examine as provas. Cada pista vai para o seu diário de pistas.'], ['Interrogue os suspeitos', 'Cada interrogatório tem três rodadas de duas perguntas. Escolha uma por rodada: a outra se perde para sempre.'], ['Acuse', 'Aponte o assassino. Acertou, o caso é encerrado; errou, tem um final próprio e o caso fica bloqueado por uma hora.']],
+      cases_h: 'Os casos', cases_p: 'Três casos de detetive para jogar e três casos em áudio para ouvir.', kick: ['Caso de detetive', 'Caso em áudio'],
+      cases: [['Na Viena de 1983, a língua mais afiada do mundo da arte acaba de encontrar seu crítico mais mortal.', ['Viena, 1983', 'Mundo da arte']], ['Uma menina desaparecida volta depois de cinco anos, e o destino da irmã dela está escondido nas pistas que deixou.', ['Pessoa desaparecida']],
+        ['Um acidente de mineração na Lua, ou o primeiro assassinato fora da Terra?', ['A Lua', 'Ficção científica']], ['Num condado onde a areia apaga as pegadas, micropistas forçam um assassino a vir à luz.', ['Oeste americano']],
+        ['Um jovem desaparece à beira-mar, e a busca da família revela a verdade escondida sob as ondas.', ['Desaparecimento']], ['Um policial novato descobre um rosto de um passado desaparecido, e os segredos enterrados de Mossleigh vêm à tona.', ['Caso arquivado']]],
+      note: 'Mais casos chegam ao app. Sem datas prometidas.',
+      shot: ['Captura do Cyberpunk Detective: ', ['escolha do modo Detetive ou Podcast', 'lista de podcasts de crimes, resolvidos e não resolvidos', 'diário de pistas durante um caso', 'player de caso em áudio com legendas', 'compartilhar um caso resolvido']],
+      faq: [['O Cyberpunk Detective é grátis?', 'Sim. É grátis no Google Play, com anúncios e sem compras no app. Você não precisa de conta.'],
+        ['Funciona offline?', 'Sim. Cada caso, sua arte e seu áudio vêm dentro do app, então você joga sem conexão depois de instalar.'],
+        ['Em quais idiomas está o jogo?', 'Ainda não em português. O texto do jogo está em inglês, espanhol e francês. Os casos em áudio são narrados em inglês, com legendas em inglês.'],
+        ['Por que o app aparece como "Mini AI Crimes"?', 'Em celulares configurados em espanhol ou francês, o ícone do app pode mostrar Mini AI Crimes. É o mesmo jogo.'],
+        ['Quanto dura um caso?', 'Os casos em áudio duram de 15 a 25 minutos. Os casos de detetive não têm duração fixa: você joga no seu ritmo.']],
+      band: ['O caso está aberto', 'Seis mistérios, um detetive: você.'] },
+  },
+  lull: {
+    en: { title: 'Lull: tinnitus sleep sounds app (coming soon) | Gurrulabs',
+      desc: 'Lull is a coming-soon tinnitus sleep sounds app for Android: sounds tuned to your tone and a 15-second daily check-in. Email me when it launches.',
+      name: 'Lull', tag: 'Sleep sounds for tinnitus · Android', pill: 'Coming soon to Android', h1: 'Calmer nights with tinnitus',
+      sub: 'Sleep sounds tuned to your tone, and a 15-second daily check-in that shows what tends to go with your better and worse days.',
+      btn: 'Email me when it launches', fine: 'Opens your email app with a ready-to-send message. We write once, when Lull is on Google Play.',
+      chips: ['Free', 'Your diary stays on your phone', 'Plays all night, screen off'],
+      hero_alt: 'Lull’s Tonight screen: play button, sleep timer and today’s check-in',
+      ans: ['What is Lull?', 'Lull is an upcoming tinnitus sleep sounds app for Android, for people whose tinnitus makes it hard to sleep: it plays sleep sounds tuned to the pitch of your ringing and keeps a short daily diary, so it bothers you less at night. It is a wellness app, not a medical device.'],
+      feat_h: 'What Lull will do', feat_p: 'Four things, all already working in the app we are testing.',
+      feats: [['Find your tone', 'Match the pitch of your ringing with headphones, so the sounds fit it. It is not a hearing test.', 'Find your tone screen'],
+        ['Sleep sounds tuned to you', 'Layer sounds like rain and brown noise, tuned to your pitch. A timer fades them out, or let them play all night.', 'Sounds mixer screen'],
+        ['A 15-second check-in', 'How loud, how bothered, how you slept. It stays on your phone.', 'Daily check-in screen'],
+        ['Your patterns', 'After 14 check-ins, see what tends to go with your worse days, like short nights. Patterns, not causes.', 'Patterns screen']],
+      stat_h: 'You are not the only one awake',
+      stat: `of adults live with tinnitus, more than 740 million people worldwide; for about 2% it is severe.${S1} Research suggests a talking therapy (CBT) may ease how much tinnitus bothers people, though the evidence is low-certainty;${S2} Lull uses sound only for comfort at night.`,
+      faq: [['When does Lull launch?', 'There is no date yet. Lull is in testing; leave your email and we will write once, the day it is on Google Play.'],
+        ['Will Lull stop my tinnitus?', 'No. Lull can’t make tinnitus go away, and no app can. It helps you sleep with sounds you like and understand your own patterns, so the ringing bothers you less.'],
+        ['Is it free?', 'Yes. Lull is free.'],
+        ['Is my diary private?', 'Your check-ins are stored on your phone, not on our servers.']],
+      disc: 'Lull is a wellness app, not a medical device. It doesn’t diagnose or treat tinnitus, and it isn’t a substitute for a doctor or audiologist. If something worries you, talk to your doctor.',
+      checked: 'Checked 2026-11-05.', band: ['Be first to try Lull', 'One email when it is on Google Play. Nothing else.'],
+      subject: 'Lull: tell me when it launches', mail: ['Hi! Please email me when Lull is on Google Play.', 'Language: English', 'sent from'] },
+    es: { title: 'Lull: app de sonidos para dormir con acúfenos | Gurrulabs',
+      desc: 'Lull, app de sonidos para dormir con acúfenos, llega pronto a Android: sonidos a tu tono y un registro diario de 15 segundos. Te avisamos al salir.',
+      name: 'Lull', tag: 'Sonidos para dormir con acúfenos · Android', pill: 'Próximamente en Android', h1: 'Noches más tranquilas con acúfenos',
+      sub: 'Sonidos para dormir ajustados a tu tono y un registro diario de 15 segundos que muestra qué suele acompañar a tus días mejores y peores.',
+      btn: 'Avísame cuando salga', fine: 'Se abre tu app de correo con un mensaje listo para enviar. Escribimos una sola vez, cuando Lull esté en Google Play.',
+      chips: ['Gratis', 'Tu diario se queda en tu móvil', 'Suena toda la noche, con la pantalla apagada'],
+      hero_alt: 'Pantalla Esta noche de Lull: botón de reproducir, temporizador de sueño y el registro de hoy',
+      ans: ['¿Qué es Lull?', 'Lull es una app de sonidos para dormir con acúfenos que llegará a Android, pensada para quienes duermen mal por el acúfeno: reproduce sonidos ajustados al tono de tu zumbido y lleva un breve diario de cada día, para que te moleste menos por la noche. Es una app de bienestar, no un dispositivo médico.'],
+      feat_h: 'Lo que hará Lull', feat_p: 'Cuatro cosas, todas ya funcionando en la app que estamos probando.',
+      feats: [['Encuentra tu tono', 'Ajusta con auriculares el tono de tu zumbido para que los sonidos encajen con él. No es una prueba de audición.', 'Pantalla Encuentra tu tono'],
+        ['Sonidos para dormir a tu medida', 'Combina sonidos como lluvia y ruido marrón, ajustados a tu tono. Un temporizador los va apagando, o déjalos sonar toda la noche.', 'Pantalla del mezclador de sonidos'],
+        ['Un registro de 15 segundos', 'Qué volumen, cuánta molestia, cómo dormiste. Se queda en tu móvil.', 'Pantalla del registro diario'],
+        ['Tus patrones', 'Tras 14 registros, mira qué suele acompañar a tus días peores, como las noches cortas. Patrones, no causas.', 'Pantalla de patrones']],
+      stat_h: 'No eres la única persona despierta',
+      stat: `de los adultos convive con acúfenos, más de 740 millones de personas en el mundo; en cerca del 2 % son graves.${S1} La investigación sugiere que la terapia cognitivo-conductual (TCC) puede aliviar cuánto molestan los acúfenos, aunque con evidencia de baja certeza;${S2} Lull usa el sonido solo para dar calma por la noche.`,
+      faq: [['¿Cuándo sale Lull?', 'Todavía no hay fecha. Lull está en pruebas; deja tu correo y te escribiremos una sola vez, el día que esté en Google Play.'],
+        ['¿Lull detendrá mi acúfeno?', 'No. Lull no puede hacer que el acúfeno desaparezca, y ninguna app puede. Te ayuda a dormir con sonidos que te gustan y a entender tus propios patrones, para que el zumbido te moleste menos.'],
+        ['¿Es gratis?', 'Sí. Lull es gratis.'],
+        ['¿Mi diario es privado?', 'Tus registros se guardan en tu móvil, no en nuestros servidores.']],
+      disc: 'Lull es una app de bienestar, no un dispositivo médico. No diagnostica ni trata el acúfeno, y no sustituye a un médico ni a un audiólogo. Si algo te preocupa, habla con tu médico.',
+      checked: 'Fuentes comprobadas el 2026-11-05.', band: ['Sé de los primeros en probar Lull', 'Un solo correo cuando esté en Google Play. Nada más.'],
+      subject: 'Lull: avísame cuando salga', mail: ['¡Hola! Escríbeme por favor cuando Lull esté en Google Play.', 'Idioma: Español', 'enviado desde'] },
+    fr: { title: 'Lull : application sons pour dormir avec acouphènes | Gurrulabs',
+      desc: 'Lull arrive sur Android : une application de sons pour dormir avec acouphènes, des sons réglés sur ta tonalité et un bilan quotidien de 15 secondes.',
+      name: 'Lull', tag: 'Sons pour dormir avec acouphènes · Android', pill: 'Bientôt sur Android', h1: 'Des nuits plus calmes avec les acouphènes',
+      sub: 'Des sons pour dormir réglés sur ta tonalité, et un bilan quotidien de 15 secondes qui montre ce qui accompagne souvent tes meilleurs et tes pires jours.',
+      btn: 'Préviens-moi au lancement', fine: 'Ouvre ton application de messagerie avec un message prêt à envoyer. Nous écrivons une seule fois, quand Lull sera sur Google Play.',
+      chips: ['Gratuit', 'Ton journal reste sur ton téléphone', 'Joue toute la nuit, écran éteint'],
+      hero_alt: 'Écran Ce soir de Lull : bouton de lecture, minuterie de sommeil et bilan du jour',
+      ans: ['Qu’est-ce que Lull ?', 'Lull est une future application Android de sons pour dormir avec acouphènes, pour les personnes dont les acouphènes compliquent le sommeil : elle diffuse des sons réglés sur la hauteur de ton sifflement et tient un court journal quotidien, pour que cela te gêne moins la nuit. C’est une application de bien-être, pas un dispositif médical.'],
+      feat_h: 'Ce que fera Lull', feat_p: 'Quatre choses, déjà fonctionnelles dans l’appli que nous testons.',
+      feats: [['Trouve ta tonalité', 'Ajuste avec un casque la hauteur de ton sifflement pour que les sons s’y accordent. Ce n’est pas un test auditif.', 'Écran Trouve ta tonalité'],
+        ['Des sons pour dormir réglés sur toi', 'Superpose des sons comme la pluie et le bruit brun, réglés sur ta hauteur. Une minuterie les estompe progressivement, ou laisse-les jouer toute la nuit.', 'Écran du mélangeur de sons'],
+        ['Un bilan de 15 secondes', 'Quel volume, quelle gêne, comment tu as dormi. Tout reste sur ton téléphone.', 'Écran du bilan quotidien'],
+        ['Tes tendances', 'Après 14 bilans, vois ce qui accompagne souvent tes jours les plus difficiles, comme les nuits courtes. Des tendances, pas des causes.', 'Écran des tendances']],
+      stat_h: 'Tu n’es pas seul à veiller la nuit',
+      stat: `des adultes vivent avec des acouphènes, soit plus de 740 millions de personnes dans le monde ; pour environ 2 %, ils sont sévères.${S1} La recherche suggère qu’une thérapie cognitivo-comportementale (TCC) peut alléger la gêne ressentie, avec des preuves de faible certitude ;${S2} Lull n’utilise le son que pour le confort la nuit.`,
+      faq: [['Quand Lull sort-elle ?', 'Il n’y a pas encore de date. Lull est en test ; laisse ton e-mail et nous écrirons une seule fois, le jour où elle sera sur Google Play.'],
+        ['Lull va-t-elle arrêter mes acouphènes ?', 'Non. Lull ne peut pas faire disparaître les acouphènes, et aucune appli ne le peut. Elle t’aide à dormir avec des sons que tu aimes et à comprendre tes propres tendances, pour que le sifflement te gêne moins.'],
+        ['Est-elle gratuite ?', 'Oui. Lull est gratuite.'],
+        ['Mon journal est-il privé ?', 'Tes bilans sont stockés sur ton téléphone, pas sur nos serveurs.']],
+      disc: 'Lull est une application de bien-être, pas un dispositif médical. Elle ne diagnostique ni ne traite les acouphènes, et ne remplace ni un médecin ni un audiologiste. Si quelque chose t’inquiète, parles-en à ton médecin.',
+      checked: 'Sources vérifiées le 2026-11-05.', band: ['Sois parmi les premiers à essayer Lull', 'Un seul e-mail quand elle sera sur Google Play. Rien d’autre.'],
+      subject: 'Lull : prévenez-moi au lancement', mail: ['Bonjour ! Merci de m’écrire quand Lull sera disponible sur Google Play.', 'Langue : Français', 'envoyé depuis'] },
+    pt: { title: 'Lull: app de sons para dormir com zumbido | Gurrulabs',
+      desc: 'Lull chega em breve ao Android: um app de sons para dormir com zumbido, com sons ajustados ao seu tom e um registro diário de 15 segundos.',
+      name: 'Lull', tag: 'Sons para dormir com zumbido · Android', pill: 'Em breve no Android', h1: 'Noites mais tranquilas com zumbido',
+      sub: 'Sons para dormir ajustados ao seu tom e um registro diário de 15 segundos que mostra o que costuma acompanhar seus dias melhores e piores.',
+      btn: 'Me avise quando lançar', fine: 'Abre seu app de e-mail com uma mensagem pronta para enviar. Escrevemos uma única vez, quando o Lull estiver no Google Play.',
+      chips: ['Grátis', 'Seu diário fica no seu celular', 'Toca a noite toda, com a tela apagada'],
+      hero_alt: 'Tela Hoje à noite do Lull: botão de tocar, timer de sono e o registro de hoje',
+      ans: ['O que é o Lull?', 'O Lull é um app de sons para dormir com zumbido que vai chegar ao Android, feito para quem tem zumbido e dificuldade para dormir: toca sons ajustados ao tom do seu zumbido e mantém um breve diário de cada dia, para que ele incomode menos à noite. É um app de bem-estar, não um dispositivo médico.'],
+      feat_h: 'O que o Lull vai fazer', feat_p: 'Quatro coisas, todas já funcionando no app que estamos testando.',
+      feats: [['Encontre seu tom', 'Ajuste com fones de ouvido o tom do seu zumbido para que os sons combinem com ele. Não é um teste de audição.', 'Tela Encontre seu tom'],
+        ['Sons para dormir ajustados a você', 'Combine sons como chuva e ruído marrom, ajustados ao seu tom. Um timer os apaga aos poucos, ou deixe tocar a noite toda.', 'Tela do mixer de sons'],
+        ['Um registro de 15 segundos', 'Que volume, quanto incômodo, como você dormiu. Fica no seu celular.', 'Tela do registro diário'],
+        ['Seus padrões', 'Depois de 14 registros, veja o que costuma acompanhar seus dias piores, como noites curtas. Padrões, não causas.', 'Tela de padrões']],
+      stat_h: 'Você não é a única pessoa acordada',
+      stat: `dos adultos convivem com zumbido, mais de 740 milhões de pessoas no mundo; para cerca de 2%, ele é intenso.${S1} A pesquisa sugere que a terapia cognitivo-comportamental (TCC) pode aliviar o quanto o zumbido incomoda, com evidência de baixa certeza;${S2} o Lull usa o som apenas para dar conforto à noite.`,
+      faq: [['Quando o Lull lança?', 'Ainda não há data. O Lull está em testes; deixe seu e-mail e escreveremos uma única vez, no dia em que ele estiver no Google Play.'],
+        ['O Lull vai parar meu zumbido?', 'Não. O Lull não consegue fazer o zumbido ir embora, e nenhum app consegue. Ele ajuda você a dormir com sons de que gosta e a entender seus próprios padrões, para que o zumbido incomode menos.'],
+        ['É grátis?', 'Sim. O Lull é grátis.'],
+        ['Meu diário é privado?', 'Seus registros ficam no seu celular, não em nossos servidores.']],
+      disc: 'O Lull é um app de bem-estar, não um dispositivo médico. Ele não diagnostica nem trata o zumbido, e não substitui um médico ou audiologista. Se algo te preocupa, converse com seu médico.',
+      checked: 'Fontes verificadas em 2026-11-05.', band: ['Seja um dos primeiros a testar o Lull', 'Um único e-mail quando ele estiver no Google Play. Nada mais.'],
+      subject: 'Lull: me avise quando lançar', mail: ['Oi! Por favor, me avise por e-mail quando o Lull estiver no Google Play.', 'Idioma: Português (Brasil)', 'enviado de'] },
+  },
+};
 const meta = (loc, p) => p.id === 'home' ? { title: T[loc].home_title, desc: T[loc].home_desc }
-  : p.id === 'pulse' ? { title: T[loc].pulse_title, desc: T[loc].pulse_desc } : CONTENT[p.id][loc];
+  : p.id === 'pulse' ? { title: T[loc].pulse_title, desc: T[loc].pulse_desc } : APP[p.id] ? APP[p.id][loc] : CONTENT[p.id][loc];
 
 // ── Icons (Pulse's set, 24 grid)
 const SYM = {
@@ -534,7 +732,7 @@ const SYM = {
   interval: '<path d="M5 6v12M19 6v12M5 12h14"/>', reaction: '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
   batak: '<circle cx="7" cy="7" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
   back: '<path d="M15 5l-7 7 7 7"/>', out: '<path d="M7 17L17 7M9 7h8v8"/>', check: '<path d="M5 12l5 5 9-10"/>', chev: '<path d="M9 5l7 7-7 7"/>',
-  chart: '<path d="M5 19V9M12 19V5M19 19v-7"/>',
+  chart: '<path d="M5 19V9M12 19V5M19 19v-7"/>', globe: '<path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
 };
 const ic = id => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${SYM[id]}</svg>`;
 const img = (name, alt = '') => `<img src="/assets/${name}-icon.webp" width="256" height="256" alt="${alt}">`;
@@ -550,26 +748,31 @@ const alternates = p => [...LOCALES.map(l => `<link rel="alternate" hreflang="${
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', ...o }).replace(/</g, '\\u003c')}</script>`;
 
 // JSON-LD per page type. Names/headlines are the visible h1; dates are the visible <time> values (validator compares).
+const APP_LD = { // MobileApplication facts per app page (Lull: no url, no offers: not on Play)
+  pulse: { name: 'Pulse', applicationCategory: 'GameApplication', url: PLAY_URL('pulse') },
+  'cyberpunk-detective': { name: 'Cyberpunk Detective', applicationCategory: 'GameApplication', url: PLAY_URL('cyberpunk_detective'), offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+  lull: { name: 'Lull', applicationCategory: 'LifestyleApplication' },
+};
 function schema(loc, p) {
   const t = T[loc], c = CONTENT[p.id]?.[loc], me = url(loc, p);
   const org = { '@type': 'Organization', name: 'Gurrulabs', url: url(loc, byId.home) };
-  const pulseApp = { '@type': 'MobileApplication', name: 'Pulse', operatingSystem: 'Android', applicationCategory: 'GameApplication', url: PLAY_URL('pulse'), inLanguage: HREFLANG[loc] };
   const out = [];
   if (p.type === 'home') out.push({ ...org, email: 'gurrulabs@gmail.com' });
-  if (p.type === 'app') out.push(pulseApp);
+  if (p.type === 'app') { const { name, applicationCategory, url: u, offers } = APP_LD[p.id]; out.push({ '@type': 'MobileApplication', name, operatingSystem: 'Android', applicationCategory, url: u, offers, inLanguage: HREFLANG[loc] }); }
   if (p.type === 'test' || p.type === 'challenge') out.push({ '@type': 'WebApplication', name: c.h1, url: me, applicationCategory: 'GameApplication', browserRequirements: 'Requires JavaScript', inLanguage: HREFLANG[loc], datePublished: p.published, dateModified: p.modified });
   if (p.type === 'guide') out.push({ '@type': 'Article', headline: c.h1, url: me, inLanguage: HREFLANG[loc], datePublished: p.published, dateModified: p.modified,
     author: org, publisher: org, citation: CONTENT[p.id].sources.map(s => s.url), about: { '@type': 'MobileApplication', name: 'Pulse', url: PLAY_URL('pulse') } });
   if (p.type !== 'home') {
-    const trail = [[t.back, byId.home], ['Pulse', byId.pulse], ...(p.id === 'pulse' ? [] : [[c.name, p]])];
+    const trail = p.type === 'app' ? [[t.back, byId.home], [APP_LD[p.id].name, p]] : [[t.back, byId.home], ['Pulse', byId.pulse], [c.name, p]];
     out.push({ '@type': 'BreadcrumbList', itemListElement: trail.map(([name, q], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url(loc, q) })) });
   }
+  if (APP[p.id]) out.push({ '@type': 'FAQPage', mainEntity: APP[p.id][loc].faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) });
   return out;
 }
 
 function head(loc, p) {
   const { title, desc } = meta(loc, p);
-  const image = p.app === 'pulse' ? `${SITE}/assets/pulse-icon.webp` : '';
+  const image = OG_IMAGE[p.app] ? `${SITE}/assets/${OG_IMAGE[p.app]}.webp` : '';
   return `<!doctype html>
 <html lang="${HREFLANG[loc]}">
 <head>
@@ -604,7 +807,7 @@ function header(loc, p, t) {
 }
 
 // Every page links every app (internal links help search engines find the app pages); Pulse pages also list Pulse's tests and guide
-const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://raffyparenting.com/">Raffy</a><a href="https://play.google.com/store/apps/details?id=${PKG.cyberpunk_detective}" target="_blank" rel="noopener" data-cta="footer" data-app="cyberpunk_detective">Cyberpunk Detective</a><span>Lull · ${t.soon}</span></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
+const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://raffyparenting.com/">Raffy</a><a href="/${loc}/cyberpunk-detective/">Cyberpunk Detective</a><a href="/${loc}/lull/">Lull · ${t.soon}</a></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
 
 // ── Home
 function home(loc) {
@@ -623,9 +826,9 @@ function home(loc) {
       ICON.raffy, t.cat[1], 'Raffy', t.raffy_p,
       `<a class="lnk" href="https://raffyparenting.com/">${t.raffy_cta}${ic('out')}</a>${play(loc, 'raffy', 'home_raffy_card')}`),
     tile('cyber', 'w5 t-cyber', `<div class="sun"></div><div class="floor"></div><div class="bigic">${ICON.cyber}</div>`,
-      ICON.cyber, t.cat[2], 'Cyberpunk Detective', t.cyber_p, play(loc, 'cyberpunk_detective', 'home_cyberpunk_card')),
+      ICON.cyber, t.cat[2], 'Cyberpunk Detective', t.cyber_p, `<a class="lnk" href="/${loc}/cyberpunk-detective/">${t.cyber_page}${ic('chev')}</a>${play(loc, 'cyberpunk_detective', 'home_cyberpunk_card')}`),
     tile('lull', 'w7 t-lull', `<div class="waves"><span></span><span></span><span></span><div class="bigic">${ICON.lull}</div></div>`,
-      ICON.lull, t.cat[3], 'Lull', t.lull_p, `<span class="tag2">${t.soon}</span>`),
+      ICON.lull, t.cat[3], 'Lull', t.lull_p, `<a class="lnk" href="/${loc}/lull/" style="--bb:#F0B48A;--bf:#2A1A12">${t.lull_page}${ic('chev')}</a><span class="tag2">${t.soon}</span>`),
   ].join('\n    ');
   const p = byId.home;
   return `${head(loc, p)}
@@ -639,7 +842,7 @@ ${header(loc, p, t)}
       <p class="intro">${t.home_p}</p>
       <div class="hero-acts"><a class="btn" href="#apps">${t.see_apps}</a><a class="txtlink" href="${pulse}">${t.pulse_cta}${ic('chev')}</a></div>
     </div>
-    <div class="orbit" aria-label="Apps"><a href="${pulse}" aria-label="Pulse">${ICON.pulse}</a><a href="#raffy" aria-label="Raffy">${ICON.raffy}</a><a href="#cyber" aria-label="Cyberpunk Detective">${ICON.cyber}</a><a href="#lull" aria-label="Lull">${ICON.lull}</a></div>
+    <div class="orbit" aria-label="Apps"><a href="${pulse}" aria-label="Pulse">${ICON.pulse}</a><a href="#raffy" aria-label="Raffy">${ICON.raffy}</a><a href="/${loc}/cyberpunk-detective/" aria-label="Cyberpunk Detective">${ICON.cyber}</a><a href="/${loc}/lull/" aria-label="Lull">${ICON.lull}</a></div>
   </section>
 
   <section class="l-sec" id="apps">
@@ -702,6 +905,78 @@ ${footer(loc, t, p)}
 `;
 }
 
+// ── New app pages (T-004): Cyberpunk Detective and Lull. Same components as the Pulse page, per-app palette via <body class>.
+const appRel = (loc, items) => `<section class="blk"><h2>${T[loc].more_h}</h2><div class="rel">${items.map(([href, icon, [b, s]]) => `<a href="${href}"><span class="mi">${icon}</span><b>${b}</b><span>${s}</span></a>`).join('')}</div></section>`;
+const chip = c => { const [i, s] = Array.isArray(c) ? c : ['check', c]; return `<span class="chip">${ic(i)}${s}</span>`; };
+const answerBlock = ([q, a]) => `<div class="answer"><b>${q}</b> ${a}</div>`;
+
+function appPage(loc, p) {
+  const t = T[loc], a = APP[p.id][loc], lull = p.id === 'lull', links = id => path(loc, byId[id]);
+  const mail = lull && `mailto:${LULL_MAIL}?subject=${encodeURIComponent(a.subject)}&amp;body=${encodeURIComponent(`${a.mail[0]}\n\n${a.mail[1]}\n(${a.mail[2]} gurrulabs.pages.dev${path(loc, p)})`)}`;
+  const cta = k => lull ? `<a class="btn" href="${mail}" data-cta="lull_${k}" data-app="lull">${a.btn}</a>` : play(loc, 'cyberpunk_detective', k);
+  const hero = `<section class="p-hero">
+    <div class="txt">
+      <div class="head">
+        <div class="app"><div class="ic">${lull ? ICON.lull : ICON.cyber}</div><div><b>${a.name}</b><span>${a.tag}</span></div></div>${lull ? `\n        <span class="soonpill"><i></i>${a.pill}</span>` : ''}
+        <h1>${a.h1}</h1>
+        <p class="sub">${a.sub}</p>
+      </div>
+      <div class="cta">${cta(lull ? 'signup' : 'hero')}${lull ? `<p class="fine">${a.fine}</p>` : ''}</div>
+      <div class="facts">${a.chips.map(chip).join('')}</div>
+    </div>
+    ${lull ? `<div class="orbbox"><div class="phone"><img src="/assets/lull-tonight.webp" width="540" height="1150" alt="${esc(a.hero_alt)}"></div></div>`
+      : `<div class="neon"><div class="phone"><img src="/assets/case-vienna.webp" width="600" height="600" alt="${CASES[0][1]}"></div></div>`}
+  </section>
+  ${dated(loc, p)}`;
+  const faq = `<section class="blk">${faqBlock(loc, a.faq.map(x => x.map(esc)), 2, t.q_h)}${lull ? `\n  <p class="disc">${a.disc}</p>` : ''}</section>`;
+  const body = lull ? `<section class="blk"><h2>${a.feat_h}</h2><p class="lead">${a.feat_p}</p>
+    <div class="feat">${a.feats.map(([b, d, alt], i) => `<div><span class="mi"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${FEAT_ICON[i]}"/></svg></span><b>${b}</b><p>${d}</p><img class="shot2" src="/assets/lull-${FEAT_IMG[i]}.webp" width="540" height="1150" loading="lazy" alt="${alt}"></div>`).join('')}</div>
+  </section>
+
+  <section class="blk"><h2>${a.stat_h}</h2>
+    <div class="stat"><b>~14%</b><p>${a.stat}</p></div>
+  </section>
+
+  ${faq}
+
+  <section class="sources"><h2>${t.src_h}</h2><ol>${LULL_SRC.map(([ref, u], i) => `<li id="s${i + 1}">${ref} <a href="${u}" rel="noopener" target="_blank">${u.replace('https://', '')}</a></li>`).join('')}</ol><p class="note">${a.checked}</p></section>
+
+  ${appRel(loc, [[links('home'), ICON.raffy, t.rel[0]], [links('pulse'), ICON.pulse, t.rel[1]], [links('cyberpunk-detective'), ICON.cyber, t.rel[2]]])}`
+    : `<section class="blk"><h2>${a.steps_h}</h2><p class="lead">${a.steps_p}</p>
+    <div class="steps">${a.steps.map(([b, d]) => `<div><b>${b}</b><span>${d}</span></div>`).join('')}</div>
+  </section>
+
+  <section class="blk" id="cases"><h2>${a.cases_h}</h2><p class="lead">${a.cases_p}</p>
+    <div class="cases">
+      ${CASES.map(([id, name, min], i) => `<div class="neon"><div class="case"><img src="/assets/case-${id}.webp" width="600" height="600" loading="lazy" alt="${name}"><div class="tx"><span class="k">${min ? `${a.kick[1]} · ${min} min` : a.kick[0]}</span><b>${name}</b><p>${a.cases[i][0]}</p><div class="tags">${a.cases[i][1].map(g => `<span>${g}</span>`).join('')}</div></div></div></div>`).join('\n      ')}
+    </div>
+    <p class="soon">${a.note}</p>
+  </section>
+
+  <section class="blk"><h2>${t.shots_h}</h2><div class="shots">${a.shot[1].map((alt, i) => `<img class="shot" src="/assets/cyber-shot-${i + 1}.webp" width="540" height="960" loading="lazy" alt="${a.shot[0]}${alt}">`).join('')}</div></section>
+
+  ${faq}
+
+  ${appRel(loc, [[links('home'), ICON.pulse, t.rel[0]], [links('pulse'), ICON.pulse, t.rel[1]], [links('lull'), ICON.lull, t.rel[3]]])}`;
+  return `${head(loc, p)}
+<body class="${lull ? 'app-lull' : 'app-cyber'}" data-page="${p.dataPage}" data-locale="${loc}">
+${header(loc, p, t)}
+<main class="wrap">
+  <nav class="bc" aria-label="${t.bc}"><a href="${links('home')}">${t.back}</a><span aria-hidden="true">›</span><span>${a.name}</span></nav>
+  ${hero}
+
+  ${answerBlock(a.ans)}
+
+  ${body}
+
+  <section class="band"><div><h2>${a.band[0]}</h2><p>${a.band[1]}</p></div><div>${cta(lull ? 'signup_band' : 'footer_band')}</div></section>
+</main>
+${footer(loc, t, p)}
+</body>
+</html>
+`;
+}
+
 // ── Content pages (layout of the T-007 mockups). Everything is static HTML; only the game panel needs JS.
 const fmtDate = (loc, iso) => { const [y, m, d] = iso.split('-').map(Number); return T[loc].date(d, T[loc].months[m - 1], y); };
 // Reading time (guide): visible words of the article at 200 words/min, deterministic
@@ -715,8 +990,8 @@ const relCard = (loc, id) => id === 'pulse'
   ? `<a href="${to(loc, 'pulse')}" style="--c:var(--m-hidden)"><span class="mi">${ICON.pulse}</span><b>${T[loc].pulse_card[0]}</b><span>${T[loc].pulse_card[1]}</span></a>`
   : `<a href="${to(loc, id)}" style="--c:var(--${byId[id].card[1]})"><span class="mi">${ic(byId[id].card[0])}</span><b>${CONTENT[id][loc].name}</b><span>${CONTENT[id][loc].card}</span></a>`;
 const relBlock = (loc, ids) => `<div class="rel">${ids.map(id => relCard(loc, id)).join('')}</div>`;
-const faqBlock = (loc, faq) => `<h2>${T[loc].faq_h}</h2>
-    <div class="faq">${faq.map(([q, a], i) => `<details${i ? '' : ' open'}><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>`;
+const faqBlock = (loc, faq, open = 1, h = T[loc].faq_h) => `<h2>${h}</h2>
+    <div class="faq">${faq.map(([q, a], i) => `<details${i < open ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>`;
 // Test/challenge: Play link to Pulse. Guide: featured link to the reaction test.
 const pushBlock = (loc, [b, s, go]) => `<div class="push"><div class="app"><div class="ic">${ICON.pulse}</div><div><b>${b}</b><span>${s}</span></div></div>${go
   ? `<a class="lnk" href="${to(loc, 'reaction-test')}" style="--bb:var(--m-reaction);--bf:#1A0A06">${go}${ic('chev')}</a>` : play(loc, 'pulse', 'article_push')}</div>`;
@@ -798,7 +1073,7 @@ const BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'Claude-SearchBot', 'Cl
 const robots = `User-agent: *\nAllow: /\n\n${BOTS.map(b => `User-agent: ${b}`).join('\n')}\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`;
 
 // llms.txt (llmstxt.org): facts only. Lists the EN URL of every page (validator rule) and the locale roots under Optional.
-const llmsName = p => p.id === 'home' ? 'Gurrulabs' : p.id === 'pulse' ? 'Pulse' : CONTENT[p.id].en.name;
+const llmsName = p => p.id === 'home' ? 'Gurrulabs' : p.id === 'pulse' ? 'Pulse' : APP[p.id] ? APP[p.id].en.name : CONTENT[p.id].en.name;
 const llmsItem = p => `- [${llmsName(p)}](${url('en', p)}): ${p.llms}`;
 const llms = `# Gurrulabs
 
@@ -816,8 +1091,8 @@ ${PAGES.filter(p => p.app === 'pulse').map(llmsItem).join('\n')}
 ## Other apps
 
 - [Raffy](https://raffyparenting.com/): baby tracker for feeds, sleep and growth, with WHO charts.
-- [Cyberpunk Detective](${PLAY_URL('cyberpunk_detective')}): detective mystery game for Android, on Google Play.
-- Lull: sleep sounds and a daily diary for people with tinnitus. Not on Google Play yet.
+${['cyberpunk-detective', 'lull'].map(id => llmsItem(byId[id])).join('\n')}
+- [Cyberpunk Detective on Google Play](${PLAY_URL('cyberpunk_detective')}): Android download page.
 
 ## Optional
 
@@ -830,7 +1105,7 @@ function write(rel, content) {
   writeFileSync(file, content);
 }
 for (const loc of LOCALES) for (const p of PAGES) {
-  const html = p.type === 'home' ? home(loc) : p.type === 'app' ? pulsePage(loc) : contentPage(loc, p);
+  const html = p.type === 'home' ? home(loc) : p.type === 'app' ? (p.id === 'pulse' ? pulsePage(loc) : appPage(loc, p)) : contentPage(loc, p);
   write(`${path(loc, p).slice(1)}index.html`, html);
 }
 write('index.html', rootPage);

@@ -345,3 +345,87 @@ section.blk > p.lead { color: var(--text2); margin-top: 8px; font-size: 17px; }
   .prose h2 { margin-top: 44px; font-size: 25px; } .answer { font-size: 17px; padding: 18px; }
 }
 @media (max-width: 400px) { .wrap { padding: 0 16px; } .game { height: 600px; } .watch { transform: scale(.94); } }
+
+/* ── App pages (T-004): Cyberpunk Detective and Lull. Same components as the Pulse page, re-tokenised per app
+   (body.app-cyber / body.app-lull). Fonts are self-hosted in /assets/. ── */
+@font-face { font-family: Orbitron; src: url(/assets/orbitron-bold.ttf) format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: Fraunces; src: url(/assets/fraunces.ttf) format('truetype'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: Atkinson; src: url(/assets/atkinson-regular.ttf) format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: Atkinson; src: url(/assets/atkinson-bold.ttf) format('truetype'); font-weight: 700; font-display: swap; }
+
+.phone { width: 300px; aspect-ratio: 1080 / 2400; border-radius: 40px; overflow: hidden; margin: 0 auto;
+         box-shadow: 0 0 0 9px #050608, 0 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent), 0 40px 80px -30px rgba(0,0,0,.8); }
+.phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.feat { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.feat > div { padding: 22px; border-radius: 22px; background: color-mix(in srgb, var(--surface) 80%, transparent); box-shadow: inset 0 0 0 1px var(--line); }
+.feat b { display: block; font-size: 19px; margin-top: 10px; } .feat p { color: var(--text2); margin-top: 6px; }
+.feat .mi { color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.rel .mi svg { width: 100%; height: 100%; display: block; }
+
+/* Cyberpunk Detective: CyberpunkNight theme */
+body.app-cyber { --bg1:#141029; --bg2:#0A0E12; --surface:#0F131A; --surface2:#1A1F29; --line:#2A2F45; --text:#E6F0FF; --text2:#B9C6DD; --text3:#8995AE;
+  --accent:#00D4FF; --on-accent:#0A0E12; --mag:#FF2E97; --clue:#FFF200; --aqua:#00FFF0; --violet:#7B00FF;
+  background: radial-gradient(90% 50% at 70% 0%, color-mix(in srgb, #FF2E97 22%, #0A0E12), #0A0E12 70%) no-repeat, #0A0E12; }
+html:has(body.app-cyber) { background: #0A0E12; }
+.app-cyber::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: .5;
+  background-image: linear-gradient(rgba(123,0,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(123,0,255,.16) 1px, transparent 1px); background-size: 48px 48px; }
+.app-cyber h1, .app-cyber section.blk > h2, .app-cyber .band h2, .app-cyber .case b { font-family: Orbitron, "Arial Black", system-ui, sans-serif; font-weight: 700; letter-spacing: .01em; }
+.app-cyber .p-hero h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.12; text-transform: uppercase; }
+.app-cyber .p-hero h1 em { font-style: normal; color: var(--mag); text-shadow: 0 0 18px rgba(255,46,151,.55); }
+.app-cyber section.blk > h2 { font-size: 26px; text-transform: uppercase; }
+.app-cyber .chip svg.i { color: var(--aqua); }
+.app-cyber .langs a.on, .app-cyber .faq summary::after { color: var(--accent); }
+.app-cyber .answer { box-shadow: inset 3px 0 0 var(--mag), inset 0 0 0 1px rgba(0,255,240,.18); }
+.app-cyber .phone { box-shadow: 0 0 0 9px #050608, 0 0 0 10px rgba(0,255,240,.55), 0 0 60px rgba(255,46,151,.35), 0 40px 80px -30px #000; }
+.app-cyber .shot { aspect-ratio: 540 / 960; object-fit: cover; }
+.neon { border-radius: 22px; padding: 1px; background: linear-gradient(135deg, var(--aqua), var(--violet)); }
+.p-hero > .neon { border-radius: 41px; width: max-content; margin: 0 auto; } .p-hero > .neon .phone { box-shadow: none; }
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.case { display: flex; flex-direction: column; border-radius: 21px; overflow: hidden; background: var(--surface); height: 100%; }
+.case img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.case .tx { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.case b { font-size: 15px; text-transform: uppercase; } .case p { font-size: 14px; color: var(--text2); }
+.case .k { font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--clue); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; } .tags span { font-size: 12px; padding: 3px 9px; border-radius: 10px; color: var(--aqua); box-shadow: inset 0 0 0 1px rgba(0,255,240,.35); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 24px; counter-reset: s; }
+.steps div { padding: 20px; border-radius: 20px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); counter-increment: s; }
+.steps div::before { content: "0" counter(s); font: 700 22px/1 Orbitron, system-ui, sans-serif; color: var(--mag); }
+.steps b { display: block; margin-top: 12px; font-size: 18px; } .steps span { color: var(--text2); font-size: 15px; }
+.soon { margin-top: 14px; font-size: 14px; color: var(--text3); }
+
+/* Lull: "Vela" dark palette. Fraunces headings, never bold. */
+body.app-lull { --bg1:#241C27; --bg2:#17121A; --surface:#221B25; --surface2:#2C2330; --line:#3A2F3E; --text:#F3EAE4; --text2:#CDBFC0; --text3:#A8999D;
+  --accent:#F0B48A; --on-accent:#2A1A12; --calm:#C9B6E4; --ok:#A8D5B0; --warn:#F28B9B;
+  font-family: Atkinson, "Atkinson Hyperlegible", system-ui, sans-serif;
+  background: radial-gradient(70% 40% at 70% 8%, rgba(240,180,138,.18), transparent 70%) no-repeat, linear-gradient(180deg, #17121A 0%, #1d1622 100%); }
+html:has(body.app-lull) { background: #17121A; }
+.app-lull h1, .app-lull section.blk > h2, .app-lull .band h2, .app-lull .feat b, .app-lull .faq summary { font-family: Fraunces, Georgia, serif; font-weight: 500; }
+.app-lull .band h2 { font-weight: 300; }
+.app-lull .p-hero h1 { letter-spacing: -.02em; }
+.app-lull .soonpill + h1 { margin-top: 18px; }
+.app-lull .p-hero .cta { display: block; }
+.app-lull .chip svg.i { color: var(--ok); }
+.app-lull .langs a.on { color: var(--accent); }
+.app-lull .answer { box-shadow: inset 3px 0 0 var(--accent); }
+.app-lull .feat .mi { color: var(--calm); background: color-mix(in srgb, var(--calm) 16%, transparent); }
+.app-lull .feat .shot2 { margin-top: 16px; width: 100%; height: auto; aspect-ratio: 1080 / 1100; object-fit: cover; object-position: top; border-radius: 16px; display: block; }
+.soonpill { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 14px; border-radius: 17px; font-size: 14px; color: var(--calm);
+            background: color-mix(in srgb, var(--calm) 14%, transparent); }
+.soonpill i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(240,180,138,.2); }
+.app-lull .btn { width: auto; height: 56px; border-radius: 28px; padding: 0 28px; font-weight: 700; }
+.fine { font-size: 14px; color: var(--text3); margin-top: 10px; max-width: 420px; }
+.stat { margin-top: 24px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center; padding: 26px; border-radius: 24px; background: var(--surface); max-width: 760px; }
+.stat b { font: 300 64px/1 Fraunces, Georgia, serif; color: var(--accent); } .stat p { color: var(--text2); } .stat sup a { color: var(--accent); }
+.disc { margin-top: 40px; max-width: 760px; padding: 18px 20px; border-radius: 18px; font-size: 15px; color: var(--text2);
+        background: color-mix(in srgb, var(--calm) 8%, var(--surface)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--calm) 25%, transparent); }
+.orbbox { position: relative; display: grid; place-items: center; }
+.orbbox::before { content: ""; position: absolute; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgba(240,180,138,.22), transparent 65%); animation: breathe 8s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: scale(1.08); opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .orbbox::before { animation: none; } }
+
+@media (max-width: 860px) {
+  .cases, .steps, .feat { grid-template-columns: minmax(0, 1fr); }
+  .p-hero > .neon, .p-hero > .orbbox { order: 4; } /* CTA stays above the fold, phone after it */ .phone { width: 220px; } .orbbox::before { width: 320px; height: 320px; }
+  .stat { grid-template-columns: minmax(0, 1fr); gap: 8px; } .stat b { font-size: 52px; }
+  .app-lull .btn { width: 100%; }
+}
