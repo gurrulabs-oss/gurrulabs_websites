@@ -41,3 +41,8 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - T-010: Play details/search pages are readable with `curl -sL -A "<desktop Chrome UA>" ...&hl=en_US&gl=US` (labels "Contains ads"/"In-app purchases" in HTML; description in `data-g-id="description"`). Pulse's live listing ≠ repo listing (live: "Contains ads", 4 modes, no account/offline text).
 - T-010: `script.js` PLAY_SEL skips `.sources a`; any Play link outside `.sources` gets UTM + click event. Validator bans free/no ads/F1 (Pulse wording); pages with `listing: true` only ban cure/eliminate/F1.
 - T-010: element screenshots via CDP script (setDeviceMetricsOverride 390 mobile, scrollIntoView, captureScreenshot clip) worked; main branch served from the project folder on a 2nd port for Before shots.
+- T-004: Play listing HTML is fetchable with curl + browser UA (200, all hl=); screenshots are `<img alt="Screenshot image" src="https://play-lh.googleusercontent.com/<id>=...">`, download with `=w1080`.
+- T-004: JAMA/Cochrane via doi.org 403 even with browser UA (bot wall); verify figures through PubMed abstracts with NCBI E-utilities `efetch.fcgi?db=pubmed&id=<pmid>&rettype=abstract&retmode=text` (200).
+- T-004: app pages render via `appPage()` + `APP` copy in build.mjs; Lull sign-up mailto clicks fire `Gurrulabs Web - Signup Clicked` (script.js). Lull wording checks live in validate.mjs (LULL_BANNED) but miss cause/therapy phrasing; review by hand.
+- 390 px shots: wrap the page in a file:// HTML with `<iframe style="width:390px;height:3600px">` pointing at localhost, screenshot at --window-size=390,3600.
+- Ask-lead: only one question at a time per ticket ("already waiting for another Lead"); run them sequentially.

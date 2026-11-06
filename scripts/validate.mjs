@@ -6,7 +6,12 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { SITE as HOST, LOCALES as DIRS, HREFLANG, PAGES, path, url, fileOf } from './pages.mjs';
 
-const BANNED = /\b(cure[sd]?|eliminat\w*|free|no ads|F1|gratis|gratuit\w*|grátis|gratuito|sin anuncios|sans pub\w*|sem anúncios)\b/i;
+const FREE_WORDS = 'free|gratis|gratuit\\w*|grátis|gratuito';
+const BANNED = new RegExp(`\\b(cure[sd]?|eliminat\\w*|${FREE_WORDS}|no ads|F1|sin anuncios|sans pub\\w*|sem anúncios)\\b`, 'i');
+// Cyberpunk Detective and Lull have a confirmed price (facts.md: free), so "free" is allowed there; the rest still applies
+const BANNED_FREE_OK = new RegExp(BANNED.source.replace(`${FREE_WORDS}|`, ''), 'i');
+// Lull wording rules (facts.md): never cure / eliminate / treat (outside the disclaimer) / reduce, in any locale
+const LULL_BANNED = /\b(?:cur(?:e|es|ed|ar|a)\b|elimin|reduc|reduz|r[ée]du(?:ire|it)|gu[ée]ri|trat|treat|traite)/i;
 const LISTING_BANNED = /\b(cure[sd]?|eliminat\w*|F1)\b/i;
 const BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Bingbot'];
 
@@ -25,6 +30,8 @@ const times = html => [...html.matchAll(/<time datetime="(\d{4}-\d{2}-\d{2})"/g)
 assert.equal(attr('<link rel="canonical" href="x">', 'href'), 'x');
 assert.equal(text('<p>a<script>free</script>b</p>').includes('free'), false);
 assert.ok(BANNED.test('No ads here') && BANNED.test('cures') && !BANNED.test('carefree') && !BANNED.test('freedom'));
+assert.ok(!BANNED_FREE_OK.test('Free. Gratis, gratuito') && BANNED_FREE_OK.test('No ads') && BANNED_FREE_OK.test('cure'));
+assert.ok(LULL_BANNED.test('It treats') && LULL_BANNED.test('reducir') && LULL_BANNED.test('guérir') && !LULL_BANNED.test('Patterns, not causes. Secure') && !LULL_BANNED.test('bothers you less'));
 assert.ok(BANNED.test('Juega gratis') && BANNED.test('appli gratuite') && BANNED.test('jogo grátis') && BANNED.test('test gratuito') && BANNED.test('sin anuncios')
   && BANNED.test('sans publicité') && BANNED.test('sem anúncios') && !BANNED.test('gratitude') && !BANNED.test('anuncios de Pulse'));
 assert.equal(h1Text('<h1 class="x">A <em>b</em> &amp; c</h1>'), 'A b & c');
@@ -94,7 +101,7 @@ for (const { p, loc, own, shown, html, alts } of pages) {
     if (!attr(a, 'data-cta') || !attr(a, 'data-app')) f(`Play link without data-cta/data-app: ${a.slice(0, 120)}`);
   if (/mixpanel/i.test(html)) f('mixpanel referenced in HTML (must live only in script.js behind the gate)');
   // p.listing: comparison page quoting Play price/ads labels; cure/eliminate/F1 stay banned there too
-  const bad = text(html).match(p.listing ? LISTING_BANNED : BANNED);
+  const bad = text(html).match(p.listing ? LISTING_BANNED : ['cyberpunk-detective', 'lull'].includes(p.id) ? BANNED_FREE_OK : BANNED);
   if (bad) f(`banned claim "${bad[0]}"`);
 
   // Internal hrefs must resolve to a file or page
@@ -121,6 +128,24 @@ for (const { p, loc, own, shown, html, alts } of pages) {
       const a = of('Article');
       if (!a) f('JSON-LD Article missing');
       else { if (a.headline !== h1) f(`JSON-LD headline "${a.headline}" differs from visible <h1> "${h1}"`); ldDates('Article', a); }
+    }
+  }
+
+  // New app pages: FAQPage JSON-LD = visible FAQ, ≥ 3 internal links; Lull: no Play link, sources, wording rules outside the disclaimer
+  if (p.type === 'app' && p.id !== 'pulse') {
+    const faq = of('FAQPage'), shownFaq = [...html.matchAll(/<details[^>]*><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p>/g)].map(m => [unesc(m[1]), unesc(m[2])]);
+    if (!faq) f('JSON-LD FAQPage missing');
+    else if (JSON.stringify(faq.mainEntity.map(q => [q.name, q.acceptedAnswer.text])) !== JSON.stringify(shownFaq)) f('JSON-LD FAQPage differs from the visible FAQ');
+    const main = html.match(/<main[\s\S]*?<\/main>/)?.[0] || '';
+    const internal = new Set(hrefs(main).map(h => h.split('#')[0]).filter(h => h.endsWith('/') && h !== shown && existsSync(fileOfHref(h))));
+    if (internal.size < 3) f(`app page has ${internal.size} internal links to other pages (needs ≥ 3)`);
+    if (!times(html).length) f('no visible publish/update date (<time datetime>)');
+    if (p.id === 'lull') {
+      if (/play\.google\.com/.test(html)) f('Lull is not on Google Play: no Play link allowed');
+      if (!/<a class="btn" href="mailto:[^"]*" data-cta="lull_signup" data-app="lull">/.test(html)) f('Lull hero sign-up mailto link missing');
+      if (tags(html.match(/<section class="sources"[\s\S]*?<\/section>/)?.[0] || '', /\shref="https:\/\/doi\.org\/[^"]+"/g).length < 2) f('Lull needs its 2 doi.org sources in .sources');
+      const w = text(html.replace(/<p class="disc">[\s\S]*?<\/p>/, '')).match(LULL_BANNED);
+      if (w) f(`Lull wording rule: "${w[0]}" (only the disclaimer may say treat)`);
     }
   }
 

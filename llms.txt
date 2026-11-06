@@ -18,8 +18,9 @@
 ## Other apps
 
 - [Raffy](https://raffyparenting.com/): baby tracker for feeds, sleep and growth, with WHO charts.
-- [Cyberpunk Detective](https://play.google.com/store/apps/details?id=com.gurrulabs.miniaicrimes): detective mystery game for Android, on Google Play.
-- Lull: sleep sounds and a daily diary for people with tinnitus. Not on Google Play yet.
+- [Cyberpunk Detective](https://gurrulabs.pages.dev/en/cyberpunk-detective/): Free Android game on Google Play (ads, no in-app purchases, no account) mixing 3 detective cases you solve and 3 audio crime stories you listen to; cases work offline; game text in English, Spanish and French.
+- [Lull](https://gurrulabs.pages.dev/en/lull/): Coming-soon Android wellness app (not a medical device) with sleep sounds tuned to your pitch and a 15-second daily check-in for people with tinnitus. Not on Google Play yet; email sign-up.
+- [Cyberpunk Detective on Google Play](https://play.google.com/store/apps/details?id=com.gurrulabs.miniaicrimes): Android download page.
 
 ## Optional
 

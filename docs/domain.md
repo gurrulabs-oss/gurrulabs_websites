@@ -34,6 +34,8 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
     even though URLs are translated), `home` for the locale root.
   - `Gurrulabs Web - Download Button Clicked` on any Play link, props `app` (`data-app`), `cta` (`data-cta`),
     `locale`, `page` (slug), `result` (only on test result links, `"<verdict> <score>"`).
+  - `Gurrulabs Web - Signup Clicked` on a `mailto:` link with `data-cta` (Lull "email me when it launches"), props `app`, `cta`
+    (`lull_signup`, `lull_signup_band`), `locale`, `page`. The href is never changed.
 - A new page declares only `<body data-page="<slug>" data-locale="<locale>">`, loads `/script.js` and gives every
   Play link `data-cta` + `data-app`; `scripts/validate.mjs` fails it otherwise. `utm_campaign` = the same slug.
 - Search: Google Search Console, URL-prefix property `https://gurrulabs.pages.dev/` verified by `google48eac797f8133411.html`
