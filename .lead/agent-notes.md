@@ -46,3 +46,5 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 - T-004: app pages render via `appPage()` + `APP` copy in build.mjs; Lull sign-up mailto clicks fire `Gurrulabs Web - Signup Clicked` (script.js). Lull wording checks live in validate.mjs (LULL_BANNED) but miss cause/therapy phrasing; review by hand.
 - 390 px shots: wrap the page in a file:// HTML with `<iframe style="width:390px;height:3600px">` pointing at localhost, screenshot at --window-size=390,3600.
 - Ask-lead: only one question at a time per ticket ("already waiting for another Lead"); run them sequentially.
+- T-013: `.lead/scratch` in the worktree is a symlink to the MAIN project folder: relative paths from it (`../../script.js`) read main, not the branch, and writes there are outside allowed dirs. Put scratch files in `/tmp/<ticket>/`.
+- T-013: fake-tracker check = CDP `Fetch.requestPaused` serving a copy of script.js with `let tracking = true`, plus `addScriptToEvaluateOnNewDocument` setting `window.mixpanel={__SV:1,track:...}` and a window click preventDefault; headless Chrome needs ~2-5 s before the CDP port answers (poll /json).

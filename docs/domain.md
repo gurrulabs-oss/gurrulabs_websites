@@ -36,6 +36,17 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
     `locale`, `page` (slug), `result` (only on test result links, `"<verdict> <score>"`).
   - `Gurrulabs Web - Signup Clicked` on a `mailto:` link with `data-cta` (Lull "email me when it launches"), props `app`, `cta`
     (`lull_signup`, `lull_signup_band`), `locale`, `page`. The href is never changed.
+  - `Gurrulabs Web - Internal Link Clicked` on a link to this site (Play links excluded), props `page`, `locale`, `to`
+    (target page id from the `<script id="pages">` path → id map that `build.mjs` puts in every head; same-page `#` links =
+    `page`; unmapped path = `unknown`), `zone` (`header|breadcrumb|footer|game`, else the enclosing `<section>`'s id or
+    first class, e.g. `p-hero`, `blk`, `guides`, or `body`).
+  - `Gurrulabs Web - Source Clicked` on an http(s) link inside `.sources`, props `page`, `locale`, `domain` (hostname).
+  - `Gurrulabs Web - Language Changed` on a switcher link to another locale, props `from`, `to` (`en|es|fr|pt`), `page`.
+  - `Gurrulabs Web - Game Started` on Start, props `mode` (`exact|reaction`), `page`, `locale`. "Try again" starts a new game.
+  - `Gurrulabs Web - Game Finished` when a game ends, same props + `result` (`"<perfect|pass|miss> <score>"`, score in
+    seconds or `false_start`; same string as the Play link's `result`). Abandoned = started − finished.
+- Event names, prop names and values are English and never localized: pages by id (never the translated URL), locale as
+  code, modes/results/zones as English keys, never visible text. Only Mixpanel's automatic `$current_url` is the real URL.
 - A new page declares only `<body data-page="<slug>" data-locale="<locale>">`, loads `/script.js` and gives every
   Play link `data-cta` + `data-app`; `scripts/validate.mjs` fails it otherwise. `utm_campaign` = the same slug.
 - Search: Google Search Console, URL-prefix property `https://gurrulabs.pages.dev/` verified by `google48eac797f8133411.html`
