@@ -41,7 +41,7 @@ Do not change code in this mode.
    Plan, the owner's Plan wins. Give each a self-contained
    brief; workers do not see the ticket or chat. Run independent subtasks in parallel.
 3. Verify: use the `verify` skill (build/test/lint), review the diff against every acceptance criterion.
-   For M/L tickets also spawn `reviewer` (model per "Spending" in the owner's section). Send fixes back to
+   Spawn `reviewer` only when "Spending" in the owner's section calls for one (model per the same rules). Send fixes back to
    workers. Max 3 rounds, at most one re-review.
 4. Commit on the branch with a clear message.
 5. Rewrite the **Summary** in the after-execution format of "The owner and how to write for him" and put the
