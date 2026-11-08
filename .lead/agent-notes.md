@@ -2,49 +2,40 @@
 
 Facts learned while working. One line each. Newest at the bottom. Trim via a "Refresh knowledge" ticket.
 
-- Onboarding (2026-11-04): repo had only an empty initial commit and `.gitignore`; no remote, no hosting yet.
-- Local tools: Node v25, Python 3.14, `npx` and `gh` available; `wrangler` (Cloudflare CLI) is NOT installed (use `npx wrangler`).
-- `gh` is logged in as `undimonkey` (MonkeyTaps/work side). This repo belongs to `gurrulabs-oss` (owner, 2026-11-04): never create repos or push with `undimonkey`; Done like Raffy Web: `origin` = `https://gurrulabs-oss@github.com/gurrulabs-oss/gurrulabs_websites` (set 2026-11-04, repo not created yet); the username in the URL makes git use the `gurrulabs-oss` token already in the macOS keychain, for this repo only. For `gh` commands use `GH_TOKEN=<that token>` per command; never `gh auth switch`/`login` (changes every project).
-- `python3 -m http.server <port>` from repo root serves the site (checked 2026-11-04, HTTP 200). Port 8123 may be taken by a stale Raffy Web server.
-- Raffy Web's Mixpanel token is in `~/AndroidStudioProjects/raffy_webpage/script.js:131`, hostname gate at `:156`; copy that pattern, with prefix `Gurrulabs Web - `.
-- Lull has no Android app yet (POC only); its Lead's wording rules forbid "cure"/"eliminate" tinnitus.
-- Cloudflare Pages preview deploys get `<hash>.<project>.pages.dev` URLs: the Mixpanel gate must match the exact production host, not `*.pages.dev`.
-- Related Leads can only be asked during ticket runs (`node <hub>/scripts/ask-lead.mjs <project-id> "<q>"`), not in chats.
-- `.lead/attachments/`, `.lead/designs/`, `.lead/scratch/` are gitignored; mockups go in `.lead/designs/T-NNN/`.
-- Headless runs can Read other repos (incl. images) but `cp` from them, `node --check` and headless Chrome need approval (blocked); copy real assets at execution or ask the owner.
-- Pulse look/rules: TimeMaster `docs/design-system.md`, `docs/tone-of-voice.md`, mockups `.lead/designs/T-007/` (d5 Exact, d8 Reaction, shared/pulse.css); Outfit font at `.lead/designs/T-019/img/outfit.ttf`; icon `app/src/main/res/drawable/new_app_logo.png`; old Play shots `.lead/attachments/T-019/before-0N.png`.
-- Headless runs: `gh repo create --public` (even with the gurrulabs-oss GH_TOKEN) is denied by the auto-mode classifier ("Create Public Surface"); the owner creates repos, or must explicitly allow it.
-- Production is https://gurrulabs.pages.dev (Cloudflare Pages, Git integration on `main`); before the first merge it returns 404 (repo `main` had no index.html, 2026-11-05).
-- Search Console verification file `google48eac797f8133411.html` lives at repo root: never delete or rename it.
-- Deploy (2026-11-05): hub `deploy` block `cloudflare-pages`; Merge and deploy pushes, waits for the "Cloudflare Pages" check run, smoke-checks, auto-rolls back. Details `docs/deploy.md`.
-- Cloudflare publishes `dist/` from `build.sh` (not the repo root). A new top-level internal file/folder must be added to `build.sh`'s exclude list or it goes live; check with `curl -s -o /dev/null -w '%{http_code}' https://gurrulabs.pages.dev/<path>` → 404.
+## Git, hosting, deploy
+- `gh` is logged in as `undimonkey` (MonkeyTaps/work side). This repo belongs to `gurrulabs-oss` (owner, 2026-11-04): never create repos or push with `undimonkey`. `origin` = `https://gurrulabs-oss@github.com/gurrulabs-oss/gurrulabs_websites`; the username in the URL makes git use the `gurrulabs-oss` token in the macOS keychain, for this repo only. For `gh` commands use `GH_TOKEN=<that token>` per command; never `gh auth switch`/`login` (changes every project).
+- Headless runs: `gh repo create --public` (even with the gurrulabs-oss token) is denied by the auto-mode classifier; the owner creates repos or must explicitly allow it.
+- Production is https://gurrulabs.pages.dev (Cloudflare Pages, Git integration on `main`). Deploy: hub `deploy` block `cloudflare-pages`; Merge and deploy pushes, waits for the "Cloudflare Pages" check run, smoke-checks, auto-rolls back. Details `docs/deploy.md`.
+- After any merge check `git log origin/main..main` is empty and the changed pages load on gurrulabs.pages.dev (a ticket once showed "Merged into main" with `main` never pushed); if not, tell Unai.
+- Cloudflare publishes `dist/` from `build.sh`, not the repo root. A new top-level internal file/folder must be added to `build.sh`'s exclude case or it goes live; check `curl -s -o /dev/null -w '%{http_code}' https://gurrulabs.pages.dev/<path>` → 404.
 - `404.html` gives real 404s; without it every path is 200 with the home page. `/foo.html` 308s to `/foo`. Verify pages by status code, not just "it loads".
-- T-002 (2026-11-05): `cp` from other repos, `curl` downloads and headless Chrome all worked in an execute run; screenshots/interaction via CDP (`--remote-debugging-port`, Node's global WebSocket) on localhost.
-- Pages are generated: edit copy in `scripts/build.mjs`, rerun it, then `node scripts/validate.mjs`. Output must stay byte-identical on rerun.
+- Never delete or rename root verification files: `google48eac797f8133411.html` (Search Console) and `4b17cdc9ad4f7fc753c24b7ffb7504fe.txt` (IndexNow key; Bing/Yandex).
+- Cloudflare Pages previews are `<hash>.<project>.pages.dev`: the Mixpanel gate must match the exact production host (`gurrulabs.pages.dev`, see `script.js`), not `*.pages.dev`.
+
+## Build and content rules
+- Pages are generated: edit copy in `scripts/build.mjs` (`CONTENT`, `APP` via `appPage()`), rerun it, then `node scripts/validate.mjs`. Output must stay byte-identical on rerun.
+- Rule: any new/changed page follows `docs/seo-strategy.md`, regenerates via `node scripts/build.mjs`, has real checked sources, and passes `node scripts/validate.mjs`; otherwise the ticket is not done.
+- Page list lives only in `scripts/pages.mjs` (build + validate import it). URLs are translated slugs; `data-page` (the page's `dataPage`) is the stable English id and gives the view event name in `script.js`.
+- Game panel `<div class="game" id="game" data-mode="react|exact" data-solo>` starts in that mode with no tabs.
 - Grid children with fixed width (e.g. the 384px `.game`) need `minmax(0, 1fr)` columns or they overflow at 390 px.
+- `script.js` `PLAY_SEL` skips `.sources a`; any Play link outside `.sources` gets UTM + click event. Validator bans free/no ads/F1 (Pulse wording); pages with `listing: true` only ban cure/eliminate/F1.
+- Lull: no Android app yet (POC only); its Lead's wording rules forbid "cure"/"eliminate" tinnitus. `LULL_BANNED` in `validate.mjs` misses cause/therapy phrasing: review by hand. Sign-up mailto clicks fire `Gurrulabs Web - Signup Clicked`.
+- Mixpanel: event prefix `Gurrulabs Web - `, persistence localStorage; raffyparenting.com links get `gl_mp_id` at click.
+
+## Sources and assets
+- Source checks: doi.org/Wiley/APA/ScienceDirect return 403 to plain curl (200 with browser UA); JAMA/Cochrane via doi.org 403 even with UA, so verify through PubMed abstracts: `efetch.fcgi?db=pubmed&id=<pmid>&rettype=abstract&retmode=text` (200). PubMed web returns 203; World Athletics rules PDF 404s on HEAD but 200 on GET (use GET + UA). Verified figures: `.lead/attachments/T-007/sources.md` in the main project folder. World Athletics TR 16.6 (0.100 s) confirmed, 2026 PDF p.108 (render PDF pages with a PDFKit swift script; no poppler).
 - Google Play badges: `https://play.google.com/intl/en_us/badges/static/images/badges/<en|es|fr|pt-br>_badge_web_generic.png` (646x250, padding); crop `sips -c 198 594` keeps the rounded border.
-- In execute runs the hub installs `.lead/pending-claude/` into the worktree's `.claude/` without committing (runner.mjs installPendingClaude).
-- T-002 (2026-11-05): ticket showed Done/"Merged into main" but `main` was never pushed (origin/main 4 behind), so nothing deployed. After any merge, check `git log origin/main..main` is empty and the changed pages load on gurrulabs.pages.dev; if not, tell Unai.
-- Design runs (2026-11-05, T-008): `node <script>`, `sed`/`cd && …` chains and `cp -R` need approval; plain `cp a b dir/` and `mkdir -p` work. Build mockups by `cp` of real files + Edit/Write.
-- T-006: view event name derives from `<body data-page>` slug in `script.js` (the page's `dataPage` in `scripts/pages.mjs`).
-- T-008 (2026-11-05): headless Chrome + CDP worked again; quick game test = click [data-a=start], wait, click [data-a=stop], read #game innerText.
-- Design runs (2026-11-05, T-007): headless Chrome `--screenshot` of `file://` mockups works without approval; starting `python3 -m http.server` (background) needs approval, so real-page Before shots (absolute `/assets/` paths) wait for execution. Chrome headless renders ≥~500 px wide: check 390 px via the mockup iframes, not `--window-size=390`.
-- T-007 rule: any new/changed page follows `docs/seo-strategy.md`, regenerates via `node scripts/build.mjs`, has real checked sources, and passes `node scripts/validate.mjs`; otherwise the ticket is not done.
-- T-007: page list lives only in `scripts/pages.mjs` (build + validate import it); copy/sources in `build.mjs` `CONTENT`. URLs are translated slugs; `data-page` is the stable English id.
-- T-007: game panel `<div class="game" id="game" data-mode="react|exact" data-solo>` starts in that mode with no tabs.
-- T-007 sources: doi.org/Wiley/APA/ScienceDirect return 403 to plain curl (200 with a browser User-Agent); PubMed returns 203; World Athletics rules PDF 404s on HEAD but 200 on GET. Check sources with GET + browser UA. Verified figures: `.lead/attachments/T-007/sources.md` in the main project folder. World Athletics TR 16.6 (0.100 s) confirmed by eye, 2026 PDF printed p.108 (render PDF pages with a PDFKit swift script; no poppler).
-- IndexNow key file `4b17cdc9ad4f7fc753c24b7ffb7504fe.txt` at root: never delete/rename (Bing/Yandex verify it).
-- Design runs (2026-11-05, T-010): WebSearch needs approval (denied); headless Chrome screenshot of file:// works only as a single command (no chained ls).
-- Design runs (T-004): `cp` from other repos needs approval and WebFetch of Play is denied; mockups reference app art via absolute `file:///` paths (renders in headless Chrome, fonts too). Headless screenshot needs `--headless --virtual-time-budget=3000` (`--headless=new` hung).
-- App assets: Cyberpunk Detective case art `~/AndroidStudioProjects/miniaicrimes/app/src/main/res/drawable/` (selene_1 is .jpeg), font `res/font/orbitron_bold.ttf`, no Play shots/listing text in repo. Lull fonts `lull/app/src/main/res/font/`, latest dark shots `lull/.lead/attachments/T-015/*-after-dark.png`; `T-011/icon-after.png` is a sheet of variants, not an icon.
-- T-014: Mixpanel uses persistence localStorage; raffyparenting.com links get gl_mp_id at click. Quick no-network check: vm self-check with stubbed window.mixpanel (__SV set skips CDN bootstrap).
-- T-010: Play details/search pages are readable with `curl -sL -A "<desktop Chrome UA>" ...&hl=en_US&gl=US` (labels "Contains ads"/"In-app purchases" in HTML; description in `data-g-id="description"`). Pulse's live listing ≠ repo listing (live: "Contains ads", 4 modes, no account/offline text).
-- T-010: `script.js` PLAY_SEL skips `.sources a`; any Play link outside `.sources` gets UTM + click event. Validator bans free/no ads/F1 (Pulse wording); pages with `listing: true` only ban cure/eliminate/F1.
-- T-010: element screenshots via CDP script (setDeviceMetricsOverride 390 mobile, scrollIntoView, captureScreenshot clip) worked; main branch served from the project folder on a 2nd port for Before shots.
-- T-004: Play listing HTML is fetchable with curl + browser UA (200, all hl=); screenshots are `<img alt="Screenshot image" src="https://play-lh.googleusercontent.com/<id>=...">`, download with `=w1080`.
-- T-004: JAMA/Cochrane via doi.org 403 even with browser UA (bot wall); verify figures through PubMed abstracts with NCBI E-utilities `efetch.fcgi?db=pubmed&id=<pmid>&rettype=abstract&retmode=text` (200).
-- T-004: app pages render via `appPage()` + `APP` copy in build.mjs; Lull sign-up mailto clicks fire `Gurrulabs Web - Signup Clicked` (script.js). Lull wording checks live in validate.mjs (LULL_BANNED) but miss cause/therapy phrasing; review by hand.
-- 390 px shots: wrap the page in a file:// HTML with `<iframe style="width:390px;height:3600px">` pointing at localhost, screenshot at --window-size=390,3600.
-- Ask-lead: only one question at a time per ticket ("already waiting for another Lead"); run them sequentially.
-- T-013: `.lead/scratch` in the worktree is a symlink to the MAIN project folder: relative paths from it (`../../script.js`) read main, not the branch, and writes there are outside allowed dirs. Put scratch files in `/tmp/<ticket>/`.
-- T-013: fake-tracker check = CDP `Fetch.requestPaused` serving a copy of script.js with `let tracking = true`, plus `addScriptToEvaluateOnNewDocument` setting `window.mixpanel={__SV:1,track:...}` and a window click preventDefault; headless Chrome needs ~2-5 s before the CDP port answers (poll /json).
+- Play listings: details/search pages are fetchable with `curl -sL -A "<desktop Chrome UA>" ...&hl=en_US&gl=US` (200, all hl=). "Contains ads"/"In-app purchases" are in the HTML, description in `data-g-id="description"`, screenshots `<img alt="Screenshot image" src="https://play-lh.googleusercontent.com/<id>=...">` (download with `=w1080`). Pulse's live listing differs from the repo listing (live: "Contains ads", 4 modes, no account/offline text).
+- Pulse look/rules: `~/AndroidStudioProjects/TimeMaster` `docs/design-system.md`, `docs/tone-of-voice.md`, mockups `.lead/designs/T-007/` (d5 Exact, d8 Reaction, shared/pulse.css); Outfit font `.lead/designs/T-019/img/outfit.ttf`; icon `app/src/main/res/drawable/new_app_logo.png`; old Play shots `.lead/attachments/T-019/before-0N.png`.
+- Cyberpunk Detective: case art `~/AndroidStudioProjects/miniaicrimes/app/src/main/res/drawable/` (selene_1 is .jpeg), font `res/font/orbitron_bold.ttf`; no Play shots/listing text in repo.
+- Lull (`~/Desktop/Personal/lull`): fonts `app/src/main/res/font/`, latest dark shots `.lead/attachments/T-015/*-after-dark.png`; `T-011/icon-after.png` is a sheet of variants, not an icon.
+
+## Environment and runs
+- Local tools: Node v25, Python 3.14, `npx`, `gh`; `wrangler` is NOT installed (use `npx wrangler`).
+- `python3 -m http.server <port>` from repo root serves the site. Port 8123 may be taken by a stale Raffy Web server.
+- `.lead/attachments/`, `.lead/designs/`, `.lead/scratch/` are gitignored; mockups go in `.lead/designs/T-NNN/`. In worktrees `.lead/scratch` is a symlink to the MAIN project folder (relative paths read main, writes are outside allowed dirs): put scratch files in `/tmp/<ticket>/`.
+- Related Leads can only be asked during ticket runs: `node <hub>/scripts/ask-lead.mjs <project-id> "<q>"`, one question at a time per ticket ("already waiting for another Lead"), run sequentially.
+- Execute runs: the hub installs `.lead/pending-claude/` into the worktree's `.claude/` without committing. `cp` from other repos, `curl` downloads and headless Chrome worked in execute runs (once `node --check`/Chrome were blocked, so copy real assets at execution or ask the owner).
+- Design runs: `node <script>`, `sed`, `cd && …` chains and `cp -R` need approval; plain `cp a b dir/` and `mkdir -p` work; background `python3 -m http.server`, WebSearch, WebFetch of Play and `cp` from other repos need approval/denied. Build mockups by `cp` of real files + Edit/Write; reference app art via absolute `file:///` paths (fonts too); real-page Before shots wait for execution or serve main from the project folder on a 2nd port.
+- Headless Chrome: `--headless --virtual-time-budget=3000` (`--headless=new` hung); `file://` screenshot works as a single command (no chained ls); renders ≥~500 px wide, so check 390 px with a file:// HTML wrapping `<iframe style="width:390px;height:3600px">` pointing at localhost, screenshot at `--window-size=390,3600`. Element shots/interaction via CDP (`--remote-debugging-port`, Node's global WebSocket; poll /json, port answers after ~2-5 s): `setDeviceMetricsOverride` 390 mobile, scrollIntoView, `captureScreenshot` clip. Quick game test: click `[data-a=start]`, wait, click `[data-a=stop]`, read `#game` innerText.
+- Mixpanel check without network: CDP `Fetch.requestPaused` serving a script.js copy with `let tracking = true` + `addScriptToEvaluateOnNewDocument` setting `window.mixpanel={__SV:1,track:...}` (`__SV` skips the CDN bootstrap) and a window click preventDefault; or a vm self-check with stubbed `window.mixpanel`.
