@@ -7,7 +7,7 @@ site per app. Each app page exists to send visitors to Google Play. It can also 
 "developer website".
 
 ## Production URL
-https://gurrulabs.pages.dev (Cloudflare Pages; previews `<hash>.gurrulabs.pages.dev` never track). Setup: `deploy.md`.
+https://www.gurrulabs.com (GitHub Pages; `gurrulabs.com` redirects to `www`). Setup: `deploy.md`.
 
 ## Apps at launch (decided 2026-11-04)
 | App | Package | State | Hub project / repo | Site role |
@@ -49,7 +49,7 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
   code, modes/results/zones as English keys, never visible text. Only Mixpanel's automatic `$current_url` is the real URL.
 - A new page declares only `<body data-page="<slug>" data-locale="<locale>">`, loads `/script.js` and gives every
   Play link `data-cta` + `data-app`; `scripts/validate.mjs` fails it otherwise. `utm_campaign` = the same slug.
-- Search: Google Search Console, URL-prefix property `https://gurrulabs.pages.dev/` verified by `google48eac797f8133411.html`
+- Search: Google Search Console, URL-prefix property `https://www.gurrulabs.com/` verified by `google48eac797f8133411.html`
   at the repo root (never delete it); sitemap submitted once `sitemap.xml` is live.
 
 ## Copy rules

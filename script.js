@@ -5,11 +5,11 @@
   const LOCALE = document.body.dataset.locale;  // en | es | fr | pt
 
   // ── Mixpanel: public token of the shared "Gurru Labs websites" project, EU host. Production hostname only:
-  //    localhost, file:// and Cloudflare preview URLs (<hash>.gurrulabs.pages.dev) must not send events.
+  //    localhost, file:// and any other host (forks, the bare apex before its redirect) must not send events.
   const MIXPANEL_TOKEN = '20a6baa8d266700297f9b0b16efc0a13';
   let tracking = false;
   function initMixpanel() {
-    if (location.hostname !== 'gurrulabs.pages.dev') return;
+    if (location.hostname !== 'www.gurrulabs.com') return;
     (function mixpanelBootstrap(documentRef, mixpanelRef) {
       if (mixpanelRef.__SV) return;
       let script, firstScript, index;

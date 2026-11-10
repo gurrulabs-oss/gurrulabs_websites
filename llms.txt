@@ -4,26 +4,26 @@
 
 ## Studio
 
-- [Gurrulabs](https://gurrulabs.pages.dev/en/): Studio home: the four apps and where to get each one.
+- [Gurrulabs](https://www.gurrulabs.com/en/): Studio home: the four apps and where to get each one.
 
 ## Pulse
 
-- [Pulse](https://gurrulabs.pages.dev/en/pulse/): Android game with 5 modes: Exact Time, Hidden Clock, Interval, Reaction, Batak. No account, works offline. Includes a browser version of two modes.
-- [Reaction time test](https://gurrulabs.pages.dev/en/pulse/reaction-time-test/): Browser reaction time test: tap when the lights go out; the result is in seconds (perfect up to 0.30 s, pass under 0.40 s).
-- [3 second challenge](https://gurrulabs.pages.dev/en/pulse/3-second-challenge/): Browser game: stop a stopwatch at exactly 3.00 s (pass window ±0.10 s).
-- [Average reaction time by age](https://gurrulabs.pages.dev/en/pulse/average-reaction-time-by-age/): Guide: average simple reaction time by age group, 18 to 65 (Woods et al. 2015, Table 2), what changes it, with sources.
-- [Best reaction time apps for Android](https://gurrulabs.pages.dev/en/pulse/best-reaction-time-apps/): Comparison: 5 reaction time apps for Android (Pulse, Reaction training, Reaction Time, Lumosity, Peak) on price, ads, modes, account and offline use, from their Google Play listings checked 2026-11-06. Gurrulabs makes Pulse.
+- [Pulse](https://www.gurrulabs.com/en/pulse/): Android game with 5 modes: Exact Time, Hidden Clock, Interval, Reaction, Batak. No account, works offline. Includes a browser version of two modes.
+- [Reaction time test](https://www.gurrulabs.com/en/pulse/reaction-time-test/): Browser reaction time test: tap when the lights go out; the result is in seconds (perfect up to 0.30 s, pass under 0.40 s).
+- [3 second challenge](https://www.gurrulabs.com/en/pulse/3-second-challenge/): Browser game: stop a stopwatch at exactly 3.00 s (pass window ±0.10 s).
+- [Average reaction time by age](https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/): Guide: average simple reaction time by age group, 18 to 65 (Woods et al. 2015, Table 2), what changes it, with sources.
+- [Best reaction time apps for Android](https://www.gurrulabs.com/en/pulse/best-reaction-time-apps/): Comparison: 5 reaction time apps for Android (Pulse, Reaction training, Reaction Time, Lumosity, Peak) on price, ads, modes, account and offline use, from their Google Play listings checked 2026-11-06. Gurrulabs makes Pulse.
 - [Pulse on Google Play](https://play.google.com/store/apps/details?id=com.gurrulabs.pulse): Android download page.
 
 ## Other apps
 
 - [Raffy](https://raffyparenting.com/): baby tracker for feeds, sleep and growth, with WHO charts.
-- [Cyberpunk Detective](https://gurrulabs.pages.dev/en/cyberpunk-detective/): Free Android game on Google Play (ads, no in-app purchases, no account) mixing 3 detective cases you solve and 3 audio crime stories you listen to; cases work offline; game text in English, Spanish and French.
-- [Lull](https://gurrulabs.pages.dev/en/lull/): Coming-soon Android wellness app (not a medical device) with sleep sounds tuned to your pitch and a 15-second daily check-in for people with tinnitus. Not on Google Play yet; email sign-up.
+- [Cyberpunk Detective](https://www.gurrulabs.com/en/cyberpunk-detective/): Free Android game on Google Play (ads, no in-app purchases, no account) mixing 3 detective cases you solve and 3 audio crime stories you listen to; cases work offline; game text in English, Spanish and French.
+- [Lull](https://www.gurrulabs.com/en/lull/): Coming-soon Android wellness app (not a medical device) with sleep sounds tuned to your pitch and a 15-second daily check-in for people with tinnitus. Not on Google Play yet; email sign-up.
 - [Cyberpunk Detective on Google Play](https://play.google.com/store/apps/details?id=com.gurrulabs.miniaicrimes): Android download page.
 
 ## Optional
 
-- [Español](https://gurrulabs.pages.dev/es/): studio home in Español.
-- [Français](https://gurrulabs.pages.dev/fr/): studio home in Français.
-- [Português](https://gurrulabs.pages.dev/pt/): studio home in Português.
+- [Español](https://www.gurrulabs.com/es/): studio home in Español.
+- [Français](https://www.gurrulabs.com/fr/): studio home in Français.
+- [Português](https://www.gurrulabs.com/pt/): studio home in Português.

@@ -1039,7 +1039,7 @@ const answerBlock = ([q, a]) => `<div class="answer"><b>${q}</b> ${a}</div>`;
 
 function appPage(loc, p) {
   const t = T[loc], a = APP[p.id][loc], lull = p.id === 'lull', links = id => path(loc, byId[id]);
-  const mail = lull && `mailto:${LULL_MAIL}?subject=${encodeURIComponent(a.subject)}&amp;body=${encodeURIComponent(`${a.mail[0]}\n\n${a.mail[1]}\n(${a.mail[2]} gurrulabs.pages.dev${path(loc, p)})`)}`;
+  const mail = lull && `mailto:${LULL_MAIL}?subject=${encodeURIComponent(a.subject)}&amp;body=${encodeURIComponent(`${a.mail[0]}\n\n${a.mail[1]}\n(${a.mail[2]} www.gurrulabs.com${path(loc, p)})`)}`;
   const cta = k => lull ? `<a class="btn" href="${mail}" data-cta="lull_${k}" data-app="lull">${a.btn}</a>` : play(loc, 'cyberpunk_detective', k);
   const hero = `<section class="p-hero">
     <div class="txt">
