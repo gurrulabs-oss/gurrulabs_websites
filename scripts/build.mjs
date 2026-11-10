@@ -860,8 +860,8 @@ const SYM = {
 };
 const ic = id => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${SYM[id]}</svg>`;
 const img = (name, alt = '') => `<img src="/assets/${name}-icon.webp" width="256" height="256" alt="${alt}">`;
-// Lull has no icon file yet: drawn mark in its colours
-const LULL_ICON = '<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#17121A"/><circle cx="32" cy="32" r="18" fill="none" stroke="#C9B6E4" stroke-opacity=".35" stroke-width="2"/><circle cx="32" cy="32" r="12" fill="none" stroke="#C9B6E4" stroke-opacity=".65" stroke-width="2"/><circle cx="32" cy="32" r="6" fill="#F0B48A"/></svg>';
+// Lull's real launcher icon (lull repo ic_launcher_foreground.xml, bg #17121A), cropped to the safe zone; same geometry as assets/lull-favicon.svg but thinner rings
+const LULL_ICON = '<svg viewBox="20 20 68 68" aria-hidden="true"><rect x="20" y="20" width="68" height="68" rx="12" fill="#17121A"/><circle cx="54" cy="54" r="29" fill="none" stroke="#F0B48A" stroke-opacity=".45" stroke-width="2"/><circle cx="54" cy="54" r="20" fill="none" stroke="#F0B48A" stroke-opacity=".7" stroke-width="2"/><circle cx="54" cy="54" r="10" fill="#F0B48A"/></svg>';
 const ICON = { pulse: img('pulse'), raffy: img('raffy'), cyber: img('cyberpunk'), lull: LULL_ICON };
 
 // ── Helpers
@@ -881,7 +881,7 @@ const APP_LD = { // MobileApplication facts per app page (Lull: no url, no offer
 };
 function schema(loc, p) {
   const t = T[loc], c = CONTENT[p.id]?.[loc], me = url(loc, p);
-  const org = { '@type': 'Organization', name: 'Gurrulabs', url: url(loc, byId.home) };
+  const org = { '@type': 'Organization', name: 'Gurrulabs', url: url(loc, byId.home), logo: `${SITE}/assets/gurrulabs-logo-512.png` };
   const out = [];
   if (p.type === 'home') out.push({ ...org, email: 'gurrulabs@gmail.com' });
   if (p.type === 'app') { const { name, applicationCategory, url: u, offers } = APP_LD[p.id]; out.push({ '@type': 'MobileApplication', name, operatingSystem: 'Android', applicationCategory, url: u, offers, inLanguage: HREFLANG[loc] }); }
@@ -896,6 +896,12 @@ function schema(loc, p) {
   return out;
 }
 
+const FAVICON = {
+  studio: '<link rel="icon" href="/favicon.ico" sizes="32x32">\n<link rel="icon" type="image/png" href="/assets/favicon-32.png">',
+  pulse: '<link rel="icon" type="image/webp" href="/assets/pulse-icon.webp">',
+  'cyberpunk-detective': '<link rel="icon" type="image/webp" href="/assets/cyberpunk-icon.webp">',
+  lull: '<link rel="icon" type="image/svg+xml" href="/assets/lull-favicon.svg">',
+};
 function head(loc, p) {
   const { title, desc } = meta(loc, p);
   const image = OG_IMAGE[p.app] ? `${SITE}/assets/${OG_IMAGE[p.app]}.webp` : '';
@@ -916,6 +922,8 @@ ${alternates(p)}
 <meta property="og:site_name" content="Gurrulabs">${image ? `\n<meta property="og:image" content="${image}">` : ''}
 <link rel="preload" href="/assets/outfit.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/styles.css">
+${FAVICON[p.app] || FAVICON.studio}
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 ${schema(loc, p).map(jsonLd).join('\n')}
 ${PAGE_IDS}
 <script src="/script.js" defer></script>
@@ -925,9 +933,12 @@ ${PAGE_IDS}
 function header(loc, p, t) {
   const home = p.type === 'home';
   const [backHref, backName] = p.app && p.type !== 'app' ? [path(loc, byId.pulse), 'Pulse'] : [`/${loc}/`, t.back]; // content pages go back to their app
+  const gf = alt => `<img src="/assets/gurrulabs-giraffe.webp" width="200" height="204" alt="${alt}">`;
   const left = home
-    ? `<a class="brand" href="/${loc}/"><span class="dot"></span>gurrulabs</a>`
-    : `<a class="crumb" href="${backHref}">${ic('back')}<span class="brand" style="font-size:18px"><span class="dot"></span>${backName}</span></a>`;
+    ? `<a class="brand" href="/${loc}/">${gf('')}<img src="/assets/gurrulabs-wordmark.webp" width="255" height="68" alt="Gurrulabs"></a>`
+    : p.type === 'app'
+      ? `<a class="crumb" href="/${loc}/">${ic('back')}${gf('Gurrulabs')}</a>`
+      : `<a class="crumb" href="${backHref}">${ic('back')}<span class="aic">${ICON.pulse}</span><b>${backName}</b></a>`;
   const nav = home ? `<nav class="hnav"><a href="#apps">${t.apps_h}</a><a href="#about">${t.about_h}</a></nav>` : '';
   const langs = LOCALES.map(l => `<a${l === loc ? ' class="on" aria-current="true"' : ''} href="${path(l, p)}" hreflang="${HREFLANG[l]}" lang="${HREFLANG[l]}">${l.toUpperCase()}</a>`).join('');
   return `<header class="wrap top">${left}${nav}<nav class="langs" aria-label="Language">${langs}</nav></header>`;
@@ -1177,6 +1188,8 @@ const rootPage = `<!doctype html>
 <meta name="description" content="${esc(T.en.home_desc)}">
 <link rel="canonical" href="${url('en', byId.home)}">
 ${alternates(byId.home)}
+${FAVICON.studio}
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <script>var l = (navigator.language || 'en').slice(0, 2).toLowerCase(); location.replace('/' + (['es', 'fr', 'pt'].indexOf(l) > -1 ? l : 'en') + '/');</script>
 </head>
 <body>
