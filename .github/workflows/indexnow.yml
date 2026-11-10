@@ -1,6 +1,6 @@
 name: IndexNow ping
 
-# After each push to main, wait until Cloudflare Pages has published that commit, then submit the changed page URLs.
+# After each push to main, wait until GitHub Pages has published that commit, then submit the changed sitemap URLs.
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: read
-  checks: read
+  pages: read
 
 concurrency:
   group: indexnow
@@ -21,28 +21,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Wait for the Cloudflare Pages deploy of this commit
+      - name: Wait for GitHub Pages build of this commit
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           SHA: ${{ github.sha }}
         run: |
           for i in $(seq 1 90); do
-            read -r status conclusion <<< "$(gh api "repos/$REPO/commits/$SHA/check-runs" --jq '[.check_runs[] | select(.name == "Cloudflare Pages")] | (last // {}) | "\(.status // "none") \(.conclusion // "none")"' || echo "unknown none")"
-            echo "Cloudflare Pages: status=$status conclusion=$conclusion"
-            if [ "$status" = "completed" ] && [ "$conclusion" = "success" ]; then exit 0; fi
-            if [ "$status" = "completed" ]; then echo "::error::Cloudflare Pages deploy ended with $conclusion; nothing sent"; exit 1; fi
+            read -r commit status <<< "$(gh api "repos/$REPO/pages/builds/latest" --jq '.commit + " " + .status' || echo "- unknown")"
+            echo "latest build: commit=$commit status=$status"
+            if [ "$commit" = "$SHA" ] && [ "$status" = "built" ]; then exit 0; fi
+            if [ "$commit" = "$SHA" ] && [ "$status" = "errored" ]; then echo "::error::Pages build errored"; exit 1; fi
             sleep 20
           done
-          echo "::error::Cloudflare Pages did not finish $SHA within 30 minutes; nothing sent. Re-run this job once the site is live."
+          echo "::error::Pages did not publish $SHA within 30 minutes; nothing sent. Re-run this job once the site is live."
           exit 1
 
       - name: Submit changed URLs to IndexNow
-        run: node scripts/indexnow.mjs --changed ${{ github.event.before }}
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "::notice::No previous commit (new branch); skipping IndexNow."
+            exit 0
+          fi
+          node scripts/indexnow.mjs --changed "$BEFORE"

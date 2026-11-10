@@ -31,8 +31,8 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
   alternates), `robots.txt` (all search and AI bots explicitly allowed, incl. training bots, decided Q3),
   `llms.txt` (llmstxt.org format, facts only, never "recommend X" instructions) and JSON-LD.
 - Bump a page's `modified` only when its text changes; that keeps sitemap dates honest and stable between runs.
-- IndexNow: key file `<key>.txt` at the root; `.github/workflows/indexnow.yml` waits for the "Cloudflare Pages"
-  check after each push to `main`, then `scripts/indexnow.mjs --changed <previous sha>` submits only the pages whose
+- IndexNow: key file `<key>.txt` at the root; `.github/workflows/indexnow.yml` waits for the GitHub Pages
+  build of each push to `main`, then `scripts/indexnow.mjs --changed <previous sha>` submits only the pages whose
   HTML changed. Dry run: `node scripts/indexnow.mjs --dry-run`.
 - `node scripts/validate.mjs` must print `validate: OK`; it fails on a missing locale, broken hreflang, a page
   missing from sitemap/llms.txt (or a stale entry), duplicate titles, bad JSON-LD, missing sources/date, broken
@@ -61,7 +61,7 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 
 ## AI-presence baseline (run monthly)
 Fresh logged-out session per assistant, web search on, no memory. Paste the prompt verbatim; record `Y/N`
-mentioned and the cited gurrulabs.pages.dev or Play URL (or `-`). Put the run date above the table.
+mentioned and the cited gurrulabs.com or Play URL (or `-`). Put the run date above the table.
 
 | # | Prompt | ChatGPT | Gemini | Claude | Perplexity | Copilot |
 |---|---|---|---|---|---|---|
@@ -76,5 +76,5 @@ mentioned and the cited gurrulabs.pages.dev or Play URL (or `-`). Put the run da
 | pt1 | teste de tempo de reação | | | | | |
 
 ## Manual steps (owner, once)
-Google Search Console: submit `https://gurrulabs.pages.dev/sitemap.xml`. Bing Webmaster Tools: import the site
+Google Search Console: submit `https://www.gurrulabs.com/sitemap.xml`. Bing Webmaster Tools: import the site
 from Search Console (covers Copilot). After the first deploy, check the IndexNow GitHub Actions run succeeded.

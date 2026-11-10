@@ -1,0 +1,9 @@
+# GitHub Pages (Jekyll) publishes the repo root of `main`. Keep agent notes, docs and scripts off the live site.
+# Dot-folders (.lead/, .claude/, .github/) are never published. Add any new top-level internal file here.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - docs/
+  - scripts/
+  - node_modules/
+  - dist/

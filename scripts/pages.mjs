@@ -10,7 +10,7 @@
 //   listing   optional: the page quotes Play listings (price/ads labels), so the validator allows "free"/"no ads" words there
 //   llms      optional EN one-liner for /llms.txt (facts only). llms.txt lists the EN URL of every page; the validator
 //             treats a page as "in llms.txt" when its EN URL is listed (locale roots are listed under Optional).
-export const SITE = 'https://gurrulabs.pages.dev';
+export const SITE = 'https://www.gurrulabs.com';
 export const LOCALES = ['en', 'es', 'fr', 'pt'];
 export const HREFLANG = { en: 'en', es: 'es', fr: 'fr', pt: 'pt-BR' };
 

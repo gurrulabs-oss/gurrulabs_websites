@@ -5,12 +5,12 @@ Facts learned while working. One line each. Newest at the bottom. Trim via a "Re
 ## Git, hosting, deploy
 - `gh` is logged in as `undimonkey` (MonkeyTaps/work side). This repo belongs to `gurrulabs-oss` (owner, 2026-11-04): never create repos or push with `undimonkey`. `origin` = `https://gurrulabs-oss@github.com/gurrulabs-oss/gurrulabs_websites`; the username in the URL makes git use the `gurrulabs-oss` token in the macOS keychain, for this repo only. For `gh` commands use `GH_TOKEN=<that token>` per command; never `gh auth switch`/`login` (changes every project).
 - Headless runs: `gh repo create --public` (even with the gurrulabs-oss token) is denied by the auto-mode classifier; the owner creates repos or must explicitly allow it.
-- Production is https://gurrulabs.pages.dev (Cloudflare Pages, Git integration on `main`). Deploy: hub `deploy` block `cloudflare-pages`; Merge and deploy pushes, waits for the "Cloudflare Pages" check run, smoke-checks, auto-rolls back. Details `docs/deploy.md`.
-- After any merge check `git log origin/main..main` is empty and the changed pages load on gurrulabs.pages.dev (a ticket once showed "Merged into main" with `main` never pushed); if not, tell Unai.
-- Cloudflare publishes `dist/` from `build.sh`, not the repo root. A new top-level internal file/folder must be added to `build.sh`'s exclude case or it goes live; check `curl -s -o /dev/null -w '%{http_code}' https://gurrulabs.pages.dev/<path>` → 404.
-- `404.html` gives real 404s; without it every path is 200 with the home page. `/foo.html` 308s to `/foo`. Verify pages by status code, not just "it loads".
+- Production is https://www.gurrulabs.com (GitHub Pages from the root of `main`, since 2026-11-10; was Cloudflare `gurrulabs.pages.dev`). Deploy: hub `deploy` block `github-pages`; Merge and deploy pushes, waits for the Pages build, smoke-checks, auto-rolls back. Details `docs/deploy.md`.
+- After any merge check `git log origin/main..main` is empty and the changed pages load on www.gurrulabs.com (a ticket once showed "Merged into main" with `main` never pushed); if not, tell Unai.
+- GitHub Pages publishes the repo root minus dot-folders and `_config.yml`'s `exclude:`. A new top-level internal file/folder must be added there or it goes live; check `curl -s -o /dev/null -w '%{http_code}' https://www.gurrulabs.com/<path>` → 404.
+- `404.html` gives real 404s; without it every path is 200 with the home page. `/foo` and `/foo.html` both serve `foo.html`; link without `.html`. Verify pages by status code, not just "it loads".
 - Never delete or rename root verification files: `google48eac797f8133411.html` (Search Console) and `4b17cdc9ad4f7fc753c24b7ffb7504fe.txt` (IndexNow key; Bing/Yandex).
-- Cloudflare Pages previews are `<hash>.<project>.pages.dev`: the Mixpanel gate must match the exact production host (`gurrulabs.pages.dev`, see `script.js`), not `*.pages.dev`.
+- The Mixpanel gate matches the exact production host `www.gurrulabs.com` (see `script.js`); no previews exist on GitHub Pages.
 
 ## Build and content rules
 - Pages are generated: edit copy in `scripts/build.mjs` (`CONTENT`, `APP` via `appPage()`), rerun it, then `node scripts/validate.mjs`. Output must stay byte-identical on rerun.

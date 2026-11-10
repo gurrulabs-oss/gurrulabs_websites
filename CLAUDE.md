@@ -8,15 +8,16 @@ Launch apps: Pulse, Raffy (card links out to raffyparenting.com), Cyberpunk Dete
 ## Stack
 - Hand-written static HTML/CSS/vanilla JS. No framework, no bundler, no npm dependencies; Node scripts
   (`.mjs`, `node:` built-ins only) only when a page set needs generating or validating.
-- Hosting: Cloudflare Pages project `gurrulabs`, production https://gurrulabs.pages.dev, deployed from
-  `gurrulabs-oss/gurrulabs_websites` on every push to `main` (setup and clicks: `docs/deploy.md`).
+- Hosting: GitHub Pages (like Raffy Web), production https://www.gurrulabs.com (domain at IONOS), published from
+  the root of `main` of `gurrulabs-oss/gurrulabs_websites` on every push (`docs/deploy.md`). `_config.yml` keeps
+  internal files off the site: add any new top-level internal file to its `exclude:` list.
 - Analytics: the shared "Gurru Labs websites" Mixpanel project (EU host), events prefixed `Gurrulabs Web - `,
   tracking only on the production hostname. Installs measured via Play UTM referrer; search via Search Console.
 - Locales: en, es, fr, pt (pt = Brazilian), with hreflang.
 
 ## Commands
-- Build: `sh build.sh` copies the site (everything except dot-folders, `docs/`, `CLAUDE.md`, `README.md`) into
-  `dist/`, which Cloudflare publishes. Agent files must never go live; add new internal files to its exclude list.
+- Build: none. GitHub Pages publishes the repo root; agent files must never go live, so every new top-level
+  internal file goes in `_config.yml` `exclude:` (dot-folders are never published).
 - Generate pages: `node scripts/build.mjs` (all copy lives there; never hand-edit the generated `xx/**/index.html`,
   root `index.html`, `sitemap.xml`, `robots.txt`, `llms.txt`). Validate: `node scripts/validate.mjs` (must print `validate: OK`).
 - Run locally: `python3 -m http.server 8000` from repo root, open `http://localhost:8000/`.
@@ -37,7 +38,7 @@ One folder per locale with one subfolder per app (`/en/`, `/en/pulse/`), shared 
 - Every page is tracked: `<body data-page="<slug>" data-locale="<locale>">` and loads `/script.js`, which fires the view
   event `Gurrulabs Web - <Page>`; every Play link has `data-cta` and `data-app`. Naming: `docs/domain.md` Measurement;
   `scripts/validate.mjs` fails an untracked page.
-- Analytics stay real: no Mixpanel on localhost, `file://` or Cloudflare preview URLs (`<hash>.<project>.pages.dev`);
+- Analytics stay real: no Mixpanel on localhost, `file://` or any host other than `www.gurrulabs.com`;
   gate on the exact production hostname in code. Never fire test events at the shared project.
 - App facts (store texts, screenshots, colours, package ids, claims allowed) come from that app's Lead or repo,
   never invented. In tickets you can ask related Leads (pulse, raffy-app, raffy-web, cyberpunk-detective, lull, ...).
@@ -48,8 +49,8 @@ One folder per locale with one subfolder per app (`/en/`, `/en/pulse/`), shared 
 - Personal project: code lives only under the `gurrulabs-oss` GitHub account. Never push to or create repos
   under `undimonkey`, MonkeyTaps or any work account (the `gh` login on this Mac is `undimonkey`).
 - Never push, never commit to `main`: a push to `main` deploys to production. Work on the branch you were given.
-  Deploys go through the hub: Unai presses **Merge and deploy**, the hub pushes `main`, waits for Cloudflare and
-  checks the pages, rolling back on failure (`docs/deploy.md`). Set `qa: yes/no` as the run prompt asks.
+  Deploys go through the hub: Unai presses **Merge and deploy**, the hub pushes `main`, waits for the GitHub Pages
+  build and checks the pages, rolling back on failure (`docs/deploy.md`). Set `qa: yes/no` as the run prompt asks.
 
 ## Agent infra
 - Agents: `worker` (implements one subtask), `reviewer` (reviews branch diff). Skills: `verify`, `ticket`.

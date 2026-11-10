@@ -13,4 +13,4 @@ User-agent: Google-Extended
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://gurrulabs.pages.dev/sitemap.xml
+Sitemap: https://www.gurrulabs.com/sitemap.xml

@@ -14,3 +14,5 @@ Newest at the bottom. One entry: date, decision, why.
 - 2026-11-04 · GitHub account `gurrulabs-oss`; nothing ever goes to MonkeyTaps/work accounts · personal project, kept apart
   from the owner's job.
 - 2026-11-04 · Same stack as Raffy Web (static, no framework, no npm deps) · proven, zero build, zero cost.
+- 2026-11-10 · Own domain `gurrulabs.com` (IONOS) on GitHub Pages; Cloudflare Pages dropped · same setup as
+  Raffy Web (one host, one deploy path in the hub); canonical host `www.gurrulabs.com`.
