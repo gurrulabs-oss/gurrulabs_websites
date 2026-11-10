@@ -39,6 +39,11 @@ jobs:
             echo "latest build: commit=$commit status=$status"
             if [ "$commit" = "$SHA" ] && [ "$status" = "built" ]; then exit 0; fi
             if [ "$commit" = "$SHA" ] && [ "$status" = "errored" ]; then echo "::error::Pages build errored"; exit 1; fi
+            # A quick later push cancels this commit's build; a built newer commit that contains it publishes it too.
+            if [ "$status" = "built" ] && [ "$commit" != "$SHA" ] && [ "$commit" != "-" ]; then
+              cmp="$(gh api "repos/$REPO/compare/$SHA...$commit" --jq .status || echo unknown)"
+              if [ "$cmp" = "ahead" ]; then echo "published by newer build $commit"; exit 0; fi
+            fi
             sleep 20
           done
           echo "::error::Pages did not publish $SHA within 30 minutes; nothing sent. Re-run this job once the site is live."
