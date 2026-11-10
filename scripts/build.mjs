@@ -21,19 +21,19 @@ const T = {
   en: {
     home_h1: 'Small apps that do <em>one thing</em> well.', kick: 'Independent Android app studio',
     about_big: 'One person. <em>One small problem per app.</em>', close_h: 'Start with three seconds.',
-    close_p: 'Try to stop the clock at exactly 3.00 s, right here in your browser.', raffy_chips: ['Feed · 08:40', 'Sleep · 1h 25m', 'Growth · 6.2 kg'],
+    close_p: 'Try to stop the clock at exactly 3.00 s, right here in your browser.', raffy_chips: ['<b>Nap logged</b> · 1 h 20 min','<b>Weight 7.9 kg</b> · P50 WHO curve'],
     home_p: 'Gurrulabs is a one-person studio making games and tools for Android. Each app has its own page here: see what it does, try it in your browser where you can, then get it on Google Play.',
     see_apps: 'See the apps', apps_h: 'Our apps', apps_p: 'Four apps, four very different jobs.', apps_word: 'Apps',
     cat: ['Game · Reaction time', 'Parenting · Baby tracker', 'Game · Detective mysteries', 'Sleep · Tinnitus'],
-    pulse_page: 'Pulse page',
+    pulse_page: 'View Pulse',
     about_h: 'Who we are', about_p: 'Gurrulabs is one developer designing, building and looking after every app. No big team, no features for their own sake: each app starts from one small problem and stays focused on it.',
     pri: [['Small on purpose', 'One job per app, done properly.'], ['Try it first', 'Where we can, you play or read on the web before you install.'], ['Calm by design', 'No clutter: each app gets out of your way.']],
     pulse_short: 'Stop the clock on the hundredth. Test your reaction time and reflexes.',
     pulse_cta: 'Try it in your browser',
-    raffy_p: 'Log feeds, sleep and growth in seconds, with WHO charts.', raffy_cta: 'Visit raffyparenting.com',
+    raffy_p: 'Log feeds, sleep and growth in seconds, with WHO charts.', raffy_cta: 'View Raffy', ext: 'opens raffyparenting.com',
     cyber_p: 'Solve neon-noir crime cases and catch the culprit.', lull_p: 'Sleep sounds and a daily diary so tinnitus bothers you less.',
     soon: 'Coming soon',
-    cyber_page: 'Cyberpunk Detective page', lull_page: 'Lull page', q_h: 'Questions', more_h: 'More from Gurrulabs',
+    cyber_page: 'View Cyberpunk Detective', lull_page: 'View Lull', q_h: 'Questions', more_h: 'More from Gurrulabs',
     rel: [['All our apps', 'The Gurrulabs studio home'], ['Pulse', 'Test your reaction time in the browser'], ['Cyberpunk Detective', 'Neon-noir mystery game'], ['Lull', 'Calmer nights with tinnitus · coming soon']],
     p_kicker: 'Reaction time challenge', p_h1: 'Stop the clock at exactly 3.00 s', facts: ['No account', 'Works offline'],
     t_exact: 'Exact Time', t_react: 'Reaction', start: 'Start', stop: 'Stop', stop_at: 'Stop at', of: t => `of ${t} s`,
@@ -61,19 +61,19 @@ const T = {
   es: {
     home_h1: 'Apps pequeñas que hacen <em>una cosa</em> bien.', kick: 'Estudio independiente de apps Android',
     about_big: 'Una persona. <em>Un problema pequeño por app.</em>', close_h: 'Empieza con tres segundos.',
-    close_p: 'Intenta parar el reloj en 3.00 s exactos, aquí mismo en el navegador.', raffy_chips: ['Toma · 08:40', 'Sueño · 1 h 25 min', 'Peso · 6,2 kg'],
+    close_p: 'Intenta parar el reloj en 3.00 s exactos, aquí mismo en el navegador.', raffy_chips: ['<b>Siesta registrada</b> · 1 h 20 min','<b>Peso 7,9 kg</b> · P50 curva OMS'],
     home_p: 'Gurrulabs es un estudio de una sola persona que crea juegos y herramientas para Android. Cada app tiene aquí su propia página: mira qué hace, pruébala en el navegador cuando se pueda y descárgala en Google Play.',
     see_apps: 'Ver las apps', apps_h: 'Nuestras apps', apps_p: 'Cuatro apps, cuatro trabajos muy distintos.', apps_word: 'Apps',
     cat: ['Juego · Tiempo de reacción', 'Crianza · Registro del bebé', 'Juego · Misterios de detectives', 'Sueño · Acúfenos'],
-    pulse_page: 'Página de Pulse',
+    pulse_page: 'Ver Pulse',
     about_h: 'Quiénes somos', about_p: 'Gurrulabs es una sola persona que diseña, programa y cuida cada app. Sin un gran equipo ni funciones de relleno: cada app nace de un problema pequeño y se centra en él.',
     pri: [['Pequeñas a propósito', 'Una tarea por app, bien hecha.'], ['Pruébalas antes', 'Cuando se puede, juegas o lees en la web antes de instalar.'], ['Tranquilas por diseño', 'Sin ruido: cada app te deja a lo tuyo.']],
     pulse_short: 'Para el reloj en la centésima. Pon a prueba tu tiempo de reacción y reflejos.',
     pulse_cta: 'Pruébalo en el navegador',
-    raffy_p: 'Registra tomas, sueño y crecimiento en segundos, con curvas OMS.', raffy_cta: 'Visitar raffyparenting.com',
+    raffy_p: 'Registra tomas, sueño y crecimiento en segundos, con curvas OMS.', raffy_cta: 'Ver Raffy', ext: 'abre raffyparenting.com',
     cyber_p: 'Resuelve crímenes en una ciudad de neón y atrapa al culpable.', lull_p: 'Sonidos para dormir y un diario para que el acúfeno moleste menos.',
     soon: 'Próximamente',
-    cyber_page: 'Página de Cyberpunk Detective', lull_page: 'Página de Lull', q_h: 'Preguntas', more_h: 'Más de Gurrulabs',
+    cyber_page: 'Ver Cyberpunk Detective', lull_page: 'Ver Lull', q_h: 'Preguntas', more_h: 'Más de Gurrulabs',
     rel: [['Todas nuestras apps', 'La página principal de Gurrulabs'], ['Pulse', 'Mide tu tiempo de reacción en el navegador'], ['Cyberpunk Detective', 'Juego de misterio neon-noir'], ['Lull', 'Noches más tranquilas con acúfenos · próximamente']],
     p_kicker: 'Reto de tiempo de reacción', p_h1: 'Para el reloj en 3.00 s exactos', facts: ['Sin cuenta', 'Funciona sin conexión'],
     t_exact: 'Exact Time', t_react: 'Reacción', start: 'Iniciar', stop: 'Parar', stop_at: 'Para en', of: t => `de ${t} s`,
@@ -101,19 +101,19 @@ const T = {
   fr: {
     home_h1: 'De petites applis qui font <em>une seule chose</em>, et bien.', kick: 'Studio indépendant d’applis Android',
     about_big: 'Une personne. <em>Un petit problème par appli.</em>', close_h: 'Commence par trois secondes.',
-    close_p: 'Essaie d’arrêter le chrono pile à 3.00 s, directement dans ton navigateur.', raffy_chips: ['Repas · 08:40', 'Sommeil · 1 h 25', 'Poids · 6,2 kg'],
+    close_p: 'Essaie d’arrêter le chrono pile à 3.00 s, directement dans ton navigateur.', raffy_chips: ['<b>Sieste notée</b> · 1 h 20 min','<b>Poids 7,9 kg</b> · courbe OMS P50'],
     home_p: 'Gurrulabs est un studio d’une seule personne qui crée des jeux et des outils pour Android. Chaque appli a sa page ici : découvre ce qu’elle fait, essaie-la dans ton navigateur quand c’est possible, puis installe-la depuis Google Play.',
     see_apps: 'Voir les applis', apps_h: 'Nos applis', apps_p: 'Quatre applis, quatre usages très différents.', apps_word: 'Applis',
     cat: ['Jeu · Temps de réaction', 'Parentalité · Suivi bébé', 'Jeu · Enquêtes policières', 'Sommeil · Acouphènes'],
-    pulse_page: 'Page de Pulse',
+    pulse_page: 'Voir Pulse',
     about_h: 'Qui sommes-nous', about_p: 'Gurrulabs, c’est une seule personne qui conçoit, développe et entretient chaque appli. Pas de grande équipe ni de fonctions pour faire joli : chaque appli part d’un petit problème et s’y tient.',
     pri: [['Petites exprès', 'Une tâche par appli, bien faite.'], ['À essayer d’abord', 'Quand c’est possible, tu joues ou tu lis sur le web avant d’installer.'], ['Calmes par conception', 'Pas de fouillis : chaque appli te laisse tranquille.']],
     pulse_short: 'Arrête le chrono au centième. Teste ton temps de réaction et tes réflexes.',
     pulse_cta: 'Essaie-le dans ton navigateur',
-    raffy_p: 'Note tétées, sommeil et croissance, avec les courbes de l’OMS.', raffy_cta: 'Aller sur raffyparenting.com',
+    raffy_p: 'Note tétées, sommeil et croissance, avec les courbes de l’OMS.', raffy_cta: 'Voir Raffy', ext: 'ouvre raffyparenting.com',
     cyber_p: 'Résous des crimes dans une ville néon et trouve le coupable.', lull_p: 'Des sons pour dormir et un journal pour que l’acouphène gêne moins.',
     soon: 'Bientôt disponible',
-    cyber_page: 'Page de Cyberpunk Detective', lull_page: 'Page de Lull', q_h: 'Questions', more_h: 'Plus de Gurrulabs',
+    cyber_page: 'Voir Cyberpunk Detective', lull_page: 'Voir Lull', q_h: 'Questions', more_h: 'Plus de Gurrulabs',
     rel: [['Toutes nos applis', 'L’accueil du studio Gurrulabs'], ['Pulse', 'Teste ton temps de réaction dans le navigateur'], ['Cyberpunk Detective', 'Jeu d’enquête néo-noir'], ['Lull', 'Des nuits plus calmes avec les acouphènes · bientôt disponible']],
     p_kicker: 'Défi de temps de réaction', p_h1: 'Arrête le chrono pile à 3.00 s', facts: ['Sans compte', 'Fonctionne hors ligne'],
     t_exact: 'Exact Time', t_react: 'Réaction', start: 'Démarrer', stop: 'Arrêter', stop_at: 'Arrête à', of: t => `sur ${t} s`,
@@ -141,19 +141,19 @@ const T = {
   pt: {
     home_h1: 'Apps pequenos que fazem <em>uma coisa</em> bem.', kick: 'Estúdio independente de apps Android',
     about_big: 'Uma pessoa. <em>Um problema pequeno por app.</em>', close_h: 'Comece com três segundos.',
-    close_p: 'Tente parar o cronômetro em 3.00 s exatos, aqui mesmo no navegador.', raffy_chips: ['Mamada · 08:40', 'Sono · 1h25', 'Peso · 6,2 kg'],
+    close_p: 'Tente parar o cronômetro em 3.00 s exatos, aqui mesmo no navegador.', raffy_chips: ['<b>Soneca registrada</b> · 1 h 20 min','<b>Peso 7,9 kg</b> · curva OMS P50'],
     home_p: 'Gurrulabs é um estúdio de uma pessoa só que cria jogos e ferramentas para Android. Cada app tem sua própria página aqui: veja o que ele faz, teste no navegador quando der e baixe no Google Play.',
     see_apps: 'Ver os apps', apps_h: 'Nossos apps', apps_p: 'Quatro apps, quatro funções bem diferentes.', apps_word: 'Apps',
     cat: ['Jogo · Tempo de reação', 'Maternidade · Diário do bebê', 'Jogo · Mistérios de detetive', 'Sono · Zumbido'],
-    pulse_page: 'Página do Pulse',
+    pulse_page: 'Ver Pulse',
     about_h: 'Quem somos', about_p: 'Gurrulabs é uma pessoa só que projeta, desenvolve e cuida de cada app. Sem equipe grande nem recursos de enfeite: cada app nasce de um problema pequeno e fica focado nele.',
     pri: [['Pequenos de propósito', 'Uma tarefa por app, bem feita.'], ['Teste antes', 'Quando dá, você joga ou lê na web antes de instalar.'], ['Calmos por design', 'Sem bagunça: cada app sai do seu caminho.']],
     pulse_short: 'Pare o cronômetro no centésimo. Teste o tempo de reação e os reflexos.',
     pulse_cta: 'Experimente no navegador',
-    raffy_p: 'Registre mamadas, sono e crescimento em segundos, com curvas da OMS.', raffy_cta: 'Visitar raffyparenting.com',
+    raffy_p: 'Registre mamadas, sono e crescimento em segundos, com curvas da OMS.', raffy_cta: 'Ver Raffy', ext: 'abre raffyparenting.com',
     cyber_p: 'Resolva crimes numa cidade neon e encontre o culpado.', lull_p: 'Sons para dormir e um diário para o zumbido incomodar menos.',
     soon: 'Em breve',
-    cyber_page: 'Página do Cyberpunk Detective', lull_page: 'Página do Lull', q_h: 'Perguntas', more_h: 'Mais da Gurrulabs',
+    cyber_page: 'Ver Cyberpunk Detective', lull_page: 'Ver Lull', q_h: 'Perguntas', more_h: 'Mais da Gurrulabs',
     rel: [['Todos os nossos apps', 'A página inicial da Gurrulabs'], ['Pulse', 'Teste seu tempo de reação no navegador'], ['Cyberpunk Detective', 'Jogo de mistério neon-noir'], ['Lull', 'Noites mais tranquilas com zumbido · em breve']],
     p_kicker: 'Desafio de tempo de reação', p_h1: 'Pare o cronômetro em 3.00 s exatos', facts: ['Sem conta', 'Funciona offline'],
     t_exact: 'Exact Time', t_react: 'Reação', start: 'Iniciar', stop: 'Parar', stop_at: 'Pare em', of: t => `de ${t} s`,
@@ -951,22 +951,27 @@ const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-
 function home(loc) {
   const t = T[loc], pulse = `/${loc}/pulse/`;
   const tile = (id, cls, art, icon, cat, name, p, acts) =>
-    `<article class="tile ${cls}" id="${id}"><div class="art">${art}</div><div class="meta">
+    `<article class="tile ${cls}" id="${id}">${art}<div class="meta">
       <div class="row"><span class="ic">${icon}</span><span class="cat">${cat}</span></div>
       <h3>${name}</h3><p>${p}</p><div class="acts">${acts}</div></div></article>`;
+  const A = x => `<div class="art">${x}</div>`;
+  // "View <App>" text link; its ::after stretches over the whole card (styles.css), so the card is one big link
+  const view = (href, label, ext) => `<a class="view" href="${href}"${ext ? ` aria-label="${label} (${t.ext})"` : ''}><span>${label}</span>${ic(ext ? 'out' : 'chev')}</a>`;
+  const ph = (img, w = 352, h = 782) => `<img src="/assets/${img}.webp" width="${w}" height="${h}" alt="" loading="lazy">`;
+  const raffyArt = `<div class="art rart"><div class="ph back">${ph('raffy-feeding')}</div><div class="ph front">${ph(loc === 'es' ? 'raffy-sleep-es' : 'raffy-sleep')}</div>`
+    + t.raffy_chips.map(c => `<span class="chip2"><i></i><span>${c}</span></span>`).join('') + '</div>';
   const tiles = [
     tile('pulse', 'w7 t-pulse pulse-scope',
-      `<div class="pring"><svg viewBox="0 0 260 260" aria-hidden="true"><circle class="tr" cx="130" cy="130" r="120"/><circle class="pg" cx="130" cy="130" r="120"/></svg><div><small>${t.stop_at}</small><b class="tnum">3.00<span>s</span></b></div></div>`,
+      A(`<div class="pring"><svg viewBox="0 0 260 260" aria-hidden="true"><circle class="tr" cx="130" cy="130" r="120"/><circle class="pg" cx="130" cy="130" r="120"/></svg><div><small>${t.stop_at}</small><b class="tnum">3.00<span>s</span></b></div></div>`),
       ICON.pulse, t.cat[0], 'Pulse', t.pulse_short,
-      `<a class="lnk" href="${pulse}">${t.pulse_page}${ic('chev')}</a>${play(loc, 'pulse', 'home_pulse_card')}`),
-    tile('raffy', 'w5 t-raffy',
-      t.raffy_chips.map(c => `<span class="chip2"><i></i>${c}</span>`).join('') + `<div class="bigic">${ICON.raffy}</div>`,
+      `${play(loc, 'pulse', 'home_pulse_card')}${view(pulse, t.pulse_page)}`),
+    tile('raffy', 'w5 t-raffy', raffyArt,
       ICON.raffy, t.cat[1], 'Raffy', t.raffy_p,
-      `<a class="lnk" href="https://raffyparenting.com/">${t.raffy_cta}${ic('out')}</a>${play(loc, 'raffy', 'home_raffy_card')}`),
-    tile('cyber', 'w5 t-cyber', `<div class="sun"></div><div class="floor"></div><div class="bigic">${ICON.cyber}</div>`,
-      ICON.cyber, t.cat[2], 'Cyberpunk Detective', t.cyber_p, `<a class="lnk" href="/${loc}/cyberpunk-detective/">${t.cyber_page}${ic('chev')}</a>${play(loc, 'cyberpunk_detective', 'home_cyberpunk_card')}`),
-    tile('lull', 'w7 t-lull', `<div class="waves"><span></span><span></span><span></span><div class="bigic">${ICON.lull}</div></div>`,
-      ICON.lull, t.cat[3], 'Lull', t.lull_p, `<a class="lnk" href="/${loc}/lull/" style="--bb:#F0B48A;--bf:#2A1A12">${t.lull_page}${ic('chev')}</a><span class="tag2">${t.soon}</span>`),
+      `${play(loc, 'raffy', 'home_raffy_card')}${view('https://raffyparenting.com/', t.raffy_cta, true)}`),
+    tile('cyber', 'w5 t-cyber', A(`<div class="sun"></div><div class="floor"></div><div class="bigic">${ICON.cyber}</div>`),
+      ICON.cyber, t.cat[2], 'Cyberpunk Detective', t.cyber_p, `${play(loc, 'cyberpunk_detective', 'home_cyberpunk_card')}${view(`/${loc}/cyberpunk-detective/`, t.cyber_page)}`),
+    tile('lull', 'w7 t-lull', A(`<div class="waves"><span></span><span></span><span></span><div class="bigic">${ICON.lull}</div></div>`),
+      ICON.lull, t.cat[3], 'Lull', t.lull_p, `${view(`/${loc}/lull/`, t.lull_page)}<span class="tag2">${t.soon}</span>`),
   ].join('\n    ');
   const p = byId.home;
   return `${head(loc, p)}
