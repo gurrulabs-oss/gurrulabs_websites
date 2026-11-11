@@ -1370,7 +1370,7 @@ function header(loc, p, t) {
 }
 
 // Every page links every app (internal links help search engines find the app pages); Pulse pages also list Pulse's tests and guide
-const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://raffyparenting.com/">Raffy</a><a href="/${loc}/cyberpunk-detective/">Cyberpunk Detective</a><a href="/${loc}/lull/">Lull · ${t.soon}</a></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
+const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://www.raffyparenting.com/${loc}/">Raffy</a><a href="/${loc}/cyberpunk-detective/">Cyberpunk Detective</a><a href="/${loc}/lull/">Lull · ${t.soon}</a></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
 
 // ── Home
 function home(loc) {
@@ -1392,7 +1392,7 @@ function home(loc) {
       `${play(loc, 'pulse', 'home_pulse_card')}${view(pulse, t.pulse_page)}`),
     tile('raffy', 'w5 t-raffy', raffyArt,
       ICON.raffy, t.cat[1], 'Raffy', t.raffy_p,
-      `${play(loc, 'raffy', 'home_raffy_card')}${view('https://raffyparenting.com/', t.raffy_cta, true)}`),
+      `${play(loc, 'raffy', 'home_raffy_card')}${view(`https://www.raffyparenting.com/${loc}/`, t.raffy_cta, true)}`),
     tile('cyber', 'w5 t-cyber', A(`<div class="sun"></div><div class="floor"></div><div class="bigic">${ICON.cyber}</div>`),
       ICON.cyber, t.cat[2], 'Cyberpunk Detective', t.cyber_p, `${play(loc, 'cyberpunk_detective', 'home_cyberpunk_card')}${view(`/${loc}/cyberpunk-detective/`, t.cyber_page)}`),
     tile('lull', 'w7 t-lull', A(`<div class="waves"><span></span><span></span><span></span><div class="bigic">${ICON.lull}</div></div>`),
