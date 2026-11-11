@@ -45,6 +45,12 @@ const T = {
     beat: t => `Beat ${t} s in Pulse`, train: 'Train it in Pulse', again: 'Try again',
     beatx: a => `Beat ${a} s off in Pulse`, keep: 'Keep it perfect in Pulse',
     more: 'More targets, a hidden clock and a daily challenge in the app.', more_false: 'Wait for all the lights to go out.',
+    h_hidden: 'The clock disappears when you start.', h_hidden_run: a => `Clock hidden. Stop at ${a} s`, more_hidden: '14 hidden-clock targets, from 0.50 s to 10 s, in the app.',
+    b_within: a => `Within ${a} s`, b_of: (a, b) => `${a} of ${b}`, b_hit: 'Hit the light', b_total: 'total', b_light: n => `Light ${n}`, b_perf: (n, a) => `${n} lights, ${a} s each on average.`,
+    b_pass: (n, a, b) => `${n} lights, ${a} s each. ${b} s off perfect.`, b_slow: a => `${a} s over the time to beat.`, b_meter: (a, b) => `Perfect to ${a} s, pass to ${b} s`, more_batak: '12 Batak levels, up to 26 lights with less time each.',
+    i_ready: 'Watch and listen for two signals.', i_get: 'Get ready', i_listen: 'Listening…', i_listen_btn: 'Listening', i_prompt: 'How long was it?', i_hint: 'Drag, then fine-tune with − and +', i_lock: 'Lock in',
+    i_said: a => `You said ${a} s`, i_exact: a => `It was ${a} s. Dead on.`, i_longd: (a, b) => `It was ${a} s. ${b} s long.`, i_shortd: (a, b) => `It was ${a} s. ${b} s short.`, short: 'Too short', long: 'Too long',
+    i_minus: 'Minus 0.01 s', i_plus: 'Plus 0.01 s', i_guess: 'Your guess', more_interval: '14 Interval levels in the app, each with its own hidden time.',
     modes_h: 'Train your sense of time', modes_p: 'Short games, real precision.',
     m: [['Exact Time', 'Stop on the target, clock visible'], ['Hidden Clock', 'Same, but the clock disappears'], ['Interval', 'Guess the time between two signals'], ['Reaction', 'Tap the moment the lights go out'], ['Batak', 'Hit the lit targets, fast']],
     shots_h: 'Inside the app', band_h: 'Your best is waiting', band_p: 'Pick up where the browser test stops.',
@@ -56,7 +62,7 @@ const T = {
     pulse_title: 'Pulse app: reflex and timing game for Android | Gurrulabs',
     pulse_desc: 'Pulse is a reflex and sense-of-time game for Android: 5 modes, no account, works offline. Try two of its modes right in your browser.',
     guides_h: 'Tests and guides', guides_p: 'Play in your browser or read what the studies say.', read_h: 'Keep reading', faq_h: 'FAQ', edu: 'Educational content.', edu_med: 'Educational content, not medical advice.',
-    foot: ['Reaction test', '3 s challenge', 'Reaction by age', 'Best reflex apps'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
+    foot: ['Reaction test', '3 s challenge', 'Hidden Clock', 'Interval', 'Batak', 'Reaction by age', 'Best reflex apps'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
   },
   es: {
     home_h1: 'Apps pequeñas que hacen <em>una cosa</em> bien.', kick: 'Estudio independiente de apps Android',
@@ -85,6 +91,12 @@ const T = {
     beat: t => `Supera ${t} s en Pulse`, train: 'Entrena en Pulse', again: 'Intentar otra vez',
     beatx: a => `Mejora esos ${a} s en Pulse`, keep: 'Sigue en perfecto en Pulse',
     more: 'Más objetivos, un reloj oculto y un reto diario en la app.', more_false: 'Espera a que se apaguen todas las luces.',
+    h_hidden: 'El reloj desaparece cuando empiezas.', h_hidden_run: a => `Reloj oculto. Para en ${a} s`, more_hidden: '14 objetivos de reloj oculto, de 0.50 s a 10 s, en la app.',
+    b_within: a => `En ${a} s`, b_of: (a, b) => `${a} de ${b}`, b_hit: 'Toca la luz', b_total: 'total', b_light: n => `Luz ${n}`, b_perf: (n, a) => `${n} luces, ${a} s de media por luz.`,
+    b_pass: (n, a, b) => `${n} luces, ${a} s cada una. A ${b} s de perfecto.`, b_slow: a => `${a} s por encima del tiempo a batir.`, b_meter: (a, b) => `Perfecto hasta ${a} s, superado hasta ${b} s`, more_batak: '12 niveles de Batak, hasta 26 luces con menos tiempo cada una.',
+    i_ready: 'Mira y escucha dos señales.', i_get: 'Prepárate', i_listen: 'Escuchando…', i_listen_btn: 'Escuchando', i_prompt: '¿Cuánto duró?', i_hint: 'Arrastra y afina con − y +', i_lock: 'Confirmar',
+    i_said: a => `Dijiste ${a} s`, i_exact: a => `Duró ${a} s. Justo.`, i_longd: (a, b) => `Duró ${a} s. Te pasaste ${b} s.`, i_shortd: (a, b) => `Duró ${a} s. Te faltaron ${b} s.`, short: 'Muy corto', long: 'Muy largo',
+    i_minus: 'Menos 0.01 s', i_plus: 'Más 0.01 s', i_guess: 'Tu respuesta', more_interval: '14 niveles de Intervalo en la app, cada uno con su tiempo oculto.',
     modes_h: 'Entrena tu sentido del tiempo', modes_p: 'Partidas cortas, precisión real.',
     m: [['Exact Time', 'Para en el objetivo, con el reloj a la vista'], ['Hidden Clock', 'Igual, pero el reloj desaparece'], ['Intervalo', 'Calcula el tiempo entre dos señales'], ['Reacción', 'Toca justo cuando se apagan las luces'], ['Batak', 'Toca las luces encendidas, rápido']],
     shots_h: 'Dentro de la app', band_h: 'Tu mejor marca te espera', band_p: 'Sigue donde termina la prueba del navegador.',
@@ -96,7 +108,7 @@ const T = {
     pulse_title: 'App Pulse: juego de reflejos para Android | Gurrulabs',
     pulse_desc: 'Pulse es un juego de reflejos y sentido del tiempo para Android: 5 modos, sin cuenta y funciona sin conexión. Prueba dos de sus modos en el navegador.',
     guides_h: 'Pruebas y guías', guides_p: 'Juega en el navegador o aprende qué dicen los estudios.', read_h: 'Sigue leyendo', faq_h: 'Preguntas frecuentes', edu: 'Contenido educativo.', edu_med: 'Contenido educativo, no consejo médico.',
-    foot: ['Test de reacción', 'Reto 3 s', 'Reacción por edad', 'Mejores apps de reflejos'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
+    foot: ['Test de reacción', 'Reto 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reacción por edad', 'Mejores apps de reflejos'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
   },
   fr: {
     home_h1: 'De petites applis qui font <em>une seule chose</em>, et bien.', kick: 'Studio indépendant d’applis Android',
@@ -125,6 +137,12 @@ const T = {
     beat: t => `Bats ${t} s dans Pulse`, train: 'Entraîne-toi dans Pulse', again: 'Réessayer',
     beatx: a => `Fais mieux que ${a} s d’écart dans Pulse`, keep: 'Reste parfait dans Pulse',
     more: 'Plus de cibles, une horloge cachée et un défi chaque jour dans l’appli.', more_false: 'Attends que tous les feux s’éteignent.',
+    h_hidden: 'L’horloge disparaît quand tu démarres.', h_hidden_run: a => `Horloge masquée. Arrête à ${a} s`, more_hidden: '14 cibles d’horloge cachée, de 0.50 s à 10 s, dans l’appli.',
+    b_within: a => `En ${a} s`, b_of: (a, b) => `${a} sur ${b}`, b_hit: 'Touche la lumière', b_total: 'total', b_light: n => `Lumière ${n}`, b_perf: (n, a) => `${n} lumières, ${a} s en moyenne chacune.`,
+    b_pass: (n, a, b) => `${n} lumières, ${a} s chacune. ${b} s du parfait.`, b_slow: a => `${a} s au-dessus du temps à battre.`, b_meter: (a, b) => `Parfait jusqu’à ${a} s, réussi jusqu’à ${b} s`, more_batak: '12 niveaux de Batak, jusqu’à 26 lumières avec moins de temps chacune.',
+    i_ready: 'Observe et écoute deux signaux.', i_get: 'Prépare-toi', i_listen: 'À l’écoute…', i_listen_btn: 'À l’écoute', i_prompt: 'Combien de temps ?', i_hint: 'Glisse, puis affine avec − et +', i_lock: 'Valider',
+    i_said: a => `Tu as dit ${a} s`, i_exact: a => `C’était ${a} s. Pile.`, i_longd: (a, b) => `C’était ${a} s. Trop long de ${b} s.`, i_shortd: (a, b) => `C’était ${a} s. Trop court de ${b} s.`, short: 'Trop court', long: 'Trop long',
+    i_minus: 'Moins 0.01 s', i_plus: 'Plus 0.01 s', i_guess: 'Ta réponse', more_interval: '14 niveaux d’Intervalle dans l’appli, chacun avec son temps caché.',
     modes_h: 'Entraîne ton sens du temps', modes_p: 'Des parties courtes, une vraie précision.',
     m: [['Exact Time', 'Arrête-toi sur la cible, horloge visible'], ['Hidden Clock', 'Pareil, mais l’horloge disparaît'], ['Intervalle', 'Devine le temps entre deux signaux'], ['Réaction', 'Tape dès que les feux s’éteignent'], ['Batak', 'Tape les cibles allumées, vite']],
     shots_h: 'Dans l’appli', band_h: 'Ton record t’attend', band_p: 'Continue là où le test du navigateur s’arrête.',
@@ -136,7 +154,7 @@ const T = {
     pulse_title: 'Appli Pulse : jeu de réflexes pour Android | Gurrulabs',
     pulse_desc: 'Pulse est un jeu de réflexes et de sens du temps pour Android : 5 modes, sans compte, fonctionne hors ligne. Essaie deux de ses modes dans ton navigateur.',
     guides_h: 'Tests et guides', guides_p: 'Joue dans ton navigateur ou découvre ce que disent les études.', read_h: 'Continue à lire', faq_h: 'Questions fréquentes', edu: 'Contenu éducatif.', edu_med: 'Contenu éducatif, pas un avis médical.',
-    foot: ['Test de réaction', 'Défi 3 s', 'Réaction par âge', 'Meilleures applis de réflexes'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
+    foot: ['Test de réaction', 'Défi 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Réaction par âge', 'Meilleures applis de réflexes'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
   },
   pt: {
     home_h1: 'Apps pequenos que fazem <em>uma coisa</em> bem.', kick: 'Estúdio independente de apps Android',
@@ -165,6 +183,12 @@ const T = {
     beat: t => `Supere ${t} s no Pulse`, train: 'Treine no Pulse', again: 'Tentar de novo',
     beatx: a => `Supere ${a} s de diferença no Pulse`, keep: 'Continue perfeito no Pulse',
     more: 'Mais alvos, um relógio escondido e um desafio diário no app.', more_false: 'Espere todas as luzes apagarem.',
+    h_hidden: 'O relógio desaparece quando você começa.', h_hidden_run: a => `Relógio oculto. Pare em ${a} s`, more_hidden: '14 alvos de relógio oculto, de 0.50 s a 10 s, no app.',
+    b_within: a => `Em ${a} s`, b_of: (a, b) => `${a} de ${b}`, b_hit: 'Toque na luz', b_total: 'total', b_light: n => `Luz ${n}`, b_perf: (n, a) => `${n} luzes, ${a} s em média cada.`,
+    b_pass: (n, a, b) => `${n} luzes, ${a} s cada. A ${b} s do perfeito.`, b_slow: a => `${a} s acima do tempo a vencer.`, b_meter: (a, b) => `Perfeito até ${a} s, passa até ${b} s`, more_batak: '12 níveis de Batak, até 26 luzes com menos tempo cada.',
+    i_ready: 'Observe e escute dois sinais.', i_get: 'Prepare-se', i_listen: 'Ouvindo…', i_listen_btn: 'Ouvindo', i_prompt: 'Quanto tempo durou?', i_hint: 'Arraste e ajuste com − e +', i_lock: 'Confirmar',
+    i_said: a => `Você disse ${a} s`, i_exact: a => `Durou ${a} s. Na mosca.`, i_longd: (a, b) => `Durou ${a} s. Passou ${b} s.`, i_shortd: (a, b) => `Durou ${a} s. Faltaram ${b} s.`, short: 'Curto demais', long: 'Longo demais',
+    i_minus: 'Menos 0.01 s', i_plus: 'Mais 0.01 s', i_guess: 'Seu palpite', more_interval: '14 níveis de Intervalo no app, cada um com seu tempo oculto.',
     modes_h: 'Treine seu senso de tempo', modes_p: 'Partidas curtas, precisão de verdade.',
     m: [['Exact Time', 'Pare no alvo, com o relógio à vista'], ['Hidden Clock', 'Igual, mas o relógio some'], ['Intervalo', 'Estime o tempo entre dois sinais'], ['Reação', 'Toque assim que as luzes se apagarem'], ['Batak', 'Toque nos alvos acesos, rápido']],
     shots_h: 'Dentro do app', band_h: 'Seu recorde está esperando', band_p: 'Continue de onde o teste do navegador para.',
@@ -176,7 +200,7 @@ const T = {
     pulse_title: 'App Pulse: jogo de reflexos para Android | Gurrulabs',
     pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Experimente dois dos modos no navegador.',
     guides_h: 'Testes e guias', guides_p: 'Jogue no navegador ou veja o que dizem os estudos.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
-    foot: ['Teste de reação', 'Desafio 3 s', 'Reação por idade', 'Melhores apps de reflexo'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
+    foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
   },
 };
 
@@ -185,8 +209,11 @@ function i18n(t) {
   const a = '{a}';
   const out = {};
   for (const k of ['t_exact', 't_react', 'start', 'stop', 'stop_at', 'h_exact', 'h_react', 'wait', 'too_soon', 'reaction', 'perfect', 'pass', 'early', 'late', 'false_start', 'slow',
-    'd_perfect', 'd_false', 'win', 'rwin', 'train', 'again', 'keep', 'more', 'more_false']) out[k] = t[k];
-  for (const k of ['of', 'd_rperf', 'd_rpass', 'd_rslow', 'beat', 'beatx']) out[k] = t[k](a);
+    'd_perfect', 'd_false', 'win', 'rwin', 'train', 'again', 'keep', 'more', 'more_false',
+    'h_hidden', 'more_hidden', 'b_hit', 'b_total', 'more_batak', 'i_ready', 'i_get', 'i_listen', 'i_listen_btn', 'i_prompt', 'i_hint', 'i_lock', 'short', 'long', 'i_minus', 'i_plus', 'i_guess', 'more_interval']) out[k] = t[k];
+  for (const k of ['of', 'd_rperf', 'd_rpass', 'd_rslow', 'beat', 'beatx', 'h_hidden_run', 'b_within', 'b_slow', 'i_said', 'i_exact', 'b_light']) out[k] = t[k](a);
+  for (const k of ['b_of', 'b_meter', 'i_longd', 'i_shortd']) out[k] = t[k](a, '{b}'); // two slots: {a} {b}
+  out.b_perf = t.b_perf('{n}', a); out.b_pass = t.b_pass('{n}', a, '{b}'); // Batak lines: {n} lights
   for (const k of ['d_pass', 'd_miss']) out[k] = [t[k](a, false), t[k](a, true)];
   return JSON.stringify(out).replace(/</g, '\\u003c');
 }
@@ -218,6 +245,18 @@ const SRC = {
     ref: 'Haigh A, Apthorp D, Bizo LA. The role of Weber’s law in human time perception. <i>Attention, Perception, &amp; Psychophysics</i>, 2021; 83(1):435–447.' },
   poppel: { cite: 'Pöppel, 1997', url: 'https://doi.org/10.1016/S1364-6613(97)01008-5',
     ref: 'Pöppel E. A hierarchical model of temporal perception. <i>Trends in Cognitive Sciences</i>, 1997; 1(2):56–61.' },
+  proctor: { cite: 'Proctor &amp; Schneider, 2018', url: 'https://doi.org/10.1080/17470218.2017.1322622',
+    ref: 'Proctor RW, Schneider DW. Hick’s law for choice reaction time: a review. <i>Quarterly Journal of Experimental Psychology</i>, 2018; 71(6):1281–1299.' },
+  woodscrt: { cite: 'Woods et al., 2015 (choice)', url: 'https://doi.org/10.3389/fnhum.2015.00193',
+    ref: 'Woods DL, Wyma JM, Yund EW, Herron TJ, Reed B. Age-related slowing of response selection and production in a visual choice reaction time task. <i>Frontiers in Human Neuroscience</i>, 2015; 9:193.' },
+  brenner: { cite: 'Brenner &amp; Smeets, 2022', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9142465/',
+    ref: 'Brenner E, Smeets JBJ. Having several options does not increase the time it takes to make a movement to an adequate end point. <i>Experimental Brain Research</i>, 2022; 240(6):1849–1871.' },
+  lewis: { cite: 'Lewis &amp; Miall, 2009', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2685820/',
+    ref: 'Lewis PA, Miall RC. The precision of temporal judgement: milliseconds, many minutes, and beyond. <i>Philosophical Transactions of the Royal Society B</i>, 2009; 364:1897–1905.' },
+  thones: { cite: 'Thönes &amp; Hecht, 2017', url: 'https://doi.org/10.3758/s13414-017-1407-5',
+    ref: 'Thönes S, Hecht H. Counting does not improve the accuracy of long time productions. <i>Attention, Perception, &amp; Psychophysics</i>, 2017; 79(8):2576–2589.' },
+  grondin: { cite: 'Grondin, 2010', url: 'https://doi.org/10.3758/APP.72.3.561',
+    ref: 'Grondin S. Timing and time perception: a review of recent behavioral and neuroscience findings and theoretical directions. <i>Attention, Perception, &amp; Psychophysics</i>, 2010; 72(3):561–582.' },
   gp_pulse: { cite: 'Google Play: Pulse', url: 'https://play.google.com/store/apps/details?id=com.gurrulabs.pulse&hl=en_US&gl=US',
     ref: 'Google Play listing: Pulse (Gurrulabs), checked 6 Nov 2026.' },
   gp_nix: { cite: 'Google Play: Reaction training', url: 'https://play.google.com/store/apps/details?id=com.nixgames.reaction&hl=en_US&gl=US',
@@ -245,9 +284,15 @@ function ageTable(loc, [hAge, hMean, hSd, hSrc, all, cap, t2]) {
     </table></div>`;
 }
 // Challenge rules = the browser game's verdicts (script.js exactVerdict): perfect 3.00, pass within ±0.10 s, otherwise miss
-function rulesBlock(r) {
-  return `<div class="rules"><div><b class="v-perfect tnum">3.00</b><span>${r[0]}</span></div><div><b class="v-pass tnum">2.90–3.10</b><span>${r[1]}</span></div><div><b class="v-miss tnum">&lt; 2.90 · &gt; 3.10</b><span>${r[2]}</span></div></div>`;
+function rulesBlock(r, v = ['3.00', '2.90–3.10', '&lt; 2.90 · &gt; 3.10']) {
+  return `<div class="rules"><div><b class="v-perfect tnum">${v[0]}</b><span>${r[0]}</span></div><div><b class="v-pass tnum">${v[1]}</b><span>${r[1]}</span></div><div><b class="v-miss tnum">${v[2]}</b><span>${r[2]}</span></div></div>`;
 }
+// Plain benchmark table: heads, rows (2nd column in tabular figures), caption
+const tbl = (heads, rows, cap) => `<div class="tbl fit"><table>
+      <thead><tr>${heads.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>${rows.map(r => `<tr>${r.map((c, i) => `<td${i === 1 ? ' class="tnum"' : ''}>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+      <caption>${cap}</caption>
+    </table></div>`;
 
 // Comparison page: facts from each app's Google Play listing (US, English), checked 2026-11-06. L = localized labels and cell texts.
 // Cells "not stated" / "No" get class n, the offline "Yes" of Peak gets y.
@@ -657,6 +702,381 @@ const CONTENT = {
         ['Por que 3 segundos?', 'Porque 3 s é um alvo do Exact Time no app e cada tentativa é curta. No Pulse há mais alvos.'],
         ['Funciona no celular?', 'Sim, em qualquer navegador. Toque no botão para iniciar e para parar; no computador, você também pode parar com a barra de espaço.']],
       band: ['Seu recorde está esperando', 'Mais alvos, um relógio escondido e um desafio diário no app.'] } },
+
+  // ── T-009: Pulse's Batak, Hidden Clock and Interval modes as playable pages. Figures only from .lead/attachments/T-009/research.md (checked 2026-11-11).
+  'batak': { sources: [SRC.proctor, SRC.woodscrt, SRC.woods, SRC.brenner, SRC.dye],
+    en: { title: 'Choice Reaction Time Test: Tap the Lights | Pulse',
+      desc: 'Take a choice reaction time test in your browser: tap 8 lights on 7 pads as fast as you can and get your total time. No sign-up.',
+      name: 'Choice reaction time test', h1: 'Choice reaction time test: tap the lights', card: 'Hit 8 lit pads as fast as you can',
+      kick: 'Batak mode · lights test',
+      sub: 'A choice reaction time test measures how fast you respond when the signal can be one of several. Here a light comes on at one of 7 pads: hit it, then the next, 8 lights in all. Beat 7.20 s to pass; 3.20 s is Perfect.',
+      facts: ['No account', 'Mouse or touch'],
+      body: `<h2>The rules</h2>
+    ${rulesBlock(['Perfect: 0.40 s a light or faster', 'Pass: all 8 lights within the time', 'Too slow: over the time to beat'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'])}
+    <h2>How to play the reaction lights game</h2>
+    <div class="answer bk">Press <b>Start</b>. One pad lights up: hit it and the next one comes on. Hit all <b>8 lights</b> as fast as you can. <b>Only the lit pad counts</b>, and your total time appears after the last hit.</div>
+    <h2>What is a choice reaction time test?</h2>
+    <p>It measures how fast you respond when the signal can be one of several, here a lit pad among 7, instead of a single known signal. In Pulse this is the Batak mode, a name used only for that mode.</p>
+    <p>It is harder than a simple reaction test because every light is a choice. Hick’s law, one of the few widely acknowledged laws in psychology, relates choice reaction time to the number of stimulus-response alternatives ${R('proctor')}. It is not the whole story: when any of several targets will do and you pick the easiest, having more options does not increase the time to move to an adequate target ${R('brenner')}.</p>
+    <h2>How fast is a choice reaction time?</h2>
+    <div class="answer">Slower than a simple reaction: in a lab study, adults aged 18 to 24 averaged <b>472 ms</b> on a two-response choice task ${R('woodscrt', 'Table 2')}, against <b>217.9 ms</b> for simple reaction time in the same lab’s other study ${R('woods', 'simple RT')}.</div>
+    <p>Choice reaction time also rises with age, by about 2.80 ms per year in that study ${R('woodscrt')}. The two tasks differ, so read the numbers side by side, not as “choice adds X ms”. Pulse’s limits are game rules, not norms, and a lights wall is not that lab task.</p>
+    ${tbl(['Benchmark', 'Time', 'Source'], [
+      ['Pulse Perfect, 8 lights', '≤ 3.20 s (0.40 s a light)', 'Pulse game rule'],
+      ['Pulse Pass, 8 lights', '≤ 7.20 s (0.90 s a light)', 'Pulse game rule'],
+      ['Simple reaction time, adults 18–24', '217.9 ms', cite('woods', 'simple RT')],
+      ['Choice reaction time, adults 18–24', '472 ms', cite('woodscrt', 'Table 2')],
+      ['Choice reaction time, all adults 18–65', '550 ms', cite('woodscrt', 'Table 2')]],
+      'Woods et al. used two different tasks in the same lab, with two-response choice. A tap on a lit pad is not a lab key press, so use the numbers as context only.')}
+    <h2>Can you get faster at a reflex light game online?</h2>
+    <p>Partly: action video game players responded about 11% faster than non-players on speeded choice tasks, with the same accuracy ${R('dye')}. Practical tips:</p>
+    <ul><li><strong>Look at the whole board,</strong> not at the pad you just hit.</li><li><strong>Hit the lit pad only.</strong> Only the lit pad counts, so do not guess ahead.</li><li><strong>Compare with one light.</strong> In the <a href="${to('en', 'reaction-test')}">simple reaction time test</a> there is no choice to make; the gap between both scores is your choice cost.</li></ul>`,
+      push: ['Want a longer wall?', 'Pulse has 12 Batak levels, up to 26 lights with less time each.'],
+      faq: [['What is a choice reaction time test?', `It measures how fast you respond when the signal can be one of several, here a lit pad among 7 (8 lights in a row), instead of a single known signal. It is slower than simple reaction time: in Woods et al. (2015) adults aged 18-24 averaged 472 ms on a two-response task, against 217.9 ms for simple reaction time in the same lab’s other study ${R('woodscrt')}.`],
+        ['Do more choices make you slower?', `In classic tasks yes: Hick’s law says choice reaction time grows with the number of alternatives ${R('proctor')}. But when any of several targets will do and you pick the easiest, extra options need not cost time ${R('brenner')}.`],
+        ['Is this the Batak board?', 'No. Batak is the name of a mode inside the Pulse app; the commercial Batak lights wall is a different product.'],
+        ['Can practice make me faster?', `Action video game players responded about 11% faster than non-players on speeded choice tasks with equal accuracy ${R('dye')}.`]],
+      band: ['Your best is waiting', 'Longer walls, a hidden clock and a daily challenge in the app.'] },
+    es: { title: 'Juego de reflejos con luces: pulsa 8 luces | Pulse',
+      desc: 'Juego de reflejos con luces en tu navegador: pulsa 8 luces en 7 pads lo más rápido que puedas y mide tu tiempo total. Sin registro.',
+      name: 'Juego de reflejos con luces', h1: 'Juego de reflejos con luces: pulsa las 8 luces', card: 'Pulsa 8 luces lo más rápido que puedas',
+      kick: 'Modo Batak · test de luces',
+      sub: 'Un juego de reflejos con luces mide lo rápido que respondes cuando la señal puede estar en varios sitios. Se enciende una luz en uno de 7 pads: púlsala y pasa a la siguiente, 8 luces en total. Bájate de 7,20 s para superarlo; 3,20 s es Perfecto.',
+      facts: ['Sin cuenta', 'Ratón o táctil'],
+      body: `<h2>Las reglas</h2>
+    ${rulesBlock(['Perfecto: 0.40 s por luz o menos', 'Superado: las 8 luces dentro del tiempo', 'Lento: pasas del tiempo a batir'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'])}
+    <h2>Cómo se juega: pulsa las luces lo más rápido posible</h2>
+    <div class="answer bk">Pulsa <b>Iniciar</b>. Se enciende un pad: púlsalo y se enciende el siguiente. Pulsa las <b>8 luces</b> lo más rápido que puedas. <b>Solo cuenta el pad encendido</b> y tu tiempo total aparece tras el último toque.</div>
+    <h2>¿Qué es el tiempo de reacción de elección?</h2>
+    <p>Mide lo rápido que respondes cuando la señal puede ser una entre varias, aquí un pad encendido entre 7, en vez de una única señal conocida. En Pulse es el modo Batak, un nombre que usamos solo para ese modo.</p>
+    <p>Es más difícil que una reacción simple porque cada luz es una elección. La ley de Hick, una de las pocas leyes de la psicología ampliamente reconocidas, relaciona el tiempo de reacción de elección con el número de alternativas estímulo-respuesta ${R('proctor')}. No lo explica todo: si sirve cualquiera de varios objetivos y eliges el más fácil, tener más opciones no aumenta el tiempo de movimiento hasta un objetivo adecuado ${R('brenner')}.</p>
+    <h2>¿Qué tan rápido es un tiempo de reacción de elección?</h2>
+    <div class="answer">Más lento que una reacción simple: en un estudio de laboratorio, los adultos de 18 a 24 años promediaron <b>472 ms</b> en una tarea de elección de dos respuestas ${R('woodscrt', 'Tabla 2')}, frente a <b>217,9 ms</b> de reacción simple en el otro estudio del mismo laboratorio ${R('woods', 'reacción simple')}.</div>
+    <p>El tiempo de reacción de elección también sube con la edad, unos 2,80 ms por año en ese estudio ${R('woodscrt')}. Las dos tareas son distintas: léelas una junto a otra, no como «elegir añade X ms». Los límites de Pulse son reglas del juego, no normas, y una pared de luces no es esa tarea de laboratorio.</p>
+    ${tbl(['Referencia', 'Tiempo', 'Fuente'], [
+      ['Perfecto en Pulse, 8 luces', '≤ 3,20 s (0,40 s por luz)', 'Regla del juego de Pulse'],
+      ['Superado en Pulse, 8 luces', '≤ 7,20 s (0,90 s por luz)', 'Regla del juego de Pulse'],
+      ['Reacción simple, adultos de 18–24', '217,9 ms', cite('woods', 'reacción simple')],
+      ['Reacción de elección, adultos de 18–24', '472 ms', cite('woodscrt', 'Tabla 2')],
+      ['Reacción de elección, todos los adultos de 18–65', '550 ms', cite('woodscrt', 'Tabla 2')]],
+      'Woods et al. usaron dos tareas distintas en el mismo laboratorio, con elección de dos respuestas. Tocar un pad encendido no es pulsar una tecla en el laboratorio: úsalo solo como contexto.')}
+    <h2>¿Se puede mejorar en un juego de reflejos con luces online?</h2>
+    <p>En parte: los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan en tareas de elección rápida, con la misma precisión ${R('dye')}. Consejos prácticos:</p>
+    <ul><li><strong>Mira todo el tablero,</strong> no el pad que acabas de pulsar.</li><li><strong>Pulsa solo el pad encendido.</strong> Solo cuenta el pad encendido, así que no adivines por adelantado.</li><li><strong>Compara con una sola luz.</strong> En el <a href="${to('es', 'reaction-test')}">test de tiempo de reacción simple</a> no hay que elegir; la diferencia entre ambas marcas es lo que te cuesta elegir.</li></ul>`,
+      push: ['¿Quieres una pared más larga?', 'Pulse tiene 12 niveles de Batak, hasta 26 luces con menos tiempo cada una.'],
+      faq: [['¿Qué es un test de tiempo de reacción de elección?', `Mide lo rápido que respondes cuando la señal puede ser una entre varias (aquí, un pad encendido entre 7, con 8 luces seguidas) en vez de una única señal conocida. Es más lento que el tiempo de reacción simple: en Woods et al. (2015) los adultos de 18-24 años promediaron 472 ms en una tarea de dos respuestas, frente a 217,9 ms en reacción simple del mismo laboratorio ${R('woodscrt')}.`],
+        ['¿Más opciones te hacen más lento?', `En las tareas clásicas sí: la ley de Hick dice que el tiempo de reacción de elección crece con el número de alternativas ${R('proctor')}. Pero si sirve cualquiera de varios objetivos y eliges el más fácil, tener más opciones no tiene por qué costar tiempo ${R('brenner')}.`],
+        ['¿Es la tabla Batak?', 'No. Batak es el nombre de un modo dentro de la app Pulse; la pared de luces comercial Batak es otro producto.'],
+        ['¿Se mejora con práctica?', `Los jugadores de videojuegos de acción respondieron un 11 % más rápido que los no jugadores en tareas de elección rápida, con la misma precisión ${R('dye')}.`]],
+      band: ['Tu mejor marca te espera', 'Paredes más largas, reloj oculto y un reto diario en la app.'] },
+    fr: { title: 'Jeu de réflexes avec des lumières : 8 lumières | Pulse',
+      desc: 'Jeu de réflexes avec des lumières dans ton navigateur : touche 8 lumières sur 7 pads le plus vite possible et mesure ton temps total.',
+      name: 'Jeu de réflexes avec des lumières', h1: 'Jeu de réflexes avec des lumières : touche les 8 lumières', card: 'Touche 8 pads allumés le plus vite possible',
+      kick: 'Mode Batak · test de lumières',
+      sub: 'Un jeu de réflexes avec des lumières mesure la rapidité de ta réponse quand le signal peut venir de plusieurs endroits. Une lumière s’allume sur l’un des 7 pads : touche-la, puis la suivante, 8 lumières en tout. Passe sous 7,20 s pour réussir ; 3,20 s, c’est Parfait.',
+      facts: ['Sans compte', 'Souris ou tactile'],
+      body: `<h2>Les règles</h2>
+    ${rulesBlock(['Parfait : 0.40 s par lumière ou moins', 'Réussi : les 8 lumières dans le temps', 'Trop lent : au-delà du temps à battre'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'])}
+    <h2>Comment jouer : touche les lumières le plus vite possible</h2>
+    <div class="answer bk">Appuie sur <b>Démarrer</b>. Un pad s’allume : touche-le et le suivant s’allume. Touche les <b>8 lumières</b> le plus vite possible. <b>Seul le pad allumé compte</b>, et ton temps total s’affiche après le dernier appui.</div>
+    <h2>Qu’est-ce que le temps de réaction de choix ?</h2>
+    <p>Il mesure la rapidité de ta réponse quand le signal peut être l’un de plusieurs, ici un pad allumé parmi 7, au lieu d’un signal unique connu. Dans Pulse, c’est le mode Batak, un nom utilisé seulement pour ce mode.</p>
+    <p>C’est plus difficile qu’un test de réaction simple, car chaque lumière est un choix. La loi de Hick, l’une des rares lois largement reconnues en psychologie, relie le temps de réaction de choix au nombre d’alternatives stimulus-réponse ${R('proctor')}. Elle n’explique pas tout : quand n’importe quelle cible convient et que l’on prend la plus facile, plus d’options n’augmentent pas le temps du mouvement vers une cible adéquate ${R('brenner')}.</p>
+    <h2>Quelle est la vitesse d’un temps de réaction de choix ?</h2>
+    <div class="answer">Plus lente qu’une réaction simple : dans une étude en laboratoire, les adultes de 18 à 24 ans obtenaient en moyenne <b>472 ms</b> sur une tâche de choix à deux réponses ${R('woodscrt', 'tableau 2')}, contre <b>217,9 ms</b> en réaction simple dans l’autre étude du même laboratoire ${R('woods', 'réaction simple')}.</div>
+    <p>Le temps de réaction de choix augmente aussi avec l’âge, d’environ 2,80 ms par an dans cette étude ${R('woodscrt')}. Les deux tâches diffèrent : lis les chiffres côte à côte, pas comme « choisir ajoute X ms ». Les limites de Pulse sont des règles de jeu, pas des normes, et un mur de lumières n’est pas cette tâche de laboratoire.</p>
+    ${tbl(['Repère', 'Temps', 'Source'], [
+      ['Parfait dans Pulse, 8 lumières', '≤ 3,20 s (0,40 s par lumière)', 'Règle du jeu Pulse'],
+      ['Réussi dans Pulse, 8 lumières', '≤ 7,20 s (0,90 s par lumière)', 'Règle du jeu Pulse'],
+      ['Réaction simple, adultes de 18–24 ans', '217,9 ms', cite('woods', 'réaction simple')],
+      ['Réaction de choix, adultes de 18–24 ans', '472 ms', cite('woodscrt', 'tableau 2')],
+      ['Réaction de choix, tous les adultes de 18–65 ans', '550 ms', cite('woodscrt', 'tableau 2')]],
+      'Woods et al. ont utilisé deux tâches différentes dans le même laboratoire, avec un choix à deux réponses. Toucher un pad allumé n’est pas appuyer sur une touche en laboratoire : garde ces chiffres comme simple contexte.')}
+    <h2>Peux-tu progresser à un jeu de réflexes avec des lumières en ligne ?</h2>
+    <p>En partie : les joueurs de jeux vidéo d’action répondaient environ 11 % plus vite que les non-joueurs sur des tâches de choix rapide, à précision égale ${R('dye')}. Quelques conseils pratiques :</p>
+    <ul><li><strong>Regarde tout le plateau,</strong> pas le pad que tu viens de toucher.</li><li><strong>Touche seulement le pad allumé.</strong> Seul le pad allumé compte : n’anticipe pas.</li><li><strong>Compare avec une seule lumière.</strong> Dans le <a href="${to('fr', 'reaction-test')}">test de temps de réaction simple</a>, il n’y a pas de choix à faire ; l’écart entre les deux scores est ce que le choix te coûte.</li></ul>`,
+      push: ['Envie d’un mur plus long ?', 'Pulse propose 12 niveaux de Batak, jusqu’à 26 lumières avec moins de temps chacune.'],
+      faq: [['Qu’est-ce qu’un test de temps de réaction de choix ?', `Il mesure la rapidité de ta réponse quand le signal peut être l’un de plusieurs (ici un pad parmi 7, pour 8 lumières à la suite) au lieu d’un signal unique connu. C’est plus lent que le temps de réaction simple : chez Woods et al. (2015), les 18-24 ans obtiennent en moyenne 472 ms sur une tâche à deux réponses, contre 217,9 ms en réaction simple dans l’autre étude du même laboratoire ${R('woodscrt')}.`],
+        ['Plus de choix ralentit-il ?', `Dans les tâches classiques oui : la loi de Hick dit que le temps de réaction de choix croît avec le nombre d’alternatives ${R('proctor')}. Mais quand n’importe quelle cible convient et que l’on prend la plus facile, plus d’options ne coûtent pas forcément du temps ${R('brenner')}.`],
+        ['Est-ce le panneau Batak ?', 'Non. Batak est le nom d’un mode de l’application Pulse ; le mur de lumières commercial Batak est un autre produit.'],
+        ['La pratique rend-elle plus rapide ?', `Les joueurs de jeux vidéo d’action répondaient environ 11 % plus vite que les non-joueurs sur des tâches de choix rapide, à précision égale ${R('dye')}.`]],
+      band: ['Ton record t’attend', 'Des murs plus longs, une horloge cachée et un défi chaque jour dans l’appli.'] },
+    pt: { title: 'Jogo de reflexo com luzes: toque 8 luzes | Pulse',
+      desc: 'Jogo de reflexo com luzes no navegador: toque 8 luzes em 7 pads o mais rápido que puder e veja seu tempo total. Sem cadastro.',
+      name: 'Jogo de reflexo com luzes', h1: 'Jogo de reflexo com luzes: toque as 8 luzes', card: 'Toque 8 luzes acesas o mais rápido que puder',
+      kick: 'Modo Batak · teste de luzes',
+      sub: 'Um jogo de reflexo com luzes mede a rapidez da sua resposta quando o sinal pode estar em vários lugares. Uma luz acende em um de 7 pads: toque nela e depois na próxima, 8 luzes no total. Fique abaixo de 7,20 s para passar; 3,20 s é Perfeito.',
+      facts: ['Sem conta', 'Mouse ou toque'],
+      body: `<h2>As regras</h2>
+    ${rulesBlock(['Perfeito: 0.40 s por luz ou menos', 'Passou: as 8 luzes dentro do tempo', 'Lento: acima do tempo a vencer'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'])}
+    <h2>Como jogar: toque as luzes o mais rápido possível</h2>
+    <div class="answer bk">Toque em <b>Iniciar</b>. Um pad acende: toque nele e o próximo acende. Toque nas <b>8 luzes</b> o mais rápido que puder. <b>Só o pad aceso conta</b>, e seu tempo total aparece depois do último toque.</div>
+    <h2>O que é o tempo de reação de escolha?</h2>
+    <p>Mede a rapidez da sua resposta quando o sinal pode ser um entre vários, aqui um pad aceso entre 7, em vez de um único sinal conhecido. No Pulse, é o modo Batak, um nome usado só para esse modo.</p>
+    <p>É mais difícil que um teste de reação simples, porque cada luz é uma escolha. A lei de Hick, uma das poucas leis amplamente reconhecidas da psicologia, relaciona o tempo de reação de escolha ao número de alternativas estímulo-resposta ${R('proctor')}. Ela não explica tudo: quando qualquer um de vários alvos serve e você escolhe o mais fácil, ter mais opções não aumenta o tempo do movimento até um alvo adequado ${R('brenner')}.</p>
+    <h2>Qual é a velocidade de um tempo de reação de escolha?</h2>
+    <div class="answer">Mais lenta que uma reação simples: num estudo de laboratório, adultos de 18 a 24 anos tiveram média de <b>472 ms</b> numa tarefa de escolha de duas respostas ${R('woodscrt', 'Tabela 2')}, contra <b>217,9 ms</b> de reação simples no outro estudo do mesmo laboratório ${R('woods', 'reação simples')}.</div>
+    <p>O tempo de reação de escolha também sobe com a idade, cerca de 2,80 ms por ano nesse estudo ${R('woodscrt')}. As duas tarefas são diferentes: leia os números lado a lado, não como “escolher soma X ms”. Os limites do Pulse são regras do jogo, não normas, e uma parede de luzes não é essa tarefa de laboratório.</p>
+    ${tbl(['Referência', 'Tempo', 'Fonte'], [
+      ['Perfeito no Pulse, 8 luzes', '≤ 3,20 s (0,40 s por luz)', 'Regra do jogo do Pulse'],
+      ['Passou no Pulse, 8 luzes', '≤ 7,20 s (0,90 s por luz)', 'Regra do jogo do Pulse'],
+      ['Reação simples, adultos de 18–24 anos', '217,9 ms', cite('woods', 'reação simples')],
+      ['Reação de escolha, adultos de 18–24 anos', '472 ms', cite('woodscrt', 'Tabela 2')],
+      ['Reação de escolha, todos os adultos de 18–65 anos', '550 ms', cite('woodscrt', 'Tabela 2')]],
+      'Woods et al. usaram duas tarefas diferentes no mesmo laboratório, com escolha de duas respostas. Tocar num pad aceso não é apertar uma tecla no laboratório: use os números só como contexto.')}
+    <h2>Dá para melhorar num jogo de reflexo com luzes online?</h2>
+    <p>Em parte: jogadores de videogames de ação responderam cerca de 11% mais rápido que não jogadores em tarefas de escolha rápida, com a mesma precisão ${R('dye')}. Dicas práticas:</p>
+    <ul><li><strong>Olhe o tabuleiro todo,</strong> não o pad que você acabou de tocar.</li><li><strong>Toque só o pad aceso.</strong> Só o pad aceso conta, então não adivinhe antes.</li><li><strong>Compare com uma luz só.</strong> No <a href="${to('pt', 'reaction-test')}">teste de tempo de reação simples</a> não há escolha a fazer; a diferença entre as duas marcas é o que a escolha custa a você.</li></ul>`,
+      push: ['Quer uma parede maior?', 'O Pulse tem 12 níveis de Batak, com até 26 luzes e menos tempo para cada uma.'],
+      faq: [['O que é um teste de tempo de reação de escolha?', `Mede a rapidez da sua resposta quando o sinal pode ser um entre vários (aqui, um pad aceso entre 7, com 8 luzes seguidas) em vez de um único sinal conhecido. É mais lento que o tempo de reação simples: em Woods et al. (2015), adultos de 18-24 anos tiveram média de 472 ms numa tarefa de duas respostas, contra 217,9 ms na reação simples do outro estudo do mesmo laboratório ${R('woodscrt')}.`],
+        ['Mais opções deixam você mais lento?', `Em tarefas clássicas sim: a lei de Hick diz que o tempo de reação de escolha cresce com o número de alternativas ${R('proctor')}. Mas quando qualquer um de vários alvos serve e você escolhe o mais fácil, mais opções não custam necessariamente tempo ${R('brenner')}.`],
+        ['É a placa Batak?', 'Não. Batak é o nome de um modo dentro do app Pulse; a parede de luzes comercial Batak é outro produto.'],
+        ['A prática ajuda a ficar mais rápido?', `Jogadores de videogames de ação responderam cerca de 11% mais rápido que não jogadores em tarefas de escolha rápida, com a mesma precisão ${R('dye')}.`]],
+      band: ['Seu recorde está esperando', 'Paredes maiores, relógio escondido e um desafio diário no app.'] } },
+
+  'hidden-clock': { sources: [SRC.lewis, SRC.thones, SRC.gibbon],
+    en: { title: 'Internal Clock Test: Stop at 10.00 s, Clock Hidden',
+      desc: 'Internal clock test: count 10 seconds in your head and stop a hidden clock at 10.00. See your error in hundredths. The 10 second challenge.',
+      name: 'Internal clock test', h1: 'Internal clock test: the 10 second challenge', card: 'Stop at 10.00 s with the clock hidden',
+      kick: 'Hidden Clock mode',
+      sub: 'An internal clock test asks you to judge a time with no clock to read. Press Start and the clock disappears; count 10 seconds in your head and press Stop. It is the 10 second challenge: pass within ±0.10 s, Perfect on 10.00.',
+      facts: ['No account', 'Space bar to stop'],
+      body: `<h2>The rules</h2>
+    ${rulesBlock(['Perfect: dead on, to the hundredth', 'Pass: within ±0.10 s', 'Miss: too early or too late'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'])}
+    <h2>How to play the 10 second challenge</h2>
+    <div class="answer hc">Press <b>Start</b>: the clock <b>fades out</b>. Count 10 seconds in your head and press <b>Stop</b>. The clock comes back and shows your time. It is the <a href="${to('en', '3s-challenge')}">3 second challenge</a> with no clock to lean on.</div>
+    <h2>How accurate is your internal clock?</h2>
+    <div class="answer">It varies from person to person and the error is relative: in a study of timing from 68 ms to 16.7 min, the coefficient of variation (spread divided by the interval) fell slowly as intervals got longer, rather than staying constant ${R('lewis')}. Your own result is the number that matters, so try several runs.</div>
+    <p>A constant coefficient of variation is the scalar property of timing, described in animals ${R('gibbon')}. In humans the picture is less tidy, which is one reason there is no single “typical error at 10 s” to quote here.</p>
+    <h2>Does counting in your head help?</h2>
+    <p>Not for accuracy, but for precision: counting did not improve the accuracy of 10 to 90 s productions, but it did make tries more consistent ${R('thones')}. At 60 and 90 s counting also made people overshoot; that disappeared at shorter intervals.</p>
+    ${tbl(['Finding', 'What it says', 'Source'], [
+      ['Pulse Pass window', '±0.10 s, which is 1% of 10 s', 'Pulse game rule'],
+      ['Spread across intervals, 68 ms to 16.7 min', 'Falls slowly as intervals get longer', cite('lewis')],
+      ['Counting, 10 to 90 s', 'No gain in accuracy; more precise tries', cite('thones')],
+      ['Animal timing', 'Constant coefficient of variation (scalar property)', cite('gibbon')]],
+      'Qualitative findings: none of these sources prints a typical error for a 10 s count, so none is shown.')}
+    <h2>Tips for the 10 second challenge</h2>
+    <p>Pick a rhythm and keep it steady to the end.</p>
+    <ul><li><strong>Count at a steady pace.</strong> Counting makes your tries more consistent ${R('thones')}, so repeat and watch the spread.</li><li><strong>Train with the clock first.</strong> A few tries of the <a href="${to('en', '3s-challenge')}">3 second challenge</a> set your rhythm.</li><li><strong>Try the opposite task.</strong> In the <a href="${to('en', 'interval')}">time estimation test</a> you judge a gap instead of producing one.</li></ul>`,
+      push: ['More hidden targets', 'Pulse has 14 Hidden Clock levels, from 0.50 s to 10 s.'],
+      faq: [['How accurate is your internal clock?', `It varies, and the error is relative: Lewis & Miall (2009) found the coefficient of variation falls slowly as intervals get longer, from 68 ms to 16.7 min, rather than staying constant ${R('lewis')}. Your own result is the only number that matters here, so try several runs.`],
+        ['Does counting in your head help?', `Not for accuracy: counting did not improve accuracy of 10-90 s productions, but it did improve precision (less spread between attempts) (${cite('thones')}). At 60 and 90 s counting also made people overshoot; that disappeared at shorter intervals.`],
+        ['Why is the clock hidden?', 'Because the test is of your own time sense; with a visible clock you would read it instead.'],
+        ['What is the 10 second challenge?', 'Start a clock, hide it, and try to stop it at exactly 10.00 s. The closer you stop, the better your internal clock estimate.']],
+      band: ['Your best is waiting', 'More hidden targets, Batak and a daily challenge in the app.'] },
+    es: { title: 'Test de 10 segundos: para el reloj oculto en 10,00',
+      desc: 'Test de 10 segundos: cuenta mentalmente y para un reloj oculto en 10,00. Mira tu error en centésimas y mide tu reloj interno. En el navegador.',
+      name: 'Test de 10 segundos', h1: 'Test de 10 segundos: para el reloj oculto', card: 'Para en 10,00 s con el reloj oculto',
+      kick: 'Modo Hidden Clock',
+      sub: 'Un test de 10 segundos te pide calcular un tiempo sin reloj a la vista. Pulsa Iniciar y el reloj desaparece; cuenta 10 segundos mentalmente y pulsa Parar. Superas el reto con ±0,10 s; Perfecto es 10,00.',
+      facts: ['Sin cuenta', 'Barra espaciadora para parar'],
+      body: `<h2>Las reglas</h2>
+    ${rulesBlock(['Perfecto: clavado a la centésima', 'Superado: dentro de ±0.10 s', 'Fallo: demasiado pronto o tarde'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'])}
+    <h2>Cómo se juega: contar 10 segundos mentalmente</h2>
+    <div class="answer hc">Pulsa <b>Iniciar</b>: el reloj <b>se desvanece</b>. Cuenta 10 segundos mentalmente y pulsa <b>Parar</b>. El reloj vuelve y muestra tu tiempo. Es el <a href="${to('es', '3s-challenge')}">reto de los 3 segundos</a> sin reloj en el que apoyarte.</div>
+    <h2>¿Qué precisión tiene tu reloj interno?</h2>
+    <div class="answer">Varía de una persona a otra y el error es relativo: en un estudio de medición del tiempo de 68 ms a 16,7 min, el coeficiente de variación (dispersión dividida por el intervalo) bajaba lentamente al alargar los intervalos, en vez de mantenerse constante ${R('lewis')}. Tu resultado es lo único que cuenta, así que haz varias rondas.</div>
+    <p>Un coeficiente de variación constante es la propiedad escalar del tiempo, descrita en animales ${R('gibbon')}. En personas el panorama es menos limpio, y por eso aquí no hay un único «error típico a 10 s» que citar.</p>
+    <h2>¿Contar mentalmente ayuda?</h2>
+    <p>No para la exactitud, pero sí para la precisión: contar no mejoró la exactitud de intervalos de 10 a 90 s, pero sí hizo los intentos más consistentes ${R('thones')}. A 60 y 90 s además hacía pasarse; con intervalos más cortos eso desapareció.</p>
+    ${tbl(['Hallazgo', 'Qué dice', 'Fuente'], [
+      ['Margen de Pulse para superar', '±0,10 s, es decir, el 1 % de 10 s', 'Regla del juego de Pulse'],
+      ['Dispersión entre intervalos de 68 ms a 16,7 min', 'Baja lentamente al alargar los intervalos', cite('lewis')],
+      ['Contar, de 10 a 90 s', 'Sin mejora de exactitud; intentos más precisos', cite('thones')],
+      ['Tiempo en animales', 'Coeficiente de variación constante (propiedad escalar)', cite('gibbon')]],
+      'Hallazgos cualitativos: ninguna de estas fuentes da un error típico para contar 10 s, así que no se muestra ninguno.')}
+    <h2>Trucos para el test de 10 segundos</h2>
+    <p>Elige un ritmo y mantenlo constante hasta el final.</p>
+    <ul><li><strong>Cuenta a un ritmo constante.</strong> Contar hace tus intentos más consistentes ${R('thones')}; repite y fíjate en la dispersión.</li><li><strong>Entrena antes con el reloj.</strong> Unos intentos del <a href="${to('es', '3s-challenge')}">reto de los 3 segundos</a> fijan tu ritmo.</li><li><strong>Prueba la tarea contraria.</strong> En el <a href="${to('es', 'interval')}">test de percepción del tiempo</a> juzgas un intervalo en lugar de producirlo.</li></ul>`,
+      push: ['Más objetivos ocultos', 'Pulse tiene 14 niveles de Hidden Clock, de 0,50 s a 10 s.'],
+      faq: [['¿Qué precisión tiene tu reloj interno?', `Varía, y el error es relativo: Lewis y Miall (2009) hallaron que el coeficiente de variación baja lentamente al alargar los intervalos, de 68 ms a 16,7 min, en vez de mantenerse constante ${R('lewis')}. Tu resultado es lo único que cuenta, así que haz varias rondas.`],
+        ['¿Contar mentalmente ayuda?', `No para la exactitud: contar no mejoró la exactitud de intervalos de 10 a 90 s, pero sí la precisión (menos dispersión entre intentos) (${cite('thones')}). A 60 y 90 s además hacía pasarse; con intervalos más cortos eso desapareció.`],
+        ['¿Por qué está oculto el reloj?', 'Porque el test mide tu sentido del tiempo; con el reloj a la vista lo leerías en vez de estimarlo.'],
+        ['¿En qué consiste el reto de los 10 segundos?', 'Inicias un reloj, lo ocultas y tratas de pararlo en exactamente 10,00 s. Cuanto más cerca pares, mejor tu estimación interna.']],
+      band: ['Tu mejor marca te espera', 'Más objetivos ocultos, Batak y un reto diario en la app.'] },
+    fr: { title: 'Test des 10 secondes : arrête l’horloge cachée',
+      desc: 'Test des 10 secondes : compte dans ta tête et arrête une horloge cachée à 10,00. Découvre ton écart au centième, dans ton navigateur.',
+      name: 'Test des 10 secondes', h1: 'Test des 10 secondes : arrête l’horloge cachée', card: 'Arrête à 10,00 s, horloge cachée',
+      kick: 'Mode Hidden Clock',
+      sub: 'Un test des 10 secondes te demande d’estimer une durée sans horloge à lire. Appuie sur Démarrer : l’horloge disparaît ; compte 10 secondes dans ta tête et appuie sur Arrêter. Réussi à ±0,10 s près ; Parfait, c’est 10,00.',
+      facts: ['Sans compte', 'Barre d’espace pour arrêter'],
+      body: `<h2>Les règles</h2>
+    ${rulesBlock(['Parfait : pile au centième', 'Réussi : à ±0.10 s près', 'Raté : trop tôt ou trop tard'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'])}
+    <h2>Comment jouer : compter 10 secondes dans sa tête</h2>
+    <div class="answer hc">Appuie sur <b>Démarrer</b> : l’horloge <b>s’efface</b>. Compte 10 secondes dans ta tête et appuie sur <b>Arrêter</b>. L’horloge revient et affiche ton temps. C’est le <a href="${to('fr', '3s-challenge')}">défi des 3 secondes</a> sans horloge sur laquelle s’appuyer.</div>
+    <h2>Quelle est la précision de ton horloge interne ?</h2>
+    <div class="answer">Elle varie d’une personne à l’autre et l’erreur est relative : dans une étude de chronométrage de 68 ms à 16,7 min, le coefficient de variation (dispersion divisée par l’intervalle) diminuait lentement quand les intervalles s’allongeaient, au lieu de rester constant ${R('lewis')}. Seul ton résultat compte : fais plusieurs essais.</div>
+    <p>Un coefficient de variation constant est la propriété scalaire du timing, décrite chez l’animal ${R('gibbon')}. Chez l’humain, le tableau est moins net, et c’est une raison pour laquelle il n’y a pas ici d’« erreur typique à 10 s » à citer.</p>
+    <h2>Compter dans sa tête aide-t-il ?</h2>
+    <p>Pas pour l’exactitude, mais pour la précision : compter n’améliorait pas l’exactitude d’intervalles de 10 à 90 s, mais rendait les essais plus homogènes ${R('thones')}. À 60 et 90 s, compter faisait aussi dépasser la cible ; cela disparaissait sur les intervalles plus courts.</p>
+    ${tbl(['Constat', 'Ce que cela dit', 'Source'], [
+      ['Fenêtre de réussite de Pulse', '±0,10 s, soit 1 % de 10 s', 'Règle du jeu Pulse'],
+      ['Dispersion sur des intervalles de 68 ms à 16,7 min', 'Diminue lentement quand les intervalles s’allongent', cite('lewis')],
+      ['Compter, de 10 à 90 s', 'Pas de gain d’exactitude ; essais plus précis', cite('thones')],
+      ['Chronométrage chez l’animal', 'Coefficient de variation constant (propriété scalaire)', cite('gibbon')]],
+      'Constats qualitatifs : aucune de ces sources ne donne d’erreur typique pour un comptage de 10 s, aucune n’est donc affichée.')}
+    <h2>Conseils pour le test des 10 secondes</h2>
+    <p>Choisis un rythme et garde-le régulier jusqu’au bout.</p>
+    <ul><li><strong>Compte à rythme régulier.</strong> Compter rend tes essais plus homogènes ${R('thones')} ; répète et regarde la dispersion.</li><li><strong>Entraîne-toi d’abord avec l’horloge.</strong> Quelques essais du <a href="${to('fr', '3s-challenge')}">défi des 3 secondes</a> fixent ton rythme.</li><li><strong>Essaie la tâche inverse.</strong> Dans le <a href="${to('fr', 'interval')}">test d’estimation du temps</a>, tu juges un intervalle au lieu d’en produire un.</li></ul>`,
+      push: ['Plus de cibles cachées', 'Pulse propose 14 niveaux de Hidden Clock, de 0,50 s à 10 s.'],
+      faq: [['Quelle est la précision de ton horloge interne ?', `Elle varie, et l’erreur est relative : Lewis et Miall (2009) ont trouvé que le coefficient de variation diminue lentement quand les intervalles s’allongent, de 68 ms à 16,7 min, au lieu de rester constant ${R('lewis')}. Seul ton résultat compte : fais plusieurs essais.`],
+        ['Compter dans sa tête aide-t-il ?', `Pas pour l’exactitude : compter n’améliorait pas l’exactitude d’intervalles de 10 à 90 s, mais améliorait la précision (moins de dispersion entre essais) (${cite('thones')}). À 60 et 90 s, compter faisait aussi dépasser la cible ; cela disparaissait sur les intervalles plus courts.`],
+        ['Pourquoi l’horloge est-elle cachée ?', 'Parce que le test mesure ton sens du temps ; avec l’horloge visible, tu la lirais au lieu de l’estimer.'],
+        ['En quoi consiste le défi des 10 secondes ?', 'Lancer une horloge, la cacher et essayer de l’arrêter à exactement 10,00 s. Plus tu es proche, meilleure est ton estimation interne.']],
+      band: ['Ton record t’attend', 'Plus de cibles cachées, Batak et un défi chaque jour dans l’appli.'] },
+    pt: { title: 'Teste de 10 segundos: pare o relógio oculto',
+      desc: 'Teste de 10 segundos: conte de cabeça e pare um relógio oculto em 10,00. Veja seu erro em centésimos e teste seu relógio interno. No navegador.',
+      name: 'Teste de 10 segundos', h1: 'Teste de 10 segundos: pare o relógio oculto', card: 'Pare em 10,00 s com o relógio oculto',
+      kick: 'Modo Hidden Clock',
+      sub: 'Um teste de 10 segundos pede que você estime um tempo sem relógio para ler. Toque em Iniciar e o relógio some; conte 10 segundos de cabeça e toque em Parar. Passa dentro de ±0,10 s; Perfeito é 10,00.',
+      facts: ['Sem conta', 'Barra de espaço para parar'],
+      body: `<h2>As regras</h2>
+    ${rulesBlock(['Perfeito: cravado no centésimo', 'Passou: dentro de ±0.10 s', 'Errou: cedo ou tarde demais'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'])}
+    <h2>Como jogar: contar 10 segundos de cabeça</h2>
+    <div class="answer hc">Toque em <b>Iniciar</b>: o relógio <b>desaparece</b>. Conte 10 segundos de cabeça e toque em <b>Parar</b>. O relógio volta e mostra seu tempo. É o <a href="${to('pt', '3s-challenge')}">desafio dos 3 segundos</a> sem relógio em que se apoiar.</div>
+    <h2>Quão preciso é o seu relógio interno?</h2>
+    <div class="answer">Varia de pessoa para pessoa e o erro é relativo: num estudo de cronometragem de 68 ms a 16,7 min, o coeficiente de variação (dispersão dividida pelo intervalo) diminuía devagar conforme os intervalos aumentavam, em vez de ficar constante ${R('lewis')}. Só o seu resultado importa, então faça várias rodadas.</div>
+    <p>Um coeficiente de variação constante é a propriedade escalar da cronometragem, descrita em animais ${R('gibbon')}. Em pessoas o quadro é menos limpo, e por isso não há aqui um único “erro típico em 10 s” para citar.</p>
+    <h2>Contar de cabeça ajuda?</h2>
+    <p>Não na exatidão, mas na precisão: contar não melhorou a exatidão de intervalos de 10 a 90 s, mas deixou as tentativas mais consistentes ${R('thones')}. Em 60 e 90 s, contar também fazia passar do alvo; isso desapareceu nos intervalos mais curtos.</p>
+    ${tbl(['Achado', 'O que diz', 'Fonte'], [
+      ['Janela para passar no Pulse', '±0,10 s, ou seja, 1% de 10 s', 'Regra do jogo do Pulse'],
+      ['Dispersão em intervalos de 68 ms a 16,7 min', 'Diminui devagar conforme os intervalos aumentam', cite('lewis')],
+      ['Contar, de 10 a 90 s', 'Sem ganho de exatidão; tentativas mais precisas', cite('thones')],
+      ['Cronometragem em animais', 'Coeficiente de variação constante (propriedade escalar)', cite('gibbon')]],
+      'Achados qualitativos: nenhuma destas fontes traz um erro típico para contar 10 s, então nenhum é mostrado.')}
+    <h2>Dicas para o teste de 10 segundos</h2>
+    <p>Escolha um ritmo e mantenha-o constante até o fim.</p>
+    <ul><li><strong>Conte num ritmo constante.</strong> Contar deixa suas tentativas mais consistentes ${R('thones')}; repita e observe a dispersão.</li><li><strong>Treine antes com o relógio.</strong> Algumas tentativas do <a href="${to('pt', '3s-challenge')}">desafio dos 3 segundos</a> fixam seu ritmo.</li><li><strong>Experimente a tarefa oposta.</strong> No <a href="${to('pt', 'interval')}">teste de percepção do tempo</a> você julga um intervalo em vez de produzi-lo.</li></ul>`,
+      push: ['Mais alvos ocultos', 'O Pulse tem 14 níveis de Hidden Clock, de 0,50 s a 10 s.'],
+      faq: [['Quão preciso é o seu relógio interno?', `Varia, e o erro é relativo: Lewis e Miall (2009) encontraram que o coeficiente de variação diminui lentamente conforme os intervalos aumentam, de 68 ms a 16,7 min, em vez de ficar constante ${R('lewis')}. Só o seu resultado importa, então faça várias rodadas.`],
+        ['Contar de cabeça ajuda?', `Não na exatidão: contar não melhorou a exatidão de intervalos de 10 a 90 s, mas melhorou a precisão (menos variação entre tentativas) (${cite('thones')}). Em 60 e 90 s, contar também fazia passar do alvo; isso desapareceu nos intervalos mais curtos.`],
+        ['Por que o relógio fica oculto?', 'Porque o teste mede o seu senso de tempo; com o relógio visível você o leria em vez de estimar.'],
+        ['O que é o desafio dos 10 segundos?', 'Iniciar um relógio, escondê-lo e tentar pará-lo em exatamente 10,00 s. Quanto mais perto, melhor a sua estimativa interna.']],
+      band: ['Seu recorde está esperando', 'Mais alvos ocultos, Batak e um desafio diário no app.'] } },
+
+  'interval': { sources: [SRC.lewis, SRC.haigh, SRC.grondin],
+    en: { title: 'Time Estimation Test: Guess the Gap in Seconds | Pulse',
+      desc: 'Time estimation test: two signals with a hidden gap, you guess it in seconds. See how close your sense of time gets, right in your browser.',
+      name: 'Time estimation test', h1: 'Time estimation test: guess the gap', card: 'Guess the time between two signals',
+      kick: 'Interval mode',
+      sub: 'A time estimation test asks you to guess how long an interval lasted. Two signals, a flash and a beep, mark a hidden gap between 0.30 and 10 s; you guess the seconds and pass within ±0.10 s.',
+      facts: ['No account', 'Works muted too'],
+      body: `<h2>The rules</h2>
+    ${rulesBlock(['Perfect: your guess is exact, to the hundredth', 'Pass: within 0.10 s of the real time', 'Miss: too short or too long'], ['0.00', '±0.10', '&gt; 0.10'])}
+    <h2>How to play: guess the seconds</h2>
+    <div class="answer iv">Press <b>Start</b> and watch the two bars: the first signal starts the time, the second one ends it. Then <b>drag the slider</b> to your guess, fine-tune it with <b>−</b> and <b>+</b>, and press <b>Lock in</b>. Every try uses a different time between 0.30 and 10 s.</div>
+    <h2>Why do we misjudge short and long times?</h2>
+    <div class="answer">Because of the “central tendency” effect: people tend to overestimate short intervals and underestimate long ones ${R('lewis')}. Guesses are pulled toward the middle of the times you have judged.</div>
+    <p>Timing research covers intervals from a few milliseconds to several seconds ${R('grondin')}, and the size of the bias depends on the task and the person.</p>
+    <h2>How accurate is human time estimation?</h2>
+    <p>It depends on the interval and the task. In Lewis &amp; Miall’s experiments, trained participants’ largest average errors were an overestimate of 44% on short intervals and an underestimate of 19% on long ones, across intervals from 215 ms to 3.59 min ${R('lewis')}. These are the largest errors in that range, not typical errors for 0.30 to 10 s.</p>
+    ${tbl(['Interval range and task', 'Error found', 'Source'], [
+      ['68 ms, reproduction', 'Mean overestimate of about 500%', cite('lewis')],
+      ['16.7 min, reproduction', 'Mean underestimate of about 35%', cite('lewis')],
+      ['215 ms to 3.59 min, trained, production', 'Largest mean errors: +44% on short, −19% on long', cite('lewis')],
+      ['100 to 3200 ms, discrimination (24 people)', 'Weber’s law best described sensitivity to changes in duration', cite('haigh')]],
+      'Figures are the paper’s extremes across the ranges shown, not errors at 10 s. Weber’s law: the smallest difference you notice grows in proportion to the duration.')}
+    <h2>Tips to guess the seconds better</h2>
+    <p>Count from the first signal; don’t wait to “feel” the gap.</p>
+    <ul><li><strong>Count from the flash.</strong> Start a steady count the moment the first bar lights up.</li><li><strong>Use − and + last.</strong> Drag close, then fix the hundredths.</li><li><strong>Produce a time instead.</strong> In <a href="${to('en', 'hidden-clock')}">count 10 seconds in your head</a> you stop a hidden clock instead of judging a gap.</li></ul>`,
+      push: ['Guess every gap', 'Pulse has 14 Interval levels, each with its own hidden time.'],
+      faq: [['How accurate is human time estimation?', `It depends on the interval and task. In Lewis & Miall (2009) trained participants’ largest average errors in two production experiments were an overestimate of 44% on short intervals and an underestimate of 19% on long ones (intervals from 215 ms to 3.59 min) ${R('lewis')}.`],
+        ['Why do short gaps feel longer and long ones shorter?', `It is the “central tendency” effect: people tend to overestimate short intervals and underestimate long ones ${R('lewis')}.`],
+        ['Does the error grow with longer intervals?', `Not in a simple way: Haigh et al. (2021) found Weber’s law described sensitivity to duration changes best for 100-3200 ms ${R('haigh')}, and Lewis & Miall (2009) found relative variability falling slowly with length ${R('lewis')}.`],
+        ['Is this a clinical test?', 'No. It is a playful check of your sense of time, not a diagnostic tool.']],
+      band: ['Your best is waiting', 'Fourteen hidden times, Batak and a daily challenge in the app.'] },
+    es: { title: 'Test de percepción del tiempo: adivina el intervalo',
+      desc: 'Test de percepción del tiempo: dos señales con un intervalo oculto, tú adivinas los segundos. Mide cuánto te acercas, en el navegador.',
+      name: 'Test de percepción del tiempo', h1: 'Test de percepción del tiempo: adivina el intervalo', card: 'Adivina el tiempo entre dos señales',
+      kick: 'Modo Interval',
+      sub: 'Un test de percepción del tiempo te pide adivinar cuánto duró un intervalo. Dos señales, un destello y un pitido, marcan un intervalo oculto de entre 0,30 y 10 s; adivinas los segundos y superas el reto con ±0,10 s.',
+      facts: ['Sin cuenta', 'Funciona también sin sonido'],
+      body: `<h2>Las reglas</h2>
+    ${rulesBlock(['Perfecto: tu cálculo es exacto, a la centésima', 'Superado: a menos de 0.10 s del tiempo real', 'Fallo: demasiado corto o largo'], ['0.00', '±0.10', '&gt; 0.10'])}
+    <h2>Cómo se juega: adivina los segundos</h2>
+    <div class="answer iv">Pulsa <b>Iniciar</b> y mira las dos barras: la primera señal empieza el tiempo y la segunda lo termina. Después <b>arrastra el control</b> hasta tu cálculo, ajústalo con <b>−</b> y <b>+</b> y pulsa <b>Confirmar</b>. Cada intento usa un tiempo distinto entre 0,30 y 10 s.</div>
+    <h2>¿Por qué calculamos mal los tiempos cortos y largos?</h2>
+    <div class="answer">Por el efecto de «tendencia central»: se tiende a sobreestimar los intervalos cortos y a subestimar los largos ${R('lewis')}. Los cálculos se acercan al centro de los tiempos que has juzgado.</div>
+    <p>La investigación sobre la medición del tiempo abarca intervalos de unos pocos milisegundos a varios segundos ${R('grondin')}, y el tamaño del sesgo depende de la tarea y de la persona.</p>
+    <h2>¿Qué precisión tiene la estimación humana del tiempo?</h2>
+    <p>Depende del intervalo y de la tarea. En los experimentos de Lewis y Miall, los mayores errores medios de participantes entrenados fueron una sobreestimación del 44 % en intervalos cortos y una subestimación del 19 % en largos, en intervalos de 215 ms a 3,59 min ${R('lewis')}. Son los mayores errores de ese rango, no errores típicos de 0,30 a 10 s.</p>
+    ${tbl(['Rango de intervalo y tarea', 'Error hallado', 'Fuente'], [
+      ['68 ms, reproducción', 'Sobreestimación media de en torno al 500 %', cite('lewis')],
+      ['16,7 min, reproducción', 'Subestimación media de en torno al 35 %', cite('lewis')],
+      ['215 ms a 3,59 min, entrenados, producción', 'Mayores errores medios: +44 % en cortos, −19 % en largos', cite('lewis')],
+      ['100 a 3200 ms, discriminación (24 personas)', 'La ley de Weber describía mejor la sensibilidad a cambios de duración', cite('haigh')]],
+      'Las cifras son los extremos del artículo en los rangos indicados, no errores a 10 s. Ley de Weber: la diferencia mínima que notas crece en proporción a la duración.')}
+    <h2>Trucos para adivinar mejor los segundos</h2>
+    <p>Cuenta desde la primera señal; no esperes a «sentir» el intervalo.</p>
+    <ul><li><strong>Cuenta desde el destello.</strong> Empieza un conteo constante en cuanto se ilumine la primera barra.</li><li><strong>Usa − y + al final.</strong> Arrastra cerca y luego ajusta las centésimas.</li><li><strong>Produce un tiempo en vez de juzgarlo.</strong> En <a href="${to('es', 'hidden-clock')}">contar 10 segundos mentalmente</a> paras un reloj oculto en lugar de juzgar un intervalo.</li></ul>`,
+      push: ['Adivina cada intervalo', 'Pulse tiene 14 niveles de Interval, cada uno con su propio tiempo oculto.'],
+      faq: [['¿Qué precisión tiene la estimación humana del tiempo?', `Depende del intervalo y de la tarea. En Lewis y Miall (2009), los mayores errores medios de participantes entrenados en dos experimentos de producción fueron una sobreestimación del 44 % en intervalos cortos y una subestimación del 19 % en largos (intervalos de 215 ms a 3,59 min) ${R('lewis')}.`],
+        ['¿Por qué los intervalos cortos parecen más largos y los largos más cortos?', `Es el efecto de «tendencia central»: se tiende a sobreestimar los intervalos cortos y a subestimar los largos ${R('lewis')}.`],
+        ['¿El error crece con intervalos más largos?', `No de forma simple: Haigh et al. (2021) hallaron que la ley de Weber describía mejor la sensibilidad a cambios de duración entre 100 y 3200 ms ${R('haigh')}, y Lewis y Miall (2009) que la variabilidad relativa baja lentamente con la duración ${R('lewis')}.`],
+        ['¿Es una prueba clínica?', 'No. Es una prueba lúdica de tu sentido del tiempo, no una herramienta de diagnóstico.']],
+      band: ['Tu mejor marca te espera', 'Catorce tiempos ocultos, Batak y un reto diario en la app.'] },
+    fr: { title: 'Test d’estimation du temps : devine l’intervalle',
+      desc: 'Test d’estimation du temps : deux signaux, un intervalle caché, tu devines les secondes. Mesure ton écart, dans le navigateur.',
+      name: 'Test d’estimation du temps', h1: 'Test d’estimation du temps : devine l’intervalle', card: 'Devine le temps entre deux signaux',
+      kick: 'Mode Interval',
+      sub: 'Un test d’estimation du temps te demande de deviner combien de temps a duré un intervalle. Deux signaux, un flash et un bip, délimitent un intervalle caché entre 0,30 et 10 s ; tu devines les secondes et réussis à ±0,10 s près.',
+      facts: ['Sans compte', 'Fonctionne aussi sans son'],
+      body: `<h2>Les règles</h2>
+    ${rulesBlock(['Parfait : ton estimation est exacte, au centième', 'Réussi : à moins de 0.10 s du temps réel', 'Raté : trop court ou trop long'], ['0.00', '±0.10', '&gt; 0.10'])}
+    <h2>Comment jouer : devinez les secondes</h2>
+    <div class="answer iv">Appuie sur <b>Démarrer</b> et regarde les deux barres : le premier signal lance le temps, le second l’arrête. Ensuite, <b>fais glisser le curseur</b> jusqu’à ton estimation, affine avec <b>−</b> et <b>+</b>, puis appuie sur <b>Valider</b>. Chaque essai utilise un temps différent entre 0,30 et 10 s.</div>
+    <h2>Pourquoi se trompe-t-on sur les durées courtes et longues ?</h2>
+    <div class="answer">À cause de l’effet de « tendance centrale » : on tend à surestimer les intervalles courts et à sous-estimer les longs ${R('lewis')}. Les estimations sont attirées vers le milieu des durées que tu as jugées.</div>
+    <p>La recherche sur le chronométrage couvre des intervalles de quelques millisecondes à plusieurs secondes ${R('grondin')}, et l’ampleur du biais dépend de la tâche et de la personne.</p>
+    <h2>Quelle est la précision de l’estimation humaine du temps ?</h2>
+    <p>Cela dépend de l’intervalle et de la tâche. Dans les expériences de Lewis et Miall, les plus grandes erreurs moyennes de participants entraînés étaient une surestimation de 44 % sur les intervalles courts et une sous-estimation de 19 % sur les longs, sur des intervalles de 215 ms à 3,59 min ${R('lewis')}. Ce sont les plus grandes erreurs de cette plage, pas des erreurs typiques pour 0,30 à 10 s.</p>
+    ${tbl(['Plage d’intervalles et tâche', 'Erreur constatée', 'Source'], [
+      ['68 ms, reproduction', 'Surestimation moyenne d’environ 500 %', cite('lewis')],
+      ['16,7 min, reproduction', 'Sous-estimation moyenne d’environ 35 %', cite('lewis')],
+      ['215 ms à 3,59 min, participants entraînés, production', 'Plus grandes erreurs moyennes : +44 % sur les courts, −19 % sur les longs', cite('lewis')],
+      ['100 à 3200 ms, discrimination (24 personnes)', 'La loi de Weber décrivait le mieux la sensibilité aux changements de durée', cite('haigh')]],
+      'Les chiffres sont les extrêmes de l’article sur les plages indiquées, pas des erreurs à 10 s. Loi de Weber : la plus petite différence perçue croît proportionnellement à la durée.')}
+    <h2>Conseils pour mieux deviner les secondes</h2>
+    <p>Compte dès le premier signal ; n’attends pas de « sentir » l’intervalle.</p>
+    <ul><li><strong>Compte dès le flash.</strong> Lance un comptage régulier dès que la première barre s’allume.</li><li><strong>Utilise − et + en dernier.</strong> Approche en faisant glisser, puis corrige les centièmes.</li><li><strong>Produis une durée au lieu de la juger.</strong> Dans <a href="${to('fr', 'hidden-clock')}">compter 10 secondes dans sa tête</a>, tu arrêtes une horloge cachée au lieu de juger un intervalle.</li></ul>`,
+      push: ['Devine chaque intervalle', 'Pulse propose 14 niveaux d’Interval, chacun avec son propre temps caché.'],
+      faq: [['Quelle est la précision de l’estimation humaine du temps ?', `Cela dépend de l’intervalle et de la tâche. Chez Lewis et Miall (2009), les plus grandes erreurs moyennes de participants entraînés dans deux expériences de production étaient une surestimation de 44 % sur les intervalles courts et une sous-estimation de 19 % sur les longs (intervalles de 215 ms à 3,59 min) ${R('lewis')}.`],
+        ['Pourquoi les intervalles courts semblent-ils plus longs et les longs plus courts ?', `C’est l’effet de « tendance centrale » : on tend à surestimer les intervalles courts et à sous-estimer les longs ${R('lewis')}.`],
+        ['L’erreur augmente-t-elle avec la durée ?', `Pas de façon simple : Haigh et al. (2021) ont trouvé qu’elle décrivait le mieux la sensibilité aux changements de durée entre 100 et 3200 ms ${R('haigh')}, et Lewis et Miall (2009) que la variabilité relative baisse lentement avec la durée ${R('lewis')}.`],
+        ['Est-ce un test clinique ?', 'Non. C’est un test ludique de ton sens du temps, pas un outil de diagnostic.']],
+      band: ['Ton record t’attend', 'Quatorze temps cachés, Batak et un défi chaque jour dans l’appli.'] },
+    pt: { title: 'Teste de percepção do tempo: adivinhe o intervalo',
+      desc: 'Teste de percepção do tempo: dois sinais com um intervalo oculto, você adivinha os segundos. Veja o quanto chega perto, no navegador.',
+      name: 'Teste de percepção do tempo', h1: 'Teste de percepção do tempo: adivinhe o intervalo', card: 'Adivinhe o tempo entre dois sinais',
+      kick: 'Modo Interval',
+      sub: 'Um teste de percepção do tempo pede que você adivinhe quanto durou um intervalo. Dois sinais, um flash e um bipe, marcam um intervalo oculto entre 0,30 e 10 s; você adivinha os segundos e passa dentro de ±0,10 s.',
+      facts: ['Sem conta', 'Funciona também sem som'],
+      body: `<h2>As regras</h2>
+    ${rulesBlock(['Perfeito: seu palpite é exato, no centésimo', 'Passou: a menos de 0.10 s do tempo real', 'Errou: curto ou longo demais'], ['0.00', '±0.10', '&gt; 0.10'])}
+    <h2>Como jogar: adivinhe os segundos</h2>
+    <div class="answer iv">Toque em <b>Iniciar</b> e observe as duas barras: o primeiro sinal começa o tempo e o segundo o termina. Depois <b>arraste o controle</b> até o seu palpite, ajuste com <b>−</b> e <b>+</b> e toque em <b>Confirmar</b>. Cada tentativa usa um tempo diferente entre 0,30 e 10 s.</div>
+    <h2>Por que erramos em tempos curtos e longos?</h2>
+    <div class="answer">Por causa do efeito de “tendência central”: tendemos a superestimar intervalos curtos e subestimar os longos ${R('lewis')}. Os palpites são puxados para o meio dos tempos que você já julgou.</div>
+    <p>A pesquisa sobre cronometragem cobre intervalos de poucos milissegundos a vários segundos ${R('grondin')}, e o tamanho do viés depende da tarefa e da pessoa.</p>
+    <h2>Quão precisa é a estimativa humana do tempo?</h2>
+    <p>Depende do intervalo e da tarefa. Nos experimentos de Lewis e Miall, os maiores erros médios de participantes treinados foram uma superestimação de 44% em intervalos curtos e uma subestimação de 19% nos longos, em intervalos de 215 ms a 3,59 min ${R('lewis')}. São os maiores erros dessa faixa, não erros típicos para 0,30 a 10 s.</p>
+    ${tbl(['Faixa de intervalo e tarefa', 'Erro encontrado', 'Fonte'], [
+      ['68 ms, reprodução', 'Superestimação média de cerca de 500%', cite('lewis')],
+      ['16,7 min, reprodução', 'Subestimação média de cerca de 35%', cite('lewis')],
+      ['215 ms a 3,59 min, treinados, produção', 'Maiores erros médios: +44% nos curtos, −19% nos longos', cite('lewis')],
+      ['100 a 3200 ms, discriminação (24 pessoas)', 'A lei de Weber descrevia melhor a sensibilidade a mudanças de duração', cite('haigh')]],
+      'Os números são os extremos do artigo nas faixas indicadas, não erros em 10 s. Lei de Weber: a menor diferença que você nota cresce em proporção à duração.')}
+    <h2>Dicas para adivinhar melhor os segundos</h2>
+    <p>Conte a partir do primeiro sinal; não espere “sentir” o intervalo.</p>
+    <ul><li><strong>Conte a partir do flash.</strong> Comece uma contagem constante assim que a primeira barra acender.</li><li><strong>Use − e + por último.</strong> Arraste até perto e depois acerte os centésimos.</li><li><strong>Produza um tempo em vez de julgá-lo.</strong> Em <a href="${to('pt', 'hidden-clock')}">contar 10 segundos de cabeça</a> você para um relógio oculto em vez de julgar um intervalo.</li></ul>`,
+      push: ['Adivinhe cada intervalo', 'O Pulse tem 14 níveis de Interval, cada um com seu próprio tempo oculto.'],
+      faq: [['Quão precisa é a estimativa humana do tempo?', `Depende do intervalo e da tarefa. Em Lewis e Miall (2009), os maiores erros médios de participantes treinados em dois experimentos de produção foram uma superestimação de 44% em intervalos curtos e uma subestimação de 19% nos longos (intervalos de 215 ms a 3,59 min) ${R('lewis')}.`],
+        ['Por que intervalos curtos parecem mais longos e os longos mais curtos?', `É o efeito de “tendência central”: tendemos a superestimar intervalos curtos e subestimar os longos ${R('lewis')}.`],
+        ['O erro cresce com intervalos maiores?', `Não de forma simples: Haigh et al. (2021) acharam que ela descrevia melhor a sensibilidade a mudanças de duração entre 100 e 3200 ms ${R('haigh')}, e Lewis e Miall (2009) que a variabilidade relativa cai devagar com a duração ${R('lewis')}.`],
+        ['É um teste clínico?', 'Não. É uma verificação lúdica do seu senso de tempo, não uma ferramenta de diagnóstico.']],
+      band: ['Seu recorde está esperando', 'Catorze tempos ocultos, Batak e um desafio diário no app.'] } },
 };
 // ── New app pages (T-004): Cyberpunk Detective and Lull. Facts ONLY from .lead/attachments/T-004/facts.md. Per app and locale.
 //    Cyberpunk: { title, desc, tag, h1, sub, chips, ans [q, a], steps_h, steps_p, steps [[b, s]], cases_h, cases_p, kick [detective, audio],
@@ -856,7 +1276,7 @@ const SYM = {
   interval: '<path d="M5 6v12M19 6v12M5 12h14"/>', reaction: '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
   batak: '<circle cx="7" cy="7" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
   back: '<path d="M15 5l-7 7 7 7"/>', out: '<path d="M7 17L17 7M9 7h8v8"/>', check: '<path d="M5 12l5 5 9-10"/>', chev: '<path d="M9 5l7 7-7 7"/>',
-  chart: '<path d="M5 19V9M12 19V5M19 19v-7"/>', globe: '<path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
+  chart: '<path d="M5 19V9M12 19V5M19 19v-7"/>', list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>', globe: '<path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
 };
 const ic = id => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${SYM[id]}</svg>`;
 const img = (name, alt = '') => `<img src="/assets/${name}-icon.webp" width="256" height="256" alt="${alt}">`;
@@ -879,6 +1299,7 @@ const APP_LD = { // MobileApplication facts per app page (Lull: no url, no offer
   'cyberpunk-detective': { name: 'Cyberpunk Detective', applicationCategory: 'GameApplication', url: PLAY_URL('cyberpunk_detective'), offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
   lull: { name: 'Lull', applicationCategory: 'LifestyleApplication' },
 };
+const plain = h => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<');
 function schema(loc, p) {
   const t = T[loc], c = CONTENT[p.id]?.[loc], me = url(loc, p);
   const org = { '@type': 'Organization', name: 'Gurrulabs', url: url(loc, byId.home), logo: `${SITE}/assets/gurrulabs-logo-512.png` };
@@ -892,7 +1313,8 @@ function schema(loc, p) {
     const trail = p.type === 'app' ? [[t.back, byId.home], [APP_LD[p.id].name, p]] : [[t.back, byId.home], ['Pulse', byId.pulse], [c.name, p]];
     out.push({ '@type': 'BreadcrumbList', itemListElement: trail.map(([name, q], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url(loc, q) })) });
   }
-  if (APP[p.id]) out.push({ '@type': 'FAQPage', mainEntity: APP[p.id][loc].faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) });
+  const faq = APP[p.id]?.[loc].faq || c?.faq; // visible FAQ; links stripped to their text
+  if (faq) out.push({ '@type': 'FAQPage', mainEntity: faq.map(([name, text]) => ({ '@type': 'Question', name: plain(name), acceptedAnswer: { '@type': 'Answer', text: plain(text) } })) });
   return out;
 }
 
@@ -904,7 +1326,7 @@ const FAVICON = {
 };
 function head(loc, p) {
   const { title, desc } = meta(loc, p);
-  const image = OG_IMAGE[p.app] ? `${SITE}/assets/${OG_IMAGE[p.app]}.webp` : '';
+  const image = p.mode ? `${SITE}/assets/og-${p.id}.webp` : OG_IMAGE[p.app] ? `${SITE}/assets/${OG_IMAGE[p.app]}.webp` : ''; // mode test pages: 1200x630 screenshot of the game panel
   return `<!doctype html>
 <html lang="${HREFLANG[loc]}">
 <head>
@@ -920,6 +1342,9 @@ ${alternates(p)}
 <meta property="og:type" content="${p.type === 'guide' ? 'article' : 'website'}">
 <meta property="og:locale" content="${OG_LOCALE[loc]}">
 <meta property="og:site_name" content="Gurrulabs">${image ? `\n<meta property="og:image" content="${image}">` : ''}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc)}">${image ? `\n<meta name="twitter:image" content="${image}">` : ''}
 <link rel="preload" href="/assets/outfit.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/styles.css">
 ${FAVICON[p.app] || FAVICON.studio}
@@ -1129,14 +1554,16 @@ const SRC_KEY = new Map(Object.entries(SRC).map(([k, s]) => [s, k]));
 const sourcesBlock = (loc, p) => `<section class="sources" id="sources" aria-labelledby="src-h"><h2 id="src-h">${T[loc].src_h}</h2><ol>${CONTENT[p.id].sources.map(s => `<li id="src-${SRC_KEY.get(s)}">${s.ref} <a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.url.replace('https://', ''))}</a></li>`).join('')}</ol><p class="note">${p.type === 'guide' ? T[loc].edu_med : T[loc].edu}${CONTENT[p.id][loc].note ? ' ' + CONTENT[p.id][loc].note : ''}</p></section>`;
 const crumbBlock = (loc, p) => `<nav class="bc" aria-label="${T[loc].bc}"><a href="${path(loc, byId.home)}">${T[loc].back}</a><span aria-hidden="true">›</span><a href="${path(loc, byId.pulse)}">Pulse</a><span aria-hidden="true">›</span><span>${CONTENT[p.id][loc].name}</span></nav>`;
 // Link cards to the content pages and the Pulse page (internal links), coloured by Pulse mode
+const NEW = { en: 'NEW', es: 'NUEVO', fr: 'NOUVEAU', pt: 'NOVO' };
 const relCard = (loc, id) => id === 'pulse'
   ? `<a href="${to(loc, 'pulse')}" style="--c:var(--m-hidden)"><span class="mi">${ICON.pulse}</span><b>${T[loc].pulse_card[0]}</b><span>${T[loc].pulse_card[1]}</span></a>`
-  : `<a href="${to(loc, id)}" style="--c:var(--${byId[id].card[1]})"><span class="mi">${ic(byId[id].card[0])}</span><b>${CONTENT[id][loc].name}</b><span>${CONTENT[id][loc].card}</span></a>`;
+  : `<a href="${to(loc, id)}"${byId[id].mode ? ` class="new" data-new="${NEW[loc]}"` : ''} style="--c:var(--${byId[id].card[1]})"><span class="mi">${ic(byId[id].card[0])}</span><b>${CONTENT[id][loc].name}</b><span>${CONTENT[id][loc].card}</span></a>`;
 const relBlock = (loc, ids) => `<div class="rel">${ids.map(id => relCard(loc, id)).join('')}</div>`;
 const faqBlock = (loc, faq, open = 1, h = T[loc].faq_h) => `<h2>${h}</h2>
     <div class="faq">${faq.map(([q, a], i) => `<details${i < open ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>`;
 // Test/challenge: Play link to Pulse. Guide: featured link to the reaction test.
-const pushBlock = (loc, [b, s, go]) => `<div class="push"><div class="app"><div class="ic">${ICON.pulse}</div><div><b>${b}</b><span>${s}</span></div></div>${go
+const MODE_CLS = { hidden: 'hc', batak: 'bk', interval: 'iv' };
+const pushBlock = (loc, [b, s, go], mode) => `<div class="push${MODE_CLS[mode] ? ' ' + MODE_CLS[mode] : ''}"><div class="app"><div class="ic">${ICON.pulse}</div><div><b>${b}</b><span>${s}</span></div></div>${go
   ? `<a class="lnk" href="${to(loc, 'reaction-test')}" style="--bb:var(--m-reaction);--bf:#1A0A06">${go}${ic('chev')}</a>` : play(loc, 'pulse', 'article_push')}</div>`;
 
 function contentPage(loc, p) {
@@ -1159,7 +1586,7 @@ function contentPage(loc, p) {
       <div class="cta">${play(loc, 'pulse', 'hero')}</div>
       <div class="facts">${c.facts.map(f => `<span class="chip">${ic('check')}${f}</span>`).join('')}</div>
     </div>
-    ${gameBox(loc, ` data-mode="${p.type === 'test' ? 'react' : 'exact'}" data-solo`)}
+    ${gameBox(loc, ` data-mode="${p.mode || (p.type === 'test' ? 'react' : 'exact')}" data-solo`)}
   </section>
   ${dated(loc, p)}`;
   return `${head(loc, p)}
@@ -1170,7 +1597,7 @@ ${header(loc, p, t)}
   ${top}
   <article class="prose">
     ${c.body}
-    ${pushBlock(loc, c.push)}
+    ${pushBlock(loc, c.push, p.mode)}
     ${c.after ? c.after + '\n    ' : ''}${faqBlock(loc, c.faq)}
   </article>
   ${sourcesBlock(loc, p)}

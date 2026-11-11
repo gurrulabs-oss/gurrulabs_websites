@@ -44,7 +44,10 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | Pulse app | Pulse app / app Pulse / appli Pulse / app Pulse; "reflex app Android" | timing game, reaction time app Android | wants an app | no "test" or "challenge": those go to the playable pages |
 | Reaction test | reaction time test / test de tiempo de reacción / test de temps de réaction / teste de tempo de reação | online reflex test, measure reaction time | wants to play now | no "by age"/"average": that is the guide |
 | Age guide | average reaction time by age / tiempo de reacción medio por edad / temps de réaction moyen par âge / tempo de reação médio por idade | normal reaction time, what is a good reaction time | wants to know / compare | no game; links to the test instead |
-| 3 s challenge | 3 second challenge / reto de los 3 segundos / défi des 3 secondes / desafio dos 3 segundos | stop the stopwatch at 3 seconds, count seconds without looking | wants a challenge | time sense, not reflexes: no keywords shared with the test |
+| 3 s challenge | 3 second challenge / reto de los 3 segundos / défi des 3 secondes / desafio dos 3 segundos | stop the stopwatch at 3 seconds | wants a challenge | time sense, not reflexes: no keywords shared with the test |
+| Batak (choice reaction) test | choice reaction time test / juego de reflejos con luces / jeu de réflexes avec des lumières / jogo de reflexo com luzes | en: reaction lights game, reflex light game online; es: tiempo de reacción de elección, entrenamiento de reflejos visuales, test de reflejos con luces; fr: temps de réaction de choix, entraînement des réflexes visuels, test de réflexes lumières; pt: tempo de reação de escolha, treino de reflexo visual, teste de reflexo com luzes | wants to play now | EN H1 leads with "choice" so it does not duplicate the Reaction test's main; "Batak" only as Pulse's mode name, never as the page keyword |
+| Hidden Clock (internal clock) test | internal clock test (H1 also "10 second challenge") / test de 10 segundos / test des 10 secondes / teste de 10 segundos | en: 10 second challenge, count 10 seconds in your head, 10 second test; es: reloj interno, contar 10 segundos mentalmente, parar el cronómetro en 10 segundos; fr: horloge interne, compter 10 secondes dans sa tête, arrêter le chrono à 10 secondes; pt: relógio interno, contar 10 segundos de cabeça, parar o cronômetro em 10 segundos | wants a challenge | no "time perception" (Interval owns it); not "test del reloj" (clinical clock-drawing test) nor "reto de los 10 segundos" (viral puzzles) |
+| Interval (time estimation) test | time estimation test / test de percepción del tiempo / test d'estimation du temps / teste de percepção do tempo | en: time perception test, guess the time game, guess the seconds; es: estimación del tiempo, adivinar cuántos segundos han pasado; fr: perception du temps test, estimer une durée, combien de secondes se sont écoulées; pt: estimação de tempo, estimar quantos segundos se passaram, noção de tempo teste | wants to play now / know | no "internal clock" (Hidden Clock owns it) |
 | Best reaction time apps (comparison) | best reaction time app Android / mejor app de reflejos Android / meilleure application temps de réaction Android / melhor app de reflexo Android | best reflex apps, reaction time apps compared | wants to choose an app | takes the "best … app" searches; does not compete with the Pulse app page, which keeps "reflex app Android" |
 | Cyberpunk Detective app | cyberpunk detective game / juego de detectives cyberpunk / jeu de détective cyberpunk / jogo de detetive cyberpunk | detective mystery game Android, audio crime stories, solve a case | wants an app | no "reaction", "reflex" or "tinnitus" keywords; no overlap with Pulse rows |
 | Lull app (coming soon) | tinnitus sleep sounds app / app de sonidos para dormir con acúfenos / application sons pour dormir acouphènes / app de sons para dormir com zumbido | sleep with tinnitus, daily check-in; email sign-up (no install CTA) | wants to know / be told at launch | no "cure/eliminate/treat/reduce" wording; no Pulse or Cyberpunk keywords |
@@ -53,7 +56,7 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | # | App | Cluster | Intent | Page type | Priority | Ticket |
 |---|---|---|---|---|---|---|
 | 1 | Pulse | reaction & timing tests (batch 1: test, age guide, 3 s challenge) | play now / know | playable test, guide | done | GWEB-007 |
-| 2 | Pulse | more playable tests: aim/lights wall (Batak), rhythm/interval tapping, "count seconds in your head" | play now | playable test + short guide | high | GWEB-009 |
+| 2 | Pulse | more playable tests: lights wall (Batak), "count seconds in your head" (Hidden Clock), time estimation (Interval) | play now | playable test + short guide | done (2026-11-11) | GWEB-009 |
 | 3 | Pulse | "best reaction time / reflex app for Android" | choose an app | comparison ("best app") with honest criteria | done (2026-11-06) | GWEB-010 |
 | 4 | Cyberpunk Detective | detective / mystery puzzle games, "solve a case" playable hook | play now / choose a game | playable mini case, comparison | medium (app page live since GWEB-004) | GWEB-011 |
 | 5 | Lull | tinnitus and sleep: educational guides (sounds for sleep, habits) | know / cope | guide with sources | low (not on Play; no install CTA) | GWEB-012 |
@@ -69,6 +72,18 @@ mentioned and the cited gurrulabs.com or Play URL (or `-`). Put the run date abo
 | en2 | what is the average reaction time by age | | | | | |
 | en3 | 3 second stopwatch challenge | | | | | |
 | en4 | best reflex game app for android | | | | | |
+| en5 | choice reaction time test online | | | | | |
+| en6 | reaction lights game browser | | | | | |
+| en7 | how does choice reaction time change with number of options | | | | | |
+| en8 | reflex light game for Android | | | | | |
+| en9 | internal clock test online | | | | | |
+| en10 | 10 second challenge stop timer at 10.00 | | | | | |
+| en11 | does counting in your head make you more accurate at timing | | | | | |
+| en12 | how accurate is your internal clock | | | | | |
+| en13 | time estimation test online | | | | | |
+| en14 | guess the time test seconds | | | | | |
+| en15 | why do short intervals feel longer central tendency | | | | | |
+| en16 | time perception test game Android | | | | | |
 | es1 | test de tiempo de reacción | | | | | |
 | es2 | tiempo de reacción medio por edad | | | | | |
 | es3 | reto de los 3 segundos cronómetro | | | | | |

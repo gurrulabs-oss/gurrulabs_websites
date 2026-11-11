@@ -481,3 +481,63 @@ html:has(body.app-lull) { background: #17121A; }
   .stat { grid-template-columns: minmax(0, 1fr); gap: 8px; } .stat b { font-size: 52px; }
   .app-lull .btn { width: 100%; }
 }
+
+/* ── Game areas: Hidden Clock, Batak, Interval (T-009) ── */
+.game.hidden { --c: var(--m-hidden); } .game.batak { --c: var(--m-batak); } .game.interval { --c: var(--m-interval); }
+.answer.hc { box-shadow: inset 3px 0 0 var(--m-hidden); } .answer.bk { box-shadow: inset 3px 0 0 var(--m-batak); } .answer.iv { box-shadow: inset 3px 0 0 var(--m-interval); }
+.push.hc { background: linear-gradient(90deg, color-mix(in srgb, var(--m-hidden) 12%, var(--surface)), var(--surface)); }
+.push.bk { background: linear-gradient(90deg, color-mix(in srgb, var(--m-batak) 12%, var(--surface)), var(--surface)); }
+.push.iv { background: linear-gradient(90deg, color-mix(in srgb, var(--m-interval) 12%, var(--surface)), var(--surface)); }
+
+/* Hidden Clock: Exact Time's watch with dot marks; on Start it dissolves into a still ghost */
+.watch.dots .ticks { background: repeating-conic-gradient(color-mix(in srgb, var(--c) 30%, transparent) 0 .9deg, transparent .9deg 6deg);
+  -webkit-mask: radial-gradient(circle, transparent 144.5px, #000 145px, #000 148.5px, transparent 149px); mask: radial-gradient(circle, transparent 144.5px, #000 145px, #000 148.5px, transparent 149px); }
+.watch.ghost { opacity: .1; filter: blur(7px); transform: scale(1.05); transition: opacity .6s, filter .6s, transform .6s; }
+.watch.reveal { animation: unveil .5s ease-out both; }
+@keyframes unveil { from { opacity: .1; filter: blur(7px); transform: scale(1.05); } }
+
+/* Batak: 7 pads (1 centre + 6 on a 122 px radius, first at 12 o'clock), progress bar above, no running clock */
+.bprog { width: 300px; max-width: 100%; }
+.bprog .row { display: flex; justify-content: space-between; font-size: 14px; color: var(--text2); }
+.bprog .bar { height: 4px; border-radius: 2px; background: var(--line); margin-top: 8px; overflow: hidden; }
+.bprog .bar i { display: block; height: 100%; background: var(--c); transition: width .2s ease-out; }
+.board { position: relative; width: 320px; height: 320px; margin-top: 14px; }
+.pad { position: absolute; width: 58px; height: 58px; border-radius: 50%; background: #0B1024; padding: 0;
+       box-shadow: inset 0 2px 6px rgba(0,0,0,.6), 0 0 0 1px color-mix(in srgb, var(--line) 80%, transparent); }
+.pad.on { background: radial-gradient(circle at 40% 35%, #E4FFD6, var(--c) 45%, color-mix(in srgb, var(--c) 70%, #1E3A10) 100%);
+          box-shadow: 0 0 26px color-mix(in srgb, var(--c) 65%, transparent), 0 0 0 1px color-mix(in srgb, var(--c) 60%, transparent); cursor: pointer; }
+.pad.hit::after { content: ""; position: absolute; inset: -18px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--c) 60%, transparent); animation: ping .35s ease-out both; }
+@keyframes ping { from { transform: scale(.6); opacity: 1; } to { transform: scale(1); opacity: 0; } }
+.stage.v .pad { animation: vglow 1.2s ease-out both; }
+.total { text-align: center; } .total .n { font-size: 64px; font-weight: 200; line-height: 1; letter-spacing: -.03em; }
+.total .n span { font-size: 24px; margin-left: 4px; color: var(--text2); } .total small { display: block; font-size: 14px; color: var(--text3); margin-top: 4px; }
+
+/* Interval: two signal bars, dashed gap, number plate; answer step = slider between -/+ steppers */
+.istage { position: relative; width: 300px; height: 300px; }
+.sbar { position: absolute; top: 75px; width: 6px; height: 150px; border-radius: 3px; background: color-mix(in srgb, var(--c) 35%, var(--line)); transition: opacity .3s; }
+.sbar.l { left: 26px; } .sbar.r { right: 26px; }
+.sbar.lit { background: var(--c); box-shadow: 0 0 18px var(--c); }
+.istage.dim .sbar:not(.lit) { opacity: .4; }
+.gapl { position: absolute; left: 32px; right: 32px; top: 150px; border-top: 1.5px dashed color-mix(in srgb, var(--c) 22%, transparent); }
+.istage.v .sbar { background: var(--v); box-shadow: 0 0 18px color-mix(in srgb, var(--v) 60%, transparent); } .istage.v .gapl { border-color: color-mix(in srgb, var(--v) 45%, transparent); }
+.plate { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--bg2); border-radius: 14px; padding: 6px 14px; text-align: center; white-space: nowrap; }
+.plate .n { font-size: 72px; font-weight: 200; line-height: 1; letter-spacing: -.03em; } .plate .n span { font-size: 26px; margin-left: 4px; color: var(--text2); letter-spacing: 0; }
+.plate .q { color: color-mix(in srgb, var(--c) 70%, var(--text2)); }
+.plate .w { font-size: 20px; color: var(--text2); padding: 10px 6px; }
+.istage.v .plate .n { color: var(--v); }
+.plate small { display: block; font-size: 14px; color: var(--text3); margin-top: 4px; }
+.ans { width: 320px; max-width: 100%; text-align: center; }
+.ans small { display: block; font-size: 14px; color: var(--text3); }
+.ans .n { font-size: 76px; font-weight: 200; line-height: 1.1; letter-spacing: -.03em; } .ans .n span { font-size: 26px; margin-left: 4px; color: var(--text2); letter-spacing: 0; }
+.slide-row { display: flex; align-items: center; gap: 10px; margin-top: 26px; }
+.step { width: 48px; height: 48px; border-radius: 50%; background: var(--surface2); color: var(--text); font-size: 24px; font-weight: 300; flex: none; }
+.step:focus-visible, .slide-row input:focus-visible, .pad:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.slide-row input { flex: 1; min-width: 0; accent-color: var(--c); height: 26px; }
+.scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--text3); margin: 6px 58px 0; }
+.go[disabled] { opacity: .35; cursor: default; }
+@media (prefers-reduced-motion: reduce) { .watch.ghost, .watch.reveal, .pad.hit::after, .stage.v .pad { transition: none; animation: none; } }
+@media (max-width: 400px) { .board { transform: scale(.94); margin: 0 -10px; } .istage { transform: scale(.94); } }
+
+/* New-page badge on link cards (label from data-new) and tables that wrap instead of scrolling */
+.new { position: relative; } .new::before { content: attr(data-new); position: absolute; top: 10px; right: 12px; font-size: 11px; font-weight: 600; color: #2A2000; background: var(--gold); padding: 1px 7px; border-radius: 8px; z-index: 1; }
+.tbl.fit table { min-width: 0; font-size: 14px; } .tbl.fit th, .tbl.fit td { padding: 12px 10px; white-space: normal; }
