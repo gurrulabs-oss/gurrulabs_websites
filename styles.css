@@ -354,6 +354,11 @@ section.blk > p.lead { color: var(--text2); margin-top: 8px; font-size: 17px; }
 .faq summary::after { content: "+"; color: var(--text3); font-weight: 300; font-size: 22px; line-height: 1; }
 .faq details[open] summary::after { content: "–"; }
 .faq p { margin-top: 10px; color: var(--text2); line-height: 1.65; }
+.faq.v2 details { border: 0; padding: 0; margin-top: 8px; border-radius: 18px; background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.faq.v2 details:last-child { border: 0; }
+.faq.v2 summary { padding: 18px 20px; }
+.faq.v2 details[open] summary::after { color: var(--c, var(--accent)); }
+.faq.v2 p { margin: 0; padding: 0 20px 18px; }
 .sources { margin-top: 64px; max-width: 760px; padding-top: 28px; border-top: 1px solid var(--line); }
 .sources h2 { font-size: 22px; font-weight: 400; }
 .sources ol { margin-top: 14px; padding-left: 22px; }
@@ -762,6 +767,7 @@ html:has(body.app-lull) { background: #17121A; }
 .stats4 > div { padding: 18px 18px 16px; border-radius: 20px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
 .stats4 b { display: block; font: 200 34px/1.05 Outfit, system-ui, sans-serif; letter-spacing: -.02em; font-variant-numeric: tabular-nums; color: var(--c, var(--text)); }
 .stats4 b small { font-size: 15px; color: var(--text3); margin-left: 3px; } .stats4 span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.4; color: var(--text2); }
+.stats4 b span { display: inline; margin: 0; font-size: inherit; line-height: inherit; color: inherit; } /* count-up span inside a tile figure */
 .stats4 cite { display: block; margin-top: 8px; font-style: normal; font-size: 12px; color: var(--text3); }
 .a-grid { display: grid; grid-template-columns: minmax(0, 1fr) 384px; gap: 28px; align-items: start; margin-top: 22px; }
 .a-grid .chart { margin-top: 0; } .a-grid .game { height: 560px; position: sticky; top: 20px; }

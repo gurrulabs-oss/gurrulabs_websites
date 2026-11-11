@@ -145,7 +145,7 @@
   seen($$('.count, .vs, .chart.pre'), t => {
     if (t.classList.contains('vs')) $$('[data-w]', t).forEach(i => { i.style.width = i.dataset.w + '%'; });
     else if (t.classList.contains('chart')) t.classList.remove('pre');
-    else if (motion) { const to = +t.dataset.to, d = +t.dataset.d, t0 = performance.now(), nf = { minimumFractionDigits: d, maximumFractionDigits: d };
+    else if (motion) { const to = +t.dataset.to, d = +t.dataset.d, t0 = performance.now(), nf = { minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always' }; // 'always': es would print 1469
       const f = now => { const p = Math.min(1, (now - t0) / 1200); t.textContent = (to * (1 - (1 - p) ** 3)).toLocaleString(LOCALE === 'pt' ? 'pt-BR' : LOCALE, nf); if (p < 1) requestAnimationFrame(f); };
       requestAnimationFrame(f); }
   });
