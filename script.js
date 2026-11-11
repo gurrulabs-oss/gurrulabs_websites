@@ -114,7 +114,7 @@
   const panel = document.getElementById('game');
   if (!panel) return;
   const I = JSON.parse(document.getElementById('i18n').textContent);
-  const fill = (s, a) => s.replace('{a}', a);
+  const fill = (s, a) => s.replace(/\{(\w)\}/g, (_, k) => typeof a === 'object' ? a[k] : a); // a: value for {a}, or {a, b, n}
   const fmt = s => s.toFixed(2);
   const PLAY_PULSE = 'https://play.google.com/store/apps/details?id=com.gurrulabs.pulse';
 
@@ -130,12 +130,12 @@
 
   // Exact Time watch: a full turn of the ring = the target
   const TARGET = 3, WIN = 0.10, C = 2 * Math.PI * 128;
-  const watch = (t, face, v = '') => `<div class="watch ${v ? 'v ' + v : ''}"><div class="ticks"></div><svg class="ring" viewBox="0 0 272 272"><circle class="track" cx="136" cy="136" r="128"/><circle class="prog" cx="136" cy="136" r="128" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - Math.min(t / TARGET, 1))}"/></svg><div class="face">${face}</div></div>`;
+  const watch = (t, face, v = '', cls = '', tg = TARGET) => `<div class="watch ${cls} ${v ? 'v ' + v : ''}"><div class="ticks"></div><svg class="ring" viewBox="0 0 272 272"><circle class="track" cx="136" cy="136" r="128"/><circle class="prog" cx="136" cy="136" r="128" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - Math.min(t / tg, 1))}"/></svg><div class="face">${face}</div></div>`;
   const readyFace = `<small>${I.stop_at}</small><div class="n tnum">${fmt(TARGET)}<span>s</span></div>`;
   const runFace = t => `<div class="n tnum">${fmt(t)}<span>s</span></div><small class="tnum">${fill(I.of, fmt(TARGET))}</small>`;
 
-  function exactVerdict(t) {
-    const off = Math.round((t - TARGET) * 100) / 100, a = Math.abs(off), late = off > 0 ? 1 : 0;
+  function exactVerdict(t, tg = TARGET) { // also Hidden Clock (target 10 s) and Interval (target = the hidden gap)
+    const off = Math.round((t - tg) * 100) / 100, a = Math.abs(off), late = off > 0 ? 1 : 0;
     if (a === 0) return { k: 'perfect', tag: I.perfect, d: I.d_perfect };
     if (a <= WIN) return { k: 'pass', tag: I.pass, d: fill(I.d_pass[late], fmt(a)) };
     return { k: 'miss', tag: late ? I.late : I.early, d: fill(I.d_miss[late], fmt(a - WIN)) };
@@ -158,10 +158,30 @@
       <p class="more">${more}</p>${btns}</div>`;
   }
   const Z = { pass: 'color-mix(in srgb, #7EE8C2 35%, transparent)', perfect: 'color-mix(in srgb, #FFD47A 45%, transparent)' };
-  const exactSheet = t => { const v = exactVerdict(t);
-    return sheet({ ...v, big: fmt(t), score: fmt(t), test: 'exact', cta: v.k === 'perfect' ? I.keep : fill(I.beatx, fmt(Math.abs(t - TARGET))), more: I.more,
-      meter: { min: TARGET - 1, max: TARGET + 1, value: t, target: TARGET, zones: [[TARGET - WIN, TARGET + WIN, Z.pass]] },
-      labels: [fmt(TARGET - 1), I.win, fmt(TARGET + 1)] }); };
+  const exactSheet = (t, tg = TARGET, test = 'exact', more = I.more, v = exactVerdict(t, tg)) =>
+    sheet({ ...v, big: fmt(t), score: fmt(t), test, cta: v.k === 'perfect' ? I.keep : fill(I.beatx, fmt(Math.abs(t - tg))), more,
+      meter: { min: tg - 1, max: tg + 1, value: t, target: tg, zones: [[tg - WIN, tg + WIN, Z.pass]] },
+      labels: [fmt(Math.max(0, tg - 1)), I.win, fmt(tg + 1)] });
+
+  // Hidden Clock (target 10.00 s; the watch dissolves into a still ghost on Start)
+  const HT = 10;
+  // Batak (app level 1: 8 lights, 0.90 s per light = 7.20 s to beat; perfect 0.40 s per light = 3.20 s)
+  const N = 8, BPASS = N * 0.90, BPERF = N * 0.40;
+  const PADS = [[131, 131], ...Array.from({ length: 6 }, (_, i) => { const a = (-90 + 60 * i) * Math.PI / 180; return [Math.round(131 + 122 * Math.cos(a)), Math.round(131 + 122 * Math.sin(a))]; })];
+  const board = (lit, hit, v = '') => `<div class="stage ${v ? 'v ' + v : ''}"><div class="col"><div class="bprog"><div class="row tnum"><span>${fill(I.b_of, { a: Math.min(hit, N), b: N })}</span><span>${fill(I.b_within, fmt(BPASS))}</span></div><div class="bar"><i style="width:${hit / N * 100}%"></i></div></div>
+    <div class="board">${PADS.map(([x, y], i) => `<button class="pad${i === lit ? ' on' : ''}" style="left:${x}px;top:${y}px" data-pad="${i}" aria-label="${fill(I.b_light, i + 1)}"></button>`).join('')}</div></div></div>`;
+  const bVerdict = t => t <= BPERF ? { k: 'perfect', tag: I.perfect, d: fill(I.b_perf, { n: N, a: fmt(t / N) }) }
+    : t <= BPASS ? { k: 'pass', tag: I.pass, d: fill(I.b_pass, { n: N, a: fmt(t / N), b: fmt(t - BPERF) }) }
+    : { k: 'miss', tag: I.slow, d: fill(I.b_slow, fmt(t - BPASS)) };
+  const bSheet = t => sheet({ ...bVerdict(t), big: fmt(t), score: fmt(t), test: 'batak', cta: fill(I.beat, fmt(t)), more: I.more_batak,
+    meter: { min: 0, max: 9, value: t, zones: [[0, BPERF, Z.perfect], [BPERF, BPASS, Z.pass]] }, labels: ['0', fill(I.b_meter, { a: fmt(BPERF), b: fmt(BPASS) }), '9.00 s'] });
+  const nextPad = prev => { let p; do p = Math.floor(Math.random() * 7); while (p === prev); return p; };
+
+  // Interval: each try picks one of the app's 14 Interval levels (levels_config.json targetMillis); guess on a 0-10 s slider
+  const TIMES = [5, 5.5, 3, 6.5, 2.5, 3.5, 1, 4, 1.5, 3.8, 4.6, 0.3, 10, 5.2];
+  const istage = (l, r, plate, cls = '') => `<div class="istage ${cls}"><span class="sbar l${l ? ' lit' : ''}"></span><span class="gapl"></span><span class="sbar r${r ? ' lit' : ''}"></span><div class="plate">${plate}</div></div>`;
+  const ivVerdict = (g, real) => { const v = exactVerdict(g, real), late = g > real, a = fmt(Math.abs(Math.round((g - real) * 100) / 100));
+    return { ...v, tag: v.k === 'miss' ? (late ? I.long : I.short) : v.tag, d: v.k === 'perfect' ? fill(I.i_exact, fmt(real)) : fill(late ? I.i_longd : I.i_shortd, { a: fmt(real), b: a }) }; };
 
   // Reaction (Pulse level 1: 3 lights, 850-1200 ms between lights, pass < 0.40 s, perfect <= 0.30 s)
   const LIGHTS = 3, GAP = [850, 1200], RPASS = 0.40, RPERF = 0.30;
@@ -181,6 +201,20 @@
   const solo = 'solo' in panel.dataset; // data-solo: single-mode page (no tabs); data-mode="react|exact" picks the mode
   const tabs = mode => solo ? '' : `<div class="tabs" role="tablist"><button data-a="tab-exact" class="${mode === 'exact' ? 'on' : ''}" style="--c:var(--m-exact)">${ic('exact')}${I.t_exact}</button><button data-a="tab-react" class="${mode === 'react' ? 'on' : ''}" style="--c:var(--m-reaction)">${ic('reaction')}${I.t_react}</button></div>`;
   const S = {
+    hiddenReady: () => `<div class="stage">${watch(0, `<small>${I.stop_at}</small><div class="n tnum">${fmt(HT)}<span>s</span></div>`, '', 'dots', HT)}</div><p class="hint">${I.h_hidden}</p><button class="go" data-a="start">${I.start}</button>`,
+    hiddenRun: () => `<div class="stage">${watch(0, `<div class="n tnum">0.00<span>s</span></div>`, '', 'dots ghost', HT)}</div><p class="hint">${fill(I.h_hidden_run, fmt(HT))}</p><button class="go" data-a="stop">${I.stop}</button>`,
+    hiddenDone: t => `<div class="stage">${watch(t, `<div class="n tnum">${fmt(t)}<span>s</span></div><small class="tnum">${fill(I.of, fmt(HT))}</small>`, exactVerdict(t, HT).k, 'dots reveal', HT)}</div><p class="hint">&nbsp;</p><button class="go">${I.stop}</button>` + exactSheet(t, HT, 'hidden', I.more_hidden),
+    batakReady: () => board(-1, 0) + `<div class="tapnote"><button class="go" data-a="start">${I.start}</button></div>`,
+    batakRun: (lit, hit) => board(lit, hit) + `<p class="tapnote">${I.b_hit}</p>`,
+    batakDone: t => board(-1, N, bVerdict(t).k) + `<div class="tapnote"><div class="total"><div class="n tnum">${fmt(t)}<span>s</span></div><small>${I.b_total}</small></div></div>` + bSheet(t),
+    ivReady: () => `<div class="stage">${istage(0, 0, '<div class="n q">?</div>')}</div><p class="hint">${I.i_ready}</p><button class="go iv" data-a="start">${I.start}</button>`,
+    ivWait: (l, r, w) => `<div class="stage">${istage(l, r, `<div class="w">${w}</div>`, 'dim')}</div><p class="hint">&nbsp;</p><button class="go iv" disabled>${I.i_listen_btn}</button>`,
+    ivAnswer: g => `<div class="stage"><div class="ans"><small>${I.i_prompt}</small><div class="n tnum" id="gv">${fmt(g)}<span>s</span></div>
+      <div class="slide-row"><button class="step" data-a="minus" aria-label="${I.i_minus}">−</button><input type="range" min="0" max="10" step="0.01" value="${g}" aria-label="${I.i_guess}"><button class="step" data-a="plus" aria-label="${I.i_plus}">+</button></div>
+      <div class="scale tnum"><span>0</span><span>5</span><span>10 s</span></div></div></div><p class="hint">${I.i_hint}</p><button class="go iv" data-a="lock">${I.i_lock}</button>`,
+    ivDone: (g, real) => { const v = ivVerdict(g, real);
+      return `<div class="stage">${istage(1, 1, `<div class="n tnum">${fmt(real)}<span>s</span></div><small class="tnum">${fill(I.i_said, fmt(g))}</small>`, 'v ' + v.k)}</div><p class="hint">&nbsp;</p><button class="go iv">${I.i_lock}</button>`
+        + exactSheet(g, real, 'interval', I.more_interval, v); },
     exactReady: () => tabs('exact') + `<div class="stage">${watch(0, readyFace)}</div><p class="hint">${I.h_exact}</p><button class="go" data-a="start">${I.start}</button>`,
     exactRun: t => tabs('exact') + `<div class="stage">${watch(t, runFace(t))}</div><p class="hint">&nbsp;</p><button class="go" data-a="stop">${I.stop}</button>`,
     exactDone: t => tabs('exact') + `<div class="stage">${watch(t, runFace(t), exactVerdict(t).k)}</div><p class="hint">&nbsp;</p><button class="go">${I.stop}</button>` + exactSheet(t),
@@ -191,14 +225,14 @@
   };
 
   // Live panel: state machine. Replaces the no-JS fallback that is in the HTML.
-  let mode = panel.dataset.mode === 'react' ? 'react' : 'exact', raf = 0, t0 = 0, timers = [], phase = 'idle';
+  let mode = ['react', 'hidden', 'batak', 'interval'].includes(panel.dataset.mode) ? panel.dataset.mode : 'exact', raf = 0, t0 = 0, timers = [], phase = 'idle';
   const clear = () => { cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers = []; };
   const show = (html, slide) => {
     const hadFocus = panel.contains(document.activeElement);
-    panel.classList.toggle('reaction', mode === 'react'); panel.classList.toggle('slide', !!slide); panel.innerHTML = html;
+    ['reaction', 'hidden', 'batak', 'interval'].forEach(c => panel.classList.toggle(c, c === (mode === 'react' ? 'reaction' : mode))); panel.classList.toggle('slide', !!slide); panel.innerHTML = html;
     if (hadFocus) (panel.querySelector('.sheet .btn') || panel.querySelector('.go[data-a]') || panel.querySelector('.tabs .on'))?.focus(); // keyboard users keep their place
   };
-  const ready = () => { clear(); phase = 'idle'; show(mode === 'exact' ? S.exactReady() : S.reactReady()); };
+  const ready = () => { clear(); phase = 'idle'; show({ exact: S.exactReady, react: S.reactReady, hidden: S.hiddenReady, batak: S.batakReady, interval: S.ivReady }[mode]()); };
   const exactStart = () => {
     track('Game Started', { mode: 'exact', page: PAGE, locale: LOCALE });
     phase = 'run'; t0 = performance.now(); show(S.exactRun(0));
@@ -221,18 +255,56 @@
   };
   const reactEnd = fs => { const t = Math.round(performance.now() - t0) / 1000; clear(); phase = 'done'; show(S.reactDone(t, fs), true);
     track('Game Finished', { mode: 'reaction', page: PAGE, locale: LOCALE, result: `${reactVerdict(t, fs).k} ${fs ? 'false_start' : fmt(t)}` }); };
+  // Hidden Clock: Exact Time's stop with a hidden 10 s target
+  const hiddenStart = () => { track('Game Started', { mode: 'hidden', page: PAGE, locale: LOCALE }); phase = 'run'; t0 = performance.now(); show(S.hiddenRun()); };
+  const hiddenStop = () => { if (performance.now() - t0 < 300) return;
+    const t = Math.round((performance.now() - t0) / 10) / 100;
+    clear(); phase = 'done'; show(S.hiddenDone(t), true);
+    track('Game Finished', { mode: 'hidden', page: PAGE, locale: LOCALE, result: `${exactVerdict(t, HT).k} ${fmt(t)}` }); };
+  // Batak: 8 lights, one random pad each (never the same twice in a row), no clock while playing
+  let seq = [], hits = 0;
+  const batakStart = () => { track('Game Started', { mode: 'batak', page: PAGE, locale: LOCALE }); hits = 0; seq = [nextPad(-1)]; phase = 'run'; t0 = performance.now(); show(S.batakRun(seq[0], 0)); };
+  const padHit = i => {
+    if (phase !== 'run' || i !== seq[hits]) return; // only the lit pad counts
+    hits++;
+    if (hits === N) { const t = Math.round((performance.now() - t0) / 10) / 100; phase = 'done'; show(S.batakDone(t), true);
+      track('Game Finished', { mode: 'batak', page: PAGE, locale: LOCALE, result: `${bVerdict(t).k} ${fmt(t)}` }); return; }
+    seq.push(nextPad(i)); show(S.batakRun(seq[hits], hits));
+    panel.querySelector(`[data-pad="${i}"]`).classList.add('hit');
+  };
+  // Interval: flash + beep, hidden gap, flash + beep, then guess
+  let real = 5, guess = 5, ac;
+  const beep = () => { try { ac = ac || new AudioContext(); const o = ac.createOscillator(), g = ac.createGain(); o.frequency.value = 880; g.gain.setValueAtTime(.15, ac.currentTime); g.gain.exponentialRampToValueAtTime(.001, ac.currentTime + .15); o.connect(g).connect(ac.destination); o.start(); o.stop(ac.currentTime + .16); } catch (e) {} }; // silent if audio is blocked
+  const ivStart = () => {
+    track('Game Started', { mode: 'interval', page: PAGE, locale: LOCALE });
+    real = TIMES[Math.floor(Math.random() * TIMES.length)]; guess = 5; phase = 'listen'; beep(); // created inside the tap so the browser allows audio
+    show(S.ivWait(0, 0, I.i_get));
+    later(900, () => { beep(); show(S.ivWait(1, 0, I.i_listen)); later(220, () => show(S.ivWait(0, 0, I.i_listen))); });
+    later(900 + real * 1000, () => { beep(); show(S.ivWait(0, 1, I.i_listen)); later(400, () => { phase = 'answer'; show(S.ivAnswer(guess)); }); });
+  };
+  const setGuess = g => { guess = Math.max(0, Math.min(10, Math.round(g * 100) / 100)); const n = panel.querySelector('#gv'), r = panel.querySelector('input[type=range]');
+    if (n) n.innerHTML = `${fmt(guess)}<span>s</span>`; if (r && +r.value !== guess) r.value = guess; };
+  const lock = () => { if (phase !== 'answer') return; phase = 'done'; show(S.ivDone(guess, real), true);
+    track('Game Finished', { mode: 'interval', page: PAGE, locale: LOCALE, result: `${ivVerdict(guess, real).k} ${fmt(guess)}` }); };
   const tap = () => { if (phase === 'lit') reactEnd(true); else if (phase === 'out') reactEnd(false); };
-  panel.addEventListener('pointerdown', e => { if (e.button === 0 && mode === 'react' && !e.target.closest('[data-a],a')) tap(); }); // whole panel is the tap target
+  panel.addEventListener('pointerdown', e => { if (e.button !== 0) return;
+    const p = e.target.closest('[data-pad]');
+    if (p && mode === 'batak') padHit(+p.dataset.pad);
+    else if (mode === 'react' && !e.target.closest('[data-a],a')) tap(); }); // react: whole panel is the tap target
+  panel.addEventListener('input', e => { if (e.target.type === 'range') setGuess(+e.target.value); });
   document.addEventListener('keydown', e => {
     if (e.code !== 'Space') return;
     if (mode === 'react' && (phase === 'lit' || phase === 'out')) { e.preventDefault(); tap(); }
-    else if (mode === 'exact' && phase === 'run') { e.preventDefault(); exactStop(); }
+    else if (phase === 'run' && (mode === 'exact' || mode === 'hidden')) { e.preventDefault(); mode === 'exact' ? exactStop() : hiddenStop(); }
   });
   panel.addEventListener('click', e => {
     const a = e.target.closest('[data-a]')?.dataset.a;
     if (a === 'tab-exact' || a === 'tab-react') { mode = a === 'tab-exact' ? 'exact' : 'react'; ready(); }
-    else if (a === 'start') mode === 'exact' ? exactStart() : reactStart();
-    else if (a === 'stop') exactStop();
+    else if (a === 'start') ({ exact: exactStart, react: reactStart, hidden: hiddenStart, batak: batakStart, interval: ivStart }[mode])();
+    else if (a === 'stop') mode === 'hidden' ? hiddenStop() : exactStop();
+    else if (a === 'minus') setGuess(guess - 0.01);
+    else if (a === 'plus') setGuess(guess + 0.01);
+    else if (a === 'lock') lock();
     else if (a === 'again') ready();
   });
   ready();

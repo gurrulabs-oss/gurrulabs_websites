@@ -8,9 +8,12 @@
 
 ## Pulse
 
-- [Pulse](https://www.gurrulabs.com/en/pulse/): Android game with 5 modes: Exact Time, Hidden Clock, Interval, Reaction, Batak. No account, works offline. Includes a browser version of two modes.
+- [Pulse](https://www.gurrulabs.com/en/pulse/): Android game with 5 modes: Exact Time, Hidden Clock, Interval, Reaction, Batak. No account, works offline. Includes a browser version of every mode, one page each.
 - [Reaction time test](https://www.gurrulabs.com/en/pulse/reaction-time-test/): Browser reaction time test: tap when the lights go out; the result is in seconds (perfect up to 0.30 s, pass under 0.40 s).
 - [3 second challenge](https://www.gurrulabs.com/en/pulse/3-second-challenge/): Browser game: stop a stopwatch at exactly 3.00 s (pass window ±0.10 s).
+- [Internal clock test](https://www.gurrulabs.com/en/pulse/internal-clock-test/): Browser internal clock test (the 10 second challenge): the clock hides when you press Start, count 10 seconds in your head and stop at 10.00 s (pass window ±0.10 s). Hidden Clock mode of Pulse.
+- [Time estimation test](https://www.gurrulabs.com/en/pulse/time-estimation-test/): Browser time estimation test: two signals mark a hidden gap of 0.30 to 10 s, you guess it in seconds (pass window ±0.10 s). Interval mode of Pulse.
+- [Choice reaction time test](https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/): Browser choice reaction time test: tap 8 lights on 7 pads in sequence (Perfect up to 3.20 s, pass up to 7.20 s). Batak is the name of this mode in Pulse, not the commercial lights wall.
 - [Average reaction time by age](https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/): Guide: average simple reaction time by age group, 18 to 65 (Woods et al. 2015, Table 2), what changes it, with sources.
 - [Best reaction time apps for Android](https://www.gurrulabs.com/en/pulse/best-reaction-time-apps/): Comparison: 5 reaction time apps for Android (Pulse, Reaction training, Reaction Time, Lumosity, Peak) on price, ads, modes, account and offline use, from their Google Play listings checked 2026-11-06. Gurrulabs makes Pulse.
 - [Pulse on Google Play](https://play.google.com/store/apps/details?id=com.gurrulabs.pulse): Android download page.

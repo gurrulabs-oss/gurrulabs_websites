@@ -217,6 +217,114 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/3-second-challenge/"/>
   </url>
   <url>
+    <loc>https://www.gurrulabs.com/en/pulse/internal-clock-test/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/internal-clock-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/test-de-10-segundos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/test-des-10-secondes/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/teste-de-10-segundos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/internal-clock-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/es/pulse/test-de-10-segundos/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/internal-clock-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/test-de-10-segundos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/test-des-10-secondes/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/teste-de-10-segundos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/internal-clock-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/fr/pulse/test-des-10-secondes/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/internal-clock-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/test-de-10-segundos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/test-des-10-secondes/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/teste-de-10-segundos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/internal-clock-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/pt/pulse/teste-de-10-segundos/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/internal-clock-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/test-de-10-segundos/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/test-des-10-secondes/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/teste-de-10-segundos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/internal-clock-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/en/pulse/time-estimation-test/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/time-estimation-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/test-de-percepcion-del-tiempo/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/test-estimation-du-temps/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/teste-de-percepcao-do-tempo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/time-estimation-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/es/pulse/test-de-percepcion-del-tiempo/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/time-estimation-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/test-de-percepcion-del-tiempo/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/test-estimation-du-temps/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/teste-de-percepcao-do-tempo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/time-estimation-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/fr/pulse/test-estimation-du-temps/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/time-estimation-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/test-de-percepcion-del-tiempo/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/test-estimation-du-temps/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/teste-de-percepcao-do-tempo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/time-estimation-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/pt/pulse/teste-de-percepcao-do-tempo/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/time-estimation-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/test-de-percepcion-del-tiempo/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/test-estimation-du-temps/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/teste-de-percepcao-do-tempo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/time-estimation-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/juego-de-reflejos-con-luces/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/jeu-de-reflexes-avec-des-lumieres/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/jogo-de-reflexo-com-luzes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/es/pulse/juego-de-reflejos-con-luces/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/juego-de-reflejos-con-luces/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/jeu-de-reflexes-avec-des-lumieres/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/jogo-de-reflexo-com-luzes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/fr/pulse/jeu-de-reflexes-avec-des-lumieres/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/juego-de-reflejos-con-luces/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/jeu-de-reflexes-avec-des-lumieres/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/jogo-de-reflexo-com-luzes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/pt/pulse/jogo-de-reflexo-com-luzes/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/juego-de-reflejos-con-luces/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/jeu-de-reflexes-avec-des-lumieres/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/jogo-de-reflexo-com-luzes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/"/>
+  </url>
+  <url>
     <loc>https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/</loc>
     <lastmod>2026-11-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/"/>
