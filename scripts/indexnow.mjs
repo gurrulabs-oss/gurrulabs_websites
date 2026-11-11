@@ -41,7 +41,9 @@ if (dryRun) {
   console.error(`[dry-run] ${urlList.length} URL(s); nothing sent`);
   process.exit(0);
 }
-const res = await fetch('https://api.indexnow.org/indexnow', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body: JSON.stringify(body) });
+// Yandex, not api.indexnow.org: Bing answers 403 UserForbiddedToAccessSite for www.gurrulabs.com (key file is fine,
+// Yandex accepts it); IndexNow engines share submissions, so Bing still gets the URLs.
+const res = await fetch('https://yandex.com/indexnow', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body: JSON.stringify(body) });
 console.log(`IndexNow: ${res.status} ${res.statusText} (${urlList.length} URLs)`);
 if (res.status !== 200 && res.status !== 202) { console.error(await res.text().catch(() => '')); process.exit(1); }
 
