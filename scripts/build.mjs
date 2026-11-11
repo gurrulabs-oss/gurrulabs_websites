@@ -349,8 +349,8 @@ function ageGap(loc, [h, a, b, note]) {
   const sds = WOODS.map(r => r[2]), gap = WOODS[WOODS.length - 1][1] - WOODS[0][1], lo = Math.min(...sds), hi = Math.max(...sds), pc = v => +(v / 30 * 100).toFixed(1);
   return `<div class="vs">
       <h3>${h}</h3>
-      <div class="r" style="--c:var(--m-reaction)"><span>${a}</span><div class="t"><i data-w="${pc(gap)}"></i></div><b>${dec(loc, gap)} ms</b></div>
-      <div class="r" style="--c:var(--gold)"><span>${b}</span><div class="t"><i class="rng" style="left:${pc(lo)}%" data-w="${pc(hi - lo)}"></i></div><b>${dec(loc, lo)}–${dec(loc, hi)} ms</b></div>
+      <div class="r" style="--c:var(--m-reaction)"><span>${a}</span><div class="t"><i style="--w:${pc(gap)}%" data-w="${pc(gap)}"></i></div><b>${dec(loc, gap)} ms</b></div>
+      <div class="r" style="--c:var(--gold)"><span>${b}</span><div class="t"><i class="rng" style="left:${pc(lo)}%;--w:${pc(hi - lo)}%" data-w="${pc(hi - lo)}"></i></div><b>${dec(loc, lo)}–${dec(loc, hi)} ms</b></div>
       <p>${note}</p>
     </div>`;
 }

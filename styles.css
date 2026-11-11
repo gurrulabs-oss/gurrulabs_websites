@@ -576,7 +576,7 @@ html:has(body.app-lull) { background: #17121A; }
 @media (max-width: 1000px) { .g-grid { grid-template-columns: minmax(0, 1fr); } .g-rail { display: none; } }
 
 /* Section headings: small mode-colour index, lighter rhythm */
-.prose { counter-reset: h; }
+main { counter-reset: h; } /* one count across the age guide intro and article */
 .prose h2 { counter-increment: h; display: flex; align-items: baseline; gap: 14px; }
 .prose h2::before { content: counter(h, decimal-leading-zero); font-size: 14px; font-weight: 500; color: var(--c, var(--accent)); font-variant-numeric: tabular-nums; transform: translateY(-4px); }
 .prose > p { max-width: 66ch; }
@@ -780,7 +780,8 @@ html:has(body.app-lull) { background: #17121A; }
 .vs h3 { font-size: 17px !important; font-weight: 500; margin: 0 !important; }
 .vs .r { display: grid; grid-template-columns: 210px minmax(0, 1fr) 90px; gap: 14px; align-items: center; margin-top: 16px; font-size: 14px; color: var(--text2); }
 .vs .r .t { height: 14px; border-radius: 7px; background: color-mix(in srgb, var(--line) 60%, transparent); position: relative; }
-.vs .r .t i { position: absolute; inset: 0 auto 0 0; border-radius: 7px; background: var(--c); width: 0; transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+.vs .r .t i { position: absolute; inset: 0 auto 0 0; border-radius: 7px; background: var(--c); width: var(--w); transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
+.js .vs .r .t i { width: 0; }
 .vs .r .t i.rng { background: color-mix(in srgb, var(--c) 45%, transparent); }
 .vs .r b { font-weight: 500; color: var(--text); font-variant-numeric: tabular-nums; text-align: right; }
 .vs p { margin-top: 14px !important; font-size: 14px !important; color: var(--text3) !important; }
