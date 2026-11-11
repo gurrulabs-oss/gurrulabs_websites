@@ -19,7 +19,7 @@ const D = '2026-11-05', N = '2026-11-11';
 export const PAGES = [
   { id: 'home', app: null, type: 'home', published: D, modified: D, dataPage: 'home',
     llms: 'Studio home: the four apps and where to get each one.' },
-  { id: 'pulse', app: 'pulse', type: 'app', published: D, modified: D, dataPage: 'pulse',
+  { id: 'pulse', app: 'pulse', type: 'app', published: D, modified: N, dataPage: 'pulse',
     llms: 'Android game with 5 modes: Exact Time, Hidden Clock, Interval, Reaction, Batak. No account, works offline. Includes a browser version of every mode, one page each.' },
   { id: 'cyberpunk-detective', app: 'cyberpunk-detective', type: 'app', published: D, modified: D, dataPage: 'cyberpunk-detective',
     llms: 'Free Android game on Google Play (ads, no in-app purchases, no account) mixing 3 detective cases you solve and 3 audio crime stories you listen to; cases work offline; game text in English, Spanish and French.' },

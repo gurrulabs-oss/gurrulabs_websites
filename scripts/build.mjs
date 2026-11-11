@@ -37,6 +37,14 @@ const T = {
     rel: [['All our apps', 'The Gurrulabs studio home'], ['Pulse', 'Test your reaction time in the browser'], ['Cyberpunk Detective', 'Neon-noir mystery game'], ['Lull', 'Calmer nights with tinnitus · coming soon']],
     p_kicker: 'Reaction time challenge', p_h1: 'Stop the clock at exactly 3.00 s', facts: ['No account', 'Works offline'],
     t_exact: 'Exact Time', t_react: 'Reaction', start: 'Start', stop: 'Stop', stop_at: 'Stop at', of: t => `of ${t} s`,
+    t_hidden: 'Hidden Clock', t_interval: 'Interval', t_batak: 'Batak', t_modes: 'Mode',
+    p_sub5: 'All five Pulse modes are playable here.', play_up: 'Play ↑', play_go: 'Play →', row_guides: 'Guides', row_tests: 'Tests · play in your browser',
+    say_k: 'Short answer', on_page: 'On this page', play_again: 'Play again',
+    g_tag: n => `Guide · ${n} studies`, g_age_p: (a, b) => `From ${a} ms at 18–24 to ${b} ms at 59–65, and why it matters less than you think.`, g_age_more: 'Read the guide →', g_age_alt: (a, b) => `Average reaction time rises from ${a} ms at 18–24 to ${b} ms at 59–65`,
+    g_apps_tag: 'Comparison · 5 apps', g_apps_p: 'Pulse, Lumosity, Peak and two more, compared on price, ads, modes and offline play.', g_apps_more: 'Read the comparison →',
+    r_empty: 'Play above: each try lands on this ruler. Nothing is saved.', r_n1: 'try', r_n: 'tries', r_avg: 'average', r_sd: 'spread (SD)', r_hits: 'in the window', r_clear: 'Clear', r_you: a => `You · ${a} s`,
+    age_you: a => `You · ${a} ms`, age_all: 'All 18–65', age_empty: 'Play the lights test: your time lands on this chart. Nothing is saved.', age_false: 'False start: wait for all the lights to go out, then try again.',
+    age_near: (a, g, m) => `Your time: <b>${a} ms</b>, closest to the <b>${g}</b> group average (${m} ms). A phone tap adds screen and touch delay, so compare loosely.`,
     h_exact: 'Pass within ±0.10 s. Perfect to the hundredth.', h_react: 'Tap anywhere when the lights go out', wait: 'Wait for lights out', too_soon: 'Too soon', reaction: 'reaction',
     perfect: 'Perfect', pass: 'Pass', early: 'Too early', late: 'Too late', false_start: 'False start', slow: 'Too slow',
     d_perfect: 'Dead on. 0.00 s off.', d_pass: (a, late) => `${a} s ${late ? 'late' : 'early'}`, d_miss: (a, late) => `${a} s ${late ? 'past' : 'before'} the window`,
@@ -51,7 +59,7 @@ const T = {
     i_ready: 'Watch and listen for two signals.', i_get: 'Get ready', i_listen: 'Listening…', i_listen_btn: 'Listening', i_prompt: 'How long was it?', i_hint: 'Drag, then fine-tune with − and +', i_lock: 'Lock in',
     i_said: a => `You said ${a} s`, i_exact: a => `It was ${a} s. Dead on.`, i_longd: (a, b) => `It was ${a} s. ${b} s long.`, i_shortd: (a, b) => `It was ${a} s. ${b} s short.`, short: 'Too short', long: 'Too long',
     i_minus: 'Minus 0.01 s', i_plus: 'Plus 0.01 s', i_guess: 'Your guess', more_interval: '14 Interval levels in the app, each with its own hidden time.',
-    modes_h: 'Train your sense of time', modes_p: 'Short games, real precision.',
+    modes_h: 'Five modes, all playable above', modes_p: 'Pick one to load it in the panel.',
     m: [['Exact Time', 'Stop on the target, clock visible'], ['Hidden Clock', 'Same, but the clock disappears'], ['Interval', 'Guess the time between two signals'], ['Reaction', 'Tap the moment the lights go out'], ['Batak', 'Hit the lit targets, fast']],
     shots_h: 'Inside the app', band_h: 'Your best is waiting', band_p: 'Pick up where the browser test stops.',
     nojs: 'The browser test needs JavaScript. The full game is in Pulse.', back: 'Gurrulabs', contact: 'Contact',
@@ -60,8 +68,8 @@ const T = {
     home_title: 'Gurrulabs: independent Android app studio',
     home_desc: 'Gurrulabs is a one-person studio making games and tools for Android: Pulse, Raffy, Cyberpunk Detective and Lull. Try Pulse in your browser.',
     pulse_title: 'Pulse app: reflex and timing game for Android | Gurrulabs',
-    pulse_desc: 'Pulse is a reflex and sense-of-time game for Android: 5 modes, no account, works offline. Try two of its modes right in your browser.',
-    guides_h: 'Tests and guides', guides_p: 'Play in your browser or read what the studies say.', read_h: 'Keep reading', faq_h: 'FAQ', edu: 'Educational content.', edu_med: 'Educational content, not medical advice.',
+    pulse_desc: 'Pulse is a reflex and sense-of-time game for Android: 5 modes, no account, works offline. Play all five modes right in your browser.',
+    guides_h: 'Tests and guides', guides_p: 'Read what the studies say, then test yourself in the browser.', read_h: 'Keep reading', faq_h: 'FAQ', edu: 'Educational content.', edu_med: 'Educational content, not medical advice.',
     foot: ['Reaction test', '3 s challenge', 'Hidden Clock', 'Interval', 'Batak', 'Reaction by age', 'Best reflex apps'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
   },
   es: {
@@ -83,6 +91,14 @@ const T = {
     rel: [['Todas nuestras apps', 'La página principal de Gurrulabs'], ['Pulse', 'Mide tu tiempo de reacción en el navegador'], ['Cyberpunk Detective', 'Juego de misterio neon-noir'], ['Lull', 'Noches más tranquilas con acúfenos · próximamente']],
     p_kicker: 'Reto de tiempo de reacción', p_h1: 'Para el reloj en 3.00 s exactos', facts: ['Sin cuenta', 'Funciona sin conexión'],
     t_exact: 'Exact Time', t_react: 'Reacción', start: 'Iniciar', stop: 'Parar', stop_at: 'Para en', of: t => `de ${t} s`,
+    t_hidden: 'Hidden Clock', t_interval: 'Intervalo', t_batak: 'Batak', t_modes: 'Modo',
+    p_sub5: 'Los cinco modos de Pulse se pueden jugar aquí.', play_up: 'Jugar ↑', play_go: 'Jugar →', row_guides: 'Guías', row_tests: 'Pruebas · juega en el navegador',
+    say_k: 'Respuesta corta', on_page: 'En esta página', play_again: 'Jugar otra vez',
+    g_tag: n => `Guía · ${n} estudios`, g_age_p: (a, b) => `De ${a} ms a los 18–24 años a ${b} ms a los 59–65, y por qué importa menos de lo que crees.`, g_age_more: 'Leer la guía →', g_age_alt: (a, b) => `El tiempo de reacción medio sube de ${a} ms a los 18–24 años a ${b} ms a los 59–65`,
+    g_apps_tag: 'Comparativa · 5 apps', g_apps_p: 'Pulse, Lumosity, Peak y dos más, comparadas en precio, anuncios, modos y juego sin conexión.', g_apps_more: 'Leer la comparativa →',
+    r_empty: 'Juega arriba: cada intento aparece en esta regla. No se guarda nada.', r_n1: 'intento', r_n: 'intentos', r_avg: 'media', r_sd: 'dispersión (DE)', r_hits: 'dentro de la ventana', r_clear: 'Borrar', r_you: a => `Tú · ${a} s`,
+    age_you: a => `Tú · ${a} ms`, age_all: 'Todos 18–65', age_empty: 'Haz el test de las luces: tu tiempo aparece en este gráfico. No se guarda nada.', age_false: 'Salida falsa: espera a que se apaguen todas las luces y vuelve a intentarlo.',
+    age_near: (a, g, m) => `Tu tiempo: <b>${a} ms</b>, el más cercano a la media del grupo <b>${g}</b> (${m} ms). Un toque en el móvil añade retardo de pantalla y táctil, así que compara con cautela.`,
     h_exact: 'Pasas con ±0.10 s. Perfecto a la centésima.', h_react: 'Toca donde quieras cuando se apaguen las luces', wait: 'Espera a que se apaguen', too_soon: 'Demasiado pronto', reaction: 'reacción',
     perfect: 'Perfecto', pass: 'Superado', early: 'Demasiado pronto', late: 'Demasiado tarde', false_start: 'Salida falsa', slow: 'Muy lento',
     d_perfect: 'Clavado. 0.00 s de diferencia.', d_pass: (a, late) => `${a} s ${late ? 'tarde' : 'antes'}`, d_miss: (a, late) => `${a} s ${late ? 'después' : 'antes'} del margen`,
@@ -97,7 +113,7 @@ const T = {
     i_ready: 'Mira y escucha dos señales.', i_get: 'Prepárate', i_listen: 'Escuchando…', i_listen_btn: 'Escuchando', i_prompt: '¿Cuánto duró?', i_hint: 'Arrastra y afina con − y +', i_lock: 'Confirmar',
     i_said: a => `Dijiste ${a} s`, i_exact: a => `Duró ${a} s. Justo.`, i_longd: (a, b) => `Duró ${a} s. Te pasaste ${b} s.`, i_shortd: (a, b) => `Duró ${a} s. Te faltaron ${b} s.`, short: 'Muy corto', long: 'Muy largo',
     i_minus: 'Menos 0.01 s', i_plus: 'Más 0.01 s', i_guess: 'Tu respuesta', more_interval: '14 niveles de Intervalo en la app, cada uno con su tiempo oculto.',
-    modes_h: 'Entrena tu sentido del tiempo', modes_p: 'Partidas cortas, precisión real.',
+    modes_h: 'Cinco modos, todos jugables arriba', modes_p: 'Elige uno para cargarlo en el panel.',
     m: [['Exact Time', 'Para en el objetivo, con el reloj a la vista'], ['Hidden Clock', 'Igual, pero el reloj desaparece'], ['Intervalo', 'Calcula el tiempo entre dos señales'], ['Reacción', 'Toca justo cuando se apagan las luces'], ['Batak', 'Toca las luces encendidas, rápido']],
     shots_h: 'Dentro de la app', band_h: 'Tu mejor marca te espera', band_p: 'Sigue donde termina la prueba del navegador.',
     nojs: 'La prueba necesita JavaScript. El juego completo está en Pulse.', back: 'Gurrulabs', contact: 'Contacto',
@@ -106,8 +122,8 @@ const T = {
     home_title: 'Gurrulabs: estudio independiente de apps Android',
     home_desc: 'Gurrulabs es un estudio de una persona que crea juegos y herramientas para Android: Pulse, Raffy, Cyberpunk Detective y Lull. Prueba Pulse en el navegador.',
     pulse_title: 'App Pulse: juego de reflejos para Android | Gurrulabs',
-    pulse_desc: 'Pulse es un juego de reflejos y sentido del tiempo para Android: 5 modos, sin cuenta y funciona sin conexión. Prueba dos de sus modos en el navegador.',
-    guides_h: 'Pruebas y guías', guides_p: 'Juega en el navegador o aprende qué dicen los estudios.', read_h: 'Sigue leyendo', faq_h: 'Preguntas frecuentes', edu: 'Contenido educativo.', edu_med: 'Contenido educativo, no consejo médico.',
+    pulse_desc: 'Pulse es un juego de reflejos y sentido del tiempo para Android: 5 modos, sin cuenta y funciona sin conexión. Juega los cinco modos en el navegador.',
+    guides_h: 'Pruebas y guías', guides_p: 'Lee lo que dicen los estudios y ponte a prueba en el navegador.', read_h: 'Sigue leyendo', faq_h: 'Preguntas frecuentes', edu: 'Contenido educativo.', edu_med: 'Contenido educativo, no consejo médico.',
     foot: ['Test de reacción', 'Reto 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reacción por edad', 'Mejores apps de reflejos'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
   },
   fr: {
@@ -129,6 +145,14 @@ const T = {
     rel: [['Toutes nos applis', 'L’accueil du studio Gurrulabs'], ['Pulse', 'Teste ton temps de réaction dans le navigateur'], ['Cyberpunk Detective', 'Jeu d’enquête néo-noir'], ['Lull', 'Des nuits plus calmes avec les acouphènes · bientôt disponible']],
     p_kicker: 'Défi de temps de réaction', p_h1: 'Arrête le chrono pile à 3.00 s', facts: ['Sans compte', 'Fonctionne hors ligne'],
     t_exact: 'Exact Time', t_react: 'Réaction', start: 'Démarrer', stop: 'Arrêter', stop_at: 'Arrête à', of: t => `sur ${t} s`,
+    t_hidden: 'Hidden Clock', t_interval: 'Intervalle', t_batak: 'Batak', t_modes: 'Mode',
+    p_sub5: 'Les cinq modes de Pulse sont jouables ici.', play_up: 'Jouer ↑', play_go: 'Jouer →', row_guides: 'Guides', row_tests: 'Tests · joue dans ton navigateur',
+    say_k: 'Réponse courte', on_page: 'Sur cette page', play_again: 'Rejouer',
+    g_tag: n => `Guide · ${n} études`, g_age_p: (a, b) => `De ${a} ms à 18–24 ans à ${b} ms à 59–65 ans, et pourquoi cela compte moins qu’on ne croit.`, g_age_more: 'Lire le guide →', g_age_alt: (a, b) => `Le temps de réaction moyen passe de ${a} ms à 18–24 ans à ${b} ms à 59–65 ans`,
+    g_apps_tag: 'Comparatif · 5 applis', g_apps_p: 'Pulse, Lumosity, Peak et deux autres, comparées sur le prix, les pubs, les modes et le jeu hors ligne.', g_apps_more: 'Lire le comparatif →',
+    r_empty: 'Joue au-dessus : chaque essai apparaît sur cette règle. Rien n’est enregistré.', r_n1: 'essai', r_n: 'essais', r_avg: 'moyenne', r_sd: 'écart type', r_hits: 'dans la fenêtre', r_clear: 'Effacer', r_you: a => `Toi · ${a} s`,
+    age_you: a => `Toi · ${a} ms`, age_all: 'Tous 18–65', age_empty: 'Fais le test des feux : ton temps s’affiche sur ce graphique. Rien n’est enregistré.', age_false: 'Faux départ : attends que tous les feux s’éteignent, puis réessaie.',
+    age_near: (a, g, m) => `Ton temps : <b>${a} ms</b>, le plus proche de la moyenne du groupe <b>${g}</b> (${m} ms). Un appui sur un téléphone ajoute le délai de l’écran et du tactile : compare avec prudence.`,
     h_exact: 'Réussi à ±0.10 s près. Parfait au centième.', h_react: 'Touche n’importe où quand les feux s’éteignent', wait: 'Attends l’extinction', too_soon: 'Trop tôt', reaction: 'réaction',
     perfect: 'Parfait', pass: 'Réussi', early: 'Trop tôt', late: 'Trop tard', false_start: 'Faux départ', slow: 'Trop lent',
     d_perfect: 'Pile dessus. 0.00 s d’écart.', d_pass: (a, late) => `${a} s ${late ? 'en retard' : 'en avance'}`, d_miss: (a, late) => `${a} s ${late ? 'après' : 'avant'} la marge`,
@@ -143,7 +167,7 @@ const T = {
     i_ready: 'Observe et écoute deux signaux.', i_get: 'Prépare-toi', i_listen: 'À l’écoute…', i_listen_btn: 'À l’écoute', i_prompt: 'Combien de temps ?', i_hint: 'Glisse, puis affine avec − et +', i_lock: 'Valider',
     i_said: a => `Tu as dit ${a} s`, i_exact: a => `C’était ${a} s. Pile.`, i_longd: (a, b) => `C’était ${a} s. Trop long de ${b} s.`, i_shortd: (a, b) => `C’était ${a} s. Trop court de ${b} s.`, short: 'Trop court', long: 'Trop long',
     i_minus: 'Moins 0.01 s', i_plus: 'Plus 0.01 s', i_guess: 'Ta réponse', more_interval: '14 niveaux d’Intervalle dans l’appli, chacun avec son temps caché.',
-    modes_h: 'Entraîne ton sens du temps', modes_p: 'Des parties courtes, une vraie précision.',
+    modes_h: 'Cinq modes, tous jouables au-dessus', modes_p: 'Choisis-en un pour le charger dans le panneau.',
     m: [['Exact Time', 'Arrête-toi sur la cible, horloge visible'], ['Hidden Clock', 'Pareil, mais l’horloge disparaît'], ['Intervalle', 'Devine le temps entre deux signaux'], ['Réaction', 'Tape dès que les feux s’éteignent'], ['Batak', 'Tape les cibles allumées, vite']],
     shots_h: 'Dans l’appli', band_h: 'Ton record t’attend', band_p: 'Continue là où le test du navigateur s’arrête.',
     nojs: 'Le test a besoin de JavaScript. Le jeu complet est dans Pulse.', back: 'Gurrulabs', contact: 'Contact',
@@ -152,8 +176,8 @@ const T = {
     home_title: 'Gurrulabs : studio indépendant d’applis Android',
     home_desc: 'Gurrulabs, studio d’une seule personne, crée des jeux et outils Android : Pulse, Raffy, Cyberpunk Detective et Lull. Essaie Pulse dans ton navigateur.',
     pulse_title: 'Appli Pulse : jeu de réflexes pour Android | Gurrulabs',
-    pulse_desc: 'Pulse est un jeu de réflexes et de sens du temps pour Android : 5 modes, sans compte, fonctionne hors ligne. Essaie deux de ses modes dans ton navigateur.',
-    guides_h: 'Tests et guides', guides_p: 'Joue dans ton navigateur ou découvre ce que disent les études.', read_h: 'Continue à lire', faq_h: 'Questions fréquentes', edu: 'Contenu éducatif.', edu_med: 'Contenu éducatif, pas un avis médical.',
+    pulse_desc: 'Pulse est un jeu de réflexes et de sens du temps pour Android : 5 modes, sans compte, fonctionne hors ligne. Joue aux cinq modes dans ton navigateur.',
+    guides_h: 'Tests et guides', guides_p: 'Lis ce que disent les études, puis teste-toi dans ton navigateur.', read_h: 'Continue à lire', faq_h: 'Questions fréquentes', edu: 'Contenu éducatif.', edu_med: 'Contenu éducatif, pas un avis médical.',
     foot: ['Test de réaction', 'Défi 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Réaction par âge', 'Meilleures applis de réflexes'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
   },
   pt: {
@@ -175,6 +199,14 @@ const T = {
     rel: [['Todos os nossos apps', 'A página inicial da Gurrulabs'], ['Pulse', 'Teste seu tempo de reação no navegador'], ['Cyberpunk Detective', 'Jogo de mistério neon-noir'], ['Lull', 'Noites mais tranquilas com zumbido · em breve']],
     p_kicker: 'Desafio de tempo de reação', p_h1: 'Pare o cronômetro em 3.00 s exatos', facts: ['Sem conta', 'Funciona offline'],
     t_exact: 'Exact Time', t_react: 'Reação', start: 'Iniciar', stop: 'Parar', stop_at: 'Pare em', of: t => `de ${t} s`,
+    t_hidden: 'Hidden Clock', t_interval: 'Intervalo', t_batak: 'Batak', t_modes: 'Modo',
+    p_sub5: 'Os cinco modos do Pulse podem ser jogados aqui.', play_up: 'Jogar ↑', play_go: 'Jogar →', row_guides: 'Guias', row_tests: 'Testes · jogue no navegador',
+    say_k: 'Resposta curta', on_page: 'Nesta página', play_again: 'Jogar de novo',
+    g_tag: n => `Guia · ${n} estudos`, g_age_p: (a, b) => `De ${a} ms aos 18–24 anos a ${b} ms aos 59–65, e por que isso importa menos do que você pensa.`, g_age_more: 'Ler o guia →', g_age_alt: (a, b) => `O tempo de reação médio sobe de ${a} ms aos 18–24 anos para ${b} ms aos 59–65`,
+    g_apps_tag: 'Comparativo · 5 apps', g_apps_p: 'Pulse, Lumosity, Peak e mais dois, comparados em preço, anúncios, modos e jogo offline.', g_apps_more: 'Ler o comparativo →',
+    r_empty: 'Jogue acima: cada tentativa aparece nesta régua. Nada é salvo.', r_n1: 'tentativa', r_n: 'tentativas', r_avg: 'média', r_sd: 'dispersão (DP)', r_hits: 'dentro da janela', r_clear: 'Limpar', r_you: a => `Você · ${a} s`,
+    age_you: a => `Você · ${a} ms`, age_all: 'Todos 18–65', age_empty: 'Faça o teste das luzes: seu tempo aparece neste gráfico. Nada é salvo.', age_false: 'Largada falsa: espere todas as luzes apagarem e tente de novo.',
+    age_near: (a, g, m) => `Seu tempo: <b>${a} ms</b>, mais próximo da média do grupo <b>${g}</b> (${m} ms). Um toque no celular soma atraso de tela e de toque, então compare com cautela.`,
     h_exact: 'Passa com ±0.10 s. Perfeito no centésimo.', h_react: 'Toque em qualquer lugar quando as luzes apagarem', wait: 'Espere as luzes apagarem', too_soon: 'Cedo demais', reaction: 'reação',
     perfect: 'Perfeito', pass: 'Passou', early: 'Cedo demais', late: 'Tarde demais', false_start: 'Largada falsa', slow: 'Lento demais',
     d_perfect: 'Na mosca. 0.00 s de diferença.', d_pass: (a, late) => `${a} s ${late ? 'atrasado' : 'adiantado'}`, d_miss: (a, late) => `${a} s ${late ? 'depois' : 'antes'} da margem`,
@@ -189,7 +221,7 @@ const T = {
     i_ready: 'Observe e escute dois sinais.', i_get: 'Prepare-se', i_listen: 'Ouvindo…', i_listen_btn: 'Ouvindo', i_prompt: 'Quanto tempo durou?', i_hint: 'Arraste e ajuste com − e +', i_lock: 'Confirmar',
     i_said: a => `Você disse ${a} s`, i_exact: a => `Durou ${a} s. Na mosca.`, i_longd: (a, b) => `Durou ${a} s. Passou ${b} s.`, i_shortd: (a, b) => `Durou ${a} s. Faltaram ${b} s.`, short: 'Curto demais', long: 'Longo demais',
     i_minus: 'Menos 0.01 s', i_plus: 'Mais 0.01 s', i_guess: 'Seu palpite', more_interval: '14 níveis de Intervalo no app, cada um com seu tempo oculto.',
-    modes_h: 'Treine seu senso de tempo', modes_p: 'Partidas curtas, precisão de verdade.',
+    modes_h: 'Cinco modos, todos jogáveis acima', modes_p: 'Escolha um para carregá-lo no painel.',
     m: [['Exact Time', 'Pare no alvo, com o relógio à vista'], ['Hidden Clock', 'Igual, mas o relógio some'], ['Intervalo', 'Estime o tempo entre dois sinais'], ['Reação', 'Toque assim que as luzes se apagarem'], ['Batak', 'Toque nos alvos acesos, rápido']],
     shots_h: 'Dentro do app', band_h: 'Seu recorde está esperando', band_p: 'Continue de onde o teste do navegador para.',
     nojs: 'O teste precisa de JavaScript. O jogo completo está no Pulse.', back: 'Gurrulabs', contact: 'Contato',
@@ -198,8 +230,8 @@ const T = {
     home_title: 'Gurrulabs: estúdio independente de apps Android',
     home_desc: 'Gurrulabs é um estúdio de uma pessoa só que cria jogos e ferramentas para Android: Pulse, Raffy, Cyberpunk Detective e Lull. Teste o Pulse no navegador.',
     pulse_title: 'App Pulse: jogo de reflexos para Android | Gurrulabs',
-    pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Experimente dois dos modos no navegador.',
-    guides_h: 'Testes e guias', guides_p: 'Jogue no navegador ou veja o que dizem os estudos.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
+    pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Jogue os cinco modos no navegador.',
+    guides_h: 'Testes e guias', guides_p: 'Veja o que dizem os estudos e depois se teste no navegador.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
     foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
   },
 };
@@ -210,9 +242,11 @@ function i18n(t) {
   const out = {};
   for (const k of ['t_exact', 't_react', 'start', 'stop', 'stop_at', 'h_exact', 'h_react', 'wait', 'too_soon', 'reaction', 'perfect', 'pass', 'early', 'late', 'false_start', 'slow',
     'd_perfect', 'd_false', 'win', 'rwin', 'train', 'again', 'keep', 'more', 'more_false',
-    'h_hidden', 'more_hidden', 'b_hit', 'b_total', 'more_batak', 'i_ready', 'i_get', 'i_listen', 'i_listen_btn', 'i_prompt', 'i_hint', 'i_lock', 'short', 'long', 'i_minus', 'i_plus', 'i_guess', 'more_interval']) out[k] = t[k];
-  for (const k of ['of', 'd_rperf', 'd_rpass', 'd_rslow', 'beat', 'beatx', 'h_hidden_run', 'b_within', 'b_slow', 'i_said', 'i_exact', 'b_light']) out[k] = t[k](a);
+    'h_hidden', 'more_hidden', 'b_hit', 'b_total', 'more_batak', 'i_ready', 'i_get', 'i_listen', 'i_listen_btn', 'i_prompt', 'i_hint', 'i_lock', 'short', 'long', 'i_minus', 'i_plus', 'i_guess', 'more_interval',
+    't_hidden', 't_interval', 't_batak', 't_modes', 'r_empty', 'r_n1', 'r_n', 'r_avg', 'r_sd', 'r_hits', 'r_clear', 'age_all', 'age_false']) out[k] = t[k];
+  for (const k of ['of', 'd_rperf', 'd_rpass', 'd_rslow', 'beat', 'beatx', 'h_hidden_run', 'b_within', 'b_slow', 'i_said', 'i_exact', 'b_light', 'r_you', 'age_you']) out[k] = t[k](a);
   for (const k of ['b_of', 'b_meter', 'i_longd', 'i_shortd']) out[k] = t[k](a, '{b}'); // two slots: {a} {b}
+  out.age_near = t.age_near(a, '{g}', '{m}'); // {a} ms, group {g}, its average {m}
   out.b_perf = t.b_perf('{n}', a); out.b_pass = t.b_pass('{n}', a, '{b}'); // Batak lines: {n} lights
   for (const k of ['d_pass', 'd_miss']) out[k] = [t[k](a, false), t[k](a, true)];
   return JSON.stringify(out).replace(/</g, '\\u003c');
@@ -223,6 +257,15 @@ function i18n(t) {
 //    Per page id and locale: { title, desc, name (breadcrumb / card), h1, card (card one-liner), kick, upd (optional: replaces the "Updated" label), note (optional: appended to the Sources note), sub, facts (test/challenge),
 //    answer (guide), body, push [b, s, link label (guide → test)], after (guide), faq [[q, a]], band [h, p] }.
 //    `sources` (shared by the locales) feeds the Sources list, the Article citation and the #src-<key> anchors.
+// ── Icons (Pulse's set, 24 grid)
+const SYM = {
+  exact: '<circle cx="12" cy="13" r="7"/><path d="M12 13V9M10 3h4"/>', hidden: '<path d="M3 12s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6z"/><path d="M4 20L20 4"/>',
+  interval: '<path d="M5 6v12M19 6v12M5 12h14"/>', reaction: '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
+  batak: '<circle cx="7" cy="7" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
+  back: '<path d="M15 5l-7 7 7 7"/>', out: '<path d="M7 17L17 7M9 7h8v8"/>', check: '<path d="M5 12l5 5 9-10"/>', chev: '<path d="M9 5l7 7-7 7"/>',
+  chart: '<path d="M5 19V9M12 19V5M19 19v-7"/>', list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>', globe: '<path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
+};
+const ic = id => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${SYM[id]}</svg>`;
 const byId = Object.fromEntries(PAGES.map(p => [p.id, p]));
 const to = (loc, id) => path(loc, byId[id]);
 const PULSE_CONTENT = PAGES.filter(p => p.app === 'pulse' && p.slug); // Pulse's content pages in registry order (link cards, footer)
@@ -283,10 +326,45 @@ function ageTable(loc, [hAge, hMean, hSd, hSrc, all, cap, t2]) {
       <caption>${cap}</caption>
     </table></div>`;
 }
-// Challenge rules = the browser game's verdicts (script.js exactVerdict): perfect 3.00, pass within ±0.10 s, otherwise miss
-function rulesBlock(r, v = ['3.00', '2.90–3.10', '&lt; 2.90 · &gt; 3.10']) {
-  return `<div class="rules"><div><b class="v-perfect tnum">${v[0]}</b><span>${r[0]}</span></div><div><b class="v-pass tnum">${v[1]}</b><span>${r[1]}</span></div><div><b class="v-miss tnum">${v[2]}</b><span>${r[2]}</span></div></div>`;
+// ── Shared content components (T-020, rules in .claude/skills/design). Page workers emit these; styles are in styles.css,
+//    behaviour in script.js and is driven by the markup (see the contract notes on each helper).
+// Short answer box (replaces the old `.answer` for real short answers; label per locale)
+const say = (loc, html) => `<div class="say"><div class="k">${T[loc].say_k}</div>${html}</div>`;
+// Rules as one ruler, with a slot for this visit's tries. r = 3 legend labels, v = 3 legend values (default: 3 s challenge),
+// sp = { mode: 'exact'|'hidden' (script.js plots that mode's results), min, max, target, win } or null = legend only (no fixed target).
+// Markup contract: figure.ruler[data-mode data-min data-max data-target data-win] > .rscale (zones) + .ticks + .me (script.js fills stats) + .legend
+const RULER = { exact: { mode: 'exact', min: 2.7, max: 3.3, target: 3, win: 0.1 }, hidden: { mode: 'hidden', min: 9.7, max: 10.3, target: 10, win: 0.1 } };
+function rulesBlock(r, v = ['3.00', '2.90–3.10', '&lt; 2.90 · &gt; 3.10'], sp = RULER.exact) {
+  const legend = `<div class="legend"><div><b class="v-perfect tnum">${v[0]}</b><span>${r[0]}</span></div><div><b class="v-pass tnum">${v[1]}</b><span>${r[1]}</span></div><div><b class="v-miss tnum">${v[2]}</b><span>${r[2]}</span></div></div>`;
+  if (!sp) return `<figure class="ruler lg">${legend}</figure>`;
+  const pos = x => +Math.max(1.5, Math.min(98.5, (x - sp.min) / (sp.max - sp.min) * 100)).toFixed(2);
+  const [a, b, c] = [sp.target - sp.win, sp.target, sp.target + sp.win].map(pos);
+  const ticks = Array.from({ length: 7 }, (_, i) => { const x = sp.min + i * (sp.max - sp.min) / 6;
+    return `<span${Math.abs(x - sp.target) < 1e-9 ? ' class="c"' : ''} style="left:${pos(x)}%">${x.toFixed(2)}${i === 6 ? ' s' : ''}</span>`; }).join('');
+  return `<figure class="ruler" data-mode="${sp.mode}" data-min="${sp.min}" data-max="${sp.max}" data-target="${sp.target}" data-win="${sp.win}">
+      <div class="rscale"><div class="zone miss" style="left:0;width:${a}%"></div><div class="zone pass" style="left:${a}%;width:${+(c - a).toFixed(2)}%"></div><div class="zone miss" style="left:${c}%;right:0"></div><div class="perf" style="left:${b}%"></div></div>
+      <div class="ticks">${ticks}</div>
+      <div class="me" aria-live="polite"></div>
+      ${legend}
+    </figure>`;
 }
+// Numbered how-to step cards, each with a still of the screen at that step: steps = [[scrHtml, title, text]] (3 fit the grid)
+const steps3 = steps => `<div class="steps3">${steps.map(([scr, b, p], i) => `<div><div class="scr">${scr}</div><span class="n">${i + 1}</span><b>${b}</b><p>${p}</p></div>`).join('')}</div>`;
+// Findings, one row each: rows = [[claim, sentence, sourceKey]] or [claim, sentence, null, 'Pulse game rule'] for a non-study chip
+const finds = rows => `<div class="finds">${rows.map(([b, p, k, rule]) => `<div><b>${b}</b><p>${p}</p>${k ? `<a class="src" href="#src-${k}">${SRC[k].cite}</a>` : `<span class="src rule">${rule}</span>`}</div>`).join('')}</div>`;
+// Tips as icon cards in mode colours: tips = [[colourVar ('m-exact'…), iconId, title, text]]
+const tips3 = tips => `<div class="tips3">${tips.map(([c, i, b, p]) => `<div style="--c:var(--${c})"><span class="mi">${ic(i)}</span><b>${b}</b><p>${p}</p></div>`).join('')}</div>`;
+// Age chart from the Woods et al. table above (no other numbers). Markup contract: figure.chart.pre[data-age data-all] > svg + .youbox;
+// script.js draws the bars and, on a Reaction result of the panel, the "you" line and the nearest group in .youbox.
+const ageChart = (loc, h, sub) => { const t = T[loc], last = WOODS[WOODS.length - 1], attr = o => JSON.stringify(o).replace(/"/g, '&quot;');
+  return `<figure class="chart pre" data-age="${attr(WOODS)}" data-all="${attr(WOODS_ALL)}"><h3>${h}</h3><p class="sub">${sub}</p>
+      <svg role="img" aria-label="${t.g_age_alt(dec(loc, WOODS[0][1]), dec(loc, last[1]))}"></svg>
+      <div class="youbox" aria-live="polite">${t.age_empty}</div></figure>`; };
+// "On this page" rail (desktop): heads = [[id, text]]; again = [iconId, label] adds the Play again card (links to #play, the hero)
+const railBlock = (loc, heads, again) => `<aside class="g-rail" aria-label="${T[loc].on_page}"><b>${T[loc].on_page}</b>
+      <ol>${heads.map(([id, h]) => `<li><a href="#${id}">${h}</a></li>`).join('')}</ol>${again ? `
+      <a class="again" href="#play"><span class="mi"><svg viewBox="0 0 24 24" aria-hidden="true">${SYM[again[0]]}</svg></span><div>${T[loc].play_again}<span>${again[1]}</span></div></a>` : ''}
+    </aside>`;
 // Plain benchmark table: heads, rows (2nd column in tabular figures), caption
 const tbl = (heads, rows, cap) => `<div class="tbl fit"><table>
       <thead><tr>${heads.map(h => `<th>${h}</th>`).join('')}</tr></thead>
@@ -712,7 +790,7 @@ const CONTENT = {
       sub: 'A choice reaction time test measures how fast you respond when the signal can be one of several. Here a light comes on at one of 7 pads: hit it, then the next, 8 lights in all. Beat 7.20 s to pass; 3.20 s is Perfect.',
       facts: ['No account', 'Mouse or touch'],
       body: `<h2>The rules</h2>
-    ${rulesBlock(['Perfect: 0.40 s a light or faster', 'Pass: all 8 lights within the time', 'Too slow: over the time to beat'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'])}
+    ${rulesBlock(['Perfect: 0.40 s a light or faster', 'Pass: all 8 lights within the time', 'Too slow: over the time to beat'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'], null)}
     <h2>How to play the reaction lights game</h2>
     <div class="answer bk">Press <b>Start</b>. One pad lights up: hit it and the next one comes on. Hit all <b>8 lights</b> as fast as you can. <b>Only the lit pad counts</b>, and your total time appears after the last hit.</div>
     <h2>What is a choice reaction time test?</h2>
@@ -744,7 +822,7 @@ const CONTENT = {
       sub: 'Un juego de reflejos con luces mide lo rápido que respondes cuando la señal puede estar en varios sitios. Se enciende una luz en uno de 7 pads: púlsala y pasa a la siguiente, 8 luces en total. Bájate de 7,20 s para superarlo; 3,20 s es Perfecto.',
       facts: ['Sin cuenta', 'Ratón o táctil'],
       body: `<h2>Las reglas</h2>
-    ${rulesBlock(['Perfecto: 0.40 s por luz o menos', 'Superado: las 8 luces dentro del tiempo', 'Lento: pasas del tiempo a batir'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'])}
+    ${rulesBlock(['Perfecto: 0.40 s por luz o menos', 'Superado: las 8 luces dentro del tiempo', 'Lento: pasas del tiempo a batir'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'], null)}
     <h2>Cómo se juega: pulsa las luces lo más rápido posible</h2>
     <div class="answer bk">Pulsa <b>Iniciar</b>. Se enciende un pad: púlsalo y se enciende el siguiente. Pulsa las <b>8 luces</b> lo más rápido que puedas. <b>Solo cuenta el pad encendido</b> y tu tiempo total aparece tras el último toque.</div>
     <h2>¿Qué es el tiempo de reacción de elección?</h2>
@@ -776,7 +854,7 @@ const CONTENT = {
       sub: 'Un jeu de réflexes avec des lumières mesure la rapidité de ta réponse quand le signal peut venir de plusieurs endroits. Une lumière s’allume sur l’un des 7 pads : touche-la, puis la suivante, 8 lumières en tout. Passe sous 7,20 s pour réussir ; 3,20 s, c’est Parfait.',
       facts: ['Sans compte', 'Souris ou tactile'],
       body: `<h2>Les règles</h2>
-    ${rulesBlock(['Parfait : 0.40 s par lumière ou moins', 'Réussi : les 8 lumières dans le temps', 'Trop lent : au-delà du temps à battre'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'])}
+    ${rulesBlock(['Parfait : 0.40 s par lumière ou moins', 'Réussi : les 8 lumières dans le temps', 'Trop lent : au-delà du temps à battre'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'], null)}
     <h2>Comment jouer : touche les lumières le plus vite possible</h2>
     <div class="answer bk">Appuie sur <b>Démarrer</b>. Un pad s’allume : touche-le et le suivant s’allume. Touche les <b>8 lumières</b> le plus vite possible. <b>Seul le pad allumé compte</b>, et ton temps total s’affiche après le dernier appui.</div>
     <h2>Qu’est-ce que le temps de réaction de choix ?</h2>
@@ -808,7 +886,7 @@ const CONTENT = {
       sub: 'Um jogo de reflexo com luzes mede a rapidez da sua resposta quando o sinal pode estar em vários lugares. Uma luz acende em um de 7 pads: toque nela e depois na próxima, 8 luzes no total. Fique abaixo de 7,20 s para passar; 3,20 s é Perfeito.',
       facts: ['Sem conta', 'Mouse ou toque'],
       body: `<h2>As regras</h2>
-    ${rulesBlock(['Perfeito: 0.40 s por luz ou menos', 'Passou: as 8 luzes dentro do tempo', 'Lento: acima do tempo a vencer'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'])}
+    ${rulesBlock(['Perfeito: 0.40 s por luz ou menos', 'Passou: as 8 luzes dentro do tempo', 'Lento: acima do tempo a vencer'], ['≤ 3.20', '≤ 7.20', '&gt; 7.20'], null)}
     <h2>Como jogar: toque as luzes o mais rápido possível</h2>
     <div class="answer bk">Toque em <b>Iniciar</b>. Um pad acende: toque nele e o próximo acende. Toque nas <b>8 luzes</b> o mais rápido que puder. <b>Só o pad aceso conta</b>, e seu tempo total aparece depois do último toque.</div>
     <h2>O que é o tempo de reação de escolha?</h2>
@@ -842,7 +920,7 @@ const CONTENT = {
       sub: 'An internal clock test asks you to judge a time with no clock to read. Press Start and the clock disappears; count 10 seconds in your head and press Stop. It is the 10 second challenge: pass within ±0.10 s, Perfect on 10.00.',
       facts: ['No account', 'Space bar to stop'],
       body: `<h2>The rules</h2>
-    ${rulesBlock(['Perfect: dead on, to the hundredth', 'Pass: within ±0.10 s', 'Miss: too early or too late'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'])}
+    ${rulesBlock(['Perfect: dead on, to the hundredth', 'Pass: within ±0.10 s', 'Miss: too early or too late'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'], RULER.hidden)}
     <h2>How to play the 10 second challenge</h2>
     <div class="answer hc">Press <b>Start</b>: the clock <b>fades out</b>. Count 10 seconds in your head and press <b>Stop</b>. The clock comes back and shows your time. It is the <a href="${to('en', '3s-challenge')}">3 second challenge</a> with no clock to lean on.</div>
     <h2>How accurate is your internal clock?</h2>
@@ -872,7 +950,7 @@ const CONTENT = {
       sub: 'Un test de 10 segundos te pide calcular un tiempo sin reloj a la vista. Pulsa Iniciar y el reloj desaparece; cuenta 10 segundos mentalmente y pulsa Parar. Superas el reto con ±0,10 s; Perfecto es 10,00.',
       facts: ['Sin cuenta', 'Barra espaciadora para parar'],
       body: `<h2>Las reglas</h2>
-    ${rulesBlock(['Perfecto: clavado a la centésima', 'Superado: dentro de ±0.10 s', 'Fallo: demasiado pronto o tarde'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'])}
+    ${rulesBlock(['Perfecto: clavado a la centésima', 'Superado: dentro de ±0.10 s', 'Fallo: demasiado pronto o tarde'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'], RULER.hidden)}
     <h2>Cómo se juega: contar 10 segundos mentalmente</h2>
     <div class="answer hc">Pulsa <b>Iniciar</b>: el reloj <b>se desvanece</b>. Cuenta 10 segundos mentalmente y pulsa <b>Parar</b>. El reloj vuelve y muestra tu tiempo. Es el <a href="${to('es', '3s-challenge')}">reto de los 3 segundos</a> sin reloj en el que apoyarte.</div>
     <h2>¿Qué precisión tiene tu reloj interno?</h2>
@@ -902,7 +980,7 @@ const CONTENT = {
       sub: 'Un test des 10 secondes te demande d’estimer une durée sans horloge à lire. Appuie sur Démarrer : l’horloge disparaît ; compte 10 secondes dans ta tête et appuie sur Arrêter. Réussi à ±0,10 s près ; Parfait, c’est 10,00.',
       facts: ['Sans compte', 'Barre d’espace pour arrêter'],
       body: `<h2>Les règles</h2>
-    ${rulesBlock(['Parfait : pile au centième', 'Réussi : à ±0.10 s près', 'Raté : trop tôt ou trop tard'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'])}
+    ${rulesBlock(['Parfait : pile au centième', 'Réussi : à ±0.10 s près', 'Raté : trop tôt ou trop tard'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'], RULER.hidden)}
     <h2>Comment jouer : compter 10 secondes dans sa tête</h2>
     <div class="answer hc">Appuie sur <b>Démarrer</b> : l’horloge <b>s’efface</b>. Compte 10 secondes dans ta tête et appuie sur <b>Arrêter</b>. L’horloge revient et affiche ton temps. C’est le <a href="${to('fr', '3s-challenge')}">défi des 3 secondes</a> sans horloge sur laquelle s’appuyer.</div>
     <h2>Quelle est la précision de ton horloge interne ?</h2>
@@ -932,7 +1010,7 @@ const CONTENT = {
       sub: 'Um teste de 10 segundos pede que você estime um tempo sem relógio para ler. Toque em Iniciar e o relógio some; conte 10 segundos de cabeça e toque em Parar. Passa dentro de ±0,10 s; Perfeito é 10,00.',
       facts: ['Sem conta', 'Barra de espaço para parar'],
       body: `<h2>As regras</h2>
-    ${rulesBlock(['Perfeito: cravado no centésimo', 'Passou: dentro de ±0.10 s', 'Errou: cedo ou tarde demais'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'])}
+    ${rulesBlock(['Perfeito: cravado no centésimo', 'Passou: dentro de ±0.10 s', 'Errou: cedo ou tarde demais'], ['10.00', '9.90–10.10', '&lt; 9.90 · &gt; 10.10'], RULER.hidden)}
     <h2>Como jogar: contar 10 segundos de cabeça</h2>
     <div class="answer hc">Toque em <b>Iniciar</b>: o relógio <b>desaparece</b>. Conte 10 segundos de cabeça e toque em <b>Parar</b>. O relógio volta e mostra seu tempo. É o <a href="${to('pt', '3s-challenge')}">desafio dos 3 segundos</a> sem relógio em que se apoiar.</div>
     <h2>Quão preciso é o seu relógio interno?</h2>
@@ -964,7 +1042,7 @@ const CONTENT = {
       sub: 'A time estimation test asks you to guess how long an interval lasted. Two signals, a flash and a beep, mark a hidden gap between 0.30 and 10 s; you guess the seconds and pass within ±0.10 s.',
       facts: ['No account', 'Works muted too'],
       body: `<h2>The rules</h2>
-    ${rulesBlock(['Perfect: your guess is exact, to the hundredth', 'Pass: within 0.10 s of the real time', 'Miss: too short or too long'], ['0.00', '±0.10', '&gt; 0.10'])}
+    ${rulesBlock(['Perfect: your guess is exact, to the hundredth', 'Pass: within 0.10 s of the real time', 'Miss: too short or too long'], ['0.00', '±0.10', '&gt; 0.10'], null)}
     <h2>How to play: guess the seconds</h2>
     <div class="answer iv">Press <b>Start</b> and watch the two bars: the first signal starts the time, the second one ends it. Then <b>drag the slider</b> to your guess, fine-tune it with <b>−</b> and <b>+</b>, and press <b>Lock in</b>. Every try uses a different time between 0.30 and 10 s.</div>
     <h2>Why do we misjudge short and long times?</h2>
@@ -994,7 +1072,7 @@ const CONTENT = {
       sub: 'Un test de percepción del tiempo te pide adivinar cuánto duró un intervalo. Dos señales, un destello y un pitido, marcan un intervalo oculto de entre 0,30 y 10 s; adivinas los segundos y superas el reto con ±0,10 s.',
       facts: ['Sin cuenta', 'Funciona también sin sonido'],
       body: `<h2>Las reglas</h2>
-    ${rulesBlock(['Perfecto: tu cálculo es exacto, a la centésima', 'Superado: a menos de 0.10 s del tiempo real', 'Fallo: demasiado corto o largo'], ['0.00', '±0.10', '&gt; 0.10'])}
+    ${rulesBlock(['Perfecto: tu cálculo es exacto, a la centésima', 'Superado: a menos de 0.10 s del tiempo real', 'Fallo: demasiado corto o largo'], ['0.00', '±0.10', '&gt; 0.10'], null)}
     <h2>Cómo se juega: adivina los segundos</h2>
     <div class="answer iv">Pulsa <b>Iniciar</b> y mira las dos barras: la primera señal empieza el tiempo y la segunda lo termina. Después <b>arrastra el control</b> hasta tu cálculo, ajústalo con <b>−</b> y <b>+</b> y pulsa <b>Confirmar</b>. Cada intento usa un tiempo distinto entre 0,30 y 10 s.</div>
     <h2>¿Por qué calculamos mal los tiempos cortos y largos?</h2>
@@ -1024,7 +1102,7 @@ const CONTENT = {
       sub: 'Un test d’estimation du temps te demande de deviner combien de temps a duré un intervalle. Deux signaux, un flash et un bip, délimitent un intervalle caché entre 0,30 et 10 s ; tu devines les secondes et réussis à ±0,10 s près.',
       facts: ['Sans compte', 'Fonctionne aussi sans son'],
       body: `<h2>Les règles</h2>
-    ${rulesBlock(['Parfait : ton estimation est exacte, au centième', 'Réussi : à moins de 0.10 s du temps réel', 'Raté : trop court ou trop long'], ['0.00', '±0.10', '&gt; 0.10'])}
+    ${rulesBlock(['Parfait : ton estimation est exacte, au centième', 'Réussi : à moins de 0.10 s du temps réel', 'Raté : trop court ou trop long'], ['0.00', '±0.10', '&gt; 0.10'], null)}
     <h2>Comment jouer : devinez les secondes</h2>
     <div class="answer iv">Appuie sur <b>Démarrer</b> et regarde les deux barres : le premier signal lance le temps, le second l’arrête. Ensuite, <b>fais glisser le curseur</b> jusqu’à ton estimation, affine avec <b>−</b> et <b>+</b>, puis appuie sur <b>Valider</b>. Chaque essai utilise un temps différent entre 0,30 et 10 s.</div>
     <h2>Pourquoi se trompe-t-on sur les durées courtes et longues ?</h2>
@@ -1054,7 +1132,7 @@ const CONTENT = {
       sub: 'Um teste de percepção do tempo pede que você adivinhe quanto durou um intervalo. Dois sinais, um flash e um bipe, marcam um intervalo oculto entre 0,30 e 10 s; você adivinha os segundos e passa dentro de ±0,10 s.',
       facts: ['Sem conta', 'Funciona também sem som'],
       body: `<h2>As regras</h2>
-    ${rulesBlock(['Perfeito: seu palpite é exato, no centésimo', 'Passou: a menos de 0.10 s do tempo real', 'Errou: curto ou longo demais'], ['0.00', '±0.10', '&gt; 0.10'])}
+    ${rulesBlock(['Perfeito: seu palpite é exato, no centésimo', 'Passou: a menos de 0.10 s do tempo real', 'Errou: curto ou longo demais'], ['0.00', '±0.10', '&gt; 0.10'], null)}
     <h2>Como jogar: adivinhe os segundos</h2>
     <div class="answer iv">Toque em <b>Iniciar</b> e observe as duas barras: o primeiro sinal começa o tempo e o segundo o termina. Depois <b>arraste o controle</b> até o seu palpite, ajuste com <b>−</b> e <b>+</b> e toque em <b>Confirmar</b>. Cada tentativa usa um tempo diferente entre 0,30 e 10 s.</div>
     <h2>Por que erramos em tempos curtos e longos?</h2>
@@ -1270,15 +1348,6 @@ const APP = {
 const meta = (loc, p) => p.id === 'home' ? { title: T[loc].home_title, desc: T[loc].home_desc }
   : p.id === 'pulse' ? { title: T[loc].pulse_title, desc: T[loc].pulse_desc } : APP[p.id] ? APP[p.id][loc] : CONTENT[p.id][loc];
 
-// ── Icons (Pulse's set, 24 grid)
-const SYM = {
-  exact: '<circle cx="12" cy="13" r="7"/><path d="M12 13V9M10 3h4"/>', hidden: '<path d="M3 12s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6z"/><path d="M4 20L20 4"/>',
-  interval: '<path d="M5 6v12M19 6v12M5 12h14"/>', reaction: '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
-  batak: '<circle cx="7" cy="7" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
-  back: '<path d="M15 5l-7 7 7 7"/>', out: '<path d="M7 17L17 7M9 7h8v8"/>', check: '<path d="M5 12l5 5 9-10"/>', chev: '<path d="M9 5l7 7-7 7"/>',
-  chart: '<path d="M5 19V9M12 19V5M19 19v-7"/>', list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>', globe: '<path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
-};
-const ic = id => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${SYM[id]}</svg>`;
 const img = (name, alt = '') => `<img src="/assets/${name}-icon.webp" width="256" height="256" alt="${alt}">`;
 // Lull's real launcher icon (lull repo ic_launcher_foreground.xml, bg #17121A), cropped to the safe zone; same geometry as assets/lull-favicon.svg but thinner rings
 const LULL_ICON = '<svg viewBox="20 20 68 68" aria-hidden="true"><rect x="20" y="20" width="68" height="68" rx="12" fill="#17121A"/><circle cx="54" cy="54" r="29" fill="none" stroke="#F0B48A" stroke-opacity=".45" stroke-width="2"/><circle cx="54" cy="54" r="20" fill="none" stroke="#F0B48A" stroke-opacity=".7" stroke-width="2"/><circle cx="54" cy="54" r="10" fill="#F0B48A"/></svg>';
@@ -1439,7 +1508,18 @@ const gameBox = (loc, attrs = '') => `<div class="game" id="game"${attrs}><div c
 
 function pulsePage(loc) {
   const t = T[loc], p = byId.pulse;
-  const modes = ['exact', 'hidden', 'interval', 'reaction', 'batak'];
+  const modes = ['exact', 'hidden', 'interval', 'reaction', 'batak'], pick = ['exact', 'hidden', 'interval', 'react', 'batak']; // colour/icon key, panel tab key
+  // Still preview per mode (script-free; styles.css animates it on hover/focus only)
+  const pv = [`<span class="dig">3.00<small>s</small></span><span class="bar"></span>`, `<span class="dig">10.00<small>s</small></span>`, '<i></i><em></em><i></i>', '<i></i>'.repeat(5), '<i></i>'.repeat(8)];
+  const mcards = t.m.map(([n, r], i) => `<button type="button" class="mcard" data-pick="${pick[i]}" style="--c:var(--m-${modes[i]})"><span class="pv pv-${pick[i]}">${pv[i]}</span><b>${n}</b><span>${r}</span><span class="go2">${t.play_up}</span></button>`).join('');
+  // Guides row: age dot line (the Woods et al. means above) and the compared apps; then the tests, one card per mode page
+  const [w0, w1] = [WOODS[0], WOODS[WOODS.length - 1]], ys = WOODS.map(([, m]) => Math.round(76 - (m - w0[1]) / (w1[1] - w0[1]) * 63)), xs = WOODS.map((_, i) => 10 + i * 28);
+  const dots = WOODS.map((_, i) => `<circle${i === WOODS.length - 1 ? ' class="hi"' : ''} cx="${xs[i]}" cy="${ys[i]}" r="${i === WOODS.length - 1 ? 6 : 4.5}"/>`).join('');
+  const gcard = (id, tag, tx, more, viz) => `<a class="gcard" href="${to(loc, id)}" style="--c:var(--${byId[id].card[1]})"><div><span class="tag">${tag}</span><b>${CONTENT[id][loc].name}</b><p>${tx}</p><span class="more">${more}</span></div>${viz}</a>`;
+  const gcards = gcard('age-guide', t.g_tag(CONTENT['age-guide'].sources.length), t.g_age_p(dec(loc, w0[1]), dec(loc, w1[1])), t.g_age_more,
+      `<svg class="viz" viewBox="0 0 190 116" role="img" aria-label="${t.g_age_alt(dec(loc, w0[1]), dec(loc, w1[1]))}"><polyline class="ln" points="${xs.map((x, i) => `${x},${ys[i]}`).join(' ')}"/><g class="pt">${dots}</g><text x="0" y="96">${Math.round(w0[1])} ms</text><text x="190" y="3" text-anchor="end">${Math.round(w1[1])} ms</text><text x="10" y="114" text-anchor="middle">${w0[0].split('–')[0]}</text><text x="178" y="114" text-anchor="middle">${w1[0].split('–')[1]}</text></svg>`)
+    + gcard('best-apps', t.g_apps_tag, t.g_apps_p, t.g_apps_more, '<div class="apps-viz" aria-hidden="true"><span><i></i>Pulse</span><span><i></i>Lumosity</span><span><i></i>Peak</span></div>');
+  const tcards = PULSE_CONTENT.filter(q => q.type !== 'guide').map(q => `<a class="tcard" href="${to(loc, q.id)}" style="--c:var(--${q.card[1]})"><span class="mi">${ic(q.card[0])}</span><b>${CONTENT[q.id][loc].name}</b><span>${CONTENT[q.id][loc].card}</span><em>${t.play_go}</em></a>`).join('');
   const shots = [1, 2, 3, 4, 5].map(n => `<img class="shot" src="/assets/pulse-shot-${n}.webp" width="540" height="811" loading="lazy" alt="${SHOT_ALT[loc]} ${n}">`).join('');
   return `${head(loc, p)}
 <body data-page="${p.dataPage}" data-locale="${loc}">
@@ -1450,7 +1530,7 @@ ${header(loc, p, t)}
       <div class="head">
         <div class="app"><div class="ic">${ICON.pulse}</div><div><b>Pulse</b><span>${t.p_kicker}</span></div></div>
         <h1>${t.p_h1}</h1>
-        <p class="sub">${t.pulse_short}</p>
+        <p class="sub">${t.pulse_short} ${t.p_sub5}</p>
       </div>
       <div class="cta">${play(loc, 'pulse', 'hero')}</div>
       <div class="facts">${t.facts.map(f => `<span class="chip">${ic('check')}${f}</span>`).join('')}</div>
@@ -1458,9 +1538,13 @@ ${header(loc, p, t)}
     ${gameBox(loc)}
   </section>
 
-  <section class="blk"><h2>${t.modes_h}</h2><p class="lead">${t.modes_p}</p><div class="modes">${t.m.map(([n, r], i) => `<div class="mrow" style="--c:var(--m-${modes[i]})"><span class="mi">${ic(modes[i])}</span><div class="tx"><b>${n}</b><span>${r}</span></div></div>`).join('')}</div></section>
+  <section class="blk"><h2>${t.modes_h}</h2><p class="lead">${t.modes_p}</p><div class="mcards">${mcards}</div></section>
 
-  <section class="blk" id="guides"><h2>${t.guides_h}</h2><p class="lead">${t.guides_p}</p>${relBlock(loc, PULSE_CONTENT.map(q => q.id))}</section>
+  <section class="blk" id="guides"><h2>${t.guides_h}</h2><p class="lead">${t.guides_p}</p>
+    <div class="rowh">${t.row_guides}</div>
+    <div class="gcards">${gcards}</div>
+    <div class="rowh">${t.row_tests}</div>
+    <div class="tcards">${tcards}</div></section>
 
   <section class="blk"><h2>${t.shots_h}</h2><div class="shots">${shots}</div></section>
 
@@ -1551,7 +1635,7 @@ const fmtDate = (loc, iso) => { const [y, m, d] = iso.split('-').map(Number); re
 const readMin = c => Math.max(1, Math.round([c.answer, c.body, c.after, ...c.faq.flat()].join(' ').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / 200));
 const dated = (loc, p, extra = '') => `<div class="dates"><span>${T[loc].pub} <b><time datetime="${p.published}">${fmtDate(loc, p.published)}</time></b></span><span>${CONTENT[p.id]?.[loc].upd || T[loc].upd} <b><time datetime="${p.modified}">${fmtDate(loc, p.modified)}</time></b></span>${extra ? `<span>${extra}</span>` : ''}</div>`;
 const SRC_KEY = new Map(Object.entries(SRC).map(([k, s]) => [s, k]));
-const sourcesBlock = (loc, p) => `<section class="sources" id="sources" aria-labelledby="src-h"><h2 id="src-h">${T[loc].src_h}</h2><ol>${CONTENT[p.id].sources.map(s => `<li id="src-${SRC_KEY.get(s)}">${s.ref} <a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.url.replace('https://', ''))}</a></li>`).join('')}</ol><p class="note">${p.type === 'guide' ? T[loc].edu_med : T[loc].edu}${CONTENT[p.id][loc].note ? ' ' + CONTENT[p.id][loc].note : ''}</p></section>`;
+const sourcesBlock = (loc, p) => `<section class="sources" id="sources" aria-labelledby="src-h"><h2 id="src-h">${T[loc].src_h}</h2><ol>${CONTENT[p.id].sources.map(s => `<li id="src-${SRC_KEY.get(s)}"><span>${s.ref} <a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.url.replace('https://', ''))}</a></span></li>`).join('')}</ol><p class="note">${p.type === 'guide' ? T[loc].edu_med : T[loc].edu}${CONTENT[p.id][loc].note ? ' ' + CONTENT[p.id][loc].note : ''}</p></section>`;
 const crumbBlock = (loc, p) => `<nav class="bc" aria-label="${T[loc].bc}"><a href="${path(loc, byId.home)}">${T[loc].back}</a><span aria-hidden="true">›</span><a href="${path(loc, byId.pulse)}">Pulse</a><span aria-hidden="true">›</span><span>${CONTENT[p.id][loc].name}</span></nav>`;
 // Link cards to the content pages and the Pulse page (internal links), coloured by Pulse mode
 const NEW = { en: 'NEW', es: 'NUEVO', fr: 'NOUVEAU', pt: 'NOVO' };
@@ -1566,8 +1650,17 @@ const MODE_CLS = { hidden: 'hc', batak: 'bk', interval: 'iv' };
 const pushBlock = (loc, [b, s, go], mode) => `<div class="push${MODE_CLS[mode] ? ' ' + MODE_CLS[mode] : ''}"><div class="app"><div class="ic">${ICON.pulse}</div><div><b>${b}</b><span>${s}</span></div></div>${go
   ? `<a class="lnk" href="${to(loc, 'reaction-test')}" style="--bb:var(--m-reaction);--bf:#1A0A06">${go}${ic('chev')}</a>` : play(loc, 'pulse', 'article_push')}</div>`;
 
+const MODE_I = { exact: 0, hidden: 1, interval: 2, react: 3, batak: 4 }; // index in T[loc].m
 function contentPage(loc, p) {
   const t = T[loc], c = CONTENT[p.id][loc], guide = p.type === 'guide';
+  // Short answer: the plain legacy `.answer` box becomes the "Short answer" component (mode-tinted `.answer.xx` stay how-to call-outs)
+  const shortAns = h => h.replace(/<div class="answer">/g, `<div class="say"><div class="k">${t.say_k}</div>`);
+  // Section heads get ids (rail anchors); the rail lists them, then Sources
+  const heads = [];
+  const prose = `${shortAns(c.body)}
+    ${pushBlock(loc, c.push, p.mode)}
+    ${c.after ? shortAns(c.after) + '\n    ' : ''}${faqBlock(loc, c.faq)}`.replace(/<h2>([\s\S]*?)<\/h2>/g, (_, h) => { const id = `s${heads.length + 1}`; heads.push([id, plain(h)]); return `<h2 id="${id}">${h}</h2>`; });
+  const mode = p.mode || (p.type === 'test' ? 'react' : 'exact'), again = guide ? null : [mode === 'react' ? 'reaction' : mode, t.m[MODE_I[mode]][0]];
   const top = guide
     ? `<header class="art-h">
     <div class="app"><div class="ic">${ICON.pulse}</div><span>${c.kick}</span></div>
@@ -1575,8 +1668,8 @@ function contentPage(loc, p) {
     <p class="sub">${c.sub}</p>
     ${dated(loc, p, t.read(readMin(c)))}
   </header>
-  <div class="answer">${c.answer}</div>`
-    : `<section class="p-hero">
+  ${say(loc, c.answer)}`
+    : `<section class="p-hero" id="play">
     <div class="txt">
       <div class="head">
         <div class="app"><div class="ic">${ICON.pulse}</div><div><b>Pulse</b><span>${c.kick}</span></div></div>
@@ -1586,25 +1679,29 @@ function contentPage(loc, p) {
       <div class="cta">${play(loc, 'pulse', 'hero')}</div>
       <div class="facts">${c.facts.map(f => `<span class="chip">${ic('check')}${f}</span>`).join('')}</div>
     </div>
-    ${gameBox(loc, ` data-mode="${p.mode || (p.type === 'test' ? 'react' : 'exact')}" data-solo`)}
+    ${gameBox(loc, ` data-mode="${mode}" data-solo`)}
   </section>
   ${dated(loc, p)}`;
   return `${head(loc, p)}
 <body data-page="${p.dataPage}" data-locale="${loc}">
 ${header(loc, p, t)}
-<main class="wrap">
+<main class="wrap" style="--c:var(--${p.card[1]})">
   ${crumbBlock(loc, p)}
   ${top}
+  <div class="g-grid">
+    <div>
   <article class="prose">
-    ${c.body}
-    ${pushBlock(loc, c.push, p.mode)}
-    ${c.after ? c.after + '\n    ' : ''}${faqBlock(loc, c.faq)}
+    ${prose}
   </article>
   ${sourcesBlock(loc, p)}
+    </div>
+    ${railBlock(loc, [...heads, ['sources', t.src_h]], again)}
+  </div>
   <section class="blk"><h2>${guide ? t.read_h : t.keep_h}</h2>${relBlock(loc, [...PULSE_CONTENT.filter(q => q !== p).map(q => q.id), 'pulse'])}</section>
   <section class="band"><div><h2>${c.band[0]}</h2><p>${c.band[1]}</p></div><div>${play(loc, 'pulse', 'footer_band')}</div></section>
 </main>
-${footer(loc, t, p)}${guide ? '' : `\n<script type="application/json" id="i18n">${i18n(t)}</script>`}
+${footer(loc, t, p)}
+<script type="application/json" id="i18n">${i18n(t)}</script>
 </body>
 </html>
 `;
