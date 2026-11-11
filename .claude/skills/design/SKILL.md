@@ -13,6 +13,8 @@ repo/Lead). These rules decide how the brand is used, not which brand.
 - **One thing moves at a time.** Looping previews and illustrations are still frames by default and animate only on
   the hovered or focused element. At most one ambient loop per screen (a hero visual). Phones (no hover) stay still.
   Everything stops under `prefers-reduced-motion`. Owner: "todo a la vez me produce agobio".
+- **Animation that plays once is welcome.** Blocks fade up as they scroll in, card grids stagger, diagrams draw
+  themselves (lines draw, dots gather, bars grow). Once, never looping. Owner asked for it in GWEB-020.
 - **Colour in small doses.** Cards get a soft tint of their colour (`color-mix` ~7-15%) and a hairline border (~14-16%).
   The colour itself goes on small things: icon tile, label, a text link, a chart mark. Filled buttons only for the
   main action (Play badge, Start), never one per card.
@@ -31,9 +33,9 @@ repo/Lead). These rules decide how the brand is used, not which brand.
 - Hero: title plus a visual (the playable game, or one animated illustration). Keep the sub to 1-2 sentences.
 - Answer boxes: even hairline border + small coloured "Short answer" label. Never a coloured stripe inside a
   rounded box (it bends at the corners).
-- Break walls of text: numbered steps instead of a paragraph, findings as rows with a source chip, tips as
-  icon cards, FAQ as soft cards, numbered source badges, "On this page" rail on desktop (≥1000 px), numbered
-  headings in the page colour.
+- Break walls of text: numbered steps instead of a paragraph; findings as cards (mini diagram, big figure in the
+  card colour, one sentence, source chip; owner rejected plain rows with a chip); tips as icon cards, FAQ as soft
+  cards, numbered source badges, "On this page" rail on desktop (≥1000 px), numbered headings in the page colour.
 - Stat tiles only for numbers printed in a cited source, each with its citation under it.
 - Every page should have at least one picture or diagram per screen of reading; SEO pages that are only text
   read as thin.
