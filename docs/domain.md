@@ -23,12 +23,15 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
 ## Measurement
 - Installs: Play links carry an install referrer so Play Console > Acquisition shows web installs. Follow Raffy
   Web's pattern (`script.js` `withPlayReferrer`, adds the referrer at runtime, HTML hrefs stay clean):
-  `referrer=utm_source=gurrulabs_web&utm_medium=web&utm_campaign=<page>&utm_content=<cta location>&utm_term=<locale>`.
+  `referrer=utm_source=gurrulabs_web&utm_medium=web&utm_campaign=<page>&utm_content=<cta location>&utm_term=<locale>`,
+  plus `src_utm_*` = the visit's own `utm_*` when its URL has them (as Raffy Web).
 - Web analytics: shared Mixpanel project "Gurru Labs websites" (EU host `https://api-eu.mixpanel.com`; public token
   in raffy_webpage `script.js:131`). Event prefix `Gurrulabs Web - ` so it never mixes with `Raffy Webpage - `.
   Track only when `location.hostname` is the production host (Raffy gates the same way, `script.js:156`).
-- Events (all fired by the shared `script.js`; this list is the naming source of truth):
-  - View: `Gurrulabs Web - <Page>`, props `locale`. `<Page>` comes from the page slug in `<body data-page="<slug>">`:
+- Events (all fired by the shared `script.js`; this list is the naming source of truth). Every event also carries Raffy Web's
+  acquisition props: `utm_source|medium|campaign|term|content` from the page URL (`''` when absent), `ai_referral`
+  (bool), `ai_referrer_source` (`chatgpt|perplexity|gemini|copilot|claude|other|unknown`, from `document.referrer`).
+  - View: `Gurrulabs Web - <Page>`, props `locale`, `path`, `referrer`. `<Page>` comes from the page slug in `<body data-page="<slug>">`:
     words split on `-`, capitalised, joined by a space (`home` → `Home`, `pulse` → `Pulse`,
     `cyberpunk-detective` → `Cyberpunk Detective`). Slug = the page's `dataPage` in `scripts/pages.mjs` (stable English id, e.g. `pulse-reaction-test`,
     even though URLs are translated), `home` for the locale root.

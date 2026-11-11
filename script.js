@@ -46,7 +46,13 @@
     window.mixpanel.init(MIXPANEL_TOKEN, { api_host: 'https://api-eu.mixpanel.com', persistence: 'localStorage' });
     tracking = true;
   }
-  const track = (event, props) => { if (tracking && window.mixpanel && typeof window.mixpanel.track === 'function') window.mixpanel.track('Gurrulabs Web - ' + event, props); };
+  // Same acquisition props as Raffy Web on every event: this URL's utm_* ('' when absent) and the AI assistant that referred the visit
+  const QS = new URLSearchParams(location.search), UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  const AI = [['chatgpt', 'chatgpt.com', 'chat.openai.com'], ['perplexity', 'perplexity.ai'], ['gemini', 'gemini.google.com'],
+    ['copilot', 'copilot.microsoft.com', 'bing.com/chat'], ['claude', 'claude.ai'], ['other', 'you.com', 'phind.com', 'poe.com', 'meta.ai', 'mistral.ai', 'grok.com']];
+  const ref = document.referrer.toLowerCase(), ai = ref && AI.find(([, ...hosts]) => hosts.some(h => ref.includes(h)));
+  const CTX = { ...Object.fromEntries(UTM.map(k => [k, QS.get(k) || ''])), ai_referral: !!ai, ai_referrer_source: ai ? ai[0] : 'unknown' };
+  const track = (event, props) => { if (tracking && window.mixpanel && typeof window.mixpanel.track === 'function') window.mixpanel.track('Gurrulabs Web - ' + event, { ...CTX, ...props }); };
 
   // ── Play links: clean href in the HTML; the install referrer is added on load and again on press (links created by the test)
   const PLAY_SEL = 'a[href*="play.google.com/store/apps/details"]:not(.sources a)'; // source citations are not install CTAs
@@ -55,6 +61,7 @@
       utm_source: 'gurrulabs_web', utm_medium: 'web', utm_campaign: PAGE,
       utm_content: a.dataset.cta || 'unknown', utm_term: LOCALE,
     });
+    UTM.forEach(k => { if (CTX[k]) referrer.set('src_' + k, CTX[k]); }); // the visit's own campaign, as Raffy Web forwards it
     const url = new URL(a.href);
     url.searchParams.set('referrer', referrer.toString());
     a.href = url.toString();
@@ -108,7 +115,7 @@
 
   initMixpanel();
   // View event named from the slug (pulse → Pulse, cyberpunk-detective → Cyberpunk Detective); naming rule in docs/domain.md
-  track(PAGE.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '), { locale: LOCALE });
+  track(PAGE.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '), { locale: LOCALE, path: location.pathname, referrer: document.referrer });
 
   // ── The tests (Pulse page only)
   const panel = document.getElementById('game');
