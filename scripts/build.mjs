@@ -1543,7 +1543,7 @@ function header(loc, p, t) {
   const left = home
     ? `<a class="brand" href="/${loc}/">${gf('')}<img src="/assets/gurrulabs-wordmark.webp" width="255" height="68" alt="Gurrulabs"></a>`
     : p.type === 'app'
-      ? `<a class="crumb" href="/${loc}/">${ic('back')}${gf('Gurrulabs')}</a>`
+      ? `<a class="crumb" href="/${loc}/">${ic('back')}<b>Gurrulabs</b></a>`
       : `<a class="crumb" href="${backHref}">${ic('back')}<span class="aic">${ICON.pulse}</span><b>${backName}</b></a>`;
   const nav = home ? `<nav class="hnav"><a href="#apps">${t.apps_h}</a><a href="#about">${t.about_h}</a></nav>` : '';
   const langs = LOCALES.map(l => `<a${l === loc ? ' class="on" aria-current="true"' : ''} href="${path(l, p)}" hreflang="${HREFLANG[l]}" lang="${HREFLANG[l]}">${l.toUpperCase()}</a>`).join('');
