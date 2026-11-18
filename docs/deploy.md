@@ -3,6 +3,7 @@
 Production: https://www.gurrulabs.com (GitHub Pages of `gurrulabs-oss/gurrulabs_websites`, source `main` `/`,
 domain bought at IONOS). Same setup as Raffy Web (`www.raffyparenting.com`). Cost: the domain only.
 Until 2026-11-10 the site ran on Cloudflare Pages at `gurrulabs.pages.dev` (build step `build.sh` → `dist/`).
+That Cloudflare Pages project was deleted on 2026-11-18 (T-023; `gurrulabs.pages.dev` no longer resolves); www.gurrulabs.com is the only host.
 
 ## How it works
 - **Merge to `main` = production.** GitHub Pages (classic Jekyll build) publishes the repo root on every push.
