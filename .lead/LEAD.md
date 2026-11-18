@@ -20,7 +20,9 @@ Open decisions go in the ticket's **Questions** section (Q1 format); remove each
 
 ### design (only for visual tickets, `design: yes`)
 Build a static, clickable mockup in `.lead/designs/<ticket>/` with the project's real look and realistic content,
-covering the states that matter, and describe it under **Design**. No project code. Once the owner approves it,
+covering the states that matter, and describe it under **Design**. Always load the `design` skill first and follow
+its shared rules and the app's file (owner order, 2026-11-18); never base a mockup only on an existing page's layout,
+and brief workers on visual work with it too. No project code. Once the owner approves it,
 it is part of the Spec: the plan and the execution must reproduce it.
 
 ### plan

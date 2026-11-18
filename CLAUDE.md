@@ -31,6 +31,8 @@ One folder per locale with one subfolder per app (`/en/`, `/en/pulse/`), shared 
 
 ## Rules
 - Every page ships in all 4 locales in the same ticket; natural native copy per locale.
+- Any design, mockup, plan or execution that changes what a page looks like loads the `design` skill first and
+  follows it (owner order, 2026-11-18).
 - SEO: every new or changed page follows `docs/seo-strategy.md` (own keyword, real checked sources, visible date),
   is regenerated with `node scripts/build.mjs` (pages, sitemap, llms.txt, robots, JSON-LD from `scripts/pages.mjs`)
   and passes `node scripts/validate.mjs`; a ticket that touches pages is not done without it.
