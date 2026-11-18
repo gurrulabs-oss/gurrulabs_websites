@@ -6,3 +6,5 @@
 .lead/scratch/
 .DS_Store
 
+.lead/art/*
+!.lead/art/index.md
