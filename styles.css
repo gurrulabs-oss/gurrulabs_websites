@@ -872,3 +872,21 @@ main { counter-reset: h; } /* one count across the age guide intro and article *
 .answer.ex, .answer.hc, .answer.bk, .answer.iv { --a: var(--accent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--a) 32%, transparent); }
 .answer.ex { --a: var(--m-exact); } .answer.hc { --a: var(--m-hidden); } .answer.bk { --a: var(--m-batak); } .answer.iv { --a: var(--m-interval); }
 .ruler.lg { padding-top: 22px; } .ruler.lg .legend { margin: 0; padding: 0; border: 0; }
+/* T-025 guide tweaks: kicker above the hero H1, play-once hero illustration, factor table as cards on phones */
+.a-hero .kick2 { display: block; margin-bottom: 12px; font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--m-reaction); }
+.hero-v.once .gant i { animation-iteration-count: 1; animation-fill-mode: forwards; }
+.hero-v.once .ms { animation: msonce .8s 4.1s both; }
+@keyframes msonce { from { opacity: 0; transform: translateY(8px); } }
+@media (max-width: 600px) {
+  .tbl.stack { background: none; box-shadow: none; border-radius: 0; overflow: visible; }
+  .tbl.stack thead { display: none; }
+  .tbl.stack table, .tbl.stack tbody { display: block; }
+  .tbl.stack tr { display: block; margin-top: 10px; padding: 14px 16px; border-radius: 16px; background: color-mix(in srgb, var(--surface) 70%, transparent); box-shadow: inset 0 0 0 1px var(--line); }
+  .tbl.stack td { display: inline; padding: 0; border: 0; font-size: 14px; }
+  .tbl.stack td:nth-child(1) { display: block; font-size: 16px; }
+  .tbl.stack td:nth-child(2) { display: block; margin-top: 4px; color: var(--text); }
+  .tbl.stack td:nth-child(3), .tbl.stack td:nth-child(4) { color: var(--text3); font-size: 13px; }
+  .tbl.stack td:nth-child(3) { display: block; margin-top: 8px; }
+  .tbl.stack td:nth-child(4) { display: block; margin-top: 2px; font-size: 11.5px; }
+  .tbl.stack caption { display: block; padding: 10px 2px 0; }
+}

@@ -70,7 +70,7 @@ const T = {
     pulse_title: 'Pulse app: reflex and timing game for Android | Gurrulabs',
     pulse_desc: 'Pulse is a reflex and sense-of-time game for Android: 5 modes, no account, works offline. Play all five modes right in your browser.',
     guides_h: 'Tests and guides', guides_p: 'Read what the studies say, then test yourself in the browser.', read_h: 'Keep reading', faq_h: 'FAQ', edu: 'Educational content.', edu_med: 'Educational content, not medical advice.',
-    foot: ['Reaction test', '3 s challenge', 'Hidden Clock', 'Interval', 'Batak', 'Reaction by age', 'Best reflex apps'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
+    foot: ['Reaction test', '3 s challenge', 'Hidden Clock', 'Interval', 'Batak', 'Reaction by age', 'Best reflex apps', 'Improve reaction time'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
   },
   es: {
     home_h1: 'Apps pequeñas que hacen <em>una cosa</em> bien.', kick: 'Estudio independiente de apps Android',
@@ -124,7 +124,7 @@ const T = {
     pulse_title: 'App Pulse: juego de reflejos para Android | Gurrulabs',
     pulse_desc: 'Pulse es un juego de reflejos y sentido del tiempo para Android: 5 modos, sin cuenta y funciona sin conexión. Juega los cinco modos en el navegador.',
     guides_h: 'Pruebas y guías', guides_p: 'Lee lo que dicen los estudios y ponte a prueba en el navegador.', read_h: 'Sigue leyendo', faq_h: 'Preguntas frecuentes', edu: 'Contenido educativo.', edu_med: 'Contenido educativo, no consejo médico.',
-    foot: ['Test de reacción', 'Reto 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reacción por edad', 'Mejores apps de reflejos'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
+    foot: ['Test de reacción', 'Reto 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reacción por edad', 'Mejores apps de reflejos', 'Mejorar el tiempo de reacción'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
   },
   fr: {
     home_h1: 'De petites applis qui font <em>une seule chose</em>, et bien.', kick: 'Studio indépendant d’applis Android',
@@ -178,7 +178,7 @@ const T = {
     pulse_title: 'Appli Pulse : jeu de réflexes pour Android | Gurrulabs',
     pulse_desc: 'Pulse est un jeu de réflexes et de sens du temps pour Android : 5 modes, sans compte, fonctionne hors ligne. Joue aux cinq modes dans ton navigateur.',
     guides_h: 'Tests et guides', guides_p: 'Lis ce que disent les études, puis teste-toi dans ton navigateur.', read_h: 'Continue à lire', faq_h: 'Questions fréquentes', edu: 'Contenu éducatif.', edu_med: 'Contenu éducatif, pas un avis médical.',
-    foot: ['Test de réaction', 'Défi 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Réaction par âge', 'Meilleures applis de réflexes'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
+    foot: ['Test de réaction', 'Défi 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Réaction par âge', 'Meilleures applis de réflexes', 'Améliorer son temps de réaction'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
   },
   pt: {
     home_h1: 'Apps pequenos que fazem <em>uma coisa</em> bem.', kick: 'Estúdio independente de apps Android',
@@ -232,7 +232,7 @@ const T = {
     pulse_title: 'App Pulse: jogo de reflexos para Android | Gurrulabs',
     pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Jogue os cinco modos no navegador.',
     guides_h: 'Testes e guias', guides_p: 'Veja o que dizem os estudos e depois se teste no navegador.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
-    foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
+    foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo', 'Melhorar o tempo de reação'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
   },
 };
 
@@ -263,6 +263,7 @@ const SYM = {
   interval: '<path d="M5 6v12M19 6v12M5 12h14"/>', reaction: '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
   batak: '<circle cx="7" cy="7" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
   back: '<path d="M15 5l-7 7 7 7"/>', out: '<path d="M7 17L17 7M9 7h8v8"/>', check: '<path d="M5 12l5 5 9-10"/>', chev: '<path d="M9 5l7 7-7 7"/>',
+  clock: '<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>', pause: '<path d="M9 6v12M15 6v12"/>',
   wave: '<path d="M4 12h3l2-5 4 10 2-5h5"/>', chart: '<path d="M5 19V9M12 19V5M19 19v-7"/>', list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>', globe: '<path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
 };
 const ic = id => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${SYM[id]}</svg>`;
@@ -302,6 +303,18 @@ const SRC = {
     ref: 'Thönes S, Hecht H. Counting does not improve the accuracy of long time productions. <i>Attention, Perception, &amp; Psychophysics</i>, 2017; 79(8):2576–2589.' },
   grondin: { cite: 'Grondin, 2010', url: 'https://doi.org/10.3758/APP.72.3.561',
     ref: 'Grondin S. Timing and time perception: a review of recent behavioral and neuroscience findings and theoretical directions. <i>Attention, Perception, &amp; Psychophysics</i>, 2010; 72(3):561–582.' },
+  vandongen: { cite: 'Van Dongen et al., 2003', url: 'https://pubmed.ncbi.nlm.nih.gov/12683469/',
+    ref: 'Van Dongen HPA, Maislin G, Mullington JM, Dinges DF. The cumulative cost of additional wakefulness: dose-response effects on neurobehavioral functions and sleep physiology from chronic sleep restriction and total sleep deprivation. <i>Sleep</i>, 2003; 26(2):117–126.' },
+  bavelier: { cite: 'Bavelier &amp; Green, 2025', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11813694/',
+    ref: 'Bavelier D, Green CS. Learning and transfer: a perspective from action video game play. <i>Current Directions in Psychological Science</i>, 2025; 34(1):43–50.' },
+  schwab: { cite: 'Schwab &amp; Memmert, 2012', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3763307/',
+    ref: 'Schwab S, Memmert D. The impact of a sports vision training program in youth field hockey players. <i>Journal of Sports Science and Medicine</i>, 2012; 11(4):624–631.' },
+  yamaguchi: { cite: 'Yamaguchi &amp; Proctor, 2009', url: 'https://pubmed.ncbi.nlm.nih.gov/18952202/',
+    ref: 'Yamaguchi M, Proctor RW. Transfer of learning in choice reactions: contributions of specific and general components of manual responses. <i>Acta Psychologica</i>, 2009; 130(1):1–10.' },
+  ravenz: { cite: 'van Ravenzwaaij et al., 2014', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4447196/',
+    ref: 'van Ravenzwaaij D, Boekel W, Forstmann BU, Ratcliff R, Wagenmakers EJ. Action video games do not improve the speed of information processing in simple perceptual tasks. <i>Journal of Experimental Psychology: General</i>, 2014; 143(5):1794–1805.' },
+  blatter: { cite: 'Blatter &amp; Cajochen, 2007', url: 'https://pubmed.ncbi.nlm.nih.gov/17055007/',
+    ref: 'Blatter K, Cajochen C. Circadian rhythms in cognitive performance: methodological constraints, protocols, theoretical underpinnings. <i>Physiology &amp; Behavior</i>, 2007; 90(2–3):196–208.' },
   gp_pulse: { cite: 'Google Play: Pulse', url: 'https://play.google.com/store/apps/details?id=com.gurrulabs.pulse&hl=en_US&gl=US',
     ref: 'Google Play listing: Pulse (Gurrulabs), checked 6 Nov 2026.' },
   gp_nix: { cite: 'Google Play: Reaction training', url: 'https://play.google.com/store/apps/details?id=com.nixgames.reaction&hl=en_US&gl=US',
@@ -355,11 +368,11 @@ function ageGap(loc, [h, a, b, note]) {
     </div>`;
 }
 // Factor cards (age, sleep, practice, device) with their illustrations. L = ["per year", "tries", device bar labels x2]; cards = [[h3, p] x4] in that order.
-function ageFacts(loc, [yr, tries, d1, d2], cards) {
+function ageFacts(loc, [yr, tries, d1, d2], cards, custom) {
   const big = (n, s) => `<div class="ill"><span class="big">${n}</span><span style="color:var(--text3);font-size:14px">${s}</span></div>`;
   const ills = [['m-reaction', big(`+${dec(loc, 0.5)} ms`, yr)], ['m-hidden', `<div class="ill ill-sleep" aria-hidden="true">${'<i></i>'.repeat(6)}</div>`], ['m-exact', big('1 → 5+', tries)],
     ['m-interval', `<div class="ill ill-dev" aria-hidden="true"><div><i style="width:18%"></i>${d1}</div><div><i style="width:100%"></i>${d2}</div></div>`]];
-  return `<div class="facts4">${ills.map(([c, ill], i) => `<div style="--c:var(--${c})">${ill}<h3>${cards[i][0]}</h3><p>${cards[i][1]}</p></div>`).join('')}</div>`;
+  return `<div class="facts4">${(custom || ills).map(([c, ill], i) => `<div style="--c:var(--${c})">${ill}<h3>${cards[i][0]}</h3><p>${cards[i][1]}</p></div>`).join('')}</div>`;
 }
 // Simple vs choice diagram: one light vs four pads. L = [h1, p1, h2, p2].
 const ageChoiceBlock = L => `<div class="choice">${[['one', 1], ['four', 4]].map(([c, n], i) => `<div><div class="ill ${c}" aria-hidden="true">${'<i></i>'.repeat(n)}</div><h3>${L[2 * i]}</h3><p>${L[2 * i + 1]}</p></div>`).join('')}</div>`;
@@ -404,7 +417,7 @@ const railBlock = (loc, heads, again) => `<aside class="g-rail" aria-label="${T[
       <a class="again" href="#play"><span class="mi"><svg viewBox="0 0 24 24" aria-hidden="true">${SYM[again[0]]}</svg></span><div>${T[loc].play_again}<span>${again[1]}</span></div></a>` : ''}
     </aside>`;
 // Plain benchmark table: heads, rows (2nd column in tabular figures), caption
-const tbl = (heads, rows, cap) => `<div class="tbl fit"><table>
+const tbl = (heads, rows, cap, cls = '') => `<div class="tbl fit${cls}"><table>
       <thead><tr>${heads.map(h => `<th>${h}</th>`).join('')}</tr></thead>
       <tbody>${rows.map(r => `<tr>${r.map((c, i) => `<td${i === 1 ? ' class="tnum"' : ''}>${c}</td>`).join('')}</tr>`).join('')}</tbody>
       <caption>${cap}</caption>
@@ -496,6 +509,51 @@ function hcBody(loc, L) {
     ${L.tips.ul}`;
 }
 
+// ── "How to improve reaction time" guide (T-025): takeaway tiles + body from one localized copy object L (see CONTENT['improve-guide']).
+// Reuses the age guide's builders (ageFacts with custom illustrations, ageChoiceBlock, tbl + .stack, steps3, tips3, pushBlock); no game on this page.
+const impIntro = (loc, kt, t) => `<h2 class="facts2-h" id="takeaways">${kt}</h2>
+  <div class="stats4">
+    <div style="--c:var(--m-batak)"><b><span class="count" data-to="11" data-d="0">11</span><small>%</small></b><span>${t[0]}</span><cite>${cite('dye')}</cite></div>
+    <div style="--c:var(--m-hidden)"><b>&gt;<span class="count" data-to="0.5" data-d="1">${dec(loc, 0.5)}</span><small>s</small></b><span>${t[1]}</span><cite>${cite('lim')}</cite></div>
+    <div style="--c:var(--m-reaction)"><b>+<span class="count" data-to="9.1" data-d="1">${dec(loc, 9.1)}</span><small>ms</small></b><span>${t[2]}</span><cite>${cite('woods')}</cite></div>
+    <div style="--c:var(--gold)"><b>+<span class="count" data-to="0.5" data-d="1">${dec(loc, 0.5)}</span><small>ms</small></b><span>${t[3]}</span><cite>${cite('woods')}</cite></div>
+  </div>`;
+function impBody(loc, L) {
+  const D = v => dec(loc, v), sch = L.sch;
+  const dev = (a, b, c1, c2) => `<div class="ill ill-dev" aria-hidden="true"><div><i style="width:${a}%"></i>${c1}</div><div><i style="width:${b}%"></i>${c2}</div></div>`;
+  const ills = [['m-hidden', `<div class="ill ill-sleep" aria-hidden="true">${'<i></i>'.repeat(6)}</div>`], ['m-exact', dev(70, 30, L.ill[0], L.ill[1])],
+    ['m-reaction', `<div class="ill"><span class="big">+${D(9.1)}</span><span style="color:var(--text3);font-size:14px">ms</span></div>`], ['m-interval', dev(18, 100, L.ill[2], L.ill[3])]];
+  // schematic bars: lapses past the 0.5 s line, and a pile-up over 14 days (both labelled schematic, not study data)
+  const lapse = `<svg class="mv" viewBox="0 0 200 54" aria-hidden="true"><line x1="0" y1="18" x2="200" y2="18" stroke="var(--text3)" stroke-dasharray="3 4"/><text x="200" y="12" text-anchor="end" font-size="11" fill="var(--text3)">${D(0.5)} s</text><text x="0" y="12" font-size="11" fill="var(--text3)">${sch}</text><g fill="var(--m-hidden)"><rect x="4" y="36" width="12" height="18" rx="5"/><rect x="28" y="34" width="12" height="20" rx="5"/><rect x="52" y="37" width="12" height="17" rx="5"/><rect x="100" y="35" width="12" height="19" rx="5"/><rect x="124" y="36" width="12" height="18" rx="5"/><rect x="172" y="35" width="12" height="19" rx="5"/></g><g fill="var(--miss)"><rect x="76" y="6" width="12" height="48" rx="5"/><rect x="148" y="10" width="12" height="44" rx="5"/></g></svg>`;
+  const pile = `<svg class="mv" viewBox="0 0 200 54" aria-hidden="true"><text x="0" y="10" font-size="11" fill="var(--text3)">${sch}</text><g fill="var(--m-hidden)">${Array.from({ length: 14 }, (_, i) => { const h = 6 + Math.round(i * 38 / 13); return `<rect x="${2 + 14 * i}" y="${54 - h}" width="10" height="${h}" rx="3"/>`; }).join('')}</g></svg>`;
+  const f2 = (svg, big, p, k) => `<div style="--c:var(--m-hidden)">${svg}<div class="big">${big}</div><p>${p}</p><a class="ref src" href="#src-${k}">${SRC[k].cite}</a></div>`;
+  const rows = L.rows.map(([f, e, ev, k]) => [`<b>${f}</b>`, e, ev, [].concat(k).map(x => cite(x)).join('; ')]);
+  const d3 = v => loc === 'en' ? v : v.replace('.', ',');
+  const res = (v, w) => `<div class="res">${dig(d3(v))}<em>${w}</em></div>`;
+  return `<h2>${L.s1[0]}</h2>
+    <p>${L.s1[1]}</p>
+    ${ageFacts(loc, [], L.cards, ills)}
+    <p class="finds-note">${L.tnote}</p>
+    ${tbl(L.th, rows, L.cap, ' stack')}
+    <p>${L.s1[2]}</p>
+    <h2>${L.s2[0]}</h2>
+    <p>${L.s2[1]}</p>
+    ${ageChoiceBlock(L.ch)}
+    <p class="finds-note">${L.s2[2]}</p>
+    <p>${L.s2[3]}</p>
+    <!--mid-->
+    <h2>${L.s3[0]}</h2>
+    <p>${L.s3[1]}</p>
+    <div class="facts2">${f2(lapse, '&gt; ' + D(0.5) + ' s', L.s3[2], 'lim')}${f2(pile, L.s3[3], L.s3[4], 'vandongen')}</div>
+    <p class="finds-note">${L.s3[5]}</p>
+    <h2>${L.s4[0]}</h2>
+    <p>${L.s4[1]}</p>
+    ${tips3([['m-reaction', 'reaction', ...L.tips[0]], ['m-hidden', 'clock', ...L.tips[1]], ['m-batak', 'pause', ...L.tips[2]]])}
+    <h2>${L.s5[0]}</h2>
+    <p>${L.s5[1]}</p>
+    ${steps3([[res('0.247', L.ex[0]), ...L.st[0]], [lightsS(1, 1, 0), ...L.st[1]], [res('0.231', L.ex[1]), ...L.st[2]]])}`;
+}
+
 const CONTENT = {
   'reaction-test': { sources: [SRC.woods, SRC.jain, SRC.lim, SRC.wa, SRC.dye],
     en: { title: 'Reaction time test online: how fast are you? | Gurrulabs',
@@ -519,7 +577,7 @@ const CONTENT = {
     <p>In athletics, a reaction off the blocks faster than <strong>0.100 s</strong> is flagged as a possible false start.</p>
     <p>When a certified start information system is used, it alerts the starter with an acoustic signal to a possible false start whenever an athlete’s reaction time is under 0.100 s, and the starter then checks the start ${R('wa', 'Technical Rule 16.6')}.</p>`,
       push: ['Train your reflexes in Pulse', 'Reaction, Batak and three timing games, offline.'],
-      faq: [['Can you improve your reaction time?', `Partly. On fast choice tasks, action video game players responded 11% faster than non-players with the same accuracy, and some training studies indicate that playing can speed up responses ${R('dye')}. Sleep loss, on the other hand, slows you down ${R('lim')}.`],
+      faq: [['Can you improve your reaction time?', `Partly. On fast choice tasks, action video game players responded 11% faster than non-players with the same accuracy, and some training studies indicate that playing can speed up responses ${R('dye')}. Sleep loss, on the other hand, slows you down ${R('lim')}. More in <a href="${to('en', 'improve-guide')}">how to improve reaction time</a>.`],
         ['Is a phone or a computer better?', 'Either works. What matters is comparing your scores on the same device, because every screen and mouse adds its own delay.'],
         ['Do you save my results?', 'No account needed, and the test keeps no history of your times: reload the page and you start from scratch.']],
       band: ['Your best is waiting', 'Reaction, Batak and a daily challenge in the app.'] },
@@ -544,7 +602,7 @@ const CONTENT = {
     <p>En atletismo, una reacción en los tacos de menos de <strong>0,100 s</strong> se marca como posible salida falsa.</p>
     <p>Cuando se usa un sistema de información de salida certificado, este avisa al juez de salida con una señal acústica de una posible salida falsa si el tiempo de reacción de un atleta es inferior a 0,100 s, y el juez revisa entonces la salida ${R('wa', 'Regla Técnica 16.6')}.</p>`,
       push: ['Entrena tus reflejos en Pulse', 'Reacción, Batak y tres juegos de tiempo, sin conexión.'],
-      faq: [['¿Se puede mejorar el tiempo de reacción?', `En parte. En tareas de elección rápida, los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan, con la misma precisión, y algunos estudios de entrenamiento indican que jugar puede acelerar las respuestas ${R('dye')}. Dormir poco, en cambio, te hace más lento ${R('lim')}.`],
+      faq: [['¿Se puede mejorar el tiempo de reacción?', `En parte. En tareas de elección rápida, los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan, con la misma precisión, y algunos estudios de entrenamiento indican que jugar puede acelerar las respuestas ${R('dye')}. Dormir poco, en cambio, te hace más lento ${R('lim')}. Más en <a href="${to('es', 'improve-guide')}">cómo mejorar el tiempo de reacción</a>.`],
         ['¿Es mejor usar el móvil o el ordenador?', 'Cualquiera sirve. Lo importante es comparar tus marcas en el mismo aparato, porque cada pantalla y cada ratón añaden su propio retraso.'],
         ['¿Guardáis mis resultados?', 'No hace falta cuenta y el test no guarda un historial de tus tiempos: si recargas la página, empiezas de cero.']],
       band: ['Tu mejor marca te espera', 'Reacción, Batak y un reto diario en la app.'] },
@@ -569,7 +627,7 @@ const CONTENT = {
     <p>En athlétisme, une réaction dans les starting-blocks de moins de <strong>0,100 s</strong> est signalée comme un possible faux départ.</p>
     <p>Quand un système d’information au départ certifié est utilisé, il prévient le starter par un signal sonore d’un possible faux départ dès que le temps de réaction d’un athlète est inférieur à 0,100 s ; le starter vérifie alors le départ ${R('wa', 'règle technique 16.6')}.</p>`,
       push: ['Entraîne tes réflexes dans Pulse', 'Réaction, Batak et trois jeux de timing, hors ligne.'],
-      faq: [['Peut-on améliorer son temps de réaction ?', `En partie. Sur des tâches de choix rapide, les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs, avec la même précision, et des études d’entraînement indiquent que jouer peut accélérer les réponses ${R('dye')}. À l’inverse, le manque de sommeil te ralentit ${R('lim')}.`],
+      faq: [['Peut-on améliorer son temps de réaction ?', `En partie. Sur des tâches de choix rapide, les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs, avec la même précision, et des études d’entraînement indiquent que jouer peut accélérer les réponses ${R('dye')}. À l’inverse, le manque de sommeil te ralentit ${R('lim')}. Plus d’infos dans <a href="${to('fr', 'improve-guide')}">comment améliorer son temps de réaction</a>.`],
         ['Mieux vaut un téléphone ou un ordinateur ?', 'Les deux conviennent. L’important est de comparer tes scores sur le même appareil, car chaque écran et chaque souris ajoutent leur propre délai.'],
         ['Vous enregistrez mes résultats ?', 'Pas besoin de compte, et le test ne garde pas d’historique de tes temps : recharge la page et tu repars de zéro.']],
       band: ['Ton record t’attend', 'Réaction, Batak et un défi chaque jour dans l’appli.'] },
@@ -594,7 +652,7 @@ const CONTENT = {
     <p>No atletismo, uma reação no bloco de largada abaixo de <strong>0,100 s</strong> é sinalizada como possível largada falsa.</p>
     <p>Quando se usa um sistema de informação de largada certificado, ele avisa o árbitro de largada com um sinal sonoro de uma possível largada falsa sempre que o tempo de reação de um atleta fica abaixo de 0,100 s; o árbitro então verifica a largada ${R('wa', 'Regra Técnica 16.6')}.</p>`,
       push: ['Treine seus reflexos no Pulse', 'Reação, Batak e três jogos de tempo, offline.'],
-      faq: [['Dá para melhorar o tempo de reação?', `Em parte. Em tarefas de escolha rápida, jogadores de videogames de ação responderam 11% mais rápido que não jogadores, com a mesma precisão, e alguns estudos de treino indicam que jogar pode acelerar as respostas ${R('dye')}. Já dormir pouco deixa você mais lento ${R('lim')}.`],
+      faq: [['Dá para melhorar o tempo de reação?', `Em parte. Em tarefas de escolha rápida, jogadores de videogames de ação responderam 11% mais rápido que não jogadores, com a mesma precisão, e alguns estudos de treino indicam que jogar pode acelerar as respostas ${R('dye')}. Já dormir pouco deixa você mais lento ${R('lim')}. Mais em <a href="${to('pt', 'improve-guide')}">como melhorar o tempo de reação</a>.`],
         ['É melhor usar o celular ou o computador?', 'Qualquer um serve. O importante é comparar suas marcas no mesmo aparelho, porque cada tela e cada mouse têm seu próprio atraso.'],
         ['Vocês guardam meus resultados?', 'Não precisa de conta, e o teste não guarda um histórico dos seus tempos: recarregue a página e você começa do zero.']],
       band: ['Seu recorde está esperando', 'Reação, Batak e um desafio diário no app.'] } },
@@ -620,6 +678,7 @@ const CONTENT = {
         ['Fatigue and sleep', `Sleep loss slows responses and makes lapses, responses that take longer than half a second, more frequent ${R('lim')}.`],
         ['Practice', `One try says little. Do several and keep the average; if you do many, rest between rounds, because even within one long session responses get a little slower ${R('woods')}.`],
         ['Your device', `Screens, mice and software can add up to 100 ms to the measured time ${R('woods')}. That is why an online test cannot be compared with the table to the millisecond: always compare on the same device.`]])}
+    <p>Want to get faster? See <a href="${to('en', 'improve-guide')}">how to improve reaction time</a>: what helps, what barely does, and how to check your progress.</p>
     <h2>Simple vs. choice reaction time</h2>
     ${ageChoiceBlock(['Simple', 'One signal, one response. Like the lights test above.', 'Choice', `Several signals, each with its own response. Like <a href="${to('en', 'batak')}">Batak</a>.`])}
     <p>In a study of 7,130 adults, simple reaction time showed little slowing until around 50, whereas choice reaction time slowed throughout adulthood ${R('derdeary')}.</p>
@@ -656,6 +715,7 @@ const CONTENT = {
         ['Cansancio y sueño', `Dormir poco ralentiza las respuestas y hace más frecuentes los lapsos, respuestas que tardan más de medio segundo ${R('lim')}.`],
         ['Práctica', `Un intento suelto dice poco. Haz varios y quédate con la media; si haces muchos, descansa entre series, porque incluso dentro de una sesión larga las respuestas se vuelven algo más lentas ${R('woods')}.`],
         ['El aparato', `Pantallas, ratones y software pueden sumar hasta 100 ms al tiempo medido ${R('woods')}. Por eso un test online no se puede comparar al milisegundo con la tabla: compara siempre en el mismo dispositivo.`]])}
+    <p>¿Quieres ser más rápido? Mira <a href="${to('es', 'improve-guide')}">cómo mejorar el tiempo de reacción</a>: qué ayuda, qué apenas cambia y cómo comprobar tu progreso.</p>
     <h2>Reacción simple y de elección</h2>
     ${ageChoiceBlock(['Simple', 'Una señal, una respuesta. Como el test de las luces de arriba.', 'Elección', `Varias señales, cada una con su respuesta. Como <a href="${to('es', 'batak')}">Batak</a>.`])}
     <p>En un estudio con 7.130 adultos, la reacción simple apenas se ralentizó hasta cerca de los 50 años, mientras que la de elección se ralentizó durante toda la vida adulta ${R('derdeary')}.</p>
@@ -692,6 +752,7 @@ const CONTENT = {
         ['Fatigue et sommeil', `Le manque de sommeil ralentit les réponses et rend plus fréquentes les absences, ces réponses qui prennent plus d’une demi-seconde ${R('lim')}.`],
         ['Entraînement', `Un seul essai ne dit pas grand-chose. Fais-en plusieurs et garde la moyenne ; si tu en fais beaucoup, fais des pauses, car même au cours d’une longue séance les réponses ralentissent un peu ${R('woods')}.`],
         ['L’appareil', `Les écrans, souris et logiciels peuvent ajouter jusqu’à 100 ms au temps mesuré ${R('woods')}. C’est pourquoi un test en ligne ne se compare pas au tableau à la milliseconde près : compare toujours sur le même appareil.`]])}
+    <p>Tu veux devenir plus rapide ? Lis <a href="${to('fr', 'improve-guide')}">comment améliorer son temps de réaction</a> : ce qui aide, ce qui change peu et comment suivre tes progrès.</p>
     <h2>Réaction simple et réaction de choix</h2>
     ${ageChoiceBlock(['Simple', 'Un signal, une réponse. Comme le test des feux ci-dessus.', 'Choix', `Plusieurs signaux, chacun avec sa réponse. Comme <a href="${to('fr', 'batak')}">Batak</a>.`])}
     <p>Dans une étude sur 7 130 adultes, la réaction simple ralentissait peu jusque vers 50 ans, alors que la réaction de choix ralentissait tout au long de la vie adulte ${R('derdeary')}.</p>
@@ -728,6 +789,7 @@ const CONTENT = {
         ['Cansaço e sono', `Dormir pouco deixa as respostas mais lentas e torna mais frequentes os lapsos, respostas que levam mais de meio segundo ${R('lim')}.`],
         ['Prática', `Uma tentativa solta diz pouco. Faça várias e fique com a média; se fizer muitas, descanse entre as séries, porque mesmo numa única sessão longa as respostas ficam um pouco mais lentas ${R('woods')}.`],
         ['O aparelho', `Telas, mouses e software podem acrescentar até 100 ms ao tempo medido ${R('woods')}. Por isso um teste online não se compara com a tabela ao milissegundo: compare sempre no mesmo dispositivo.`]])}
+    <p>Quer ficar mais rápido? Veja <a href="${to('pt', 'improve-guide')}">como melhorar o tempo de reação</a>: o que ajuda, o que pouco muda e como conferir seu progresso.</p>
     <h2>Reação simples e de escolha</h2>
     ${ageChoiceBlock(['Simples', 'Um sinal, uma resposta. Como o teste das luzes acima.', 'Escolha', `Vários sinais, cada um com sua resposta. Como o <a href="${to('pt', 'batak')}">Batak</a>.`])}
     <p>Num estudo com 7.130 adultos, a reação simples quase não ficou mais lenta até por volta dos 50 anos, enquanto a de escolha ficou mais lenta ao longo de toda a vida adulta ${R('derdeary')}.</p>
@@ -843,6 +905,223 @@ const CONTENT = {
         ['Por que vocês incluíram o próprio app?', 'Porque é um app de tempo de reação para Android. Comparamos com os mesmos critérios dos outros.']],
       band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
 
+  'improve-guide': { sources: [SRC.lim, SRC.vandongen, SRC.bavelier, SRC.yamaguchi, SRC.schwab, SRC.dye, SRC.ravenz, SRC.blatter, SRC.woods, SRC.jain],
+    en: { title: 'How to improve reaction time: what research says | Gurrulabs',
+      desc: 'How to improve reaction time: practice helps mostly on the task you train, sleep loss slows you down. What studies show and how to check progress.',
+      name: 'How to improve reaction time', h1: 'How to improve reaction time', em: 'improve reaction time', card: 'What helps, what barely does',
+      kick: 'Guide · Reaction time', kick2: 'Reaction time training',
+      sub: 'What the research says actually moves your reaction time, what barely does, and how to check your own progress with a test you can take right here.',
+      fig: ['11', '%'], hv: 'faster on fast choice tasks in action video game players, same accuracy (Dye et al., 2009)',
+      answer: `You get faster mostly at the task you practise, and slower when short of sleep or tired. Practice carries over only partly to other tasks ${R('bavelier')}. Age adds about 0.5 ms a year from 18 to 65; a slow device can add up to 100 ms ${R('woods')}.`,
+      intro: impIntro('en', 'Key takeaways', ['faster choice responses in action gamers, same accuracy', 'lapses get more frequent with sleep loss', 'slower from first to last block of one long session (228.1 → 237.2 ms)', 'per year of age, 18 to 65: a small change']),
+      body: impBody('en', {
+        sch: 'schematic', ill: ['trained task', 'new task · schematic', '≈18 ms in the study', 'up to 100 ms'],
+        s1: ['What affects reaction time the most?', 'Sleep, fatigue and practice on the task move it the most; age changes it only slowly, and your device adds delay to what you measure.',
+          'The table cannot tell you how big each effect is for you: most of these results are group averages. Use them to decide what to keep constant when you test yourself, not to predict a number.'],
+        cards: [['Sleep', `Sleep loss slows responses and makes lapses, responses over half a second, more frequent ${R('lim')}.`],
+          ['Practice', `Training on one task usually improves that task, with only limited transfer to untrained tasks ${R('bavelier')}.`],
+          ['Long sessions', `Even in one long session, average times rose from 228.1 ms in the first block to 237.2 ms in the last ${R('woods')}. Time of day is a separate factor that researchers measure on its own ${R('blatter')}.`],
+          ['Your device', `Screens, mice and software can add up to 100 ms to the measured time ${R('woods')}, so always compare on the same device.`]],
+        tnote: 'The table sums up each factor and how solid the evidence is.',
+        th: ['Factor', 'Effect on reaction time', 'Evidence', 'Source'],
+        rows: [['Sleep loss', 'Slower responses, more lapses over 0.5 s', 'Review of sleep deprivation studies', 'lim'],
+          ['Restricted sleep, night after night', 'Cognitive deficits kept growing over 14 days of 4 or 6 hours in bed; self-rated sleepiness barely rose after the first days', 'Lab study, healthy adults aged 21–38', 'vandongen'],
+          ['Practice on the same task', 'Improves the trained task; only limited transfer to untrained tasks', 'Research perspective, plus a six-week training study', ['bavelier', 'schwab']],
+          ['Action video games', '11% faster on fast choice tasks, same accuracy', 'Player comparisons and some training studies; one training study found no gain on a simple perceptual task', ['dye', 'ravenz']],
+          ['Long session', '228.1 → 237.2 ms, first to last block', 'One large lab study', 'woods'],
+          ['Time of day', 'Studied as its own effect on cognitive performance, apart from time awake; no single reaction-time figure', 'Methods review', 'blatter'],
+          ['Age (18–65)', 'About +0.5 ms per year', 'One large lab study', 'woods'],
+          ['Your device', 'Up to +100 ms on the measured time', 'One large lab study', 'woods']],
+        cap: 'Effects as reported in each source.',
+        s2: ['Can you train reaction time?', 'Yes, but the gains mostly stay with the task you practise.',
+          `In a six-week study of 12 to 16 year old field hockey players, a vision training program improved a trained choice reaction time task, but there was no significant gain in an untrained object-tracking task ${R('schwab')}. Evidence on games is mixed too: in two experiments with five supervised sessions, action gamers, cognitive gamers and non-gamers showed similar practice effects on a simple perceptual task ${R('ravenz')}. No app or game can promise a specific gain.`,
+          `Because gains mostly stay with the trained task, it makes sense to practise something that looks like the task you care about: a lights test for simple reactions, a pad-tapping test for choices. Our <a href="${to('en', 'reaction-test')}">reaction time test</a> and <a href="${to('en', 'batak')}">choice reaction time test</a> measure these two separately.`],
+        ch: ['Practise the same task', `Training on one task typically improves that task alone, with limited transfer to untrained tasks ${R('bavelier')}. In a choice reaction study, transfer was smaller when the response changed from keypresses to joystick movements, though it did not disappear ${R('yamaguchi')}.`,
+          'Fast action games', `Action video game players responded 11% faster than non-players on fast choice tasks, with the same accuracy ${R('dye')}.`],
+        s3: ['Does sleep affect reaction time?', 'Yes: sleep loss slows responses and makes lapses more frequent.',
+          'Sleep loss slows responses and makes <strong>lapses</strong>, responses longer than half a second, more frequent.', '14 days',
+          'In a lab study, healthy adults aged 21–38 who slept 4 or 6 hours a night for 14 days showed cumulative, dose-dependent deficits in cognitive performance, while self-rated sleepiness barely rose after the first days.',
+          'Caffeine is a common quick fix too; its effects are beyond this guide. For your own tests, the practical point is to compare results taken after similar sleep.'],
+        s4: ['Does warming up or the time of day matter?', `Possibly, so keep both constant: researchers treat time of day and practice effects as factors when they measure performance ${R('blatter')}, but no source we checked gives a reaction-time figure for a warm-up.`],
+        tips: [['Compare like with like', `Practice effects are a known factor in measuring performance ${R('blatter')}, so compare tries made under similar conditions.`],
+          ['Same time of day', `Test at the same hour each time: time of day has its own effect on cognitive performance, apart from how long you have been awake ${R('blatter')}.`],
+          ['Rest between rounds', `Long sessions slow you down: average times rose from 228.1 ms in the first block of 20 trials to 237.2 ms in the last ${R('woods')}.`]],
+        s5: ['How do you know if you are getting faster?', 'Take a baseline now, keep the conditions the same, and re-test later. A single try says little.'],
+        ex: ['Example: baseline', 'Example: a week later'],
+        st: [['Set a baseline', `Five tries of the <a href="${to('en', 'reaction-test')}">reaction time test</a>; keep the average.`],
+          ['Same conditions', 'Same device, same time of day, after a normal night.'],
+          ['Re-test', `After a week of practice, compare averages. Add the <a href="${to('en', 'batak')}">choice reaction test</a> to check transfer.`]] }),
+      mid: ['Practise every day with Pulse', 'Five reaction and timing modes on Android, no account, works offline.'],
+      push: ['Re-test with Pulse', 'Reaction and choice tests on Android, no account, works offline.'],
+      after: `<p>For daily practice, Reaction, Batak and three timing games are in <a href="${to('en', 'pulse')}">the Pulse app</a>.</p>`,
+      faq: [['How long does it take to improve reaction time?', `No study we checked gives one number. In a six-week training study, young hockey players improved on the trained choice reaction time task ${R('schwab')}; how fast you improve depends on the task and the person. Compare weekly averages on the same device rather than single tries.`],
+        ['Do reaction time games actually work?', `The evidence is mixed. Action video game players responded 11% faster than non-players on fast choice tasks with the same accuracy ${R('dye')}, but a training study found similar practice effects in action gamers, cognitive gamers and non-gamers on a simple perceptual task ${R('ravenz')}. No game can promise a specific gain.`],
+        ['Does age stop you getting faster?', `Barely. Between 18 and 65 the average rises by about 0.5 ms per year, roughly 21 ms across the whole range ${R('woods')}.`],
+        ['Does exercise improve reaction time?', `In a study of 120 first-year medical students, those who exercised regularly had faster times than sedentary ones ${R('jain')}. That is a comparison between groups: it does not show that exercise made them faster.`],
+        ['What is the fastest way to react quicker today?', `Be rested and alert, test under similar conditions each time, and avoid long sessions without breaks: sleep loss and long sessions both slow responses ${R('lim')} ${R('woods')}.`]],
+      band: ['Train your reflexes every day', 'Pulse for Android: no account, works offline.'] },
+    es: { title: 'Cómo mejorar el tiempo de reacción: guía | Gurrulabs',
+      desc: 'Cómo mejorar el tiempo de reacción: la práctica ayuda sobre todo en la tarea que entrenas y dormir poco ralentiza. Qué dicen los estudios.',
+      name: 'Cómo mejorar el tiempo de reacción', h1: 'Cómo mejorar el tiempo de reacción', em: 'mejorar el tiempo de reacción', card: 'Qué ayuda y qué apenas cambia',
+      kick: 'Guía · Tiempo de reacción', kick2: 'Entrenamiento del tiempo de reacción',
+      sub: 'Qué dice la investigación que mueve de verdad tu tiempo de reacción, qué apenas lo cambia y cómo comprobar tu progreso con un test que puedes hacer aquí mismo.',
+      fig: ['11', ' %'], hv: 'más rápidos en tareas de elección rápida los jugadores de videojuegos de acción, con la misma precisión (Dye et al., 2009)',
+      answer: `Mejoras sobre todo en la tarea que practicas, y vas más lento si duermes poco o estás cansado. La práctica se transfiere solo en parte a otras tareas ${R('bavelier')}. La edad suma 0,5 ms al año de 18 a 65, y un aparato lento hasta 100 ms ${R('woods')}.`,
+      intro: impIntro('es', 'Ideas clave', ['respuestas de elección más rápidas en jugadores de acción, con la misma precisión', 'los lapsos se vuelven más frecuentes al dormir poco', 'más lento del primer al último bloque de una sesión larga (228,1 → 237,2 ms)', 'por año de edad, de 18 a 65: un cambio pequeño']),
+      body: impBody('es', {
+        sch: 'esquema', ill: ['tarea entrenada', 'tarea nueva · esquema', '≈18 ms en el estudio', 'hasta 100 ms'],
+        s1: ['¿Qué afecta más al tiempo de reacción?', 'El sueño, el cansancio y la práctica en la tarea son lo que más lo mueve; la edad lo cambia solo despacio y tu aparato añade retraso a lo que mides.',
+          'La tabla no puede decirte cuánto pesa cada efecto en tu caso: casi todos estos resultados son medias de grupo. Úsalos para decidir qué mantener constante cuando te midas, no para predecir una cifra.'],
+        cards: [['Sueño', `Dormir poco ralentiza las respuestas y hace más frecuentes los lapsos, respuestas que tardan más de medio segundo ${R('lim')}.`],
+          ['Práctica', `Entrenar una tarea suele mejorar esa tarea, con una transferencia limitada a tareas no entrenadas ${R('bavelier')}.`],
+          ['Sesiones largas', `Incluso dentro de una sesión larga, el tiempo medio subió de 228,1 ms en el primer bloque a 237,2 ms en el último ${R('woods')}. La hora del día es otro factor que los investigadores miden por separado ${R('blatter')}.`],
+          ['El aparato', `Pantallas, ratones y software pueden sumar hasta 100 ms al tiempo medido ${R('woods')}, así que compara siempre en el mismo dispositivo.`]],
+        tnote: 'La tabla resume cada factor y lo sólida que es la evidencia.',
+        th: ['Factor', 'Efecto en el tiempo de reacción', 'Evidencia', 'Fuente'],
+        rows: [['Dormir poco', 'Respuestas más lentas, más lapsos de más de 0,5 s', 'Revisión de estudios de privación de sueño', 'lim'],
+          ['Sueño restringido, noche tras noche', 'Los déficits cognitivos siguieron aumentando durante 14 días con 4 o 6 horas en cama; la somnolencia autoevaluada apenas subió tras los primeros días', 'Estudio de laboratorio, adultos sanos de 21 a 38 años', 'vandongen'],
+          ['Práctica en la misma tarea', 'Mejora la tarea entrenada; transferencia limitada a tareas no entrenadas', 'Artículo de perspectiva, más un estudio de entrenamiento de seis semanas', ['bavelier', 'schwab']],
+          ['Videojuegos de acción', 'Un 11 % más rápido en tareas de elección rápida, con la misma precisión', 'Comparaciones de jugadores y algunos estudios de entrenamiento; un estudio de entrenamiento no halló mejora en una tarea perceptiva simple', ['dye', 'ravenz']],
+          ['Sesión larga', '228,1 → 237,2 ms, del primer al último bloque', 'Un gran estudio de laboratorio', 'woods'],
+          ['Hora del día', 'Se estudia como efecto propio sobre el rendimiento cognitivo, aparte del tiempo despierto; sin una cifra única de tiempo de reacción', 'Revisión metodológica', 'blatter'],
+          ['Edad (18–65)', 'Unos +0,5 ms por año', 'Un gran estudio de laboratorio', 'woods'],
+          ['El aparato', 'Hasta +100 ms en el tiempo medido', 'Un gran estudio de laboratorio', 'woods']],
+        cap: 'Efectos tal como los recoge cada fuente.',
+        s2: ['¿Se puede entrenar el tiempo de reacción?', 'Sí, pero las mejoras se quedan sobre todo en la tarea que practicas.',
+          `En un estudio de seis semanas con jugadores de hockey sobre césped de 12 a 16 años, un programa de entrenamiento visual mejoró una tarea de tiempo de reacción de elección entrenada, pero no hubo mejora significativa en una tarea de seguimiento de objetos no entrenada ${R('schwab')}. Con los juegos la evidencia también es mixta: en dos experimentos con cinco sesiones supervisadas, los jugadores de acción, los de juegos cognitivos y quienes no jugaban mostraron efectos de práctica parecidos en una tarea perceptiva simple ${R('ravenz')}. Ninguna app ni juego puede prometer una mejora concreta.`,
+          `Como las mejoras se quedan sobre todo en la tarea entrenada, tiene sentido practicar algo parecido a la tarea que te importa: un test de luces para reacciones simples, un test de pulsar botones para elecciones. Nuestro <a href="${to('es', 'reaction-test')}">test de tiempo de reacción</a> y nuestro <a href="${to('es', 'batak')}">juego de reflejos con luces</a> miden las dos cosas por separado.`],
+        ch: ['Practicar la misma tarea', `Entrenar una tarea suele mejorar solo esa tarea, con una transferencia limitada a tareas no entrenadas ${R('bavelier')}. En un estudio de reacción de elección, la transferencia fue menor cuando la respuesta pasaba de pulsar teclas a mover un joystick, aunque no desapareció ${R('yamaguchi')}.`,
+          'Videojuegos de acción rápidos', `Los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan en tareas de elección rápida, con la misma precisión ${R('dye')}.`],
+        s3: ['¿Afecta el sueño al tiempo de reacción?', 'Sí: dormir poco ralentiza las respuestas y hace más frecuentes los lapsos.',
+          'Dormir poco ralentiza las respuestas y hace más frecuentes los <strong>lapsos</strong>, respuestas que tardan más de medio segundo.', '14 días',
+          'En un estudio de laboratorio, adultos sanos de 21 a 38 años que durmieron 4 o 6 horas por noche durante 14 días mostraron déficits acumulativos, dependientes de la dosis, en el rendimiento cognitivo, mientras que la somnolencia autoevaluada apenas subió tras los primeros días.',
+          'La cafeína es otro remedio rápido habitual; sus efectos quedan fuera de esta guía. Para tus propias pruebas, lo práctico es comparar resultados tomados tras un sueño parecido.'],
+        s4: ['¿Importan el calentamiento y la hora del día?', `Posiblemente, así que mantén ambos constantes: los investigadores tratan la hora del día y los efectos de la práctica como factores al medir el rendimiento ${R('blatter')}, pero ninguna fuente que revisamos da una cifra de tiempo de reacción para el calentamiento.`],
+        tips: [['Compara lo comparable', `Los efectos de la práctica son un factor conocido al medir el rendimiento ${R('blatter')}, así que compara intentos hechos en condiciones parecidas.`],
+          ['A la misma hora', `Mídete a la misma hora cada vez: la hora del día tiene su propio efecto en el rendimiento cognitivo, aparte del tiempo que llevas despierto ${R('blatter')}.`],
+          ['Descansa entre series', `Las sesiones largas te ralentizan: el tiempo medio subió de 228,1 ms en el primer bloque de 20 intentos a 237,2 ms en el último ${R('woods')}.`]],
+        s5: ['¿Cómo sabes si te estás volviendo más rápido?', 'Mide una referencia ahora, mantén las mismas condiciones y vuelve a medirte más tarde. Un solo intento dice poco.'],
+        ex: ['Ejemplo: referencia', 'Ejemplo: una semana después'],
+        st: [['Mide una referencia', `Cinco intentos del <a href="${to('es', 'reaction-test')}">test de tiempo de reacción</a>; quédate con la media.`],
+          ['Mismas condiciones', 'Mismo dispositivo, misma hora del día, tras una noche normal.'],
+          ['Vuelve a medirte', `Tras una semana de práctica, compara las medias. Añade el <a href="${to('es', 'batak')}">juego de reflejos con luces</a> para comprobar la transferencia.`]] }),
+      mid: ['Practica cada día con Pulse', 'Cinco modos de reacción y tiempo en Android, sin cuenta y sin conexión.'],
+      push: ['Vuelve a medirte con Pulse', 'Tests de reacción y de elección en Android, sin cuenta y sin conexión.'],
+      after: `<p>Para practicar cada día, Reacción, Batak y tres juegos de tiempo están en <a href="${to('es', 'pulse')}">la app Pulse</a>.</p>`,
+      faq: [['¿Cuánto se tarda en mejorar el tiempo de reacción?', `Ningún estudio que revisamos da una cifra única. En un estudio de entrenamiento de seis semanas, jóvenes jugadores de hockey mejoraron en la tarea de reacción de elección entrenada ${R('schwab')}; la rapidez de la mejora depende de la tarea y de la persona. Compara medias semanales en el mismo dispositivo en vez de intentos sueltos.`],
+        ['¿Funcionan de verdad los juegos de tiempo de reacción?', `La evidencia es mixta. Los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan en tareas de elección rápida, con la misma precisión ${R('dye')}, pero un estudio de entrenamiento halló efectos de práctica parecidos en jugadores de acción, de juegos cognitivos y en quienes no jugaban, en una tarea perceptiva simple ${R('ravenz')}. Ningún juego puede prometer una mejora concreta.`],
+        ['¿La edad impide mejorar?', `Apenas. Entre los 18 y los 65 años la media sube unos 0,5 ms por año, unos 21 ms en todo el rango ${R('woods')}.`],
+        ['¿Mejora el ejercicio el tiempo de reacción?', `En un estudio con 120 estudiantes de primer año de medicina, quienes hacían ejercicio con regularidad tuvieron tiempos más rápidos que los sedentarios ${R('jain')}. Es una comparación entre grupos: no demuestra que el ejercicio los hiciera más rápidos.`],
+        ['¿Cuál es la forma más rápida de reaccionar mejor hoy?', `Estar descansado y despierto, medirte en condiciones parecidas cada vez y evitar sesiones largas sin pausas: dormir poco y las sesiones largas ralentizan las respuestas ${R('lim')} ${R('woods')}.`]],
+      band: ['Entrena tus reflejos cada día', 'Pulse para Android: sin cuenta, funciona sin conexión.'] },
+    fr: { title: 'Comment améliorer son temps de réaction : guide | Gurrulabs',
+      desc: 'Comment améliorer son temps de réaction : la pratique aide surtout sur la tâche entraînée, le manque de sommeil ralentit. Ce que disent les études.',
+      name: 'Comment améliorer son temps de réaction', h1: 'Comment améliorer son temps de réaction', em: 'améliorer son temps de réaction', card: 'Ce qui aide, ce qui change peu',
+      kick: 'Guide · Temps de réaction', kick2: 'Entraînement du temps de réaction',
+      sub: 'Ce que la recherche dit de ce qui fait vraiment bouger ton temps de réaction, de ce qui le change à peine, et comment suivre tes progrès avec un test que tu peux faire ici.',
+      fig: ['11', ' %'], hv: 'plus rapides sur des tâches de choix rapides chez les joueurs de jeux vidéo d’action, à précision égale (Dye et al., 2009)',
+      answer: `Tu progresses surtout sur la tâche que tu pratiques, et tu ralentis si tu dors peu ou es fatigué. La pratique ne se transfère qu’en partie à d’autres tâches ${R('bavelier')}. L’âge ajoute environ 0,5 ms par an de 18 à 65 ans, et un appareil lent jusqu’à 100 ms ${R('woods')}.`,
+      intro: impIntro('fr', 'À retenir', ['réponses de choix plus rapides chez les joueurs d’action, à précision égale', 'les absences deviennent plus fréquentes avec le manque de sommeil', 'plus lent entre le premier et le dernier bloc d’une longue séance (228,1 → 237,2 ms)', 'par année d’âge, de 18 à 65 ans : un petit changement']),
+      body: impBody('fr', {
+        sch: 'schéma', ill: ['tâche entraînée', 'nouvelle tâche · schéma', '≈ 18 ms dans l’étude', 'jusqu’à 100 ms'],
+        s1: ['Qu’est-ce qui influence le plus le temps de réaction ?', 'Le sommeil, la fatigue et la pratique de la tâche le font le plus bouger ; l’âge ne le change que lentement, et ton appareil ajoute du délai à ce que tu mesures.',
+          'Le tableau ne peut pas te dire quelle est l’ampleur de chaque effet pour toi : la plupart de ces résultats sont des moyennes de groupe. Sers-t’en pour décider ce qu’il faut garder constant quand tu te testes, pas pour prédire un chiffre.'],
+        cards: [['Sommeil', `Le manque de sommeil ralentit les réponses et rend plus fréquentes les absences, ces réponses qui prennent plus d’une demi-seconde ${R('lim')}.`],
+          ['Pratique', `S’entraîner sur une tâche améliore en général cette tâche, avec un transfert limité vers les tâches non entraînées ${R('bavelier')}.`],
+          ['Longues séances', `Même au cours d’une longue séance, le temps moyen est passé de 228,1 ms dans le premier bloc à 237,2 ms dans le dernier ${R('woods')}. L’heure de la journée est un autre facteur que les chercheurs mesurent à part ${R('blatter')}.`],
+          ['Ton appareil', `Les écrans, souris et logiciels peuvent ajouter jusqu’à 100 ms au temps mesuré ${R('woods')} : compare donc toujours sur le même appareil.`]],
+        tnote: 'Le tableau résume chaque facteur et la solidité des preuves.',
+        th: ['Facteur', 'Effet sur le temps de réaction', 'Preuves', 'Source'],
+        rows: [['Manque de sommeil', 'Réponses plus lentes, plus d’absences de plus de 0,5 s', 'Revue d’études sur la privation de sommeil', 'lim'],
+          ['Sommeil restreint, nuit après nuit', 'Les déficits cognitifs ont continué à augmenter pendant 14 jours à 4 ou 6 heures au lit ; la somnolence auto-évaluée a à peine augmenté après les premiers jours', 'Étude en laboratoire, adultes en bonne santé de 21 à 38 ans', 'vandongen'],
+          ['Pratique de la même tâche', 'Améliore la tâche entraînée ; transfert limité vers les tâches non entraînées', 'Article de perspective, plus une étude d’entraînement de six semaines', ['bavelier', 'schwab']],
+          ['Jeux vidéo d’action', '11 % plus vite sur des tâches de choix rapides, à précision égale', 'Comparaisons de joueurs et quelques études d’entraînement ; une étude d’entraînement n’a trouvé aucun gain sur une tâche perceptive simple', ['dye', 'ravenz']],
+          ['Longue séance', '228,1 → 237,2 ms, du premier au dernier bloc', 'Une grande étude en laboratoire', 'woods'],
+          ['Heure de la journée', 'Étudiée comme un effet propre sur la performance cognitive, à part du temps d’éveil ; pas de chiffre unique pour le temps de réaction', 'Revue méthodologique', 'blatter'],
+          ['Âge (18–65 ans)', 'Environ +0,5 ms par an', 'Une grande étude en laboratoire', 'woods'],
+          ['Ton appareil', 'Jusqu’à +100 ms sur le temps mesuré', 'Une grande étude en laboratoire', 'woods']],
+        cap: 'Effets tels que rapportés par chaque source.',
+        s2: ['Peut-on entraîner son temps de réaction ?', 'Oui, mais les progrès restent surtout liés à la tâche que tu pratiques.',
+          `Dans une étude de six semaines sur de jeunes joueurs de hockey sur gazon de 12 à 16 ans, un programme d’entraînement visuel a amélioré une tâche de temps de réaction de choix entraînée, mais pas de façon significative une tâche de suivi d’objets non entraînée ${R('schwab')}. Pour les jeux, les preuves sont aussi mitigées : dans deux expériences de cinq séances supervisées, les joueurs d’action, les joueurs de jeux cognitifs et les non-joueurs ont montré des effets de pratique similaires sur une tâche perceptive simple ${R('ravenz')}. Aucune appli ni aucun jeu ne peut promettre un gain précis.`,
+          `Comme les progrès restent surtout liés à la tâche entraînée, il est logique de pratiquer quelque chose qui ressemble à la tâche qui t’intéresse : un test de feux pour les réactions simples, un test de plots à toucher pour les choix. Notre <a href="${to('fr', 'reaction-test')}">test de temps de réaction</a> et notre <a href="${to('fr', 'batak')}">jeu de réflexes avec des lumières</a> mesurent ces deux choses séparément.`],
+        ch: ['Pratiquer la même tâche', `S’entraîner sur une tâche n’améliore généralement que cette tâche, avec un transfert limité vers les tâches non entraînées ${R('bavelier')}. Dans une étude de réaction de choix, le transfert était plus faible quand la réponse passait de touches au clavier à un joystick, sans toutefois disparaître ${R('yamaguchi')}.`,
+          'Jeux d’action rapides', `Les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs sur des tâches de choix rapides, à précision égale ${R('dye')}.`],
+        s3: ['Le sommeil influence-t-il le temps de réaction ?', 'Oui : le manque de sommeil ralentit les réponses et rend les absences plus fréquentes.',
+          'Le manque de sommeil ralentit les réponses et rend plus fréquentes les <strong>absences</strong>, ces réponses qui prennent plus d’une demi-seconde.', '14 jours',
+          'Dans une étude en laboratoire, des adultes en bonne santé de 21 à 38 ans qui ont dormi 4 ou 6 heures par nuit pendant 14 jours ont montré des déficits cumulatifs, dépendants de la dose, de la performance cognitive, alors que la somnolence auto-évaluée n’a presque pas augmenté après les premiers jours.',
+          'La caféine est aussi un coup de pouce courant ; ses effets dépassent le cadre de ce guide. Pour tes propres tests, le point pratique est de comparer des résultats pris après un sommeil comparable.'],
+        s4: ['L’échauffement ou l’heure de la journée comptent-ils ?', `Peut-être, donc garde les deux constants : les chercheurs traitent l’heure de la journée et les effets de la pratique comme des facteurs quand ils mesurent la performance ${R('blatter')}, mais aucune source vérifiée ne donne de chiffre de temps de réaction pour un échauffement.`],
+        tips: [['Compare ce qui est comparable', `Les effets de la pratique sont un facteur connu quand on mesure la performance ${R('blatter')} : compare des essais faits dans des conditions similaires.`],
+          ['À la même heure', `Teste-toi à la même heure à chaque fois : l’heure de la journée a son propre effet sur la performance cognitive, à part le temps passé éveillé ${R('blatter')}.`],
+          ['Fais des pauses entre les séries', `Les longues séances te ralentissent : le temps moyen est passé de 228,1 ms dans le premier bloc de 20 essais à 237,2 ms dans le dernier ${R('woods')}.`]],
+        s5: ['Comment savoir si tu deviens plus rapide ?', 'Mesure une référence maintenant, garde les mêmes conditions et reteste plus tard. Un seul essai ne dit pas grand-chose.'],
+        ex: ['Exemple : référence', 'Exemple : une semaine plus tard'],
+        st: [['Mesure une référence', `Cinq essais du <a href="${to('fr', 'reaction-test')}">test de temps de réaction</a> ; garde la moyenne.`],
+          ['Mêmes conditions', 'Même appareil, même heure de la journée, après une nuit normale.'],
+          ['Reteste', `Après une semaine de pratique, compare les moyennes. Ajoute le <a href="${to('fr', 'batak')}">jeu de réflexes avec des lumières</a> pour vérifier le transfert.`]] }),
+      mid: ['Entraîne-toi chaque jour avec Pulse', 'Cinq modes de réaction et de timing sur Android, sans compte, hors connexion.'],
+      push: ['Reteste-toi avec Pulse', 'Tests de réaction et de choix sur Android, sans compte, hors connexion.'],
+      after: `<p>Pour t’entraîner chaque jour, Réaction, Batak et trois jeux de timing sont dans <a href="${to('fr', 'pulse')}">l’appli Pulse</a>.</p>`,
+      faq: [['Combien de temps faut-il pour améliorer son temps de réaction ?', `Aucune étude vérifiée ne donne un chiffre unique. Dans une étude d’entraînement de six semaines, de jeunes joueurs de hockey se sont améliorés sur la tâche de réaction de choix entraînée ${R('schwab')} ; la vitesse des progrès dépend de la tâche et de la personne. Compare des moyennes hebdomadaires sur le même appareil plutôt que des essais isolés.`],
+        ['Les jeux de temps de réaction fonctionnent-ils vraiment ?', `Les preuves sont mitigées. Les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs sur des tâches de choix rapides, à précision égale ${R('dye')}, mais une étude d’entraînement a trouvé des effets de pratique similaires chez les joueurs d’action, les joueurs de jeux cognitifs et les non-joueurs sur une tâche perceptive simple ${R('ravenz')}. Aucun jeu ne peut promettre un gain précis.`],
+        ['L’âge empêche-t-il de progresser ?', `À peine. Entre 18 et 65 ans, la moyenne augmente d’environ 0,5 ms par an, soit environ 21 ms sur toute la plage ${R('woods')}.`],
+        ['Le sport améliore-t-il le temps de réaction ?', `Dans une étude sur 120 étudiants de première année de médecine, ceux qui faisaient du sport régulièrement avaient des temps plus rapides que les sédentaires ${R('jain')}. C’est une comparaison entre groupes : elle ne prouve pas que le sport les a rendus plus rapides.`],
+        ['Quelle est la façon la plus rapide de mieux réagir aujourd’hui ?', `Être reposé et alerte, te tester dans des conditions similaires à chaque fois et éviter les longues séances sans pause : le manque de sommeil et les longues séances ralentissent les réponses ${R('lim')} ${R('woods')}.`]],
+      band: ['Entraîne tes réflexes chaque jour', 'Pulse pour Android : sans compte, fonctionne hors connexion.'] },
+    pt: { title: 'Como melhorar o tempo de reação: guia | Gurrulabs',
+      desc: 'Como melhorar o tempo de reação: a prática ajuda sobretudo na tarefa treinada e dormir pouco deixa você mais lento. O que os estudos mostram.',
+      name: 'Como melhorar o tempo de reação', h1: 'Como melhorar o tempo de reação', em: 'melhorar o tempo de reação', card: 'O que ajuda e o que pouco muda',
+      kick: 'Guia · Tempo de reação', kick2: 'Treino do tempo de reação',
+      sub: 'O que a pesquisa diz que realmente move seu tempo de reação, o que quase não muda e como conferir seu progresso com um teste que você pode fazer aqui mesmo.',
+      fig: ['11', '%'], hv: 'mais rápidos em tarefas de escolha rápida entre jogadores de videogames de ação, com a mesma precisão (Dye et al., 2009)',
+      answer: `Você fica mais rápido principalmente na tarefa que pratica, e mais lento quando dorme pouco ou está cansado. A prática se transfere só em parte para outras tarefas ${R('bavelier')}. A idade acrescenta cerca de 0,5 ms por ano de 18 a 65, e um aparelho lento até 100 ms ${R('woods')}.`,
+      intro: impIntro('pt', 'Pontos principais', ['respostas de escolha mais rápidas em jogadores de ação, com a mesma precisão', 'as falhas de atenção ficam mais frequentes com a perda de sono', 'mais lento do primeiro ao último bloco de uma sessão longa (228,1 → 237,2 ms)', 'por ano de idade, de 18 a 65: uma mudança pequena']),
+      body: impBody('pt', {
+        sch: 'esquema', ill: ['tarefa treinada', 'tarefa nova · esquema', '≈18 ms no estudo', 'até 100 ms'],
+        s1: ['O que mais afeta o tempo de reação?', 'Sono, cansaço e prática na tarefa são o que mais o move; a idade o muda só devagar, e seu aparelho acrescenta atraso ao que você mede.',
+          'A tabela não diz o tamanho de cada efeito no seu caso: quase todos esses resultados são médias de grupo. Use-os para decidir o que manter constante quando você se testar, não para prever um número.'],
+        cards: [['Sono', `Dormir pouco deixa as respostas mais lentas e torna mais frequentes as falhas de atenção, respostas que levam mais de meio segundo ${R('lim')}.`],
+          ['Prática', `Treinar uma tarefa costuma melhorar essa tarefa, com transferência limitada para tarefas não treinadas ${R('bavelier')}.`],
+          ['Sessões longas', `Mesmo dentro de uma sessão longa, o tempo médio subiu de 228,1 ms no primeiro bloco para 237,2 ms no último ${R('woods')}. A hora do dia é outro fator que os pesquisadores medem separadamente ${R('blatter')}.`],
+          ['Seu aparelho', `Telas, mouses e softwares podem somar até 100 ms ao tempo medido ${R('woods')}, então compare sempre no mesmo aparelho.`]],
+        tnote: 'A tabela resume cada fator e o quão sólida é a evidência.',
+        th: ['Fator', 'Efeito no tempo de reação', 'Evidência', 'Fonte'],
+        rows: [['Perda de sono', 'Respostas mais lentas, mais falhas de mais de 0,5 s', 'Revisão de estudos de privação de sono', 'lim'],
+          ['Sono restrito, noite após noite', 'Os déficits cognitivos continuaram aumentando durante 14 dias com 4 ou 6 horas na cama; a sonolência autoavaliada mal subiu depois dos primeiros dias', 'Estudo de laboratório, adultos saudáveis de 21 a 38 anos', 'vandongen'],
+          ['Prática na mesma tarefa', 'Melhora a tarefa treinada; transferência limitada para tarefas não treinadas', 'Artigo de perspectiva, mais um estudo de treino de seis semanas', ['bavelier', 'schwab']],
+          ['Videogames de ação', '11% mais rápido em tarefas de escolha rápida, com a mesma precisão', 'Comparações de jogadores e alguns estudos de treino; um estudo de treino não achou ganho numa tarefa perceptiva simples', ['dye', 'ravenz']],
+          ['Sessão longa', '228,1 → 237,2 ms, do primeiro ao último bloco', 'Um grande estudo de laboratório', 'woods'],
+          ['Hora do dia', 'Estudada como efeito próprio no desempenho cognitivo, à parte do tempo acordado; sem um número único de tempo de reação', 'Revisão metodológica', 'blatter'],
+          ['Idade (18–65)', 'Cerca de +0,5 ms por ano', 'Um grande estudo de laboratório', 'woods'],
+          ['Seu aparelho', 'Até +100 ms no tempo medido', 'Um grande estudo de laboratório', 'woods']],
+        cap: 'Efeitos como relatados em cada fonte.',
+        s2: ['Dá para treinar o tempo de reação?', 'Sim, mas os ganhos ficam principalmente na tarefa que você pratica.',
+          `Num estudo de seis semanas com jogadores de hóquei sobre grama de 12 a 16 anos, um programa de treino visual melhorou uma tarefa de tempo de reação de escolha treinada, mas não houve ganho significativo numa tarefa de rastreamento de objetos não treinada ${R('schwab')}. Com os jogos a evidência também é mista: em dois experimentos com cinco sessões supervisionadas, jogadores de ação, jogadores de jogos cognitivos e quem não joga mostraram efeitos de prática parecidos numa tarefa perceptiva simples ${R('ravenz')}. Nenhum app ou jogo pode prometer um ganho específico.`,
+          `Como os ganhos ficam principalmente na tarefa treinada, faz sentido praticar algo parecido com a tarefa que importa para você: um teste de luzes para reações simples, um teste de tocar pads para escolhas. Nosso <a href="${to('pt', 'reaction-test')}">teste de tempo de reação</a> e nosso <a href="${to('pt', 'batak')}">jogo de reflexo com luzes</a> medem as duas coisas separadamente.`],
+        ch: ['Praticar a mesma tarefa', `Treinar uma tarefa costuma melhorar só essa tarefa, com transferência limitada para tarefas não treinadas ${R('bavelier')}. Num estudo de reação de escolha, a transferência foi menor quando a resposta passou de teclas para um joystick, embora não tenha desaparecido ${R('yamaguchi')}.`,
+          'Jogos de ação rápidos', `Jogadores de videogames de ação responderam 11% mais rápido que não jogadores em tarefas de escolha rápida, com a mesma precisão ${R('dye')}.`],
+        s3: ['O sono afeta o tempo de reação?', 'Sim: dormir pouco deixa as respostas mais lentas e torna as falhas de atenção mais frequentes.',
+          'Dormir pouco deixa as respostas mais lentas e torna mais frequentes as <strong>falhas de atenção</strong>, respostas que levam mais de meio segundo.', '14 dias',
+          'Num estudo de laboratório, adultos saudáveis de 21 a 38 anos que dormiram 4 ou 6 horas por noite durante 14 dias mostraram déficits cumulativos, dependentes da dose, no desempenho cognitivo, enquanto a sonolência autoavaliada mal subiu depois dos primeiros dias.',
+          'A cafeína também é um recurso rápido comum; seus efeitos ficam fora deste guia. Nos seus próprios testes, o ponto prático é comparar resultados feitos depois de um sono parecido.'],
+        s4: ['Aquecer ou a hora do dia fazem diferença?', `Possivelmente, então mantenha os dois constantes: os pesquisadores tratam a hora do dia e os efeitos da prática como fatores ao medir o desempenho ${R('blatter')}, mas nenhuma fonte que verificamos dá um número de tempo de reação para o aquecimento.`],
+        tips: [['Compare o que é comparável', `Os efeitos da prática são um fator conhecido ao medir o desempenho ${R('blatter')}, então compare tentativas feitas em condições parecidas.`],
+          ['Na mesma hora do dia', `Teste-se na mesma hora todas as vezes: a hora do dia tem efeito próprio no desempenho cognitivo, à parte do tempo que você está acordado ${R('blatter')}.`],
+          ['Descanse entre as rodadas', `Sessões longas deixam você mais lento: o tempo médio subiu de 228,1 ms no primeiro bloco de 20 tentativas para 237,2 ms no último ${R('woods')}.`]],
+        s5: ['Como saber se você está ficando mais rápido?', 'Meça uma referência agora, mantenha as mesmas condições e refaça o teste depois. Uma única tentativa diz pouco.'],
+        ex: ['Exemplo: referência', 'Exemplo: uma semana depois'],
+        st: [['Meça uma referência', `Cinco tentativas do <a href="${to('pt', 'reaction-test')}">teste de tempo de reação</a>; guarde a média.`],
+          ['Mesmas condições', 'Mesmo aparelho, mesma hora do dia, depois de uma noite normal.'],
+          ['Refaça o teste', `Depois de uma semana de prática, compare as médias. Inclua o <a href="${to('pt', 'batak')}">jogo de reflexo com luzes</a> para checar a transferência.`]] }),
+      mid: ['Pratique todo dia com o Pulse', 'Cinco modos de reação e tempo no Android, sem conta, funciona offline.'],
+      push: ['Refaça o teste com o Pulse', 'Testes de reação e de escolha no Android, sem conta, funciona offline.'],
+      after: `<p>Para praticar todo dia, Reação, Batak e três jogos de tempo estão no <a href="${to('pt', 'pulse')}">app Pulse</a>.</p>`,
+      faq: [['Quanto tempo leva para melhorar o tempo de reação?', `Nenhum estudo que verificamos dá um número único. Num estudo de treino de seis semanas, jovens jogadores de hóquei melhoraram na tarefa de reação de escolha treinada ${R('schwab')}; a velocidade da melhora depende da tarefa e da pessoa. Compare médias semanais no mesmo aparelho em vez de tentativas isoladas.`],
+        ['Jogos de tempo de reação funcionam mesmo?', `A evidência é mista. Jogadores de videogames de ação responderam 11% mais rápido que não jogadores em tarefas de escolha rápida, com a mesma precisão ${R('dye')}, mas um estudo de treino achou efeitos de prática parecidos em jogadores de ação, de jogos cognitivos e em quem não joga, numa tarefa perceptiva simples ${R('ravenz')}. Nenhum jogo pode prometer um ganho específico.`],
+        ['A idade impede de ficar mais rápido?', `Quase nada. Entre 18 e 65 anos a média sobe cerca de 0,5 ms por ano, uns 21 ms em toda a faixa ${R('woods')}.`],
+        ['O exercício melhora o tempo de reação?', `Num estudo com 120 estudantes do primeiro ano de medicina, quem se exercitava regularmente teve tempos mais rápidos que os sedentários ${R('jain')}. É uma comparação entre grupos: não mostra que o exercício os deixou mais rápidos.`],
+        ['Qual é o jeito mais rápido de reagir melhor hoje?', `Estar descansado e alerta, testar-se em condições parecidas todas as vezes e evitar sessões longas sem pausa: dormir pouco e sessões longas deixam as respostas mais lentas ${R('lim')} ${R('woods')}.`]],
+      band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
   '3s-challenge': { sources: [SRC.gibbon, SRC.haigh, SRC.poppel], tips: [['m-exact', 'exact'], ['m-hidden', 'wave'], ['m-reaction', 'reaction']],
     en: { title: '3 second challenge: stop the clock at 3.00 s | Gurrulabs',
       desc: 'Can you stop the stopwatch at exactly 3.00 s? Play in your browser with a ±0.10 s window and find out why it is so hard to nail.',
@@ -1759,19 +2038,19 @@ const faqBlock = (loc, faq, open = 1, h = T[loc].faq_h, cls = '') => `<h2>${h}</
     <div class="faq${cls}">${faq.map(([q, a], i) => `<details${i < open ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>`;
 // Test/challenge: Play link to Pulse. Guide: featured link to the reaction test.
 const MODE_CLS = { hidden: 'hc', batak: 'bk', interval: 'iv' };
-const pushBlock = (loc, [b, s, go], mode) => `<div class="push${MODE_CLS[mode] ? ' ' + MODE_CLS[mode] : ''}"><div class="app"><div class="ic">${ICON.pulse}</div><div><b>${b}</b><span>${s}</span></div></div>${go
-  ? `<a class="lnk" href="${to(loc, 'reaction-test')}" style="--bb:var(--m-reaction);--bf:#1A0A06">${go}${ic('chev')}</a>` : play(loc, 'pulse', 'article_push')}</div>`;
+const pushBlock = (loc, [b, s, go], mode, cta = 'article_push') => `<div class="push${MODE_CLS[mode] ? ' ' + MODE_CLS[mode] : ''}"><div class="app"><div class="ic">${ICON.pulse}</div><div><b>${b}</b><span>${s}</span></div></div>${go
+  ? `<a class="lnk" href="${to(loc, 'reaction-test')}" style="--bb:var(--m-reaction);--bf:#1A0A06">${go}${ic('chev')}</a>` : play(loc, 'pulse', cta)}</div>`;
 
 // Age guide hero (mockup age-b): key phrase in the page colour; lights go out, then the headline figure (CSS loop, off under reduced motion). c.hv = caption.
 const ageHero = (loc, p, c) => `<section class="a-hero">
     <div>
-      <h1>${esc(c.h1).replace(esc(c.em), `<em>${esc(c.em)}</em>`)}</h1>
+      ${c.kick2 ? `<span class="kick2">${c.kick2}</span>\n      ` : ''}<h1>${esc(c.h1).replace(esc(c.em), `<em>${esc(c.em)}</em>`)}</h1>
       <p class="sub">${c.sub}</p>
       ${dated(loc, p, T[loc].read(readMin(c)))}
     </div>
-    <div class="hero-v" aria-hidden="true">
+    <div class="hero-v${c.fig ? ' once' : ''}" aria-hidden="true">
       <div class="gant">${'<i></i>'.repeat(5)}</div>
-      <div class="ms">${dec(loc, WOODS[0][1])}<small>ms</small></div>
+      <div class="ms">${c.fig ? `${c.fig[0]}<small>${c.fig[1]}</small>` : `${dec(loc, WOODS[0][1])}<small>ms</small>`}</div>
       <p>${c.hv}</p>
     </div>
   </section>`;
@@ -1784,11 +2063,12 @@ function contentPage(loc, p) {
   // Section heads get ids (rail anchors); the rail lists them, then Sources
   const heads = [];
   const numH2 = h => h.replace(/<h2>([\s\S]*?)<\/h2>/g, (_, t) => { const id = `s${heads.length + 1}`; heads.push([id, plain(t)]); return `<h2 id="${id}">${t}</h2>`; });
+  const hasGame = c.intro?.includes('<!--game-->');
   const intro = c.intro && numH2(c.intro).replace('<!--game-->', gameBox(loc, ' data-mode="react" data-solo')); // age guide: stats, chart + playable test sit above the article grid; numbered first so the rail lists them first
-  const prose = numH2(`${CONTENT[p.id].tips ? tipsFromUl(shortAns(c.body), CONTENT[p.id].tips) : shortAns(c.body)}
+  const prose = numH2(`${(CONTENT[p.id].tips ? tipsFromUl(shortAns(c.body), CONTENT[p.id].tips) : shortAns(c.body)).replace('<!--mid-->', c.mid ? pushBlock(loc, c.mid, undefined, 'article_mid') : '')}
     ${c.push ? pushBlock(loc, c.push, p.mode) : ''}
     ${c.after ? shortAns(c.after) + '\n    ' : ''}${faqBlock(loc, c.faq, 1, undefined, intro ? ' v2' : '')}`);
-  const mode = p.mode || (p.type === 'test' || intro ? 'react' : 'exact'), again = guide && !intro ? null : [mode === 'react' ? 'reaction' : mode, t.m[MODE_I[mode]][0]];
+  const mode = p.mode || (p.type === 'test' || intro ? 'react' : 'exact'), again = guide && !hasGame ? null : [mode === 'react' ? 'reaction' : mode, t.m[MODE_I[mode]][0]];
   const top = intro
     ? `${ageHero(loc, p, c)}
   ${say(loc, c.answer)}

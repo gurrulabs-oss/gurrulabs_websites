@@ -49,6 +49,7 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | Hidden Clock (internal clock) test | internal clock test (H1 also "10 second challenge") / test de 10 segundos / test des 10 secondes / teste de 10 segundos | en: 10 second challenge, count 10 seconds in your head, 10 second test; es: reloj interno, contar 10 segundos mentalmente, parar el cronómetro en 10 segundos; fr: horloge interne, compter 10 secondes dans sa tête, arrêter le chrono à 10 secondes; pt: relógio interno, contar 10 segundos de cabeça, parar o cronômetro em 10 segundos | wants a challenge | no "time perception" (Interval owns it); not "test del reloj" (clinical clock-drawing test) nor "reto de los 10 segundos" (viral puzzles) |
 | Interval (time estimation) test | time estimation test / test de percepción del tiempo / test d'estimation du temps / teste de percepção do tempo | en: time perception test, guess the time game, guess the seconds; es: estimación del tiempo, adivinar cuántos segundos han pasado; fr: perception du temps test, estimer une durée, combien de secondes se sont écoulées; pt: estimação de tempo, estimar quantos segundos se passaram, noção de tempo teste | wants to play now / know | no "internal clock" (Hidden Clock owns it) |
 | Best reaction time apps (comparison) | best reaction time app Android / mejor app de reflejos Android / meilleure application temps de réaction Android / melhor app de reflexo Android | best reflex apps, reaction time apps compared | wants to choose an app | takes the "best … app" searches; does not compete with the Pulse app page, which keeps "reflex app Android" |
+| Improve reaction time guide (T-025) | how to improve reaction time / cómo mejorar el tiempo de reacción / comment améliorer son temps de réaction / como melhorar o tempo de reação | reaction time training, how to get faster reflexes, reaction time exercises (and native equivalents) | wants to know / get faster | no "reaction time test" (test), "average/normal reaction time" (age guide), "best reaction time app" (comparison), the Batak secondaries (entrenamiento de reflejos visuales, entraînement des réflexes visuels, treino de reflexo visual), caffeine (GWEB-026) or per-sport reaction time (GWEB-027); no game, links to the tests |
 | Cyberpunk Detective app | cyberpunk detective game / juego de detectives cyberpunk / jeu de détective cyberpunk / jogo de detetive cyberpunk | detective mystery game Android, audio crime stories, solve a case | wants an app | no "reaction", "reflex" or "tinnitus" keywords; no overlap with Pulse rows |
 | Lull app (coming soon) | tinnitus sleep sounds app / app de sonidos para dormir con acúfenos / application sons pour dormir acouphènes / app de sons para dormir com zumbido | sleep with tinnitus, daily check-in; email sign-up (no install CTA) | wants to know / be told at launch | no "cure/eliminate/treat/reduce" wording; no Pulse or Cyberpunk keywords |
 
@@ -84,11 +85,15 @@ mentioned and the cited gurrulabs.com or Play URL (or `-`). Put the run date abo
 | en14 | guess the time test seconds | | | | | |
 | en15 | why do short intervals feel longer central tendency | | | | | |
 | en16 | time perception test game Android | | | | | |
+| en17 | how to improve reaction time | | | | | |
 | es1 | test de tiempo de reacción | | | | | |
 | es2 | tiempo de reacción medio por edad | | | | | |
 | es3 | reto de los 3 segundos cronómetro | | | | | |
+| es4 | cómo mejorar el tiempo de reacción | | | | | |
 | fr1 | test de temps de réaction | | | | | |
+| fr2 | comment améliorer son temps de réaction | | | | | |
 | pt1 | teste de tempo de reação | | | | | |
+| pt2 | como melhorar o tempo de reação | | | | | |
 
 ## Manual steps (owner, once)
 Google Search Console: submit `https://www.gurrulabs.com/sitemap.xml`. Bing Webmaster Tools: import the site

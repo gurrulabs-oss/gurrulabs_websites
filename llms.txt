@@ -16,6 +16,7 @@
 - [Choice reaction time test](https://www.gurrulabs.com/en/pulse/choice-reaction-time-test/): Browser choice reaction time test: tap 8 lights on 7 pads in sequence (Perfect up to 3.20 s, pass up to 7.20 s). Batak is the name of this mode in Pulse, not the commercial lights wall.
 - [Average reaction time by age](https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/): Guide: average simple reaction time by age group, 18 to 65 (Woods et al. 2015, Table 2), what changes it, with sources.
 - [Best reaction time apps for Android](https://www.gurrulabs.com/en/pulse/best-reaction-time-apps/): Comparison: 5 reaction time apps for Android (Pulse, Reaction training, Reaction Time, Lumosity, Peak) on price, ads, modes, account and offline use, from their Google Play listings checked 2026-11-06. Gurrulabs makes Pulse.
+- [How to improve reaction time](https://www.gurrulabs.com/en/pulse/improve-reaction-time/): Guide: how to improve reaction time. Practice improves mainly the task you train, with limited transfer to other tasks; sleep loss slows responses and makes lapses over 0.5 s more frequent; age adds about 0.5 ms per year from 18 to 65 (Woods et al. 2015); with sources.
 - [Pulse on Google Play](https://play.google.com/store/apps/details?id=com.gurrulabs.pulse): Android download page.
 
 ## Other apps
