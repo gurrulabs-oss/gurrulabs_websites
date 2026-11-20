@@ -70,7 +70,7 @@ const T = {
     pulse_title: 'Pulse app: reflex and timing game for Android | Gurrulabs',
     pulse_desc: 'Pulse is a reflex and sense-of-time game for Android: 5 modes, no account, works offline. Play all five modes right in your browser.',
     guides_h: 'Tests and guides', guides_p: 'Read what the studies say, then test yourself in the browser.', read_h: 'Keep reading', faq_h: 'FAQ', edu: 'Educational content.', edu_med: 'Educational content, not medical advice.',
-    foot: ['Reaction test', '3 s challenge', 'Hidden Clock', 'Interval', 'Batak', 'Reaction by age', 'Best reflex apps', 'Improve reaction time', 'Reaction time in sports'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
+    foot: ['Reaction test', '3 s challenge', 'Hidden Clock', 'Interval', 'Batak', 'Reaction by age', 'Best reflex apps', 'Improve reaction time', 'Caffeine and reaction time', 'Reaction time in sports'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
   },
   es: {
     home_h1: 'Apps pequeñas que hacen <em>una cosa</em> bien.', kick: 'Estudio independiente de apps Android',
@@ -124,7 +124,7 @@ const T = {
     pulse_title: 'App Pulse: juego de reflejos para Android | Gurrulabs',
     pulse_desc: 'Pulse es un juego de reflejos y sentido del tiempo para Android: 5 modos, sin cuenta y funciona sin conexión. Juega los cinco modos en el navegador.',
     guides_h: 'Pruebas y guías', guides_p: 'Lee lo que dicen los estudios y ponte a prueba en el navegador.', read_h: 'Sigue leyendo', faq_h: 'Preguntas frecuentes', edu: 'Contenido educativo.', edu_med: 'Contenido educativo, no consejo médico.',
-    foot: ['Test de reacción', 'Reto 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reacción por edad', 'Mejores apps de reflejos', 'Mejorar el tiempo de reacción', 'Tiempo de reacción en el deporte'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
+    foot: ['Test de reacción', 'Reto 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reacción por edad', 'Mejores apps de reflejos', 'Mejorar el tiempo de reacción', 'Cafeína y tiempo de reacción', 'Tiempo de reacción en el deporte'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
   },
   fr: {
     home_h1: 'De petites applis qui font <em>une seule chose</em>, et bien.', kick: 'Studio indépendant d’applis Android',
@@ -178,7 +178,7 @@ const T = {
     pulse_title: 'Appli Pulse : jeu de réflexes pour Android | Gurrulabs',
     pulse_desc: 'Pulse est un jeu de réflexes et de sens du temps pour Android : 5 modes, sans compte, fonctionne hors ligne. Joue aux cinq modes dans ton navigateur.',
     guides_h: 'Tests et guides', guides_p: 'Lis ce que disent les études, puis teste-toi dans ton navigateur.', read_h: 'Continue à lire', faq_h: 'Questions fréquentes', edu: 'Contenu éducatif.', edu_med: 'Contenu éducatif, pas un avis médical.',
-    foot: ['Test de réaction', 'Défi 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Réaction par âge', 'Meilleures applis de réflexes', 'Améliorer son temps de réaction', 'Temps de réaction dans le sport'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
+    foot: ['Test de réaction', 'Défi 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Réaction par âge', 'Meilleures applis de réflexes', 'Améliorer son temps de réaction', 'Caféine et temps de réaction', 'Temps de réaction dans le sport'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
   },
   pt: {
     home_h1: 'Apps pequenos que fazem <em>uma coisa</em> bem.', kick: 'Estúdio independente de apps Android',
@@ -232,7 +232,7 @@ const T = {
     pulse_title: 'App Pulse: jogo de reflexos para Android | Gurrulabs',
     pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Jogue os cinco modos no navegador.',
     guides_h: 'Testes e guias', guides_p: 'Veja o que dizem os estudos e depois se teste no navegador.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
-    foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo', 'Melhorar o tempo de reação', 'Tempo de reação no esporte'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
+    foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo', 'Melhorar o tempo de reação', 'Cafeína e tempo de reação', 'Tempo de reação no esporte'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
   },
 };
 
@@ -263,6 +263,7 @@ const SYM = {
   interval: '<path d="M5 6v12M19 6v12M5 12h14"/>', reaction: '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
   batak: '<circle cx="7" cy="7" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
   back: '<path d="M15 5l-7 7 7 7"/>', out: '<path d="M7 17L17 7M9 7h8v8"/>', check: '<path d="M5 12l5 5 9-10"/>', chev: '<path d="M9 5l7 7-7 7"/>',
+  moon: '<path d="M20 15A8 8 0 1 1 9 4a6 6 0 0 0 11 11z"/>', drink: '<path d="M8 3h8l-1 18H9z"/><path d="M8.5 9h7"/>',
   clock: '<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>', pause: '<path d="M9 6v12M15 6v12"/>',
   wave: '<path d="M4 12h3l2-5 4 10 2-5h5"/>', chart: '<path d="M5 19V9M12 19V5M19 19v-7"/>', list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>', globe: '<path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
 };
@@ -315,6 +316,20 @@ const SRC = {
     ref: 'van Ravenzwaaij D, Boekel W, Forstmann BU, Ratcliff R, Wagenmakers EJ. Action video games do not improve the speed of information processing in simple perceptual tasks. <i>Journal of Experimental Psychology: General</i>, 2014; 143(5):1794–1805.' },
   blatter: { cite: 'Blatter &amp; Cajochen, 2007', url: 'https://pubmed.ncbi.nlm.nih.gov/17055007/',
     ref: 'Blatter K, Cajochen C. Circadian rhythms in cognitive performance: methodological constraints, protocols, theoretical underpinnings. <i>Physiology &amp; Behavior</i>, 2007; 90(2–3):196–208.' },
+  mclellan: { cite: 'McLellan et al., 2016', url: 'https://doi.org/10.1016/j.neubiorev.2016.09.001',
+    ref: 'McLellan TM, Caldwell JA, Lieberman HR. A review of caffeine’s effects on cognitive, physical and occupational performance. <i>Neuroscience &amp; Biobehavioral Reviews</i>, 2016; 71:294–312. PMID 27612937.' },
+  einother: { cite: 'Einöther &amp; Giesbrecht, 2013', url: 'https://pubmed.ncbi.nlm.nih.gov/23241646/',
+    ref: 'Einöther SJL, Giesbrecht T. Caffeine as an attention enhancer: reviewing existing assumptions. <i>Psychopharmacology</i>, 2013; 225(2):251–274.' },
+  james: { cite: 'James &amp; Rogers, 2005', url: 'https://pubmed.ncbi.nlm.nih.gov/16001109/',
+    ref: 'James JE, Rogers PJ. Effects of caffeine on performance and mood: withdrawal reversal is the most plausible explanation. <i>Psychopharmacology</i>, 2005; 182(1):1–8.' },
+  rogers: { cite: 'Rogers et al., 2013', url: 'https://pubmed.ncbi.nlm.nih.gov/23108937/',
+    ref: 'Rogers PJ, Heatherley SV, Mullings EL, Smith JE. Faster but not smarter: effects of caffeine and caffeine withdrawal on alertness and performance. <i>Psychopharmacology</i>, 2013; 226(2):229–240.' },
+  killgore: { cite: 'Killgore et al., 2008', url: 'https://pubmed.ncbi.nlm.nih.gov/18522689/',
+    ref: 'Killgore WDS, Rupp TL, Grugle NL, Reichardt RM, Lipizzi EL, Balkin TJ. Effects of dextroamphetamine, caffeine and modafinil on psychomotor vigilance test performance after 44 h of continuous wakefulness. <i>Journal of Sleep Research</i>, 2008; 17(3):309–321.' },
+  giles: { cite: 'Giles et al., 2012', url: 'https://pubmed.ncbi.nlm.nih.gov/22819803/',
+    ref: 'Giles GE, Mahoney CR, Brunyé TT, Gardony AL, Taylor HA, Kanarek RB. Differential cognitive effects of energy drink ingredients: caffeine, taurine, and glucose. <i>Pharmacology Biochemistry and Behavior</i>, 2012; 102(4):569–577.' },
+  efsa: { cite: 'EFSA, 2015', url: 'https://www.efsa.europa.eu/sites/default/files/corporate_publications/files/efsaexplainscaffeine150527.pdf',
+    ref: 'European Food Safety Authority. <i>Caffeine: EFSA explains risk assessment</i> (summary of EFSA’s Scientific Opinion on the safety of caffeine), 2015. doi:10.2805/618813.' },
   brosnan: { cite: 'Brosnan et al., 2017', url: 'https://pubmed.ncbi.nlm.nih.gov/27351870/',
     ref: 'Brosnan KC, Hayes K, Harrison AJ. Effects of false-start disqualification rules on response-times of elite-standard sprinters. <i>Journal of Sports Sciences</i>, 2017; 35(10):929–935.' },
   zheng: { cite: 'Zheng et al., 2021', url: 'https://pubmed.ncbi.nlm.nih.gov/33517202/',
@@ -562,6 +577,48 @@ function impBody(loc, L) {
     ${steps3([[res('0.247', L.ex[0]), ...L.st[0]], [lightsS(1, 1, 0), ...L.st[1]], [res('0.231', L.ex[1]), ...L.st[2]]])}`;
 }
 
+// ── "Caffeine and reaction time" guide (T-026): takeaway tiles + body from one localized copy object L (see CONTENT['caffeine-guide']).
+// Same builders as the improve guide (ageFacts-free facts2 cards, ageChoiceBlock, tbl + .stack, steps3, tips3); no game on this page.
+const cafIntro = (loc, kt, t) => `<h2 class="facts2-h" id="takeaways">${kt}</h2>
+  <div class="stats4">
+    <div style="--c:var(--m-reaction)"><b>≈<span class="count" data-to="40" data-d="0">40</span><small>mg</small></b><span>${t[0]}</span><cite>${cite('mclellan')}</cite></div>
+    <div style="--c:var(--m-hidden)"><b><span class="count" data-to="44" data-d="0">44</span><small>h</small></b><span>${t[1]}</span><cite>${cite('killgore')}</cite></div>
+    <div style="--c:var(--m-exact)"><b>≈<span class="count" data-to="4" data-d="0">4</span><small>h</small></b><span>${t[2]}</span><cite>${cite('efsa')}</cite></div>
+    <div style="--c:var(--gold)"><b><span class="count" data-to="400" data-d="0">400</span><small>mg</small></b><span>${t[3]}</span><cite>${cite('efsa')}</cite></div>
+  </div>`;
+function cafBody(loc, L) {
+  const D = v => dec(loc, v), d3 = v => loc === 'en' ? v : v.replace('.', ',');
+  const txt = (x, y, s, fill = 'var(--text3)', a = '') => `<text x="${x}" y="${y}"${a} font-size="${a ? 10 : 11}" fill="${fill}">${s}</text>`;
+  const dg = (xs, y, fill) => `<g fill="${fill}">${xs.map(x => `<circle cx="${x}" cy="${y}" r="4.5"/>`).join('')}</g>`;
+  // schematic dot plots (labelled "not study data"): one dot = one try, further right = slower; red = past the 0.5 s lapse line
+  const dots = (alt, c, [a, ar], [b, br]) => `<svg class="mv" style="height:96px" viewBox="0 0 220 96" role="img" aria-label="${alt}">${txt(0, 10, L.sch, undefined, ' ')}${txt(0, 22, L.dot, undefined, ' ')}<line x1="185" y1="28" x2="185" y2="80" stroke="var(--miss)" stroke-dasharray="3 4" opacity=".7"/>${txt(220, 24, L.lap, 'var(--miss)', ' text-anchor="end"')}${txt(0, 40, L.no)}${txt(0, 64, L.yes, c)}${dg(a, 36, 'var(--text3)')}${dg(ar, 36, 'var(--miss)')}${dg(b, 60, c)}${dg(br, 60, 'var(--miss)')}<line x1="60" y1="80" x2="220" y2="80" stroke="var(--text3)" opacity=".5"/>${txt(60, 94, L.fast, undefined, ' ')}${txt(220, 94, L.slow, undefined, ' text-anchor="end"')}</svg>`;
+  const onset = `<svg class="mv" viewBox="0 0 200 54" aria-hidden="true">${txt(0, 10, L.sch)}<path d="M0 52 C20 52 30 14 50 14 C80 14 120 30 200 44" fill="none" stroke="var(--m-exact)" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="14" x2="50" y2="54" stroke="var(--text3)" stroke-dasharray="3 4"/>${txt(56, 26, L.onset)}</svg>`;
+  const half = `<svg class="mv" viewBox="0 0 200 54" aria-hidden="true">${txt(0, 10, L.sch)}<g fill="var(--m-exact)"><rect x="4" y="18" width="34" height="36" rx="5"/><rect x="58" y="36" width="34" height="18" rx="5" opacity=".7"/><rect x="112" y="45" width="34" height="9" rx="4" opacity=".45"/><rect x="166" y="50" width="34" height="4" rx="2" opacity=".3"/></g></svg>`;
+  const f2 = (svg, c, big, p, k) => `<div style="--c:var(--${c})">${svg}<div class="big">${big}</div><p>${p}</p><a class="ref src" href="#src-${k}">${SRC[k].cite}</a></div>`;
+  const rows = L.rows.map(([f, e, ev, k]) => [`<b>${f}</b>`, e, ev, [].concat(k).map(x => cite(x)).join('; ')]);
+  const res = (v, w) => `<div class="res">${dig(d3(v))}<em>${w}</em></div>`;
+  return `<h2>${L.s1[0]}</h2>
+    <p>${L.s1[1]}</p>
+    <div class="facts2">${f2(dots(L.al[0], 'var(--m-reaction)', [[104, 114, 121, 129, 138], []], [[92, 101, 109, 117, 126], []]), 'm-reaction', ...L.cards[0], 'mclellan')}${f2(dots(L.al[1], 'var(--m-hidden)', [[112, 124, 136, 150], [192, 201, 210]], [[104, 114, 124, 136, 148], [196]]), 'm-hidden', ...L.cards[1], 'killgore')}</div>
+    <p class="finds-note">${L.s1[2]}</p>
+    <h2>${L.s2[0]}</h2>
+    <p>${L.s2[1]}</p>
+    ${tbl(L.th, rows, L.cap, ' stack')}
+    <div class="facts2">${f2(onset, 'm-exact', ...L.tc[0], 'efsa')}${f2(half, 'm-exact', ...L.tc[1], 'efsa')}</div>
+    <!--mid-->
+    <h2>${L.s3[0]}</h2>
+    <p>${L.s3[1]}</p>
+    ${ageChoiceBlock(L.ch)}
+    <p class="finds-note">${L.s3[2]}</p>
+    <h2>${L.s4[0]}</h2>
+    <p>${L.s4[1]}</p>
+    ${tips3([['m-hidden', 'moon', ...L.tips[0]], ['m-reaction', 'wave', ...L.tips[1]], ['m-batak', 'drink', ...L.tips[2]]])}
+    <p class="finds-note"><b>${L.safe[0]}</b> ${L.safe[1]}</p>
+    <h2>${L.s5[0]}</h2>
+    <p>${L.s5[1]}</p>
+    ${steps3([[res('0.252', L.ex[0]), ...L.st[0]], [lightsS(1, 1, 0), ...L.st[1]], [res('0.241', L.ex[1]), ...L.st[2]]])}`;
+}
+
 // ── "Reaction time in sports" guide (T-027): takeaway tiles + body from one localized copy object L (see CONTENT['sports-guide']).
 // Same builders as the improve guide (facts2 cards, ageChoiceBlock, steps3, tbl + .stack). One section per sport: question H2, one-line answer,
 // a sourced figure card and a "closest Pulse test" card. All numbers/claims come from the SRC entries cited in the copy.
@@ -626,7 +683,7 @@ const CONTENT = {
     ${stp('en', 'reaction', [['Press Start', 'The three lights come on one by one at an irregular pace, so you cannot guess the timing.'], ['Tap when they go out', 'Anywhere on the panel, or press the space bar.'], ['Read your time', 'It runs from lights out to your tap. Try several times and look at your average, not a single try.']])}
     <h2>Why your result can vary</h2>
     <p>Because reaction time depends on you and on your device. Factors that can change it include age, sex, practice and fatigue ${R('jain')}.</p>
-    <p>Age matters little: about 0.5 ms more per year between 18 and 65 ${R('woods')}. Sleep matters too: sleep loss slows responses and makes lapses longer than half a second more frequent ${R('lim')}. Even within one long session, responses get a little slower: from 228.1 ms in the first block of 20 trials to 237.2 ms in the last ${R('woods')}.</p>
+    <p>Age matters little: about 0.5 ms more per year between 18 and 65 ${R('woods')}. Sleep matters too: sleep loss slows responses and makes lapses longer than half a second more frequent ${R('lim')}. Caffeine can shift your times as well: see <a href="${to('en', 'caffeine-guide')}">caffeine and reaction time</a>. Even within one long session, responses get a little slower: from 228.1 ms in the first block of 20 trials to 237.2 ms in the last ${R('woods')}.</p>
     <p>Your device adds time as well: screen, mouse and software delays can add up to 100 ms to the measured time ${R('woods')}. Always compare your scores on the same device.</p>
     <p>Want to see how it changes over the years? Read <a href="${to('en', 'age-guide')}">average reaction time by age</a>.</p>
     <h2>What about in sport?</h2>
@@ -651,7 +708,7 @@ const CONTENT = {
     ${stp('es', 'reaction', [['Pulsa Iniciar', 'Las tres luces se encienden una a una con un ritmo irregular, para que no puedas adivinarlo.'], ['Toca cuando se apaguen', 'En cualquier parte del panel, o pulsa la barra espaciadora.'], ['Mira tu tiempo', 'Va desde el apagado hasta tu toque. Repite varias veces y fíjate en la media, no en un intento suelto.']])}
     <h2>Por qué tu resultado puede variar</h2>
     <p>Porque el tiempo de reacción depende de ti y también del aparato. Entre los factores que pueden cambiarlo están la edad, el sexo, la práctica y el cansancio ${R('jain')}.</p>
-    <p>La edad pesa poco: unos 0,5 ms más por año entre los 18 y los 65 ${R('woods')}. El sueño también cuenta: dormir poco ralentiza las respuestas y hace más frecuentes los lapsos de más de medio segundo ${R('lim')}. Incluso dentro de una misma sesión larga, las respuestas se vuelven algo más lentas: de 228,1 ms en el primer bloque de 20 intentos a 237,2 ms en el último ${R('woods')}.</p>
+    <p>La edad pesa poco: unos 0,5 ms más por año entre los 18 y los 65 ${R('woods')}. El sueño también cuenta: dormir poco ralentiza las respuestas y hace más frecuentes los lapsos de más de medio segundo ${R('lim')}. La cafeína también puede mover tus tiempos: mira <a href="${to('es', 'caffeine-guide')}">cafeína y tiempo de reacción</a>. Incluso dentro de una misma sesión larga, las respuestas se vuelven algo más lentas: de 228,1 ms en el primer bloque de 20 intentos a 237,2 ms en el último ${R('woods')}.</p>
     <p>El aparato también suma: la pantalla, el ratón y el software pueden añadir hasta 100 ms al tiempo medido ${R('woods')}. Compara tus marcas siempre en el mismo dispositivo.</p>
     <p>¿Quieres ver cómo cambia con los años? Lo explicamos en <a href="${to('es', 'age-guide')}">tiempo de reacción medio por edad</a>.</p>
     <h2>¿Y en el deporte?</h2>
@@ -676,7 +733,7 @@ const CONTENT = {
     ${stp('fr', 'reaction', [['Appuie sur Démarrer', 'Les trois feux s’allument un par un à un rythme irrégulier, pour que tu ne puisses pas deviner le moment.'], ['Touche quand ils s’éteignent', 'N’importe où sur le panneau, ou appuie sur la barre d’espace.'], ['Lis ton temps', 'Il va de l’extinction des feux à ton appui. Fais plusieurs essais et regarde ta moyenne, pas un essai isolé.']])}
     <h2>Pourquoi ton résultat peut varier</h2>
     <p>Parce que le temps de réaction dépend de toi, mais aussi de ton appareil. Parmi les facteurs qui peuvent le faire varier : l’âge, le sexe, l’entraînement et la fatigue ${R('jain')}.</p>
-    <p>L’âge pèse peu : environ 0,5 ms de plus par an entre 18 et 65 ans ${R('woods')}. Le sommeil compte aussi : le manque de sommeil ralentit les réponses et rend plus fréquentes les absences de plus d’une demi-seconde ${R('lim')}. Même au cours d’une longue séance, les réponses ralentissent un peu : de 228,1 ms dans le premier bloc de 20 essais à 237,2 ms dans le dernier ${R('woods')}.</p>
+    <p>L’âge pèse peu : environ 0,5 ms de plus par an entre 18 et 65 ans ${R('woods')}. Le sommeil compte aussi : le manque de sommeil ralentit les réponses et rend plus fréquentes les absences de plus d’une demi-seconde ${R('lim')}. La caféine peut aussi déplacer tes temps : lis <a href="${to('fr', 'caffeine-guide')}">caféine et temps de réaction</a>. Même au cours d’une longue séance, les réponses ralentissent un peu : de 228,1 ms dans le premier bloc de 20 essais à 237,2 ms dans le dernier ${R('woods')}.</p>
     <p>L’appareil ajoute aussi du temps : l’écran, la souris et le logiciel peuvent ajouter jusqu’à 100 ms au temps mesuré ${R('woods')}. Compare toujours tes scores sur le même appareil.</p>
     <p>Tu veux voir comment il évolue avec les années ? On l’explique dans <a href="${to('fr', 'age-guide')}">temps de réaction moyen par âge</a>.</p>
     <h2>Et dans le sport ?</h2>
@@ -701,7 +758,7 @@ const CONTENT = {
     ${stp('pt', 'reaction', [['Toque em Iniciar', 'As três luzes acendem uma a uma num ritmo irregular, para você não conseguir adivinhar.'], ['Toque quando apagarem', 'Em qualquer parte do painel, ou aperte a barra de espaço.'], ['Veja seu tempo', 'Vai do apagar das luzes até o seu toque. Repita várias vezes e olhe a média, não uma tentativa solta.']])}
     <h2>Por que seu resultado pode variar</h2>
     <p>Porque o tempo de reação depende de você e também do aparelho. Entre os fatores que podem mudá-lo estão idade, sexo, prática e cansaço ${R('jain')}.</p>
-    <p>A idade pesa pouco: cerca de 0,5 ms a mais por ano entre os 18 e os 65 ${R('woods')}. O sono também conta: dormir pouco deixa as respostas mais lentas e torna mais frequentes os lapsos de mais de meio segundo ${R('lim')}. Mesmo numa única sessão longa, as respostas ficam um pouco mais lentas: de 228,1 ms no primeiro bloco de 20 tentativas para 237,2 ms no último ${R('woods')}.</p>
+    <p>A idade pesa pouco: cerca de 0,5 ms a mais por ano entre os 18 e os 65 ${R('woods')}. O sono também conta: dormir pouco deixa as respostas mais lentas e torna mais frequentes os lapsos de mais de meio segundo ${R('lim')}. A cafeína também pode mexer nos seus tempos: veja <a href="${to('pt', 'caffeine-guide')}">cafeína e tempo de reação</a>. Mesmo numa única sessão longa, as respostas ficam um pouco mais lentas: de 228,1 ms no primeiro bloco de 20 tentativas para 237,2 ms no último ${R('woods')}.</p>
     <p>O aparelho também soma: tela, mouse e software podem acrescentar até 100 ms ao tempo medido ${R('woods')}. Compare suas marcas sempre no mesmo dispositivo.</p>
     <p>Quer ver como ele muda com os anos? Explicamos em <a href="${to('pt', 'age-guide')}">tempo de reação médio por idade</a>.</p>
     <h2>E no esporte?</h2>
@@ -997,7 +1054,7 @@ const CONTENT = {
         s3: ['Does sleep affect reaction time?', 'Yes: sleep loss slows responses and makes lapses more frequent.',
           'Sleep loss slows responses and makes <strong>lapses</strong>, responses longer than half a second, more frequent.', '14 days',
           'In a lab study, healthy adults aged 21–38 who slept 4 or 6 hours a night for 14 days showed cumulative, dose-dependent deficits in cognitive performance, while self-rated sleepiness barely rose after the first days.',
-          'Caffeine is a common quick fix too; its effects are beyond this guide. For your own tests, the practical point is to compare results taken after similar sleep.'],
+          `Caffeine is a common quick fix too; <a href="${to('en', 'caffeine-guide')}">see caffeine and reaction time</a> for what studies found. For your own tests, the practical point is to compare results taken after similar sleep.`],
         s4: ['Does warming up or the time of day matter?', `Possibly, so keep both constant: researchers treat time of day and practice effects as factors when they measure performance ${R('blatter')}, but no source we checked gives a reaction-time figure for a warm-up.`],
         tips: [['Compare like with like', `Practice effects are a known factor in measuring performance ${R('blatter')}, so compare tries made under similar conditions.`],
           ['Same time of day', `Test at the same hour each time: time of day has its own effect on cognitive performance, apart from how long you have been awake ${R('blatter')}.`],
@@ -1051,7 +1108,7 @@ const CONTENT = {
         s3: ['¿Afecta el sueño al tiempo de reacción?', 'Sí: dormir poco ralentiza las respuestas y hace más frecuentes los lapsos.',
           'Dormir poco ralentiza las respuestas y hace más frecuentes los <strong>lapsos</strong>, respuestas que tardan más de medio segundo.', '14 días',
           'En un estudio de laboratorio, adultos sanos de 21 a 38 años que durmieron 4 o 6 horas por noche durante 14 días mostraron déficits acumulativos, dependientes de la dosis, en el rendimiento cognitivo, mientras que la somnolencia autoevaluada apenas subió tras los primeros días.',
-          'La cafeína es otro remedio rápido habitual; sus efectos quedan fuera de esta guía. Para tus propias pruebas, lo práctico es comparar resultados tomados tras un sueño parecido.'],
+          `La cafeína es otro remedio rápido habitual; en <a href="${to('es', 'caffeine-guide')}">cafeína y tiempo de reacción</a> tienes lo que encontraron los estudios. Para tus propias pruebas, lo práctico es comparar resultados tomados tras un sueño parecido.`],
         s4: ['¿Importan el calentamiento y la hora del día?', `Posiblemente, así que mantén ambos constantes: los investigadores tratan la hora del día y los efectos de la práctica como factores al medir el rendimiento ${R('blatter')}, pero ninguna fuente que revisamos da una cifra de tiempo de reacción para el calentamiento.`],
         tips: [['Compara lo comparable', `Los efectos de la práctica son un factor conocido al medir el rendimiento ${R('blatter')}, así que compara intentos hechos en condiciones parecidas.`],
           ['A la misma hora', `Mídete a la misma hora cada vez: la hora del día tiene su propio efecto en el rendimiento cognitivo, aparte del tiempo que llevas despierto ${R('blatter')}.`],
@@ -1105,7 +1162,7 @@ const CONTENT = {
         s3: ['Le sommeil influence-t-il le temps de réaction ?', 'Oui : le manque de sommeil ralentit les réponses et rend les absences plus fréquentes.',
           'Le manque de sommeil ralentit les réponses et rend plus fréquentes les <strong>absences</strong>, ces réponses qui prennent plus d’une demi-seconde.', '14 jours',
           'Dans une étude en laboratoire, des adultes en bonne santé de 21 à 38 ans qui ont dormi 4 ou 6 heures par nuit pendant 14 jours ont montré des déficits cumulatifs, dépendants de la dose, de la performance cognitive, alors que la somnolence auto-évaluée n’a presque pas augmenté après les premiers jours.',
-          'La caféine est aussi un coup de pouce courant ; ses effets dépassent le cadre de ce guide. Pour tes propres tests, le point pratique est de comparer des résultats pris après un sommeil comparable.'],
+          `La caféine est aussi un coup de pouce courant ; dans <a href="${to('fr', 'caffeine-guide')}">caféine et temps de réaction</a>, tu trouveras ce que montrent les études. Pour tes propres tests, le point pratique est de comparer des résultats pris après un sommeil comparable.`],
         s4: ['L’échauffement ou l’heure de la journée comptent-ils ?', `Peut-être, donc garde les deux constants : les chercheurs traitent l’heure de la journée et les effets de la pratique comme des facteurs quand ils mesurent la performance ${R('blatter')}, mais aucune source vérifiée ne donne de chiffre de temps de réaction pour un échauffement.`],
         tips: [['Compare ce qui est comparable', `Les effets de la pratique sont un facteur connu quand on mesure la performance ${R('blatter')} : compare des essais faits dans des conditions similaires.`],
           ['À la même heure', `Teste-toi à la même heure à chaque fois : l’heure de la journée a son propre effet sur la performance cognitive, à part le temps passé éveillé ${R('blatter')}.`],
@@ -1159,7 +1216,7 @@ const CONTENT = {
         s3: ['O sono afeta o tempo de reação?', 'Sim: dormir pouco deixa as respostas mais lentas e torna as falhas de atenção mais frequentes.',
           'Dormir pouco deixa as respostas mais lentas e torna mais frequentes as <strong>falhas de atenção</strong>, respostas que levam mais de meio segundo.', '14 dias',
           'Num estudo de laboratório, adultos saudáveis de 21 a 38 anos que dormiram 4 ou 6 horas por noite durante 14 dias mostraram déficits cumulativos, dependentes da dose, no desempenho cognitivo, enquanto a sonolência autoavaliada mal subiu depois dos primeiros dias.',
-          'A cafeína também é um recurso rápido comum; seus efeitos ficam fora deste guia. Nos seus próprios testes, o ponto prático é comparar resultados feitos depois de um sono parecido.'],
+          `A cafeína também é um recurso rápido comum; em <a href="${to('pt', 'caffeine-guide')}">cafeína e tempo de reação</a> você vê o que os estudos encontraram. Nos seus próprios testes, o ponto prático é comparar resultados feitos depois de um sono parecido.`],
         s4: ['Aquecer ou a hora do dia fazem diferença?', `Possivelmente, então mantenha os dois constantes: os pesquisadores tratam a hora do dia e os efeitos da prática como fatores ao medir o desempenho ${R('blatter')}, mas nenhuma fonte que verificamos dá um número de tempo de reação para o aquecimento.`],
         tips: [['Compare o que é comparável', `Os efeitos da prática são um fator conhecido ao medir o desempenho ${R('blatter')}, então compare tentativas feitas em condições parecidas.`],
           ['Na mesma hora do dia', `Teste-se na mesma hora todas as vezes: a hora do dia tem efeito próprio no desempenho cognitivo, à parte do tempo que você está acordado ${R('blatter')}.`],
@@ -1178,6 +1235,200 @@ const CONTENT = {
         ['O exercício melhora o tempo de reação?', `Num estudo com 120 estudantes do primeiro ano de medicina, quem se exercitava regularmente teve tempos mais rápidos que os sedentários ${R('jain')}. É uma comparação entre grupos: não mostra que o exercício os deixou mais rápidos. Para saber com que rapidez atletas reagem em cada esporte, veja o <a href="${to('pt', 'sports-guide')}">tempo de reação no esporte</a>.`],
         ['Qual é o jeito mais rápido de reagir melhor hoje?', `Estar descansado e alerta, testar-se em condições parecidas todas as vezes e evitar sessões longas sem pausa: dormir pouco e sessões longas deixam as respostas mais lentas ${R('lim')} ${R('woods')}.`]],
       band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
+  'caffeine-guide': { sources: [SRC.mclellan, SRC.einother, SRC.james, SRC.rogers, SRC.killgore, SRC.giles, SRC.efsa, SRC.lim],
+    en: { title: 'Caffeine and reaction time: what studies show | Gurrulabs',
+      desc: 'Does caffeine speed up reaction time? In studies, low to moderate doses went with faster reactions and better alertness. Effects vary. Sources and a test.',
+      name: 'Caffeine and reaction time', h1: 'Caffeine and reaction time', em: 'Caffeine and reaction time', card: 'What studies found, with sources',
+      kick: 'Guide · Reaction time', kick2: 'Does coffee improve your reflexes?',
+      sub: 'What studies find about caffeine and reaction time: the doses and timings they used, what they saw in daily drinkers and in people short of sleep, and how to check it on yourself with a test you can take right here.',
+      fig: ['15–30', 'min'], hv: 'before the effects of caffeine may begin after a dose (EFSA, 2015)',
+      answer: `In studies, low to moderate doses of caffeine went with better alertness, attention and reaction time ${R('mclellan')}, and one dose restored vigilance-test speed after sleep loss ${R('killgore')}. In daily drinkers, researchers disagree on how much is relief from withdrawal ${R('james')}. Effects vary between people.`,
+      intro: cafIntro('en', 'Key takeaways', ['the low end of the doses a review links to better alertness, vigilance and reaction time (up to about 300 mg)', 'awake: a single dose restored speed on a vigilance test and reduced lapses versus placebo', 'average half-life in healthy adults: half the caffeine is still in the body hours later', 'a day: the intake EFSA found raised no safety concern for healthy adults, except pregnant women (not advice)']),
+      body: cafBody('en', {
+        sch: 'Schematic, not study data', dot: '1 dot = 1 try', lap: 'over 0.5 s = lapse', no: 'No coffee', yes: 'Coffee', fast: '← faster', slow: 'slower →', onset: 'effects begin',
+        al: ['Schematic, not study data: each dot is one try, further right is slower', 'Schematic, not study data: without coffee three tries pass the 0.5 s lapse line, with coffee one does'],
+        s1: ['Does caffeine improve reaction time?', 'In studies, usually yes: low to moderate doses went with faster reactions, and one dose restored speed after sleep loss.',
+          `Most studies report group averages. They show the direction of the effect, not how many milliseconds you personally will gain. The same review found less consistent effects on memory and decision making ${R('mclellan')}.`],
+        cards: [['On a normal day', `A review links low to moderate doses with better alertness, vigilance, attention and reaction time ${R('mclellan')}. In regular consumers, caffeine also sped simple and choice reaction times ${R('rogers')}.`],
+          ['After sleep loss', `After 44 hours awake, the study gave 600 mg once: speed on a vigilance test was restored and lapses, responses over half a second ${R('lim')}, were reduced versus placebo.`]],
+        s2: ['How much caffeine did studies use, and how fast does it work?', `Reviews cover low to moderate doses, about 40 to 300 mg, and one sleep-loss study gave 600 mg. The effects may begin 15 to 30 minutes after intake and last hours ${R('mclellan')} ${R('efsa')}.`],
+        th: ['Situation and dose studied', 'Effect on reaction time', 'Evidence', 'Source'],
+        rows: [['Adults, low to moderate doses (about 40–300 mg)', 'Better alertness, vigilance, attention and reaction time; less consistent for memory and decisions', 'Review of studies', 'mclellan'],
+          ['Adults, attention tasks', 'Better performance on simple and complex attention tasks; evidence on dose differences is inconclusive', 'Review of double-blind, placebo-controlled studies', 'einother'],
+          ['After 44 h awake, 600 mg once', 'Restored vigilance-test speed and reduced lapses versus placebo; the shortest duration, and the most reported side effects, of the three stimulants tested', 'Placebo-controlled study, 53 adults', 'killgore'],
+          ['Regular consumers, 100 mg then 150 mg', 'Overnight abstinence slowed simple and choice reaction times; caffeine improved them in medium-high consumers', 'Double-blind, placebo-controlled study', 'rogers'],
+          ['Regular use vs abstinence, long term', 'Little evidence of net benefit; gains almost wholly reversal of withdrawal (another review disagrees)', 'Reviews', ['james', 'einother']],
+          ['Energy-drink ingredients, 200 mg caffeine', 'Caffeine reduced simple and choice reaction time; the authors name caffeine, not taurine or glucose, as the likely cause of changes', 'Randomised double-blind study, 48 habitual consumers after 24 h without caffeine', 'giles']],
+        cap: 'Doses as given in each study. Not a recommendation.',
+        tc: [['15–30 min', 'EFSA: after you take caffeine, its stimulatory effects may begin 15 to 30 minutes later and last a number of hours.'],
+          ['≈ 4 h', 'In healthy adults the average half-life is about four hours, with a range of two to eight. It depends on age, body weight, pregnancy, medication and liver health.']],
+        s3: ['Does coffee still work if you drink it every day?', 'Researchers disagree on how much: some of the gain may simply be relief from overnight withdrawal.',
+          'The two reviews disagree, so treat withdrawal as an open question, not a settled fact.'],
+        ch: ['After a night without coffee', `In regular consumers, overnight abstinence slowed simple and choice reaction times, and caffeine improved those measures in medium-high consumers ${R('rogers')}.`,
+          'Over the long term', `One review found little evidence of net benefit in long-term use versus abstinence, as tolerance develops ${R('james')}; another concluded that the effects cannot be attributed to withdrawal reversal ${R('einother')}.`],
+        s4: ['Coffee or energy drinks: what are the limits?', `The limits are sleep, differences between people and the dose; in one study of energy-drink ingredients, caffeine rather than taurine or glucose was the likely active one ${R('giles')}.`],
+        tips: [['Sleep cost', `EFSA: a single dose of 100 mg may affect sleep duration and patterns in some adults, especially close to bedtime ${R('efsa')}. Sleep loss itself slows responses ${R('lim')}.`],
+          ['It varies', `Half-life ranges from two to eight hours in healthy adults ${R('efsa')}, so the same cup can act differently on you and on a friend.`],
+          ['Energy drinks', `In one study, caffeine, not taurine or glucose, was the likely cause of the changes in thinking and reaction time ${R('giles')}.`]],
+        safe: ['Safety note.', `EFSA found no safety concern for single doses up to 200 mg, or for up to 400 mg a day spread over the day, in healthy adults other than pregnant women; for pregnancy, up to 200 mg a day spread over the day is of no concern for the foetus; for children and adolescents it proposed 3 mg per kg of body weight a day ${R('efsa')}. Its assessment did not cover people with a medical condition or taking medicines: if that is you, ask your doctor. This is not a recommendation to use caffeine.`],
+        s5: ['How can you test caffeine on your own reaction time?', 'Measure a baseline, then repeat the same test after your usual coffee, under the same conditions.'],
+        ex: ['Example: before', 'Example: after'],
+        st: [['Baseline', `Five tries of the <a href="${to('en', 'reaction-test')}">reaction time test</a> before your usual coffee; keep the average.`],
+          ['Same conditions', `Same device, place and time of day; test again once the effects may have begun, 15 to 30 minutes after intake ${R('efsa')}.`],
+          ['Compare', `Compare averages over several days. Add the <a href="${to('en', 'batak')}">choice reaction time test</a> for reactions with choices.`]] }),
+      mid: ['Test yourself with Pulse', 'Reaction and Batak tests on Android, no account, works offline.'],
+      push: ['Track it with Pulse', 'Reaction and choice tests on Android, no account, works offline.'],
+      after: `<p>One coffee is not a training plan: for what else moves your times, see <a href="${to('en', 'improve-guide')}">how to improve reaction time</a>, or play every mode in <a href="${to('en', 'pulse')}">the Pulse app</a>.</p>`,
+      faq: [['Does coffee improve your reflexes?', `In studies, low to moderate doses of caffeine went with better alertness, vigilance and reaction time ${R('mclellan')}, and a review of double-blind studies found clear benefits for attention ${R('einother')}. The effect varies between people.`],
+        ['How long does caffeine take to work?', `EFSA says the effects may begin 15 to 30 minutes after intake and last a number of hours. The average half-life in healthy adults is about four hours, with a range of two to eight ${R('efsa')}.`],
+        ['Do energy drinks improve reaction time?', `In one study of habitual consumers after 24 hours without caffeine, caffeine reduced simple and choice reaction time, and the authors judged caffeine, not taurine or glucose, the likely cause of the cognitive changes after energy drinks ${R('giles')}. Effects vary and are no promise.`],
+        ['Does caffeine work if you drink coffee every day?', `Partly, and researchers disagree. One review found little evidence of net benefit in long-term use versus abstinence, with tolerance to the acute effects ${R('james')}; another concluded that the effects cannot be attributed to withdrawal reversal ${R('einother')}.`]],
+      band: ['Train your reflexes every day', 'Pulse for Android: no account, works offline.'] },
+    es: { title: 'Cafeína y tiempo de reacción: estudios y fuentes | Gurrulabs',
+      desc: 'Cafeína y tiempo de reacción: en los estudios, dosis bajas o moderadas se asociaron a reacciones más rápidas y más atención. Efectos variables. Fuentes.',
+      name: 'Cafeína y tiempo de reacción', h1: 'Cafeína y tiempo de reacción', em: 'Cafeína y tiempo de reacción', card: 'Qué encontraron los estudios, con fuentes',
+      kick: 'Guía · Tiempo de reacción', kick2: '¿El café mejora tus reflejos?',
+      sub: 'Qué encuentran los estudios sobre la cafeína y el tiempo de reacción: las dosis y los tiempos que usaron, qué vieron en bebedores diarios y en personas con falta de sueño, y cómo comprobarlo en ti con un test que puedes hacer aquí mismo.',
+      fig: ['15–30', ' min'], hv: 'antes de que los efectos de la cafeína puedan empezar tras una dosis (EFSA, 2015)',
+      answer: `En los estudios, dosis bajas o moderadas de cafeína se asociaron a más alerta, atención y mejor tiempo de reacción ${R('mclellan')}, y una dosis recuperó la velocidad en una prueba de vigilancia tras perder sueño ${R('killgore')}. En bebedores diarios, los investigadores discrepan sobre cuánto es alivio de la abstinencia ${R('james')}. Los efectos varían entre personas.`,
+      intro: cafIntro('es', 'Ideas clave', ['el extremo bajo de las dosis que una revisión asocia a más alerta, vigilancia y mejor tiempo de reacción (hasta unos 300 mg)', 'despiertos: una dosis recuperó la velocidad en una prueba de vigilancia y redujo los lapsos frente al placebo', 'semivida media en adultos sanos: horas después sigue en el cuerpo la mitad de la cafeína', 'al día: la ingesta que EFSA no vio preocupante para adultos sanos, salvo embarazadas (no es un consejo)']),
+      body: cafBody('es', {
+        sch: 'Esquema, no datos de estudio', dot: '1 punto = 1 intento', lap: 'más de 0,5 s = lapso', no: 'Sin café', yes: 'Con café', fast: '← más rápido', slow: 'más lento →', onset: 'empiezan los efectos',
+        al: ['Esquema, no datos de estudio: cada punto es un intento, más a la derecha es más lento', 'Esquema, no datos de estudio: sin café tres intentos pasan la línea de lapso de 0,5 s, con café uno'],
+        s1: ['¿La cafeína mejora el tiempo de reacción?', 'En los estudios, normalmente sí: dosis bajas o moderadas se asociaron a reacciones más rápidas, y una dosis recuperó la velocidad tras perder sueño.',
+          `La mayoría de los estudios dan promedios de grupo. Muestran la dirección del efecto, no cuántos milisegundos ganarás tú. La misma revisión halló efectos menos consistentes en la memoria y la toma de decisiones ${R('mclellan')}.`],
+        cards: [['Un día normal', `Una revisión asocia dosis bajas o moderadas con más alerta, vigilancia, atención y mejor tiempo de reacción ${R('mclellan')}. En consumidores habituales, la cafeína también aceleró los tiempos de reacción simple y de elección ${R('rogers')}.`],
+          ['Tras perder sueño', `Tras 44 horas despiertos, el estudio dio 600 mg una vez: se recuperó la velocidad en una prueba de vigilancia y se redujeron los lapsos, respuestas de más de medio segundo ${R('lim')}, frente al placebo.`]],
+        s2: ['¿Qué dosis de cafeína usaron los estudios y en cuánto tiempo actúa?', `Las revisiones abarcan dosis bajas o moderadas, de unos 40 a 300 mg, y un estudio con falta de sueño dio 600 mg. Los efectos pueden empezar de 15 a 30 minutos después de tomarla y durar horas ${R('mclellan')} ${R('efsa')}.`],
+        th: ['Situación y dosis estudiada', 'Efecto en el tiempo de reacción', 'Evidencia', 'Fuente'],
+        rows: [['Adultos, dosis bajas o moderadas (unos 40–300 mg)', 'Más alerta, vigilancia, atención y mejor tiempo de reacción; efectos menos consistentes en memoria y decisiones', 'Revisión de estudios', 'mclellan'],
+          ['Adultos, tareas de atención', 'Mejor rendimiento en tareas de atención simples y complejas; la evidencia sobre diferencias de dosis no es concluyente', 'Revisión de estudios doble ciego con placebo', 'einother'],
+          ['Tras 44 h despiertos, 600 mg una vez', 'Recuperó la velocidad en la prueba de vigilancia y redujo los lapsos frente al placebo; la acción más corta, y más efectos secundarios comunicados, de los tres estimulantes probados', 'Estudio con placebo, 53 adultos', 'killgore'],
+          ['Consumidores habituales, 100 mg y luego 150 mg', 'La abstinencia nocturna ralentizó los tiempos de reacción simple y de elección; la cafeína los mejoró en consumidores medios-altos', 'Estudio doble ciego con placebo', 'rogers'],
+          ['Uso habitual frente a abstinencia, largo plazo', 'Poca evidencia de beneficio neto; las mejoras se deben casi por completo a revertir la abstinencia (otra revisión discrepa)', 'Revisiones', ['james', 'einother']],
+          ['Ingredientes de bebidas energéticas, 200 mg de cafeína', 'La cafeína redujo el tiempo de reacción simple y de elección; los autores señalan la cafeína, no la taurina ni la glucosa, como causa probable de los cambios', 'Estudio aleatorizado doble ciego, 48 consumidores habituales tras 24 h sin cafeína', 'giles']],
+        cap: 'Dosis tal como las dio cada estudio. No es una recomendación.',
+        tc: [['15–30 min', 'EFSA: tras tomar cafeína, sus efectos estimulantes pueden empezar de 15 a 30 minutos después y durar varias horas.'],
+          ['≈ 4 h', 'En adultos sanos la semivida media es de unas cuatro horas, con un rango de dos a ocho. Depende de la edad, el peso, el embarazo, la medicación y la salud del hígado.']],
+        s3: ['¿Sirve el café si lo tomas todos los días?', 'Los investigadores discrepan sobre cuánto: parte de la mejora puede ser solo alivio de la abstinencia nocturna.',
+          'Las dos revisiones discrepan: trata la abstinencia como una cuestión abierta, no como un hecho zanjado.'],
+        ch: ['Tras una noche sin café', `En consumidores habituales, la abstinencia nocturna ralentizó los tiempos de reacción simple y de elección, y la cafeína mejoró esas medidas en consumidores medios-altos ${R('rogers')}.`,
+          'A largo plazo', `Una revisión halló poca evidencia de beneficio neto en el uso prolongado frente a la abstinencia, porque se desarrolla tolerancia ${R('james')}; otra concluyó que los efectos no se pueden atribuir a revertir la abstinencia ${R('einother')}.`],
+        s4: ['¿Café o bebidas energéticas: cuáles son los límites?', `Los límites son el sueño, las diferencias entre personas y la dosis; en un estudio de ingredientes de bebidas energéticas, la cafeína y no la taurina ni la glucosa fue la probable responsable ${R('giles')}.`],
+        tips: [['Coste en sueño', `EFSA: una dosis única de 100 mg puede afectar la duración y los patrones del sueño en algunos adultos, sobre todo cerca de la hora de dormir ${R('efsa')}. Dormir poco ya ralentiza las respuestas ${R('lim')}.`],
+          ['Varía', `La semivida va de dos a ocho horas en adultos sanos ${R('efsa')}, así que la misma taza puede actuar distinto en ti y en un amigo.`],
+          ['Bebidas energéticas', `En un estudio, la cafeína, no la taurina ni la glucosa, fue la causa probable de los cambios en el pensamiento y el tiempo de reacción ${R('giles')}.`]],
+        safe: ['Nota de seguridad.', `EFSA no vio problema de seguridad en dosis únicas de hasta 200 mg, ni en hasta 400 mg al día repartidos a lo largo del día, en adultos sanos salvo embarazadas; en el embarazo, hasta 200 mg al día repartidos a lo largo del día no suponen problema para el feto; para niños y adolescentes propuso 3 mg por kg de peso al día ${R('efsa')}. Su evaluación no cubrió a personas con una enfermedad o que toman medicamentos: si es tu caso, pregunta a tu médico. Esto no es una recomendación de tomar cafeína.`],
+        s5: ['¿Cómo probar la cafeína en tu propio tiempo de reacción?', 'Mide una línea base y repite el mismo test después de tu café habitual, en las mismas condiciones.'],
+        ex: ['Ejemplo: antes', 'Ejemplo: después'],
+        st: [['Línea base', `Cinco intentos del <a href="${to('es', 'reaction-test')}">test de tiempo de reacción</a> antes de tu café habitual; quédate con la media.`],
+          ['Mismas condiciones', `Mismo aparato, lugar y hora del día; repite cuando los efectos puedan haber empezado, de 15 a 30 minutos tras tomarlo ${R('efsa')}.`],
+          ['Compara', `Compara las medias a lo largo de varios días. Añade el <a href="${to('es', 'batak')}">juego de reflejos con luces</a> para reacciones con elección.`]] }),
+      mid: ['Ponte a prueba con Pulse', 'Tests de reacción y Batak en Android, sin cuenta, funciona sin conexión.'],
+      push: ['Sigue tu progreso con Pulse', 'Tests de reacción y de elección en Android, sin cuenta, funciona sin conexión.'],
+      after: `<p>Un café no es un plan de entrenamiento: para saber qué más mueve tus tiempos, mira <a href="${to('es', 'improve-guide')}">cómo mejorar el tiempo de reacción</a>, o juega todos los modos en <a href="${to('es', 'pulse')}">la app Pulse</a>.</p>`,
+      faq: [['¿El café mejora los reflejos?', `En los estudios, dosis bajas o moderadas de cafeína se asociaron a más alerta, vigilancia y mejor tiempo de reacción ${R('mclellan')}, y una revisión de estudios doble ciego halló beneficios claros en la atención ${R('einother')}. El efecto varía entre personas.`],
+        ['¿Cuánto tarda en hacer efecto la cafeína?', `Según EFSA, los efectos pueden empezar de 15 a 30 minutos después de tomarla y durar varias horas. La semivida media en adultos sanos es de unas cuatro horas, con un rango de dos a ocho ${R('efsa')}.`],
+        ['¿Las bebidas energéticas mejoran el tiempo de reacción?', `En un estudio con consumidores habituales tras 24 horas sin cafeína, la cafeína redujo el tiempo de reacción simple y de elección, y los autores juzgaron que la cafeína, no la taurina ni la glucosa, es la causa probable de los cambios cognitivos tras las bebidas energéticas ${R('giles')}. Los efectos varían y no son una promesa.`],
+        ['¿Funciona la cafeína si tomas café todos los días?', `En parte, y los investigadores discrepan. Una revisión halló poca evidencia de beneficio neto en el uso prolongado frente a la abstinencia, con tolerancia a los efectos agudos ${R('james')}; otra concluyó que los efectos no se pueden atribuir a revertir la abstinencia ${R('einother')}.`]],
+      band: ['Entrena tus reflejos cada día', 'Pulse para Android: sin cuenta, funciona sin conexión.'] },
+    fr: { title: 'Caféine et temps de réaction : études et sources | Gurrulabs',
+      desc: 'La caféine accélère-t-elle le temps de réaction ? Dans les études, des doses faibles à modérées vont de pair avec de meilleures réactions. Avec sources.',
+      name: 'Caféine et temps de réaction', h1: 'Caféine et temps de réaction', em: 'Caféine et temps de réaction', card: 'Ce que montrent les études, avec sources',
+      kick: 'Guide · Temps de réaction', kick2: 'Le café améliore-t-il tes réflexes ?',
+      sub: 'Ce que montrent les études sur la caféine et le temps de réaction : les doses et les délais utilisés, ce qu’elles ont vu chez les buveurs quotidiens et chez les personnes qui manquent de sommeil, et comment le vérifier sur toi avec un test à faire ici même.',
+      fig: ['15–30', ' min'], hv: 'avant que les effets de la caféine puissent commencer après une dose (EFSA, 2015)',
+      answer: `Dans les études, des doses faibles à modérées de caféine vont de pair avec plus de vigilance et un meilleur temps de réaction ${R('mclellan')}, et une dose a rétabli la vitesse après une privation de sommeil ${R('killgore')}. Chez les buveurs quotidiens, les chercheurs divergent sur la part du sevrage ${R('james')}. Les effets varient.`,
+      intro: cafIntro('fr', 'À retenir', ['le bas de la fourchette de doses qu’une revue associe à plus de vigilance et à un meilleur temps de réaction (jusqu’à environ 300 mg)', 'd’éveil : une dose a rétabli la vitesse à un test de vigilance et réduit les absences par rapport au placebo', 'demi-vie moyenne chez l’adulte en bonne santé : des heures plus tard, la moitié de la caféine est encore dans le corps', 'par jour : l’apport que l’EFSA n’a pas jugé préoccupant pour les adultes en bonne santé, sauf les femmes enceintes (pas un conseil)']),
+      body: cafBody('fr', {
+        sch: 'Schéma, pas des données d’étude', dot: '1 point = 1 essai', lap: 'plus de 0,5 s = absence', no: 'Sans café', yes: 'Avec café', fast: '← plus rapide', slow: 'plus lent →', onset: 'effets',
+        al: ['Schéma, pas des données d’étude : chaque point est un essai, plus à droite, c’est plus lent', 'Schéma, pas des données d’étude : sans café trois essais dépassent la ligne d’absence de 0,5 s, avec café un seul'],
+        s1: ['La caféine améliore-t-elle le temps de réaction ?', 'Dans les études, en général oui : des doses faibles à modérées vont de pair avec des réactions plus rapides, et une dose a rétabli la vitesse après un manque de sommeil.',
+          `La plupart des études donnent des moyennes de groupe. Elles montrent le sens de l’effet, pas combien de millisecondes tu gagneras toi. La même revue a trouvé des effets moins constants sur la mémoire et la prise de décision ${R('mclellan')}.`],
+        cards: [['Un jour ordinaire', `Une revue associe des doses faibles à modérées à plus de vigilance, d’attention et à un meilleur temps de réaction ${R('mclellan')}. Chez les consommateurs habituels, la caféine a aussi accéléré les temps de réaction simple et de choix ${R('rogers')}.`],
+          ['Après un manque de sommeil', `Après 44 heures d’éveil, l’étude a donné 600 mg en une fois : la vitesse à un test de vigilance a été rétablie et les absences, des réponses de plus d’une demi-seconde ${R('lim')}, ont diminué par rapport au placebo.`]],
+        s2: ['Quelles doses de caféine les études ont-elles utilisées, et en combien de temps agit-elle ?', `Les revues couvrent des doses faibles à modérées, d’environ 40 à 300 mg, et une étude sur le manque de sommeil a donné 600 mg. Les effets peuvent commencer 15 à 30 minutes après la prise et durer des heures ${R('mclellan')} ${R('efsa')}.`],
+        th: ['Situation et dose étudiée', 'Effet sur le temps de réaction', 'Preuves', 'Source'],
+        rows: [['Adultes, doses faibles à modérées (environ 40–300 mg)', 'Plus de vigilance, d’attention et un meilleur temps de réaction ; effets moins constants sur la mémoire et les décisions', 'Revue d’études', 'mclellan'],
+          ['Adultes, tâches d’attention', 'Meilleure performance aux tâches d’attention simples et complexes ; preuves non concluantes sur les différences de dose', 'Revue d’études en double aveugle contre placebo', 'einother'],
+          ['Après 44 h d’éveil, 600 mg en une fois', 'Vitesse rétablie au test de vigilance et absences réduites par rapport au placebo ; la durée d’action la plus courte, et le plus d’effets secondaires signalés, des trois stimulants testés', 'Étude contre placebo, 53 adultes', 'killgore'],
+          ['Consommateurs habituels, 100 mg puis 150 mg', 'L’abstinence nocturne a ralenti les temps de réaction simple et de choix ; la caféine les a améliorés chez les consommateurs moyens à élevés', 'Étude en double aveugle contre placebo', 'rogers'],
+          ['Usage régulier ou abstinence, long terme', 'Peu de preuves d’un bénéfice net ; les gains viennent presque entièrement de la fin du sevrage (une autre revue n’est pas d’accord)', 'Revues', ['james', 'einother']],
+          ['Ingrédients de boissons énergisantes, 200 mg de caféine', 'La caféine a réduit le temps de réaction simple et de choix ; les auteurs désignent la caféine, pas la taurine ni le glucose, comme cause probable des changements', 'Étude randomisée en double aveugle, 48 consommateurs habituels après 24 h sans caféine', 'giles']],
+        cap: 'Doses telles que données dans chaque étude. Pas une recommandation.',
+        tc: [['15–30 min', 'EFSA : après la prise de caféine, ses effets stimulants peuvent commencer 15 à 30 minutes plus tard et durer plusieurs heures.'],
+          ['≈ 4 h', 'Chez l’adulte en bonne santé, la demi-vie moyenne est d’environ quatre heures, avec une fourchette de deux à huit. Elle dépend de l’âge, du poids, de la grossesse, des médicaments et de la santé du foie.']],
+        s3: ['Le café marche-t-il encore si tu en bois tous les jours ?', 'Les chercheurs divergent sur la part : une partie du gain peut n’être que la fin du sevrage de la nuit.',
+          'Les deux revues divergent : considère le sevrage comme une question ouverte, pas comme un fait établi.'],
+        ch: ['Après une nuit sans café', `Chez les consommateurs habituels, l’abstinence nocturne a ralenti les temps de réaction simple et de choix, et la caféine a amélioré ces mesures chez les consommateurs moyens à élevés ${R('rogers')}.`,
+          'À long terme', `Une revue a trouvé peu de preuves d’un bénéfice net en usage prolongé par rapport à l’abstinence, car une tolérance s’installe ${R('james')} ; une autre a conclu que les effets ne peuvent pas être attribués à la fin du sevrage ${R('einother')}.`],
+        s4: ['Café ou boissons énergisantes : quelles limites ?', `Les limites sont le sommeil, les différences entre personnes et la dose ; dans une étude sur les ingrédients des boissons énergisantes, c’est la caféine, et non la taurine ou le glucose, qui était probablement active ${R('giles')}.`],
+        tips: [['Coût en sommeil', `EFSA : une dose unique de 100 mg peut modifier la durée et la structure du sommeil chez certains adultes, surtout près de l’heure du coucher ${R('efsa')}. Le manque de sommeil ralentit lui-même les réponses ${R('lim')}.`],
+          ['Ça varie', `La demi-vie va de deux à huit heures chez l’adulte en bonne santé ${R('efsa')}, donc la même tasse peut agir autrement sur toi et sur un ami.`],
+          ['Boissons énergisantes', `Dans une étude, la caféine, pas la taurine ni le glucose, était la cause probable des changements de réflexion et de temps de réaction ${R('giles')}.`]],
+        safe: ['Note de sécurité.', `L’EFSA n’a pas vu de problème de sécurité pour des doses uniques jusqu’à 200 mg, ni pour jusqu’à 400 mg par jour répartis sur la journée, chez l’adulte en bonne santé hors femmes enceintes ; pendant la grossesse, jusqu’à 200 mg par jour répartis sur la journée ne posent pas de problème pour le fœtus ; pour les enfants et adolescents, elle a proposé 3 mg par kg de poids par jour ${R('efsa')}. Son évaluation ne couvrait pas les personnes atteintes d’une maladie ou sous médicaments : si c’est ton cas, demande à ton médecin. Ce n’est pas une recommandation de consommer de la caféine.`],
+        s5: ['Comment tester la caféine sur ton propre temps de réaction ?', 'Mesure un point de départ, puis refais le même test après ton café habituel, dans les mêmes conditions.'],
+        ex: ['Exemple : avant', 'Exemple : après'],
+        st: [['Point de départ', `Cinq essais du <a href="${to('fr', 'reaction-test')}">test de temps de réaction</a> avant ton café habituel ; garde la moyenne.`],
+          ['Mêmes conditions', `Même appareil, même lieu, même heure ; refais le test quand les effets ont pu commencer, 15 à 30 minutes après la prise ${R('efsa')}.`],
+          ['Compare', `Compare les moyennes sur plusieurs jours. Ajoute le <a href="${to('fr', 'batak')}">jeu de réflexes avec des lumières</a> pour les réactions avec choix.`]] }),
+      mid: ['Teste-toi avec Pulse', 'Tests de réaction et Batak sur Android, sans compte, fonctionne hors ligne.'],
+      push: ['Suis tes progrès avec Pulse', 'Tests de réaction et de choix sur Android, sans compte, fonctionne hors ligne.'],
+      after: `<p>Un café n’est pas un plan d’entraînement : pour savoir ce qui change aussi tes temps, lis <a href="${to('fr', 'improve-guide')}">comment améliorer son temps de réaction</a>, ou joue tous les modes dans <a href="${to('fr', 'pulse')}">l’appli Pulse</a>.</p>`,
+      faq: [['Le café améliore-t-il les réflexes ?', `Dans les études, des doses faibles à modérées de caféine vont de pair avec plus de vigilance et un meilleur temps de réaction ${R('mclellan')}, et une revue d’études en double aveugle a trouvé des bénéfices nets sur l’attention ${R('einother')}. L’effet varie d’une personne à l’autre.`],
+        ['Combien de temps la caféine met-elle à agir ?', `Selon l’EFSA, les effets peuvent commencer 15 à 30 minutes après la prise et durer plusieurs heures. La demi-vie moyenne chez l’adulte en bonne santé est d’environ quatre heures, avec une fourchette de deux à huit ${R('efsa')}.`],
+        ['Les boissons énergisantes améliorent-elles le temps de réaction ?', `Dans une étude sur des consommateurs habituels après 24 heures sans caféine, la caféine a réduit le temps de réaction simple et de choix, et les auteurs ont jugé que la caféine, pas la taurine ni le glucose, est la cause probable des changements cognitifs après les boissons énergisantes ${R('giles')}. Les effets varient et ne sont pas une promesse.`],
+        ['La caféine marche-t-elle si tu bois du café tous les jours ?', `En partie, et les chercheurs divergent. Une revue a trouvé peu de preuves d’un bénéfice net en usage prolongé par rapport à l’abstinence, avec une tolérance aux effets aigus ${R('james')} ; une autre a conclu que les effets ne peuvent pas être attribués à la fin du sevrage ${R('einother')}.`]],
+      band: ['Entraîne tes réflexes chaque jour', 'Pulse pour Android : sans compte, fonctionne hors ligne.'] },
+    pt: { title: 'Cafeína e tempo de reação: estudos e fontes | Gurrulabs',
+      desc: 'A cafeína acelera o tempo de reação? Nos estudos, doses baixas a moderadas se associaram a reações mais rápidas e mais atenção. Efeitos variam. Com fontes.',
+      name: 'Cafeína e tempo de reação', h1: 'Cafeína e tempo de reação', em: 'Cafeína e tempo de reação', card: 'O que os estudos encontraram, com fontes',
+      kick: 'Guia · Tempo de reação', kick2: 'O café melhora seus reflexos?',
+      sub: 'O que os estudos encontram sobre cafeína e tempo de reação: as doses e os tempos que usaram, o que viram em quem bebe todo dia e em quem dormiu pouco, e como conferir em você com um teste que dá para fazer aqui mesmo.',
+      fig: ['15–30', ' min'], hv: 'antes de os efeitos da cafeína poderem começar depois de uma dose (EFSA, 2015)',
+      answer: `Nos estudos, doses baixas a moderadas de cafeína se associaram a mais alerta, atenção e melhor tempo de reação ${R('mclellan')}, e uma dose restaurou a velocidade num teste de vigilância depois da perda de sono ${R('killgore')}. Em quem bebe todo dia, os pesquisadores divergem sobre quanto é alívio da abstinência ${R('james')}. Os efeitos variam de pessoa para pessoa.`,
+      intro: cafIntro('pt', 'Pontos principais', ['o extremo baixo das doses que uma revisão associa a mais alerta, vigilância e melhor tempo de reação (até cerca de 300 mg)', 'acordado: uma dose restaurou a velocidade num teste de vigilância e reduziu as falhas de atenção em relação ao placebo', 'meia-vida média em adultos saudáveis: horas depois, metade da cafeína ainda está no corpo', 'por dia: a ingestão que a EFSA não considerou preocupante para adultos saudáveis, exceto gestantes (não é conselho)']),
+      body: cafBody('pt', {
+        sch: 'Esquema, não são dados de estudo', dot: '1 ponto = 1 tentativa', lap: 'mais de 0,5 s = falha', no: 'Sem café', yes: 'Com café', fast: '← mais rápido', slow: 'mais lento →', onset: 'efeitos',
+        al: ['Esquema, não são dados de estudo: cada ponto é uma tentativa, mais à direita é mais lento', 'Esquema, não são dados de estudo: sem café três tentativas passam da linha de falha de 0,5 s, com café uma'],
+        s1: ['A cafeína melhora o tempo de reação?', 'Nos estudos, em geral sim: doses baixas a moderadas se associaram a reações mais rápidas, e uma dose restaurou a velocidade depois da perda de sono.',
+          `A maioria dos estudos traz médias de grupo. Elas mostram a direção do efeito, não quantos milissegundos você vai ganhar. A mesma revisão encontrou efeitos menos consistentes na memória e na tomada de decisão ${R('mclellan')}.`],
+        cards: [['Num dia normal', `Uma revisão associa doses baixas a moderadas a mais alerta, vigilância, atenção e melhor tempo de reação ${R('mclellan')}. Em consumidores habituais, a cafeína também acelerou os tempos de reação simples e de escolha ${R('rogers')}.`],
+          ['Depois de perder sono', `Depois de 44 horas acordados, o estudo deu 600 mg de uma vez: a velocidade num teste de vigilância foi restaurada e as falhas de atenção, respostas de mais de meio segundo ${R('lim')}, diminuíram em relação ao placebo.`]],
+        s2: ['Quanta cafeína os estudos usaram e em quanto tempo ela age?', `As revisões cobrem doses baixas a moderadas, de cerca de 40 a 300 mg, e um estudo com perda de sono deu 600 mg. Os efeitos podem começar de 15 a 30 minutos depois da ingestão e durar horas ${R('mclellan')} ${R('efsa')}.`],
+        th: ['Situação e dose estudada', 'Efeito no tempo de reação', 'Evidência', 'Fonte'],
+        rows: [['Adultos, doses baixas a moderadas (cerca de 40–300 mg)', 'Mais alerta, vigilância, atenção e melhor tempo de reação; efeitos menos consistentes em memória e decisões', 'Revisão de estudos', 'mclellan'],
+          ['Adultos, tarefas de atenção', 'Melhor desempenho em tarefas de atenção simples e complexas; evidência sobre diferenças de dose inconclusiva', 'Revisão de estudos duplo-cegos com placebo', 'einother'],
+          ['Após 44 h acordados, 600 mg de uma vez', 'Restaurou a velocidade no teste de vigilância e reduziu as falhas de atenção em relação ao placebo; a menor duração, e mais efeitos colaterais relatados, entre os três estimulantes testados', 'Estudo com placebo, 53 adultos', 'killgore'],
+          ['Consumidores habituais, 100 mg e depois 150 mg', 'A abstinência noturna deixou mais lentos os tempos de reação simples e de escolha; a cafeína os melhorou em consumidores médios a altos', 'Estudo duplo-cego com placebo', 'rogers'],
+          ['Uso regular versus abstinência, longo prazo', 'Pouca evidência de benefício líquido; os ganhos vêm quase todos da reversão da abstinência (outra revisão discorda)', 'Revisões', ['james', 'einother']],
+          ['Ingredientes de energéticos, 200 mg de cafeína', 'A cafeína reduziu o tempo de reação simples e de escolha; os autores apontam a cafeína, não a taurina nem a glicose, como causa provável das mudanças', 'Estudo randomizado duplo-cego, 48 consumidores habituais após 24 h sem cafeína', 'giles']],
+        cap: 'Doses como dadas em cada estudo. Não é uma recomendação.',
+        tc: [['15–30 min', 'EFSA: depois de tomar cafeína, os efeitos estimulantes podem começar de 15 a 30 minutos depois e durar várias horas.'],
+          ['≈ 4 h', 'Em adultos saudáveis a meia-vida média é de cerca de quatro horas, numa faixa de duas a oito. Depende de idade, peso, gravidez, medicamentos e saúde do fígado.']],
+        s3: ['O café ainda funciona se você toma todo dia?', 'Os pesquisadores divergem sobre quanto: parte do ganho pode ser só alívio da abstinência da noite.',
+          'As duas revisões divergem: trate a abstinência como uma questão em aberto, não como fato resolvido.'],
+        ch: ['Depois de uma noite sem café', `Em consumidores habituais, a abstinência noturna deixou mais lentos os tempos de reação simples e de escolha, e a cafeína melhorou essas medidas em consumidores médios a altos ${R('rogers')}.`,
+          'No longo prazo', `Uma revisão encontrou pouca evidência de benefício líquido no uso prolongado em comparação com a abstinência, porque se desenvolve tolerância ${R('james')}; outra concluiu que os efeitos não podem ser atribuídos à reversão da abstinência ${R('einother')}.`],
+        s4: ['Café ou energéticos: quais são os limites?', `Os limites são o sono, as diferenças entre pessoas e a dose; em um estudo com ingredientes de energéticos, a cafeína, e não a taurina nem a glicose, foi a provável responsável ${R('giles')}.`],
+        tips: [['Custo no sono', `EFSA: uma dose única de 100 mg pode afetar a duração e os padrões do sono em alguns adultos, principalmente perto da hora de dormir ${R('efsa')}. A própria perda de sono deixa as respostas mais lentas ${R('lim')}.`],
+          ['Varia', `A meia-vida vai de duas a oito horas em adultos saudáveis ${R('efsa')}, então a mesma xícara pode agir de outro jeito em você e num amigo.`],
+          ['Energéticos', `Em um estudo, a cafeína, não a taurina nem a glicose, foi a causa provável das mudanças no raciocínio e no tempo de reação ${R('giles')}.`]],
+        safe: ['Nota de segurança.', `A EFSA não viu problema de segurança em doses únicas de até 200 mg, nem em até 400 mg por dia distribuídos ao longo do dia, em adultos saudáveis exceto gestantes; na gravidez, até 200 mg por dia distribuídos ao longo do dia não preocupam em relação ao feto; para crianças e adolescentes, propôs 3 mg por kg de peso por dia ${R('efsa')}. A avaliação não cobriu pessoas com alguma doença ou que usam medicamentos: se for o seu caso, pergunte ao seu médico. Isto não é uma recomendação de consumir cafeína.`],
+        s5: ['Como testar a cafeína no seu próprio tempo de reação?', 'Meça uma linha de base e repita o mesmo teste depois do seu café de sempre, nas mesmas condições.'],
+        ex: ['Exemplo: antes', 'Exemplo: depois'],
+        st: [['Linha de base', `Cinco tentativas do <a href="${to('pt', 'reaction-test')}">teste de tempo de reação</a> antes do seu café de sempre; fique com a média.`],
+          ['Mesmas condições', `Mesmo aparelho, lugar e horário; teste de novo quando os efeitos já puderem ter começado, de 15 a 30 minutos depois de tomar ${R('efsa')}.`],
+          ['Compare', `Compare as médias ao longo de vários dias. Acrescente o <a href="${to('pt', 'batak')}">jogo de reflexo com luzes</a> para reações com escolha.`]] }),
+      mid: ['Teste-se com o Pulse', 'Testes de reação e Batak no Android, sem conta, funciona offline.'],
+      push: ['Acompanhe com o Pulse', 'Testes de reação e de escolha no Android, sem conta, funciona offline.'],
+      after: `<p>Um café não é um plano de treino: para saber o que mais mexe nos seus tempos, veja <a href="${to('pt', 'improve-guide')}">como melhorar o tempo de reação</a>, ou jogue todos os modos no <a href="${to('pt', 'pulse')}">app Pulse</a>.</p>`,
+      faq: [['O café melhora os reflexos?', `Nos estudos, doses baixas a moderadas de cafeína se associaram a mais alerta, vigilância e melhor tempo de reação ${R('mclellan')}, e uma revisão de estudos duplo-cegos encontrou benefícios claros na atenção ${R('einother')}. O efeito varia de pessoa para pessoa.`],
+        ['Quanto tempo a cafeína leva para fazer efeito?', `Segundo a EFSA, os efeitos podem começar de 15 a 30 minutos depois da ingestão e durar várias horas. A meia-vida média em adultos saudáveis é de cerca de quatro horas, numa faixa de duas a oito ${R('efsa')}.`],
+        ['Energéticos melhoram o tempo de reação?', `Em um estudo com consumidores habituais após 24 horas sem cafeína, a cafeína reduziu o tempo de reação simples e de escolha, e os autores julgaram que a cafeína, não a taurina nem a glicose, é a causa provável das mudanças cognitivas depois dos energéticos ${R('giles')}. Os efeitos variam e não são promessa.`],
+        ['A cafeína funciona se você toma café todo dia?', `Em parte, e os pesquisadores divergem. Uma revisão encontrou pouca evidência de benefício líquido no uso prolongado em comparação com a abstinência, com tolerância aos efeitos agudos ${R('james')}; outra concluiu que os efeitos não podem ser atribuídos à reversão da abstinência ${R('einother')}.`]],
+      band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
+
   'sports-guide': { sources: [SRC.wa, SRC.brosnan, SRC.zheng, SRC.vernon, SRC.delgado, SRC.dye, SRC.proctor, SRC.nuri, SRC.schwab],
     rail: { en: ['Sprint start', 'Goalkeeper and penalties', 'Tennis return', 'Boxing and martial arts', 'Esports and gamers', 'More than raw speed', 'Can athletes train it?', 'Compare yourself', 'At a glance', 'FAQ'],
       es: ['Salida en atletismo', 'Portero y penaltis', 'Resto en tenis', 'Boxeo y artes marciales', 'Esports y gamers', 'Más que velocidad', '¿Se puede entrenar?', 'Compárate', 'De un vistazo', 'Preguntas'],

@@ -15,7 +15,7 @@ export const SITE = 'https://www.gurrulabs.com';
 export const LOCALES = ['en', 'es', 'fr', 'pt'];
 export const HREFLANG = { en: 'en', es: 'es', fr: 'fr', pt: 'pt-BR' };
 
-const D = '2026-11-05', N = '2026-11-11', X = '2026-11-18', Y = '2026-11-20'; // X = T-025 (improve guide + its back-links), Y = T-027 (sports guide + its back-links)
+const D = '2026-11-05', N = '2026-11-11', X = '2026-11-18', Y = '2026-11-20'; // X = T-025 (improve guide + its back-links), Y = T-026 (caffeine guide) and T-027 (sports guide), each with its back-links
 export const PAGES = [
   { id: 'home', app: null, type: 'home', published: D, modified: D, dataPage: 'home',
     llms: 'Studio home: the four apps and where to get each one.' },
@@ -49,6 +49,9 @@ export const PAGES = [
   { id: 'improve-guide', app: 'pulse', type: 'guide', published: X, modified: Y, dataPage: 'pulse-improve-guide', card: ['reaction', 'm-reaction'],
     slug: { en: 'improve-reaction-time', es: 'mejorar-tiempo-de-reaccion', fr: 'ameliorer-temps-de-reaction', pt: 'melhorar-tempo-de-reacao' },
     llms: 'Guide: how to improve reaction time. Practice improves mainly the task you train, with limited transfer to other tasks; sleep loss slows responses and makes lapses over 0.5 s more frequent; age adds about 0.5 ms per year from 18 to 65 (Woods et al. 2015); with sources.' },
+  { id: 'caffeine-guide', app: 'pulse', type: 'guide', published: Y, modified: Y, dataPage: 'pulse-caffeine-guide', card: ['drink', 'm-reaction'],
+    slug: { en: 'caffeine-reaction-time', es: 'cafeina-tiempo-de-reaccion', fr: 'cafeine-temps-de-reaction', pt: 'cafeina-tempo-de-reacao' },
+    llms: 'Guide: caffeine and reaction time. In studies, low to moderate doses (about 40 to 300 mg) went with better alertness, vigilance and reaction time; the effects may begin 15 to 30 minutes after intake and the average half-life in healthy adults is about 4 hours (EFSA 2015); with sources.' },
   { id: 'sports-guide', app: 'pulse', type: 'guide', published: Y, modified: Y, dataPage: 'pulse-sports-guide', card: ['reaction', 'm-reaction'],
     slug: { en: 'reaction-time-in-sports', es: 'tiempo-de-reaccion-en-el-deporte', fr: 'temps-de-reaction-dans-le-sport', pt: 'tempo-de-reacao-no-esporte' },
     llms: 'Guide: reaction time in sports. Sprint rules flag a reaction off the blocks under 0.100 s as a possible false start (World Athletics TR 16.6); a 2025 review of 35 studies found athletes outperformed controls in accuracy and reaction time, with martial arts and boxing showing good reaction times but poor accuracies; action video game players responded 11% faster on choice tasks (Dye et al. 2009); with the closest Pulse test for each sport and sources.' },
