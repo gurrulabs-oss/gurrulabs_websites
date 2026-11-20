@@ -15,7 +15,7 @@ export const SITE = 'https://www.gurrulabs.com';
 export const LOCALES = ['en', 'es', 'fr', 'pt'];
 export const HREFLANG = { en: 'en', es: 'es', fr: 'fr', pt: 'pt-BR' };
 
-const D = '2026-11-05', N = '2026-11-11', X = '2026-11-18'; // X = T-025 (improve guide + its back-links)
+const D = '2026-11-05', N = '2026-11-11', X = '2026-11-18', Y = '2026-11-20'; // X = T-025 (improve guide + its back-links), Y = T-026 (caffeine guide + its back-links)
 export const PAGES = [
   { id: 'home', app: null, type: 'home', published: D, modified: D, dataPage: 'home',
     llms: 'Studio home: the four apps and where to get each one.' },
@@ -25,7 +25,7 @@ export const PAGES = [
     llms: 'Free Android game on Google Play (ads, no in-app purchases, no account) mixing 3 detective cases you solve and 3 audio crime stories you listen to; cases work offline; game text in English, Spanish and French.' },
   { id: 'lull', app: 'lull', type: 'app', published: D, modified: D, dataPage: 'lull',
     llms: 'Coming-soon Android wellness app (not a medical device) with sleep sounds tuned to your pitch and a 15-second daily check-in for people with tinnitus. Not on Google Play yet; email sign-up.' },
-  { id: 'reaction-test', app: 'pulse', type: 'test', published: D, modified: X, dataPage: 'pulse-reaction-test', card: ['reaction', 'm-reaction'],
+  { id: 'reaction-test', app: 'pulse', type: 'test', published: D, modified: Y, dataPage: 'pulse-reaction-test', card: ['reaction', 'm-reaction'],
     slug: { en: 'reaction-time-test', es: 'test-tiempo-de-reaccion', fr: 'test-temps-de-reaction', pt: 'teste-tempo-de-reacao' },
     llms: 'Browser reaction time test: tap when the lights go out; the result is in seconds (perfect up to 0.30 s, pass under 0.40 s).' },
   { id: '3s-challenge', app: 'pulse', type: 'challenge', published: D, modified: N, dataPage: 'pulse-3s-challenge', card: ['exact', 'm-exact'],
@@ -46,9 +46,12 @@ export const PAGES = [
   { id: 'best-apps', app: 'pulse', type: 'guide', published: '2026-11-06', modified: '2026-11-06', dataPage: 'pulse-best-apps', listing: true, card: ['list', 'accent'],
     slug: { en: 'best-reaction-time-apps', es: 'mejores-apps-de-reflejos', fr: 'meilleures-applis-temps-de-reaction', pt: 'melhores-apps-de-reflexo' },
     llms: 'Comparison: 5 reaction time apps for Android (Pulse, Reaction training, Reaction Time, Lumosity, Peak) on price, ads, modes, account and offline use, from their Google Play listings checked 2026-11-06. Gurrulabs makes Pulse.' },
-  { id: 'improve-guide', app: 'pulse', type: 'guide', published: X, modified: X, dataPage: 'pulse-improve-guide', card: ['reaction', 'm-reaction'],
+  { id: 'improve-guide', app: 'pulse', type: 'guide', published: X, modified: Y, dataPage: 'pulse-improve-guide', card: ['reaction', 'm-reaction'],
     slug: { en: 'improve-reaction-time', es: 'mejorar-tiempo-de-reaccion', fr: 'ameliorer-temps-de-reaction', pt: 'melhorar-tempo-de-reacao' },
     llms: 'Guide: how to improve reaction time. Practice improves mainly the task you train, with limited transfer to other tasks; sleep loss slows responses and makes lapses over 0.5 s more frequent; age adds about 0.5 ms per year from 18 to 65 (Woods et al. 2015); with sources.' },
+  { id: 'caffeine-guide', app: 'pulse', type: 'guide', published: Y, modified: Y, dataPage: 'pulse-caffeine-guide', card: ['drink', 'm-reaction'],
+    slug: { en: 'caffeine-reaction-time', es: 'cafeina-tiempo-de-reaccion', fr: 'cafeine-temps-de-reaction', pt: 'cafeina-tempo-de-reacao' },
+    llms: 'Guide: caffeine and reaction time. In studies, low to moderate doses (about 40 to 300 mg) went with better alertness, vigilance and reaction time; the effects may begin 15 to 30 minutes after intake and the average half-life in healthy adults is about 4 hours (EFSA 2015); with sources.' },
 ];
 
 // /en/, /en/pulse/, /en/pulse/reaction-time-test/
