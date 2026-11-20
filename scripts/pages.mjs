@@ -15,7 +15,7 @@ export const SITE = 'https://www.gurrulabs.com';
 export const LOCALES = ['en', 'es', 'fr', 'pt'];
 export const HREFLANG = { en: 'en', es: 'es', fr: 'fr', pt: 'pt-BR' };
 
-const D = '2026-11-05', N = '2026-11-11', X = '2026-11-18', Y = '2026-11-20'; // X = T-025 (improve guide + its back-links), Y = T-026 (caffeine guide + its back-links)
+const D = '2026-11-05', N = '2026-11-11', X = '2026-11-18', Y = '2026-11-20'; // X = T-025 (improve guide + its back-links), Y = T-026 (caffeine guide) and T-027 (sports guide), each with its back-links
 export const PAGES = [
   { id: 'home', app: null, type: 'home', published: D, modified: D, dataPage: 'home',
     llms: 'Studio home: the four apps and where to get each one.' },
@@ -40,7 +40,7 @@ export const PAGES = [
   { id: 'batak', app: 'pulse', type: 'test', mode: 'batak', published: N, modified: N, dataPage: 'pulse-batak-test', card: ['batak', 'm-batak'],
     slug: { en: 'choice-reaction-time-test', es: 'juego-de-reflejos-con-luces', fr: 'jeu-de-reflexes-avec-des-lumieres', pt: 'jogo-de-reflexo-com-luzes' },
     llms: 'Browser choice reaction time test: tap 8 lights on 7 pads in sequence (Perfect up to 3.20 s, pass up to 7.20 s). Batak is the name of this mode in Pulse, not the commercial lights wall.' },
-  { id: 'age-guide', app: 'pulse', type: 'guide', published: D, modified: X, dataPage: 'pulse-age-guide', card: ['chart', 'm-reaction'],
+  { id: 'age-guide', app: 'pulse', type: 'guide', published: D, modified: Y, dataPage: 'pulse-age-guide', card: ['chart', 'm-reaction'],
     slug: { en: 'average-reaction-time-by-age', es: 'tiempo-de-reaccion-por-edad', fr: 'temps-de-reaction-par-age', pt: 'tempo-de-reacao-por-idade' },
     llms: 'Guide: average simple reaction time by age group, 18 to 65 (Woods et al. 2015, Table 2), what changes it, with sources.' },
   { id: 'best-apps', app: 'pulse', type: 'guide', published: '2026-11-06', modified: '2026-11-06', dataPage: 'pulse-best-apps', listing: true, card: ['list', 'accent'],
@@ -52,6 +52,9 @@ export const PAGES = [
   { id: 'caffeine-guide', app: 'pulse', type: 'guide', published: Y, modified: Y, dataPage: 'pulse-caffeine-guide', card: ['drink', 'm-reaction'],
     slug: { en: 'caffeine-reaction-time', es: 'cafeina-tiempo-de-reaccion', fr: 'cafeine-temps-de-reaction', pt: 'cafeina-tempo-de-reacao' },
     llms: 'Guide: caffeine and reaction time. In studies, low to moderate doses (about 40 to 300 mg) went with better alertness, vigilance and reaction time; the effects may begin 15 to 30 minutes after intake and the average half-life in healthy adults is about 4 hours (EFSA 2015); with sources.' },
+  { id: 'sports-guide', app: 'pulse', type: 'guide', published: Y, modified: Y, dataPage: 'pulse-sports-guide', card: ['reaction', 'm-reaction'],
+    slug: { en: 'reaction-time-in-sports', es: 'tiempo-de-reaccion-en-el-deporte', fr: 'temps-de-reaction-dans-le-sport', pt: 'tempo-de-reacao-no-esporte' },
+    llms: 'Guide: reaction time in sports. Sprint rules flag a reaction off the blocks under 0.100 s as a possible false start (World Athletics TR 16.6); a 2025 review of 35 studies found athletes outperformed controls in accuracy and reaction time, with martial arts and boxing showing good reaction times but poor accuracies; action video game players responded 11% faster on choice tasks (Dye et al. 2009); with the closest Pulse test for each sport and sources.' },
 ];
 
 // /en/, /en/pulse/, /en/pulse/reaction-time-test/

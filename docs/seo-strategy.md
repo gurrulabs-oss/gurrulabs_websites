@@ -50,6 +50,7 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | Interval (time estimation) test | time estimation test / test de percepción del tiempo / test d'estimation du temps / teste de percepção do tempo | en: time perception test, guess the time game, guess the seconds; es: estimación del tiempo, adivinar cuántos segundos han pasado; fr: perception du temps test, estimer une durée, combien de secondes se sont écoulées; pt: estimação de tempo, estimar quantos segundos se passaram, noção de tempo teste | wants to play now / know | no "internal clock" (Hidden Clock owns it) |
 | Best reaction time apps (comparison) | best reaction time app Android / mejor app de reflejos Android / meilleure application temps de réaction Android / melhor app de reflexo Android | best reflex apps, reaction time apps compared | wants to choose an app | takes the "best … app" searches; does not compete with the Pulse app page, which keeps "reflex app Android" |
 | Improve reaction time guide (T-025) | how to improve reaction time / cómo mejorar el tiempo de reacción / comment améliorer son temps de réaction / como melhorar o tempo de reação | reaction time training, how to get faster reflexes, reaction time exercises (and native equivalents) | wants to know / get faster | no "reaction time test" (test), "average/normal reaction time" (age guide), "best reaction time app" (comparison), the Batak secondaries (entrenamiento de reflejos visuales, entraînement des réflexes visuels, treino de reflexo visual), caffeine (GWEB-026) or per-sport reaction time (GWEB-027); no game, links to the tests |
+| Reaction time in sports guide (T-027) | reaction time in sports / tiempo de reacción en el deporte / temps de réaction dans le sport / tempo de reação no esporte | en: sprint start reaction time, goalkeeper reaction time, tennis serve return, boxer reaction time, esports reaction time; es/fr/pt: the same sports in each language | wants to know / compare | no "reaction time test", "average/normal reaction time", "best reaction time app", "how to improve reaction time"/training or caffeine; training stays one paragraph linking to the improve guide; no game |
 | Caffeine guide (T-026) | caffeine and reaction time / cafeína y tiempo de reacción / caféine et temps de réaction / cafeína e tempo de reação | does coffee improve reflexes, energy drinks and reaction time, how long caffeine takes to work (and native equivalents) | wants to know | no "reaction time test" (test), "average/normal reaction time" (age guide), "best reaction time app" (comparison), "how to improve reaction time" (improve guide) or per-sport reaction time (GWEB-027); no game, links to the tests; doses only as "the study gave X", no advice |
 | Cyberpunk Detective app | cyberpunk detective game / juego de detectives cyberpunk / jeu de détective cyberpunk / jogo de detetive cyberpunk | detective mystery game Android, audio crime stories, solve a case | wants an app | no "reaction", "reflex" or "tinnitus" keywords; no overlap with Pulse rows |
 | Lull app (coming soon) | tinnitus sleep sounds app / app de sonidos para dormir con acúfenos / application sons pour dormir acouphènes / app de sons para dormir com zumbido | sleep with tinnitus, daily check-in; email sign-up (no install CTA) | wants to know / be told at launch | no "cure/eliminate/treat/reduce" wording; no Pulse or Cyberpunk keywords |
@@ -88,17 +89,21 @@ mentioned and the cited gurrulabs.com or Play URL (or `-`). Put the run date abo
 | en16 | time perception test game Android | | | | | |
 | en17 | how to improve reaction time | | | | | |
 | en18 | caffeine and reaction time | | | | | |
+| en19 | reaction time in sports | | | | | |
 | es1 | test de tiempo de reacción | | | | | |
 | es2 | tiempo de reacción medio por edad | | | | | |
 | es3 | reto de los 3 segundos cronómetro | | | | | |
 | es4 | cómo mejorar el tiempo de reacción | | | | | |
 | es5 | cafeína y tiempo de reacción | | | | | |
+| es6 | tiempo de reacción en el deporte | | | | | |
 | fr1 | test de temps de réaction | | | | | |
 | fr2 | comment améliorer son temps de réaction | | | | | |
 | fr3 | caféine et temps de réaction | | | | | |
+| fr4 | temps de réaction dans le sport | | | | | |
 | pt1 | teste de tempo de reação | | | | | |
 | pt2 | como melhorar o tempo de reação | | | | | |
 | pt3 | cafeína e tempo de reação | | | | | |
+| pt4 | tempo de reação no esporte | | | | | |
 
 ## Manual steps (owner, once)
 Google Search Console: submit `https://www.gurrulabs.com/sitemap.xml`. Bing Webmaster Tools: import the site

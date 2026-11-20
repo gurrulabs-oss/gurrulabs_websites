@@ -70,7 +70,7 @@ const T = {
     pulse_title: 'Pulse app: reflex and timing game for Android | Gurrulabs',
     pulse_desc: 'Pulse is a reflex and sense-of-time game for Android: 5 modes, no account, works offline. Play all five modes right in your browser.',
     guides_h: 'Tests and guides', guides_p: 'Read what the studies say, then test yourself in the browser.', read_h: 'Keep reading', faq_h: 'FAQ', edu: 'Educational content.', edu_med: 'Educational content, not medical advice.',
-    foot: ['Reaction test', '3 s challenge', 'Hidden Clock', 'Interval', 'Batak', 'Reaction by age', 'Best reflex apps', 'Improve reaction time', 'Caffeine and reaction time'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
+    foot: ['Reaction test', '3 s challenge', 'Hidden Clock', 'Interval', 'Batak', 'Reaction by age', 'Best reflex apps', 'Improve reaction time', 'Caffeine and reaction time', 'Reaction time in sports'], pulse_card: ['The Pulse app', 'Five modes to train'], read: n => `${n} min read`,
   },
   es: {
     home_h1: 'Apps pequeñas que hacen <em>una cosa</em> bien.', kick: 'Estudio independiente de apps Android',
@@ -124,7 +124,7 @@ const T = {
     pulse_title: 'App Pulse: juego de reflejos para Android | Gurrulabs',
     pulse_desc: 'Pulse es un juego de reflejos y sentido del tiempo para Android: 5 modos, sin cuenta y funciona sin conexión. Juega los cinco modos en el navegador.',
     guides_h: 'Pruebas y guías', guides_p: 'Lee lo que dicen los estudios y ponte a prueba en el navegador.', read_h: 'Sigue leyendo', faq_h: 'Preguntas frecuentes', edu: 'Contenido educativo.', edu_med: 'Contenido educativo, no consejo médico.',
-    foot: ['Test de reacción', 'Reto 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reacción por edad', 'Mejores apps de reflejos', 'Mejorar el tiempo de reacción', 'Cafeína y tiempo de reacción'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
+    foot: ['Test de reacción', 'Reto 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reacción por edad', 'Mejores apps de reflejos', 'Mejorar el tiempo de reacción', 'Cafeína y tiempo de reacción', 'Tiempo de reacción en el deporte'], pulse_card: ['La app Pulse', 'Cinco modos para entrenar'], read: n => `Lectura de ${n} min`,
   },
   fr: {
     home_h1: 'De petites applis qui font <em>une seule chose</em>, et bien.', kick: 'Studio indépendant d’applis Android',
@@ -178,7 +178,7 @@ const T = {
     pulse_title: 'Appli Pulse : jeu de réflexes pour Android | Gurrulabs',
     pulse_desc: 'Pulse est un jeu de réflexes et de sens du temps pour Android : 5 modes, sans compte, fonctionne hors ligne. Joue aux cinq modes dans ton navigateur.',
     guides_h: 'Tests et guides', guides_p: 'Lis ce que disent les études, puis teste-toi dans ton navigateur.', read_h: 'Continue à lire', faq_h: 'Questions fréquentes', edu: 'Contenu éducatif.', edu_med: 'Contenu éducatif, pas un avis médical.',
-    foot: ['Test de réaction', 'Défi 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Réaction par âge', 'Meilleures applis de réflexes', 'Améliorer son temps de réaction', 'Caféine et temps de réaction'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
+    foot: ['Test de réaction', 'Défi 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Réaction par âge', 'Meilleures applis de réflexes', 'Améliorer son temps de réaction', 'Caféine et temps de réaction', 'Temps de réaction dans le sport'], pulse_card: ['L’appli Pulse', 'Cinq modes pour t’entraîner'], read: n => `Lecture : ${n} min`,
   },
   pt: {
     home_h1: 'Apps pequenos que fazem <em>uma coisa</em> bem.', kick: 'Estúdio independente de apps Android',
@@ -232,7 +232,7 @@ const T = {
     pulse_title: 'App Pulse: jogo de reflexos para Android | Gurrulabs',
     pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Jogue os cinco modos no navegador.',
     guides_h: 'Testes e guias', guides_p: 'Veja o que dizem os estudos e depois se teste no navegador.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
-    foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo', 'Melhorar o tempo de reação', 'Cafeína e tempo de reação'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
+    foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo', 'Melhorar o tempo de reação', 'Cafeína e tempo de reação', 'Tempo de reação no esporte'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
   },
 };
 
@@ -330,6 +330,14 @@ const SRC = {
     ref: 'Giles GE, Mahoney CR, Brunyé TT, Gardony AL, Taylor HA, Kanarek RB. Differential cognitive effects of energy drink ingredients: caffeine, taurine, and glucose. <i>Pharmacology Biochemistry and Behavior</i>, 2012; 102(4):569–577.' },
   efsa: { cite: 'EFSA, 2015', url: 'https://www.efsa.europa.eu/sites/default/files/corporate_publications/files/efsaexplainscaffeine150527.pdf',
     ref: 'European Food Safety Authority. <i>Caffeine: EFSA explains risk assessment</i> (summary of EFSA’s Scientific Opinion on the safety of caffeine), 2015. doi:10.2805/618813.' },
+  brosnan: { cite: 'Brosnan et al., 2017', url: 'https://pubmed.ncbi.nlm.nih.gov/27351870/',
+    ref: 'Brosnan KC, Hayes K, Harrison AJ. Effects of false-start disqualification rules on response-times of elite-standard sprinters. <i>Journal of Sports Sciences</i>, 2017; 35(10):929–935.' },
+  zheng: { cite: 'Zheng et al., 2021', url: 'https://pubmed.ncbi.nlm.nih.gov/33517202/',
+    ref: 'Zheng R, de Reus C, van der Kamp J. Goalkeeping in the soccer penalty kick: the dive is coordinated to the kicker’s non-kicking leg placement, irrespective of time constraints. <i>Human Movement Science</i>, 2021; 76:102763.' },
+  vernon: { cite: 'Vernon et al., 2018', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6008562/',
+    ref: 'Vernon G, Farrow D, Reid M. Returning serve in tennis: a qualitative examination of the interaction of anticipatory information sources used by professional tennis players. <i>Frontiers in Psychology</i>, 2018; 9:895.' },
+  nuri: { cite: 'Nuri et al., 2013', url: 'https://pubmed.ncbi.nlm.nih.gov/24050458/',
+    ref: 'Nuri L, Shadmehr A, Ghotbi N, Attarbashi Moghadam B. Reaction time and anticipatory skill of athletes in open and closed skill-dominated sport. <i>European Journal of Sport Science</i>, 2013; 13(5):431–436.' },
   gp_pulse: { cite: 'Google Play: Pulse', url: 'https://play.google.com/store/apps/details?id=com.gurrulabs.pulse&hl=en_US&gl=US',
     ref: 'Google Play listing: Pulse (Gurrulabs), checked 6 Nov 2026.' },
   gp_nix: { cite: 'Google Play: Reaction training', url: 'https://play.google.com/store/apps/details?id=com.nixgames.reaction&hl=en_US&gl=US',
@@ -611,6 +619,54 @@ function cafBody(loc, L) {
     ${steps3([[res('0.252', L.ex[0]), ...L.st[0]], [lightsS(1, 1, 0), ...L.st[1]], [res('0.241', L.ex[1]), ...L.st[2]]])}`;
 }
 
+// ── "Reaction time in sports" guide (T-027): takeaway tiles + body from one localized copy object L (see CONTENT['sports-guide']).
+// Same builders as the improve guide (facts2 cards, ageChoiceBlock, steps3, tbl + .stack). One section per sport: question H2, one-line answer,
+// a sourced figure card and a "closest Pulse test" card. All numbers/claims come from the SRC entries cited in the copy.
+const sportIntro = (loc, kt, t) => { const d3 = v => loc === 'en' ? v : v.replace('.', ',');
+  return `<h2 class="facts2-h" id="takeaways">${kt}</h2>
+  <div class="stats4">
+    <div style="--c:var(--m-reaction)"><b><span class="count" data-to="0.100" data-d="3">${d3('0.100')}</span><small>s</small></b><span>${t[0]}</span><cite>${cite('wa')}</cite></div>
+    <div style="--c:var(--m-batak)"><b><span class="count" data-to="35" data-d="0">35</span></b><span>${t[1]}</span><cite>${cite('delgado')}</cite></div>
+    <div style="--c:var(--m-batak)"><b><span class="count" data-to="11" data-d="0">11</span><small>%</small></b><span>${t[2]}</span><cite>${cite('dye')}</cite></div>
+    <div style="--c:var(--m-exact)"><b><span class="count" data-to="115" data-d="0">115</span><small>ms</small></b><span>${t[3]}</span><cite>${cite('brosnan')}</cite></div>
+  </div>`; };
+function sportBody(loc, L) {
+  const d3 = v => loc === 'en' ? v : v.replace('.', ','), t = L.t, g = 'font-size="11" fill="var(--text3)"';
+  const pads = (...on) => `<svg class="mv" viewBox="0 0 200 54" aria-hidden="true"><g fill="var(--m-batak)">${[[52, 4], [80, 4], [108, 4], [52, 30], [80, 30], [108, 30]].map(([x, y], i) => `<rect x="${x}" y="${y}" width="20" height="20" rx="6"${on.includes(i) ? '' : ' opacity=".2"'}/>`).join('')}</g></svg>`;
+  const fig = (c, svg, big, p, k) => `<div style="--c:var(--${c})">${svg}<div class="big">${big}</div><p>${p}</p><a class="ref src" href="#src-${k}">${SRC[k].cite}</a></div>`;
+  const tst = (c, svg, p, id, i, big = L.closest) => `<div style="--c:var(--${c})">${svg}<div class="big">${big}</div><p>${p}</p><a class="ref src rule" href="${to(loc, id)}">${L.lk[i]} →</a></div>`;
+  const sec = (s, a, b) => `<h2>${s[0]}</h2>
+    <p>${s[1]}</p>
+    <div class="facts2">${a}${b}</div>`;
+  const sv = x => `<svg class="mv" viewBox="0 0 200 54" aria-hidden="true">${x}</svg>`;
+  const lights = sv(`<g fill="var(--miss)"><circle cx="40" cy="27" r="11" opacity=".25"/><circle cx="70" cy="27" r="11" opacity=".25"/><circle cx="100" cy="27" r="11" opacity=".25"/></g><text x="130" y="33" font-size="20" font-weight="200" fill="var(--text)">${d3('0.231')} s</text>`);
+  const res = (v, w) => `<div class="res">${dig(d3(v))}<em>${w}</em></div>`;
+  const rows = L.rows.map(([b, sm, f, test, k]) => [`<b>${b}</b><small>${sm}</small>`, f, test, cite(k)]);
+  const [s1, s2, s3, s4, s5] = L.s;
+  return `${sec(s1, fig('m-reaction', sv(`<line x1="0" y1="40" x2="200" y2="40" stroke="var(--text3)" stroke-opacity=".4"/><rect x="0" y="30" width="40" height="20" rx="5" fill="var(--miss)" opacity=".35"/><line x1="40" y1="20" x2="40" y2="54" stroke="var(--miss)" stroke-dasharray="3 4"/><text x="44" y="16" font-size="11" fill="var(--miss)">${d3('0.100')} s</text><g fill="var(--m-reaction)"><circle cx="70" cy="40" r="5"/><circle cx="92" cy="40" r="5"/><circle cx="104" cy="40" r="5"/><circle cx="130" cy="40" r="5"/></g><text x="200" y="16" text-anchor="end" ${g}>${t.sch}</text>`), d3(s1[2]), s1[3], 'wa'), tst('m-reaction', lights, s1[4], 'reaction-test', 0))}
+
+    ${sec(s2, fig('m-exact', sv(`<text x="0" y="10" ${g}>${t.sch}</text><line x1="0" y1="26" x2="200" y2="26" stroke="var(--text3)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/><circle cx="60" cy="26" r="5" fill="var(--m-exact)"/><text x="68" y="20" font-size="11" fill="var(--m-exact)">${t.plant}</text><line x1="0" y1="44" x2="200" y2="44" stroke="var(--m-exact)" stroke-width="3" stroke-linecap="round"/><circle cx="60" cy="44" r="5" fill="var(--m-exact)"/><text x="68" y="54" font-size="11" fill="var(--m-exact)">${t.dive}</text>`), s2[2], s2[3], 'zheng'), tst('m-batak', pads(1), s2[4], 'batak', 1))}
+
+    ${sec(s3, fig('m-interval', sv(`<text x="0" y="10" ${g}>${t.sch}</text><path d="M4 46 Q100 0 196 40" fill="none" stroke="var(--m-interval)" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 7"/><circle cx="196" cy="40" r="5" fill="var(--m-interval)"/>`), s3[2], s3[3], 'vernon'), tst('m-batak', pads(3), s3[4], 'batak', 1))}
+
+    <!--mid-->
+    ${sec(s4, fig('m-hidden', sv(`<text x="0" y="10" ${g}>${t.sch2}</text><text x="0" y="30" ${g}>${t.speed}</text><rect x="60" y="21" width="130" height="10" rx="5" fill="var(--m-hidden)"/><text x="0" y="50" ${g}>${t.acc}</text><rect x="60" y="41" width="56" height="10" rx="5" fill="var(--m-hidden)" opacity=".45"/>`), s4[2], s4[3], 'delgado'), tst('m-batak', sv(`<g fill="var(--m-batak)">${[[52, 4], [80, 4], [108, 4], [52, 30], [80, 30], [108, 30]].map(([x, y], i) => `<rect x="${x}" y="${y}" width="20" height="20" rx="6"${i === 2 || i === 4 ? '' : ' opacity=".2"'}/>`).join('')}</g><text x="140" y="44" font-size="11" fill="var(--miss)">${t.miss}</text>`), s4[4], 'batak', 1))}
+
+    ${sec(s5, fig('m-batak', sv(`<text x="0" y="10" ${g}>${t.rel}</text><rect x="0" y="20" width="200" height="12" rx="6" fill="var(--text3)" opacity=".45"/><rect x="0" y="38" width="178" height="12" rx="6" fill="var(--m-batak)"/><text x="196" y="30" text-anchor="end" font-size="11" fill="var(--bg)">${t.np}</text><text x="174" y="48" text-anchor="end" font-size="11" fill="var(--bg)">${t.pl}</text>`), s5[2], s5[3], 'dye'), tst('m-reaction', sv(`<g fill="var(--miss)"><circle cx="20" cy="27" r="9" opacity=".25"/><circle cx="44" cy="27" r="9" opacity=".25"/><circle cx="68" cy="27" r="9" opacity=".25"/></g><g fill="var(--m-batak)"><rect x="120" y="8" width="16" height="16" rx="5"/><rect x="142" y="8" width="16" height="16" rx="5" opacity=".2"/><rect x="120" y="30" width="16" height="16" rx="5" opacity=".2"/><rect x="142" y="30" width="16" height="16" rx="5" opacity=".2"/></g>`), s5[4], 'reaction-test', 0, L.closest2))}
+
+    <h2>${L.s6[0]}</h2>
+    <p>${L.s6[1]}</p>
+    ${ageChoiceBlock(L.ch)}
+    <p>${L.s6[2]}</p>
+    <h2>${L.s7[0]}</h2>
+    <p>${L.s7[1]}</p>
+    <h2>${L.s8[0]}</h2>
+    <p>${L.s8[1]}</p>
+    ${steps3([[res('0.231', L.ex[0]), ...L.st[0]], [`<svg viewBox="0 0 120 54" width="108" aria-hidden="true"><g fill="var(--m-batak)"><rect x="18" y="4" width="22" height="22" rx="6"/><rect x="48" y="4" width="22" height="22" rx="6" opacity=".2"/><rect x="78" y="4" width="22" height="22" rx="6" opacity=".2"/><rect x="18" y="30" width="22" height="22" rx="6" opacity=".2"/><rect x="48" y="30" width="22" height="22" rx="6" opacity=".2"/><rect x="78" y="30" width="22" height="22" rx="6" opacity=".2"/></g></svg>`, ...L.st[1]], [res('0.100', L.ex[1]), ...L.st[2]]])}
+    <h2>${L.s9}</h2>
+    ${tbl(L.th, rows, L.cap, ' stack')}`;
+}
+
 const CONTENT = {
   'reaction-test': { sources: [SRC.woods, SRC.jain, SRC.lim, SRC.wa, SRC.dye],
     en: { title: 'Reaction time test online: how fast are you? | Gurrulabs',
@@ -632,7 +688,7 @@ const CONTENT = {
     <p>Want to see how it changes over the years? Read <a href="${to('en', 'age-guide')}">average reaction time by age</a>.</p>
     <h2>What about in sport?</h2>
     <p>In athletics, a reaction off the blocks faster than <strong>0.100 s</strong> is flagged as a possible false start.</p>
-    <p>When a certified start information system is used, it alerts the starter with an acoustic signal to a possible false start whenever an athlete’s reaction time is under 0.100 s, and the starter then checks the start ${R('wa', 'Technical Rule 16.6')}.</p>`,
+    <p>When a certified start information system is used, it alerts the starter with an acoustic signal to a possible false start whenever an athlete’s reaction time is under 0.100 s, and the starter then checks the start ${R('wa', 'Technical Rule 16.6')}. Goalkeepers, tennis players, boxers and gamers: see <a href="${to('en', 'sports-guide')}">reaction time in sports</a>.</p>`,
       push: ['Train your reflexes in Pulse', 'Reaction, Batak and three timing games, offline.'],
       faq: [['Can you improve your reaction time?', `Partly. On fast choice tasks, action video game players responded 11% faster than non-players with the same accuracy, and some training studies indicate that playing can speed up responses ${R('dye')}. Sleep loss, on the other hand, slows you down ${R('lim')}. More in <a href="${to('en', 'improve-guide')}">how to improve reaction time</a>.`],
         ['Is a phone or a computer better?', 'Either works. What matters is comparing your scores on the same device, because every screen and mouse adds its own delay.'],
@@ -657,7 +713,7 @@ const CONTENT = {
     <p>¿Quieres ver cómo cambia con los años? Lo explicamos en <a href="${to('es', 'age-guide')}">tiempo de reacción medio por edad</a>.</p>
     <h2>¿Y en el deporte?</h2>
     <p>En atletismo, una reacción en los tacos de menos de <strong>0,100 s</strong> se marca como posible salida falsa.</p>
-    <p>Cuando se usa un sistema de información de salida certificado, este avisa al juez de salida con una señal acústica de una posible salida falsa si el tiempo de reacción de un atleta es inferior a 0,100 s, y el juez revisa entonces la salida ${R('wa', 'Regla Técnica 16.6')}.</p>`,
+    <p>Cuando se usa un sistema de información de salida certificado, este avisa al juez de salida con una señal acústica de una posible salida falsa si el tiempo de reacción de un atleta es inferior a 0,100 s, y el juez revisa entonces la salida ${R('wa', 'Regla Técnica 16.6')}. Porteros, tenistas, boxeadores y gamers: mira el <a href="${to('es', 'sports-guide')}">tiempo de reacción en el deporte</a>.</p>`,
       push: ['Entrena tus reflejos en Pulse', 'Reacción, Batak y tres juegos de tiempo, sin conexión.'],
       faq: [['¿Se puede mejorar el tiempo de reacción?', `En parte. En tareas de elección rápida, los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan, con la misma precisión, y algunos estudios de entrenamiento indican que jugar puede acelerar las respuestas ${R('dye')}. Dormir poco, en cambio, te hace más lento ${R('lim')}. Más en <a href="${to('es', 'improve-guide')}">cómo mejorar el tiempo de reacción</a>.`],
         ['¿Es mejor usar el móvil o el ordenador?', 'Cualquiera sirve. Lo importante es comparar tus marcas en el mismo aparato, porque cada pantalla y cada ratón añaden su propio retraso.'],
@@ -682,7 +738,7 @@ const CONTENT = {
     <p>Tu veux voir comment il évolue avec les années ? On l’explique dans <a href="${to('fr', 'age-guide')}">temps de réaction moyen par âge</a>.</p>
     <h2>Et dans le sport ?</h2>
     <p>En athlétisme, une réaction dans les starting-blocks de moins de <strong>0,100 s</strong> est signalée comme un possible faux départ.</p>
-    <p>Quand un système d’information au départ certifié est utilisé, il prévient le starter par un signal sonore d’un possible faux départ dès que le temps de réaction d’un athlète est inférieur à 0,100 s ; le starter vérifie alors le départ ${R('wa', 'règle technique 16.6')}.</p>`,
+    <p>Quand un système d’information au départ certifié est utilisé, il prévient le starter par un signal sonore d’un possible faux départ dès que le temps de réaction d’un athlète est inférieur à 0,100 s ; le starter vérifie alors le départ ${R('wa', 'règle technique 16.6')}. Gardiens, joueurs de tennis, boxeurs et joueurs : vois le <a href="${to('fr', 'sports-guide')}">temps de réaction dans le sport</a>.</p>`,
       push: ['Entraîne tes réflexes dans Pulse', 'Réaction, Batak et trois jeux de timing, hors ligne.'],
       faq: [['Peut-on améliorer son temps de réaction ?', `En partie. Sur des tâches de choix rapide, les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs, avec la même précision, et des études d’entraînement indiquent que jouer peut accélérer les réponses ${R('dye')}. À l’inverse, le manque de sommeil te ralentit ${R('lim')}. Plus d’infos dans <a href="${to('fr', 'improve-guide')}">comment améliorer son temps de réaction</a>.`],
         ['Mieux vaut un téléphone ou un ordinateur ?', 'Les deux conviennent. L’important est de comparer tes scores sur le même appareil, car chaque écran et chaque souris ajoutent leur propre délai.'],
@@ -707,7 +763,7 @@ const CONTENT = {
     <p>Quer ver como ele muda com os anos? Explicamos em <a href="${to('pt', 'age-guide')}">tempo de reação médio por idade</a>.</p>
     <h2>E no esporte?</h2>
     <p>No atletismo, uma reação no bloco de largada abaixo de <strong>0,100 s</strong> é sinalizada como possível largada falsa.</p>
-    <p>Quando se usa um sistema de informação de largada certificado, ele avisa o árbitro de largada com um sinal sonoro de uma possível largada falsa sempre que o tempo de reação de um atleta fica abaixo de 0,100 s; o árbitro então verifica a largada ${R('wa', 'Regra Técnica 16.6')}.</p>`,
+    <p>Quando se usa um sistema de informação de largada certificado, ele avisa o árbitro de largada com um sinal sonoro de uma possível largada falsa sempre que o tempo de reação de um atleta fica abaixo de 0,100 s; o árbitro então verifica a largada ${R('wa', 'Regra Técnica 16.6')}. Goleiros, tenistas, boxeadores e gamers: veja o <a href="${to('pt', 'sports-guide')}">tempo de reação no esporte</a>.</p>`,
       push: ['Treine seus reflexos no Pulse', 'Reação, Batak e três jogos de tempo, offline.'],
       faq: [['Dá para melhorar o tempo de reação?', `Em parte. Em tarefas de escolha rápida, jogadores de videogames de ação responderam 11% mais rápido que não jogadores, com a mesma precisão, e alguns estudos de treino indicam que jogar pode acelerar as respostas ${R('dye')}. Já dormir pouco deixa você mais lento ${R('lim')}. Mais em <a href="${to('pt', 'improve-guide')}">como melhorar o tempo de reação</a>.`],
         ['É melhor usar o celular ou o computador?', 'Qualquer um serve. O importante é comparar suas marcas no mesmo aparelho, porque cada tela e cada mouse têm seu próprio atraso.'],
@@ -744,7 +800,7 @@ const CONTENT = {
     <h2>Men and women</h2>
     <p>Studies do not agree. In the large 18-to-65 sample of Woods and colleagues, simple reaction time was unaffected by sex ${R('woods')}. A UK survey of 7,130 adults found significant sex differences, most notably in how variable choice reaction times were ${R('derdeary')}. A study of 120 first-year medical students aged 18 to 20, 60 men and 60 women, found faster times in men for both light and sound ${R('jain')}. The same study points to another factor, physical activity: only 20 of the 120 students exercised regularly, 16 men and 4 women, and in that small group the difference between men and women was not significant. No rule applies to you in particular: compare yourself with yourself.</p>
     <h2>Athletes and exercise</h2>
-    <p>A 2025 systematic review of 35 studies compared athletes with non-athletes on tasks of memory, attention and decision-making. Most studies reported that athletes outperformed controls, both in accuracy and in reaction time; martial arts and boxing showed good reaction times but poor accuracy ${R('delgado')}. The student study above also found faster times in regularly exercising students than in sedentary ones ${R('jain')}, and action video game players responded 11% faster on choice tasks ${R('dye')}. These are comparisons between groups: on their own they cannot show whether training makes people faster or faster people tend to train, and they promise nothing to any individual.</p>`,
+    <p>A 2025 systematic review of 35 studies compared athletes with non-athletes on tasks of memory, attention and decision-making. Most studies reported that athletes outperformed controls, both in accuracy and in reaction time; martial arts and boxing showed good reaction times but poor accuracy ${R('delgado')}. The student study above also found faster times in regularly exercising students than in sedentary ones ${R('jain')}, and action video game players responded 11% faster on choice tasks ${R('dye')}. These are comparisons between groups: on their own they cannot show whether training makes people faster or faster people tend to train, and they promise nothing to any individual. Sport by sport, with the closest test for each: <a href="${to('en', 'sports-guide')}">reaction time in sports</a>.</p>`,
       after: `<h2>Is my time normal?</h2>
     <p>This guide is <strong>educational</strong>: an online test cannot diagnose anything.</p>
     <p>The averages in the table were measured in a lab on calibrated equipment; your browser and screen add their own delay, so compare yourself mainly with yourself. If you notice your reflexes have changed suddenly, talk to a health professional.</p>`,
@@ -781,7 +837,7 @@ const CONTENT = {
     <h2>Hombres y mujeres</h2>
     <p>Los estudios no coinciden. En la gran muestra de 18 a 65 años de Woods y colaboradores, el tiempo de reacción simple no dependía del sexo ${R('woods')}. Una encuesta británica con 7.130 adultos halló diferencias significativas entre sexos, sobre todo en la variabilidad de la reacción de elección ${R('derdeary')}. Un estudio con 120 estudiantes de primer año de medicina de 18 a 20 años, 60 hombres y 60 mujeres, halló tiempos más rápidos en los hombres, tanto con luz como con sonido ${R('jain')}. Ese mismo estudio señala otro factor, la actividad física: solo 20 de los 120 estudiantes hacían ejercicio con regularidad, 16 hombres y 4 mujeres, y en ese grupo pequeño la diferencia entre hombres y mujeres no fue significativa. No hay una regla que valga para ti en concreto: compárate contigo mismo.</p>
     <h2>Deportistas y ejercicio</h2>
-    <p>Una revisión sistemática de 2025 con 35 estudios comparó a deportistas con no deportistas en tareas de memoria, atención y toma de decisiones. La mayoría de los estudios halló que los deportistas rendían mejor que los controles, tanto en precisión como en tiempo de reacción; las artes marciales y el boxeo mostraron buenos tiempos de reacción pero poca precisión ${R('delgado')}. El estudio con estudiantes de arriba también halló tiempos más rápidos en quienes hacían ejercicio con regularidad que en los sedentarios ${R('jain')}, y los jugadores de videojuegos de acción respondieron un 11 % más rápido en tareas de elección ${R('dye')}. Son comparaciones entre grupos: por sí solas no demuestran si entrenar hace más rápidas a las personas o si las más rápidas tienden a entrenar, y no prometen nada a ningún individuo.</p>`,
+    <p>Una revisión sistemática de 2025 con 35 estudios comparó a deportistas con no deportistas en tareas de memoria, atención y toma de decisiones. La mayoría de los estudios halló que los deportistas rendían mejor que los controles, tanto en precisión como en tiempo de reacción; las artes marciales y el boxeo mostraron buenos tiempos de reacción pero poca precisión ${R('delgado')}. El estudio con estudiantes de arriba también halló tiempos más rápidos en quienes hacían ejercicio con regularidad que en los sedentarios ${R('jain')}, y los jugadores de videojuegos de acción respondieron un 11 % más rápido en tareas de elección ${R('dye')}. Son comparaciones entre grupos: por sí solas no demuestran si entrenar hace más rápidas a las personas o si las más rápidas tienden a entrenar, y no prometen nada a ningún individuo. Deporte por deporte, con el test más parecido a cada uno: <a href="${to('es', 'sports-guide')}">tiempo de reacción en el deporte</a>.</p>`,
       after: `<h2>¿Mi tiempo es normal?</h2>
     <p>Esta guía es <strong>educativa</strong>: un test online no sirve para diagnosticar nada.</p>
     <p>Las medias de la tabla se midieron en laboratorio con un equipo calibrado; tu navegador y tu pantalla añaden su propio retraso, así que compárate sobre todo contigo mismo. Si notas que tus reflejos han cambiado de golpe, coméntalo con un profesional sanitario.</p>`,
@@ -818,7 +874,7 @@ const CONTENT = {
     <h2>Hommes et femmes</h2>
     <p>Les études ne concordent pas. Dans le grand échantillon de 18 à 65 ans de Woods et ses collègues, le temps de réaction simple n’était pas lié au sexe ${R('woods')}. Une enquête britannique sur 7 130 adultes a trouvé des différences significatives entre les sexes, surtout dans la variabilité de la réaction de choix ${R('derdeary')}. Une étude sur 120 étudiants de première année de médecine âgés de 18 à 20 ans, 60 hommes et 60 femmes, a trouvé des temps plus rapides chez les hommes, pour la lumière comme pour le son ${R('jain')}. Cette même étude pointe un autre facteur, l’activité physique : seuls 20 des 120 étudiants faisaient du sport régulièrement, 16 hommes et 4 femmes, et dans ce petit groupe la différence entre hommes et femmes n’était pas significative. Aucune règle ne vaut pour toi en particulier : compare-toi à toi-même.</p>
     <h2>Sportifs et exercice</h2>
-    <p>Une revue systématique de 2025 portant sur 35 études a comparé des sportifs à des non-sportifs sur des tâches de mémoire, d’attention et de prise de décision. La plupart des études ont observé que les sportifs faisaient mieux que les témoins, en précision comme en temps de réaction ; les arts martiaux et la boxe montraient de bons temps de réaction mais une précision médiocre ${R('delgado')}. L’étude sur les étudiants citée plus haut a aussi trouvé des temps plus rapides chez ceux qui faisaient du sport régulièrement que chez les sédentaires ${R('jain')}, et les joueurs de jeux vidéo d’action ont répondu 11 % plus vite sur des tâches de choix ${R('dye')}. Ce sont des comparaisons entre groupes : seules, elles ne montrent pas si l’entraînement rend plus rapide ou si les plus rapides s’entraînent plus, et elles ne promettent rien à personne en particulier.</p>`,
+    <p>Une revue systématique de 2025 portant sur 35 études a comparé des sportifs à des non-sportifs sur des tâches de mémoire, d’attention et de prise de décision. La plupart des études ont observé que les sportifs faisaient mieux que les témoins, en précision comme en temps de réaction ; les arts martiaux et la boxe montraient de bons temps de réaction mais une précision médiocre ${R('delgado')}. L’étude sur les étudiants citée plus haut a aussi trouvé des temps plus rapides chez ceux qui faisaient du sport régulièrement que chez les sédentaires ${R('jain')}, et les joueurs de jeux vidéo d’action ont répondu 11 % plus vite sur des tâches de choix ${R('dye')}. Ce sont des comparaisons entre groupes : seules, elles ne montrent pas si l’entraînement rend plus rapide ou si les plus rapides s’entraînent plus, et elles ne promettent rien à personne en particulier. Sport par sport, avec le test le plus proche de chacun : <a href="${to('fr', 'sports-guide')}">temps de réaction dans le sport</a>.</p>`,
       after: `<h2>Mon temps est-il normal ?</h2>
     <p>Ce guide est <strong>éducatif</strong> : un test en ligne ne permet aucun diagnostic.</p>
     <p>Les moyennes du tableau ont été mesurées en laboratoire avec du matériel calibré ; ton navigateur et ton écran ajoutent leur propre délai, alors compare-toi surtout à toi-même. Si tu remarques que tes réflexes ont changé d’un coup, parles-en à un professionnel de santé.</p>`,
@@ -855,7 +911,7 @@ const CONTENT = {
     <h2>Homens e mulheres</h2>
     <p>Os estudos não concordam. Na grande amostra de 18 a 65 anos de Woods e colegas, o tempo de reação simples não dependeu do sexo ${R('woods')}. Uma pesquisa britânica com 7.130 adultos encontrou diferenças significativas entre os sexos, principalmente na variabilidade da reação de escolha ${R('derdeary')}. Um estudo com 120 estudantes do primeiro ano de medicina, de 18 a 20 anos, 60 homens e 60 mulheres, encontrou tempos mais rápidos nos homens, tanto para luz quanto para som ${R('jain')}. O mesmo estudo aponta outro fator, a atividade física: só 20 dos 120 estudantes se exercitavam com regularidade, 16 homens e 4 mulheres, e nesse grupo pequeno a diferença entre homens e mulheres não foi significativa. Nenhuma regra vale para você em particular: compare-se com você mesmo.</p>
     <h2>Atletas e exercício</h2>
-    <p>Uma revisão sistemática de 2025 com 35 estudos comparou atletas com não atletas em tarefas de memória, atenção e tomada de decisão. A maioria dos estudos relatou que os atletas se saíam melhor que os controles, tanto em precisão quanto em tempo de reação; artes marciais e boxe mostraram bons tempos de reação, mas pouca precisão ${R('delgado')}. O estudo com estudantes citado acima também encontrou tempos mais rápidos em quem se exercitava com regularidade do que nos sedentários ${R('jain')}, e jogadores de videogames de ação responderam 11% mais rápido em tarefas de escolha ${R('dye')}. São comparações entre grupos: sozinhas, não mostram se treinar deixa as pessoas mais rápidas ou se as mais rápidas tendem a treinar, e não prometem nada a nenhum indivíduo.</p>`,
+    <p>Uma revisão sistemática de 2025 com 35 estudos comparou atletas com não atletas em tarefas de memória, atenção e tomada de decisão. A maioria dos estudos relatou que os atletas se saíam melhor que os controles, tanto em precisão quanto em tempo de reação; artes marciais e boxe mostraram bons tempos de reação, mas pouca precisão ${R('delgado')}. O estudo com estudantes citado acima também encontrou tempos mais rápidos em quem se exercitava com regularidade do que nos sedentários ${R('jain')}, e jogadores de videogames de ação responderam 11% mais rápido em tarefas de escolha ${R('dye')}. São comparações entre grupos: sozinhas, não mostram se treinar deixa as pessoas mais rápidas ou se as mais rápidas tendem a treinar, e não prometem nada a nenhum indivíduo. Esporte por esporte, com o teste mais parecido com cada um: <a href="${to('pt', 'sports-guide')}">tempo de reação no esporte</a>.</p>`,
       after: `<h2>Meu tempo é normal?</h2>
     <p>Este guia é <strong>educativo</strong>: um teste online não serve para diagnosticar nada.</p>
     <p>As médias da tabela foram medidas em laboratório com equipamento calibrado; seu navegador e sua tela acrescentam o próprio atraso, então compare-se principalmente com você mesmo. Se notar que seus reflexos mudaram de repente, fale com um profissional de saúde.</p>`,
@@ -1014,7 +1070,7 @@ const CONTENT = {
       faq: [['How long does it take to improve reaction time?', `No study we checked gives one number. In a six-week training study, young hockey players improved on the trained choice reaction time task ${R('schwab')}; how fast you improve depends on the task and the person. Compare weekly averages on the same device rather than single tries.`],
         ['Do reaction time games actually work?', `The evidence is mixed. Action video game players responded 11% faster than non-players on fast choice tasks with the same accuracy ${R('dye')}, but a training study found similar practice effects in action gamers, cognitive gamers and non-gamers on a simple perceptual task ${R('ravenz')}. No game can promise a specific gain.`],
         ['Does age stop you getting faster?', `Barely. Between 18 and 65 the average rises by about 0.5 ms per year, roughly 21 ms across the whole range ${R('woods')}.`],
-        ['Does exercise improve reaction time?', `In a study of 120 first-year medical students, those who exercised regularly had faster times than sedentary ones ${R('jain')}. That is a comparison between groups: it does not show that exercise made them faster.`],
+        ['Does exercise improve reaction time?', `In a study of 120 first-year medical students, those who exercised regularly had faster times than sedentary ones ${R('jain')}. That is a comparison between groups: it does not show that exercise made them faster. For how fast athletes react in each sport, see <a href="${to('en', 'sports-guide')}">reaction time in sports</a>.`],
         ['What is the fastest way to react quicker today?', `Be rested and alert, test under similar conditions each time, and avoid long sessions without breaks: sleep loss and long sessions both slow responses ${R('lim')} ${R('woods')}.`]],
       band: ['Train your reflexes every day', 'Pulse for Android: no account, works offline.'] },
     es: { title: 'Cómo mejorar el tiempo de reacción: guía | Gurrulabs',
@@ -1068,7 +1124,7 @@ const CONTENT = {
       faq: [['¿Cuánto se tarda en mejorar el tiempo de reacción?', `Ningún estudio que revisamos da una cifra única. En un estudio de entrenamiento de seis semanas, jóvenes jugadores de hockey mejoraron en la tarea de reacción de elección entrenada ${R('schwab')}; la rapidez de la mejora depende de la tarea y de la persona. Compara medias semanales en el mismo dispositivo en vez de intentos sueltos.`],
         ['¿Funcionan de verdad los juegos de tiempo de reacción?', `La evidencia es mixta. Los jugadores de videojuegos de acción respondieron un 11 % más rápido que quienes no juegan en tareas de elección rápida, con la misma precisión ${R('dye')}, pero un estudio de entrenamiento halló efectos de práctica parecidos en jugadores de acción, de juegos cognitivos y en quienes no jugaban, en una tarea perceptiva simple ${R('ravenz')}. Ningún juego puede prometer una mejora concreta.`],
         ['¿La edad impide mejorar?', `Apenas. Entre los 18 y los 65 años la media sube unos 0,5 ms por año, unos 21 ms en todo el rango ${R('woods')}.`],
-        ['¿Mejora el ejercicio el tiempo de reacción?', `En un estudio con 120 estudiantes de primer año de medicina, quienes hacían ejercicio con regularidad tuvieron tiempos más rápidos que los sedentarios ${R('jain')}. Es una comparación entre grupos: no demuestra que el ejercicio los hiciera más rápidos.`],
+        ['¿Mejora el ejercicio el tiempo de reacción?', `En un estudio con 120 estudiantes de primer año de medicina, quienes hacían ejercicio con regularidad tuvieron tiempos más rápidos que los sedentarios ${R('jain')}. Es una comparación entre grupos: no demuestra que el ejercicio los hiciera más rápidos. Cuánto reaccionan los deportistas en cada deporte, en <a href="${to('es', 'sports-guide')}">tiempo de reacción en el deporte</a>.`],
         ['¿Cuál es la forma más rápida de reaccionar mejor hoy?', `Estar descansado y despierto, medirte en condiciones parecidas cada vez y evitar sesiones largas sin pausas: dormir poco y las sesiones largas ralentizan las respuestas ${R('lim')} ${R('woods')}.`]],
       band: ['Entrena tus reflejos cada día', 'Pulse para Android: sin cuenta, funciona sin conexión.'] },
     fr: { title: 'Comment améliorer son temps de réaction : guide | Gurrulabs',
@@ -1122,7 +1178,7 @@ const CONTENT = {
       faq: [['Combien de temps faut-il pour améliorer son temps de réaction ?', `Aucune étude vérifiée ne donne un chiffre unique. Dans une étude d’entraînement de six semaines, de jeunes joueurs de hockey se sont améliorés sur la tâche de réaction de choix entraînée ${R('schwab')} ; la vitesse des progrès dépend de la tâche et de la personne. Compare des moyennes hebdomadaires sur le même appareil plutôt que des essais isolés.`],
         ['Les jeux de temps de réaction fonctionnent-ils vraiment ?', `Les preuves sont mitigées. Les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs sur des tâches de choix rapides, à précision égale ${R('dye')}, mais une étude d’entraînement a trouvé des effets de pratique similaires chez les joueurs d’action, les joueurs de jeux cognitifs et les non-joueurs sur une tâche perceptive simple ${R('ravenz')}. Aucun jeu ne peut promettre un gain précis.`],
         ['L’âge empêche-t-il de progresser ?', `À peine. Entre 18 et 65 ans, la moyenne augmente d’environ 0,5 ms par an, soit environ 21 ms sur toute la plage ${R('woods')}.`],
-        ['Le sport améliore-t-il le temps de réaction ?', `Dans une étude sur 120 étudiants de première année de médecine, ceux qui faisaient du sport régulièrement avaient des temps plus rapides que les sédentaires ${R('jain')}. C’est une comparaison entre groupes : elle ne prouve pas que le sport les a rendus plus rapides.`],
+        ['Le sport améliore-t-il le temps de réaction ?', `Dans une étude sur 120 étudiants de première année de médecine, ceux qui faisaient du sport régulièrement avaient des temps plus rapides que les sédentaires ${R('jain')}. C’est une comparaison entre groupes : elle ne prouve pas que le sport les a rendus plus rapides. Pour la rapidité de réaction des sportifs dans chaque sport, vois le <a href="${to('fr', 'sports-guide')}">temps de réaction dans le sport</a>.`],
         ['Quelle est la façon la plus rapide de mieux réagir aujourd’hui ?', `Être reposé et alerte, te tester dans des conditions similaires à chaque fois et éviter les longues séances sans pause : le manque de sommeil et les longues séances ralentissent les réponses ${R('lim')} ${R('woods')}.`]],
       band: ['Entraîne tes réflexes chaque jour', 'Pulse pour Android : sans compte, fonctionne hors connexion.'] },
     pt: { title: 'Como melhorar o tempo de reação: guia | Gurrulabs',
@@ -1176,7 +1232,7 @@ const CONTENT = {
       faq: [['Quanto tempo leva para melhorar o tempo de reação?', `Nenhum estudo que verificamos dá um número único. Num estudo de treino de seis semanas, jovens jogadores de hóquei melhoraram na tarefa de reação de escolha treinada ${R('schwab')}; a velocidade da melhora depende da tarefa e da pessoa. Compare médias semanais no mesmo aparelho em vez de tentativas isoladas.`],
         ['Jogos de tempo de reação funcionam mesmo?', `A evidência é mista. Jogadores de videogames de ação responderam 11% mais rápido que não jogadores em tarefas de escolha rápida, com a mesma precisão ${R('dye')}, mas um estudo de treino achou efeitos de prática parecidos em jogadores de ação, de jogos cognitivos e em quem não joga, numa tarefa perceptiva simples ${R('ravenz')}. Nenhum jogo pode prometer um ganho específico.`],
         ['A idade impede de ficar mais rápido?', `Quase nada. Entre 18 e 65 anos a média sobe cerca de 0,5 ms por ano, uns 21 ms em toda a faixa ${R('woods')}.`],
-        ['O exercício melhora o tempo de reação?', `Num estudo com 120 estudantes do primeiro ano de medicina, quem se exercitava regularmente teve tempos mais rápidos que os sedentários ${R('jain')}. É uma comparação entre grupos: não mostra que o exercício os deixou mais rápidos.`],
+        ['O exercício melhora o tempo de reação?', `Num estudo com 120 estudantes do primeiro ano de medicina, quem se exercitava regularmente teve tempos mais rápidos que os sedentários ${R('jain')}. É uma comparação entre grupos: não mostra que o exercício os deixou mais rápidos. Para saber com que rapidez atletas reagem em cada esporte, veja o <a href="${to('pt', 'sports-guide')}">tempo de reação no esporte</a>.`],
         ['Qual é o jeito mais rápido de reagir melhor hoje?', `Estar descansado e alerta, testar-se em condições parecidas todas as vezes e evitar sessões longas sem pausa: dormir pouco e sessões longas deixam as respostas mais lentas ${R('lim')} ${R('woods')}.`]],
       band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
   'caffeine-guide': { sources: [SRC.mclellan, SRC.einother, SRC.james, SRC.rogers, SRC.killgore, SRC.giles, SRC.efsa, SRC.lim],
@@ -1373,6 +1429,215 @@ const CONTENT = {
         ['A cafeína funciona se você toma café todo dia?', `Em parte, e os pesquisadores divergem. Uma revisão encontrou pouca evidência de benefício líquido no uso prolongado em comparação com a abstinência, com tolerância aos efeitos agudos ${R('james')}; outra concluiu que os efeitos não podem ser atribuídos à reversão da abstinência ${R('einother')}.`]],
       band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
 
+  'sports-guide': { sources: [SRC.wa, SRC.brosnan, SRC.zheng, SRC.vernon, SRC.delgado, SRC.dye, SRC.proctor, SRC.nuri, SRC.schwab],
+    rail: { en: ['Sprint start', 'Goalkeeper and penalties', 'Tennis return', 'Boxing and martial arts', 'Esports and gamers', 'More than raw speed', 'Can athletes train it?', 'Compare yourself', 'At a glance', 'FAQ'],
+      es: ['Salida en atletismo', 'Portero y penaltis', 'Resto en tenis', 'Boxeo y artes marciales', 'Esports y gamers', 'Más que velocidad', '¿Se puede entrenar?', 'Compárate', 'De un vistazo', 'Preguntas'],
+      fr: ['Départ du sprint', 'Gardien et penalties', 'Retour de service', 'Boxe et arts martiaux', 'E-sport et joueurs', 'Plus que la vitesse', 'S’entraîne-t-il ?', 'Compare-toi', 'En un coup d’œil', 'FAQ'],
+      pt: ['Largada no atletismo', 'Goleiro e pênaltis', 'Devolução no tênis', 'Boxe e artes marciais', 'Esports e gamers', 'Mais que velocidade', 'Dá para treinar?', 'Compare-se', 'Num relance', 'Perguntas'] },
+    en: { title: 'Reaction time in sports: sprint, tennis, esports | Gurrulabs',
+      desc: 'How fast athletes react in sprinting, football, tennis, boxing and esports: what rules and studies show, and the Pulse test closest to each sport.',
+      name: 'Reaction time in sports', h1: 'Reaction time in sports', em: 'Reaction time in sports', card: 'Five sports, with sources',
+      kick: 'Guide · Reaction time', kick2: 'Sprinters, goalkeepers, tennis, boxing, esports',
+      sub: 'How fast athletes have to react in five sports, what the rules and studies actually measure, and which Pulse test comes closest to each one.',
+      fig: ['0.100', 's'], hv: 'faster than this off the blocks, a sprint start is flagged as a possible false start (World Athletics, TR 16.6)',
+      answer: `Sprint rules treat a reaction off the blocks under <b>0.100 s</b> as a possible false start ${R('wa')}, so even elite athletes work near a floor. In other sports the question is less how fast and more what to choose and when: studies compare athletes on both reaction and anticipation ${R('nuri')}. They describe groups, not targets.`,
+      intro: sportIntro('en', 'Key takeaways', ['reaction off the blocks below which a sprint start is flagged as possibly false', 'studies in a 2025 review comparing athletes with non-athletes on cognitive tasks (attention, working memory, decision-making)', 'faster choice responses in action video game players, with the same accuracy', 'revised false-start threshold for men suggested by World and European Championship times (2017)']),
+      body: sportBody('en', {
+        closest: 'Closest test', closest2: 'Closest tests', lk: ['Reaction time test', 'Choice reaction time test'],
+        t: { sch: 'schematic', sch2: 'schematic, not study data', plant: 'plant foot', dive: 'dive starts', speed: 'speed', acc: 'accuracy', miss: 'miss', rel: 'relative response time', np: 'non-players', pl: 'players' },
+        s: [['How fast is a sprinter’s reaction time?', 'Fast enough that the rules set a floor: a reaction off the blocks under 0.100 s is treated as a possible false start.', '0.100 s',
+            `When a certified start system is used, it alerts the starter to a possible false start whenever an athlete reacts in under 0.100 s; the starter then checks the start. An analysis of World and European Championship times from 1999 to 2014 suggested revised thresholds of 115 ms for men and 119 ms for women ${R('brosnan')}.`,
+            'One signal, one response: the same kind of <strong>simple reaction</strong> as a sprint start, though starts answer a sound and this test uses lights.'],
+          ['How fast does a goalkeeper have to react to a penalty?', 'One study of goalkeepers proposed that reliable information becomes available late within the time constraints of a penalty kick.', 'Timed to the plant foot',
+            'In staged penalty kicks with the kicking distance and run-up speed varied, high-skilled goalkeepers timed the start of their dive to the landing of the kicker’s non-kicking leg next to the ball, irrespective of the time constraints.',
+            'Which corner? A <strong>choice reaction</strong>: a pad lights up somewhere and you hit that one, not just any.'],
+          ['How do tennis players react to a serve?', 'Top professionals describe using the server’s movement and the match situation to anticipate the serve.', 'Anticipation',
+            'Eight current or former top-250 professional players, interviewed about returning serve, described how cues from the server’s movement and contextual information interact to shape their anticipation. The evidence is what players said, not measurements of their reactions.',
+            'Forehand or backhand is a choice too: the Batak pads measure how fast you pick and hit the right target.'],
+          ['What is a boxer’s reaction time like?', 'Good reaction times but poor accuracy, in one 2025 review of EEG studies that included martial arts and boxing.', 'Good speed, poor accuracy',
+            'In 35 studies using EEG and cognitive tasks, most found athletes outperformed controls in accuracy and reaction time; <strong>martial arts and boxing</strong> showed good reaction times but poor accuracies.',
+            'Batak counts both: how fast you hit and how often you hit the wrong pad.'],
+          ['What is the reaction time of pro gamers?', 'No study cited here measures pros; in action video game players, choice responses were 11% faster than in non-players, with the same accuracy.', '11% faster',
+            'Action game players answered fast choice tasks 11% faster with the same accuracy. It is a comparison of groups of players, not of professionals.',
+            'Raw speed in the reaction test, then target picking in Batak: the simple and the choice reaction covered above.']],
+        s6: ['Why does sport need more than raw reaction speed?', 'Because most sports ask you to choose, not just to react, and experts also anticipate.',
+          `In a comparison of 11 sprinters and 11 volleyball players, the sprinters did better on both auditory reaction tests and the volleyball players on both anticipation tests, with no significant difference on the two visual choice reaction tests; the authors conclude that athletes have greater sensory-cognitive skills related to their own sport ${R('nuri')}.`],
+        ch: ['Simple reaction', 'One signal, one response: a sprint start.', 'Choice reaction', `Several possible signals, a different response for each: a save, a return, a block. Choice reaction time is related to the number of alternatives ${R('proctor')}.`],
+        s7: ['Can athletes train their reaction time?', `Partly, and mostly on what they practise: in a six-week study of 12 to 16 year old field hockey players, a vision training program improved a trained choice reaction task, but not an untrained tracking task ${R('schwab')}. For what the studies say about practice, sleep and games, see <a href="${to('en', 'improve-guide')}">how to improve your reaction time</a>.`],
+        s8: ['How does your reaction time compare with athletes’?', 'Take both tests, then put your numbers next to the table below. The sport figures are rules and study findings, not targets.'],
+        ex: ['Example result', 'Sprint false-start line'],
+        st: [['Simple reaction', `Five tries of the <a href="${to('en', 'reaction-test')}">reaction time test</a>; keep your average.`],
+          ['Choice reaction', `One round of the <a href="${to('en', 'batak')}">Batak test</a>: 8 lit pads, as fast as you can.`],
+          ['Compare', 'See where you sit next to each sport. Your device adds delay, so compare on the same one.']],
+        s9: 'Reaction time by sport at a glance',
+        th: ['Sport', 'Sourced figure or rule', 'Closest Pulse test', 'Source'],
+        rows: [['Sprint', 'the start signal', 'Under 0.100 s off the blocks = possible false start', `<a href="${to('en', 'reaction-test')}">Reaction test</a>`, 'wa'],
+          ['Football goalkeeper', 'the penalty kick', 'Dive timed to the kicker’s plant foot; reliable information arrives late', `<a href="${to('en', 'batak')}">Batak test</a>`, 'zheng'],
+          ['Tennis', 'the serve', 'Returners anticipate from the server’s movement and the match context (8 pros interviewed)', `<a href="${to('en', 'batak')}">Batak test</a>`, 'vernon'],
+          ['Boxing, martial arts', 'the opponent’s strike', 'Good reaction times, poor accuracies in a 35-study review', `<a href="${to('en', 'batak')}">Batak test</a>`, 'delgado'],
+          ['Esports, action games', 'targets on screen', '11% faster choice responses, same accuracy', `<a href="${to('en', 'reaction-test')}">Reaction</a> + <a href="${to('en', 'batak')}">Batak</a>`, 'dye']],
+        cap: 'Rules and group results from each source. Not targets for any one person.' }),
+      mid: ['Test yourself with Pulse', 'Reaction and Batak tests on Android, no account, works offline.'],
+      push: ['Track it with Pulse', 'Five modes on Android, no account, works offline.'],
+      after: `<p>Both tests are in <a href="${to('en', 'pulse')}">the Pulse app</a>, along with three timing games.</p>`,
+      faq: [['What is a good reaction time for an athlete?', `There is no single number: it depends on the sport and the task. In sprinting, a reaction under 0.100 s off the blocks is flagged as a possible false start ${R('wa')}.`],
+        ['Do athletes have faster reaction times than other people?', `In a 2025 review of 35 studies, most found athletes did better than non-athletes in accuracy and reaction time ${R('delgado')}. These are group comparisons and promise nothing to any individual.`],
+        ['Which sport needs the fastest reactions?', `No study we checked ranks sports. In one comparison, sprinters did better than volleyball players on auditory reaction tests and the volleyball players did better on anticipation tests ${R('nuri')}.`],
+        ['Are gamers’ reactions as fast as athletes’?', `No study cited here compares them directly. Action video game players responded 11% faster than non-players on fast choice tasks ${R('dye')}.`]],
+      band: ['Train your reflexes every day', 'Pulse for Android: no account, works offline.'] },
+    es: { title: 'Tiempo de reacción en el deporte: 5 deportes | Gurrulabs',
+      desc: 'Cómo reaccionan los deportistas en atletismo, fútbol, tenis, boxeo y esports: qué dicen las reglas y los estudios, y el test de Pulse más parecido.',
+      name: 'Tiempo de reacción en el deporte', h1: 'Tiempo de reacción en el deporte', em: 'Tiempo de reacción en el deporte', card: 'Cinco deportes, con fuentes',
+      kick: 'Guía · Tiempo de reacción', kick2: 'Velocistas, porteros, tenis, boxeo, esports',
+      sub: 'Qué rapidez necesitan los deportistas en cinco deportes, qué miden de verdad las reglas y los estudios, y qué test de Pulse se parece más a cada uno.',
+      fig: ['0,100', ' s'], hv: 'menos que esto en los tacos y la salida se marca como posible salida falsa (World Athletics, TR 16.6)',
+      answer: `Las reglas del atletismo marcan como posible salida falsa una reacción en los tacos de menos de <b>0,100 s</b> ${R('wa')}, así que incluso los mejores trabajan cerca de un suelo. En otros deportes importa menos la rapidez que qué elegir y cuándo: los estudios comparan a los deportistas en reacción y en anticipación ${R('nuri')}. Describen grupos, no objetivos.`,
+      intro: sportIntro('es', 'Ideas clave', ['de reacción en los tacos, por debajo de los cuales una salida se marca como posible salida falsa', 'estudios en una revisión de 2025 que compara a deportistas con no deportistas en tareas cognitivas (atención, memoria de trabajo, toma de decisiones)', 'más rápidas las respuestas de elección en jugadores de videojuegos de acción, con la misma precisión', 'umbral de salida falsa revisado para hombres, propuesto a partir de tiempos de Mundiales y Europeos (2017)']),
+      body: sportBody('es', {
+        closest: 'Test más parecido', closest2: 'Tests más parecidos', lk: ['Test de tiempo de reacción', 'Test de reacción de elección'],
+        t: { sch: 'esquema', sch2: 'esquema, no datos del estudio', plant: 'pie de apoyo', dive: 'empieza el salto', speed: 'velocidad', acc: 'precisión', miss: 'fallo', rel: 'tiempo de respuesta relativo', np: 'no jugadores', pl: 'jugadores' },
+        s: [['¿Qué rapidez tiene la reacción de un velocista?', 'Tanta que las reglas fijan un suelo: una reacción en los tacos de menos de 0,100 s se trata como posible salida falsa.', '0,100 s',
+            `Cuando se usa un sistema de salida certificado, este avisa de una posible salida falsa si un atleta reacciona en menos de 0,100 s; el juez revisa entonces la salida. Un análisis de tiempos de Mundiales y Europeos de 1999 a 2014 propuso umbrales revisados de 115 ms para hombres y 119 ms para mujeres ${R('brosnan')}.`,
+            'Una señal, una respuesta: el mismo tipo de <strong>reacción simple</strong> que una salida de atletismo, aunque la salida responde a un sonido y este test usa luces.'],
+          ['¿Qué rapidez necesita un portero ante un penalti?', 'Un estudio con porteros propuso que la información fiable llega tarde dentro de los límites de tiempo de un penalti.', 'Al ritmo del pie de apoyo',
+            'En penaltis escenificados, variando la distancia de tiro y la velocidad de carrera, los porteros de alto nivel ajustaron el inicio de su salto al apoyo de la pierna que no golpea del lanzador junto al balón, con independencia de las limitaciones de tiempo.',
+            '¿Qué esquina? Una <strong>reacción de elección</strong>: se ilumina una casilla y tienes que pulsar esa, no cualquiera.'],
+          ['¿Cómo reaccionan los tenistas a un saque?', 'Los profesionales de élite describen que usan el movimiento del sacador y la situación del partido para anticipar el saque.', 'Anticipación',
+            'Ocho jugadores profesionales, actuales o antiguos del top 250, entrevistados sobre el resto del saque, describieron cómo interactúan las señales del movimiento del sacador y la información del contexto en su anticipación. La evidencia es lo que dijeron los jugadores, no mediciones de sus reacciones.',
+            'Derecha o revés también es una elección: las casillas de Batak miden con qué rapidez eliges y pulsas el objetivo correcto.'],
+          ['¿Cómo es el tiempo de reacción de un boxeador?', 'Buenos tiempos de reacción pero poca precisión, en una revisión de 2025 de estudios con EEG que incluía artes marciales y boxeo.', 'Buena velocidad, poca precisión',
+            'En 35 estudios con EEG y tareas cognitivas, la mayoría halló que los deportistas superaban a los controles en precisión y en tiempo de reacción; las <strong>artes marciales y el boxeo</strong> mostraron buenos tiempos de reacción pero poca precisión.',
+            'Batak cuenta las dos cosas: con qué rapidez aciertas y cuántas veces pulsas la casilla equivocada.'],
+          ['¿Qué tiempo de reacción tienen los gamers profesionales?', 'Ningún estudio citado aquí mide a profesionales; en jugadores de videojuegos de acción, las respuestas de elección fueron un 11 % más rápidas que en no jugadores, con la misma precisión.', '11 % más rápido',
+            'Los jugadores de acción respondieron un 11 % más rápido en tareas de elección rápida, con la misma precisión. Es una comparación entre grupos de jugadores, no de profesionales.',
+            'La velocidad pura en el test de reacción y después elegir objetivos en Batak: la reacción simple y la de elección vistas arriba.']],
+        s6: ['¿Por qué el deporte necesita más que reaccionar rápido?', 'Porque casi todos los deportes piden elegir, no solo reaccionar, y los expertos además se anticipan.',
+          `En una comparación de 11 velocistas y 11 jugadores de voleibol, los velocistas lo hicieron mejor en las dos pruebas de reacción auditiva y los de voleibol en las dos de anticipación, sin diferencias significativas en las dos pruebas de reacción de elección visual; los autores concluyen que los deportistas tienen mayores habilidades sensoriocognitivas ligadas a su propio deporte ${R('nuri')}.`],
+        ch: ['Reacción simple', 'Una señal, una respuesta: una salida de atletismo.', 'Reacción de elección', `Varias señales posibles, una respuesta distinta para cada una: una parada, un resto, un bloqueo. El tiempo de reacción de elección está relacionado con el número de alternativas ${R('proctor')}.`],
+        s7: ['¿Pueden los deportistas entrenar su tiempo de reacción?', `En parte, y sobre todo en lo que practican: en un estudio de seis semanas con jugadores de hockey sobre hierba de 12 a 16 años, un programa de entrenamiento visual mejoró una tarea de reacción de elección entrenada, pero no una tarea de seguimiento no entrenada ${R('schwab')}. Lo que dicen los estudios sobre práctica, sueño y juegos está en <a href="${to('es', 'improve-guide')}">cómo mejorar el tiempo de reacción</a>.`],
+        s8: ['¿Cómo se compara tu tiempo de reacción con el de los deportistas?', 'Haz los dos tests y pon tus números junto a la tabla de abajo. Las cifras de cada deporte son reglas y hallazgos de estudios, no objetivos.'],
+        ex: ['Resultado de ejemplo', 'Límite de salida falsa'],
+        st: [['Reacción simple', `Cinco intentos del <a href="${to('es', 'reaction-test')}">test de tiempo de reacción</a>; quédate con tu media.`],
+          ['Reacción de elección', `Una ronda del <a href="${to('es', 'batak')}">test Batak</a>: 8 casillas iluminadas, lo más rápido que puedas.`],
+          ['Compara', 'Mira dónde quedas junto a cada deporte. Tu dispositivo añade retraso, así que compara siempre en el mismo.']],
+        s9: 'Tiempo de reacción por deporte de un vistazo',
+        th: ['Deporte', 'Cifra o regla con fuente', 'Test de Pulse más parecido', 'Fuente'],
+        rows: [['Atletismo (velocidad)', 'la señal de salida', 'Menos de 0,100 s en los tacos = posible salida falsa', `<a href="${to('es', 'reaction-test')}">Test de reacción</a>`, 'wa'],
+          ['Portero de fútbol', 'el penalti', 'Salto al ritmo del pie de apoyo del lanzador; la información fiable llega tarde', `<a href="${to('es', 'batak')}">Test Batak</a>`, 'zheng'],
+          ['Tenis', 'el saque', 'Los restadores se anticipan por el movimiento del sacador y el contexto (8 profesionales entrevistados)', `<a href="${to('es', 'batak')}">Test Batak</a>`, 'vernon'],
+          ['Boxeo, artes marciales', 'el golpe del rival', 'Buenos tiempos de reacción, poca precisión en una revisión de 35 estudios', `<a href="${to('es', 'batak')}">Test Batak</a>`, 'delgado'],
+          ['Esports, juegos de acción', 'objetivos en pantalla', 'Respuestas de elección un 11 % más rápidas, misma precisión', `<a href="${to('es', 'reaction-test')}">Reacción</a> + <a href="${to('es', 'batak')}">Batak</a>`, 'dye']],
+        cap: 'Reglas y resultados de grupo de cada fuente. No son objetivos para nadie en particular.' }),
+      mid: ['Pruébate con Pulse', 'Tests de reacción y Batak en Android, sin cuenta, funciona sin conexión.'],
+      push: ['Sigue tu progreso con Pulse', 'Cinco modos en Android, sin cuenta, funciona sin conexión.'],
+      after: `<p>Los dos tests están en <a href="${to('es', 'pulse')}">la app Pulse</a>, junto con tres juegos de tiempo.</p>`,
+      faq: [['¿Cuál es un buen tiempo de reacción para un deportista?', `No hay una cifra única: depende del deporte y de la tarea. En atletismo, una reacción de menos de 0,100 s en los tacos se marca como posible salida falsa ${R('wa')}.`],
+        ['¿Los deportistas tienen tiempos de reacción más rápidos que los demás?', `En una revisión de 2025 con 35 estudios, la mayoría halló que los deportistas lo hacían mejor que los no deportistas en precisión y en tiempo de reacción ${R('delgado')}. Son comparaciones entre grupos y no prometen nada a nadie en particular.`],
+        ['¿Qué deporte exige las reacciones más rápidas?', `Ningún estudio de los que revisamos clasifica los deportes. En una comparación, los velocistas lo hicieron mejor que los jugadores de voleibol en las pruebas de reacción auditiva y los de voleibol en las de anticipación ${R('nuri')}.`],
+        ['¿Reaccionan los gamers tan rápido como los deportistas?', `Ningún estudio citado aquí los compara directamente. Los jugadores de videojuegos de acción respondieron un 11 % más rápido que los no jugadores en tareas de elección rápida ${R('dye')}.`]],
+      band: ['Entrena tus reflejos cada día', 'Pulse para Android: sin cuenta, funciona sin conexión.'] },
+    fr: { title: 'Temps de réaction dans le sport : 5 sports | Gurrulabs',
+      desc: 'Quelle rapidité de réaction en sprint, football, tennis, boxe et e-sport : ce que disent les règles et les études, et le test Pulse le plus proche.',
+      name: 'Temps de réaction dans le sport', h1: 'Temps de réaction dans le sport', em: 'Temps de réaction dans le sport', card: 'Cinq sports, avec sources',
+      kick: 'Guide · Temps de réaction', kick2: 'Sprinteurs, gardiens, tennis, boxe, e-sport',
+      sub: 'À quelle vitesse les sportifs doivent réagir dans cinq sports, ce que mesurent vraiment les règles et les études, et quel test Pulse s’en approche le plus.',
+      fig: ['0,100', ' s'], hv: 'en dessous, une réaction dans les starting-blocks est signalée comme un possible faux départ (World Athletics, TR 16.6)',
+      answer: `Les règles de l’athlétisme signalent comme possible faux départ une réaction dans les starting-blocks de moins de <b>0,100 s</b> ${R('wa')} : même l’élite travaille près d’un plancher. Dans les autres sports, la question est moins la vitesse que quoi choisir et quand : les études comparent les sportifs en réaction et en anticipation ${R('nuri')}. Elles décrivent des groupes, pas des objectifs.`,
+      intro: sportIntro('fr', 'À retenir', ['de réaction dans les starting-blocks, en dessous desquels un départ est signalé comme possible faux départ', 'études dans une revue de 2025 comparant sportifs et non-sportifs sur des tâches cognitives (attention, mémoire de travail, prise de décision)', 'réponses de choix plus rapides chez les joueurs de jeux vidéo d’action, à précision égale', 'seuil de faux départ révisé pour les hommes, proposé d’après des temps de Mondiaux et d’Europe (2017)']),
+      body: sportBody('fr', {
+        closest: 'Test le plus proche', closest2: 'Tests les plus proches', lk: ['Test de temps de réaction', 'Test de réaction de choix'],
+        t: { sch: 'schéma', sch2: 'schéma, pas des données d’étude', plant: 'pied d’appui', dive: 'début du plongeon', speed: 'vitesse', acc: 'précision', miss: 'raté', rel: 'temps de réponse relatif', np: 'non-joueurs', pl: 'joueurs' },
+        s: [['Quelle est la rapidité de réaction d’un sprinteur ?', 'Assez rapide pour que les règles fixent un plancher : une réaction dans les starting-blocks de moins de 0,100 s est traitée comme un possible faux départ.', '0,100 s',
+            `Quand un système de départ certifié est utilisé, il signale un possible faux départ dès qu’un athlète réagit en moins de 0,100 s ; le starter vérifie alors le départ. Une analyse des temps de Mondiaux et de Championnats d’Europe de 1999 à 2014 a proposé des seuils révisés de 115 ms pour les hommes et 119 ms pour les femmes ${R('brosnan')}.`,
+            'Un signal, une réponse : le même type de <strong>réaction simple</strong> qu’un départ de sprint, même si le départ répond à un son et que ce test utilise des lumières.'],
+          ['À quelle vitesse un gardien doit-il réagir sur un penalty ?', 'Une étude sur des gardiens a proposé que l’information fiable arrive tard dans les contraintes de temps d’un penalty.', 'Calé sur le pied d’appui',
+            'Lors de penalties mis en scène, avec la distance de tir et la vitesse d’élan modifiées, les gardiens de haut niveau ont calé le début de leur plongeon sur la pose de la jambe d’appui du tireur à côté du ballon, quelles que soient les contraintes de temps.',
+            'Quel coin ? Une <strong>réaction de choix</strong> : une case s’allume quelque part et tu dois toucher celle-là, pas n’importe laquelle.'],
+          ['Comment les joueurs de tennis réagissent-ils à un service ?', 'Les professionnels de haut niveau décrivent qu’ils utilisent le mouvement du serveur et la situation du match pour anticiper le service.', 'Anticipation',
+            'Huit joueurs professionnels, actuels ou anciens du top 250, interrogés sur le retour de service, ont décrit comment les indices du mouvement du serveur et les informations de contexte interagissent dans leur anticipation. La preuve, ce sont les propos des joueurs, pas des mesures de leurs réactions.',
+            'Coup droit ou revers est aussi un choix : les cases de Batak mesurent la vitesse à laquelle tu choisis et touches la bonne cible.'],
+          ['Comment est le temps de réaction d’un boxeur ?', 'De bons temps de réaction mais une précision médiocre, dans une revue de 2025 d’études avec EEG incluant arts martiaux et boxe.', 'Bonne vitesse, précision faible',
+            'Dans 35 études avec EEG et tâches cognitives, la plupart ont observé que les sportifs faisaient mieux que les témoins en précision comme en temps de réaction ; les <strong>arts martiaux et la boxe</strong> montraient de bons temps de réaction mais une précision médiocre.',
+            'Batak compte les deux : la vitesse à laquelle tu touches et le nombre de fois où tu touches la mauvaise case.'],
+          ['Quel est le temps de réaction des joueurs pros ?', 'Aucune étude citée ici ne mesure des pros ; chez les joueurs de jeux vidéo d’action, les réponses de choix étaient 11 % plus rapides que chez les non-joueurs, à précision égale.', '11 % plus vite',
+            'Les joueurs de jeux d’action ont répondu 11 % plus vite sur des tâches de choix rapide, avec la même précision. C’est une comparaison entre groupes de joueurs, pas de professionnels.',
+            'La vitesse brute dans le test de réaction, puis le choix de cibles dans Batak : la réaction simple et la réaction de choix vues plus haut.']],
+        s6: ['Pourquoi le sport demande-t-il plus que de la vitesse de réaction pure ?', 'Parce que la plupart des sports demandent de choisir, pas seulement de réagir, et que les experts anticipent aussi.',
+          `Dans une comparaison de 11 sprinteurs et 11 volleyeurs, les sprinteurs ont fait mieux aux deux tests de réaction auditive et les volleyeurs aux deux tests d’anticipation, sans différence significative aux deux tests de réaction de choix visuelle ; les auteurs concluent que les sportifs ont de meilleures compétences sensori-cognitives liées à leur propre sport ${R('nuri')}.`],
+        ch: ['Réaction simple', 'Un signal, une réponse : un départ de sprint.', 'Réaction de choix', `Plusieurs signaux possibles, une réponse différente pour chacun : un arrêt, un retour, un blocage. Le temps de réaction de choix est lié au nombre d’alternatives ${R('proctor')}.`],
+        s7: ['Les sportifs peuvent-ils entraîner leur temps de réaction ?', `En partie, et surtout sur ce qu’ils pratiquent : dans une étude de six semaines sur des joueurs de hockey sur gazon de 12 à 16 ans, un programme d’entraînement visuel a amélioré une tâche de réaction de choix entraînée, mais pas une tâche de suivi non entraînée ${R('schwab')}. Ce que disent les études sur la pratique, le sommeil et les jeux se trouve dans <a href="${to('fr', 'improve-guide')}">comment améliorer son temps de réaction</a>.`],
+        s8: ['Comment ton temps de réaction se compare-t-il à celui des sportifs ?', 'Fais les deux tests, puis place tes chiffres à côté du tableau ci-dessous. Les chiffres de chaque sport sont des règles et des résultats d’études, pas des objectifs.'],
+        ex: ['Résultat d’exemple', 'Seuil de faux départ'],
+        st: [['Réaction simple', `Cinq essais du <a href="${to('fr', 'reaction-test')}">test de temps de réaction</a> ; garde ta moyenne.`],
+          ['Réaction de choix', `Une manche du <a href="${to('fr', 'batak')}">test Batak</a> : 8 cases allumées, le plus vite possible.`],
+          ['Compare', 'Regarde où tu te situes à côté de chaque sport. Ton appareil ajoute du retard, compare donc toujours sur le même.']],
+        s9: 'Temps de réaction par sport en un coup d’œil',
+        th: ['Sport', 'Chiffre ou règle sourcés', 'Test Pulse le plus proche', 'Source'],
+        rows: [['Sprint', 'le signal de départ', 'Moins de 0,100 s dans les blocs = possible faux départ', `<a href="${to('fr', 'reaction-test')}">Test de réaction</a>`, 'wa'],
+          ['Gardien de football', 'le penalty', 'Plongeon calé sur le pied d’appui du tireur ; l’information fiable arrive tard', `<a href="${to('fr', 'batak')}">Test Batak</a>`, 'zheng'],
+          ['Tennis', 'le service', 'Les relanceurs anticipent d’après le mouvement du serveur et le contexte (8 pros interrogés)', `<a href="${to('fr', 'batak')}">Test Batak</a>`, 'vernon'],
+          ['Boxe, arts martiaux', 'le coup de l’adversaire', 'Bons temps de réaction, précision médiocre dans une revue de 35 études', `<a href="${to('fr', 'batak')}">Test Batak</a>`, 'delgado'],
+          ['E-sport, jeux d’action', 'cibles à l’écran', 'Réponses de choix 11 % plus rapides, même précision', `<a href="${to('fr', 'reaction-test')}">Réaction</a> + <a href="${to('fr', 'batak')}">Batak</a>`, 'dye']],
+        cap: 'Règles et résultats de groupe de chaque source. Pas des objectifs pour une personne en particulier.' }),
+      mid: ['Teste-toi avec Pulse', 'Tests de réaction et Batak sur Android, sans compte, fonctionne hors ligne.'],
+      push: ['Suis ta progression avec Pulse', 'Cinq modes sur Android, sans compte, fonctionne hors ligne.'],
+      after: `<p>Les deux tests sont dans <a href="${to('fr', 'pulse')}">l’appli Pulse</a>, avec trois jeux de timing.</p>`,
+      faq: [['Quel est un bon temps de réaction pour un sportif ?', `Il n’y a pas de chiffre unique : cela dépend du sport et de la tâche. En sprint, une réaction de moins de 0,100 s dans les blocs est signalée comme un possible faux départ ${R('wa')}.`],
+        ['Les sportifs ont-ils des temps de réaction plus rapides que les autres ?', `Dans une revue de 2025 portant sur 35 études, la plupart ont observé que les sportifs faisaient mieux que les non-sportifs en précision comme en temps de réaction ${R('delgado')}. Ce sont des comparaisons entre groupes, qui ne promettent rien à personne en particulier.`],
+        ['Quel sport demande les réactions les plus rapides ?', `Aucune étude consultée ne classe les sports. Dans une comparaison, les sprinteurs ont fait mieux que les volleyeurs aux tests de réaction auditive, et les volleyeurs mieux aux tests d’anticipation ${R('nuri')}.`],
+        ['Les joueurs réagissent-ils aussi vite que les sportifs ?', `Aucune étude citée ici ne les compare directement. Les joueurs de jeux vidéo d’action ont répondu 11 % plus vite que les non-joueurs sur des tâches de choix rapide ${R('dye')}.`]],
+      band: ['Entraîne tes réflexes chaque jour', 'Pulse pour Android : sans compte, fonctionne hors ligne.'] },
+    pt: { title: 'Tempo de reação no esporte: 5 esportes | Gurrulabs',
+      desc: 'Como reagem atletas no atletismo, futebol, tênis, boxe e esports: o que dizem as regras e os estudos, e o teste do Pulse mais parecido com cada um.',
+      name: 'Tempo de reação no esporte', h1: 'Tempo de reação no esporte', em: 'Tempo de reação no esporte', card: 'Cinco esportes, com fontes',
+      kick: 'Guia · Tempo de reação', kick2: 'Velocistas, goleiros, tênis, boxe, esports',
+      sub: 'Com que rapidez os atletas precisam reagir em cinco esportes, o que as regras e os estudos medem de verdade e qual teste do Pulse chega mais perto de cada um.',
+      fig: ['0,100', ' s'], hv: 'abaixo disso, uma reação no bloco de largada é sinalizada como possível largada falsa (World Athletics, TR 16.6)',
+      answer: `As regras do atletismo sinalizam como possível largada falsa uma reação no bloco de largada abaixo de <b>0,100 s</b> ${R('wa')}, então até a elite trabalha perto de um piso. Nos outros esportes, importa menos a rapidez e mais o que escolher e quando: os estudos comparam atletas em reação e em antecipação ${R('nuri')}. Descrevem grupos, não metas.`,
+      intro: sportIntro('pt', 'Pontos principais', ['de reação no bloco, abaixo dos quais uma largada é sinalizada como possível largada falsa', 'estudos numa revisão de 2025 que compara atletas e não atletas em tarefas cognitivas (atenção, memória de trabalho, tomada de decisão)', 'respostas de escolha mais rápidas em jogadores de videogames de ação, com a mesma precisão', 'limite de largada falsa revisado para homens, proposto a partir de tempos de Mundiais e Europeus (2017)']),
+      body: sportBody('pt', {
+        closest: 'Teste mais parecido', closest2: 'Testes mais parecidos', lk: ['Teste de tempo de reação', 'Teste de reação de escolha'],
+        t: { sch: 'esquema', sch2: 'esquema, não dados do estudo', plant: 'pé de apoio', dive: 'início do salto', speed: 'velocidade', acc: 'precisão', miss: 'erro', rel: 'tempo de resposta relativo', np: 'não jogadores', pl: 'jogadores' },
+        s: [['Qual é o tempo de reação de um velocista?', 'Rápido o bastante para que as regras fixem um piso: uma reação no bloco de largada abaixo de 0,100 s é tratada como possível largada falsa.', '0,100 s',
+            `Quando se usa um sistema de largada certificado, ele avisa de uma possível largada falsa sempre que um atleta reage em menos de 0,100 s; o árbitro então verifica a largada. Uma análise de tempos de Mundiais e Europeus de 1999 a 2014 propôs limites revisados de 115 ms para homens e 119 ms para mulheres ${R('brosnan')}.`,
+            'Um sinal, uma resposta: o mesmo tipo de <strong>reação simples</strong> de uma largada, embora a largada responda a um som e este teste use luzes.'],
+          ['Com que rapidez um goleiro precisa reagir a um pênalti?', 'Um estudo com goleiros propôs que a informação confiável chega tarde dentro dos limites de tempo de um pênalti.', 'No ritmo do pé de apoio',
+            'Em pênaltis encenados, variando a distância da cobrança e a velocidade da corrida, goleiros de alto nível ajustaram o início do salto ao apoio da perna de apoio do batedor ao lado da bola, independentemente das restrições de tempo.',
+            'Qual canto? Uma <strong>reação de escolha</strong>: um pad acende em algum lugar e você tem de acertar justamente aquele.'],
+          ['Como os tenistas reagem a um saque?', 'Profissionais de elite descrevem que usam o movimento de quem saca e a situação da partida para antecipar o saque.', 'Antecipação',
+            'Oito jogadores profissionais, atuais ou ex-top 250, entrevistados sobre a devolução do saque, descreveram como as pistas do movimento do sacador e as informações de contexto interagem na antecipação. A evidência é o que os jogadores disseram, não medições de suas reações.',
+            'Forehand ou backhand também é uma escolha: os pads do Batak medem com que rapidez você escolhe e acerta o alvo certo.'],
+          ['Como é o tempo de reação de um boxeador?', 'Bons tempos de reação, mas baixa precisão, numa revisão de 2025 de estudos com EEG que incluía artes marciais e boxe.', 'Boa velocidade, pouca precisão',
+            'Em 35 estudos com EEG e tarefas cognitivas, a maioria viu atletas superando os controles em precisão e em tempo de reação; <strong>artes marciais e boxe</strong> mostraram bons tempos de reação, mas baixa precisão.',
+            'O Batak conta as duas coisas: com que rapidez você acerta e quantas vezes erra o pad.'],
+          ['Qual é o tempo de reação de jogadores profissionais?', 'Nenhum estudo citado aqui mede profissionais; em jogadores de videogames de ação, as respostas de escolha foram 11% mais rápidas que em não jogadores, com a mesma precisão.', '11% mais rápido',
+            'Jogadores de ação responderam 11% mais rápido em tarefas de escolha rápida, com a mesma precisão. É uma comparação entre grupos de jogadores, não de profissionais.',
+            'Velocidade pura no teste de reação e depois escolha de alvos no Batak: a reação simples e a de escolha vistas acima.']],
+        s6: ['Por que o esporte exige mais que velocidade pura de reação?', 'Porque a maioria dos esportes pede para escolher, não só reagir, e os especialistas também antecipam.',
+          `Numa comparação de 11 velocistas e 11 jogadores de vôlei, os velocistas foram melhores nos dois testes de reação auditiva e os de vôlei nos dois de antecipação, sem diferença significativa nos dois testes de reação de escolha visual; os autores concluem que atletas têm maiores habilidades sensório-cognitivas ligadas ao próprio esporte ${R('nuri')}.`],
+        ch: ['Reação simples', 'Um sinal, uma resposta: uma largada.', 'Reação de escolha', `Vários sinais possíveis, uma resposta diferente para cada um: uma defesa, uma devolução, um bloqueio. O tempo de reação de escolha está relacionado ao número de alternativas ${R('proctor')}.`],
+        s7: ['Atletas conseguem treinar o tempo de reação?', `Em parte, e sobretudo no que praticam: num estudo de seis semanas com jogadores de hóquei sobre grama de 12 a 16 anos, um programa de treino visual melhorou uma tarefa de reação de escolha treinada, mas não uma tarefa de rastreamento não treinada ${R('schwab')}. O que os estudos dizem sobre prática, sono e jogos está em <a href="${to('pt', 'improve-guide')}">como melhorar o tempo de reação</a>.`],
+        s8: ['Como seu tempo de reação se compara ao dos atletas?', 'Faça os dois testes e coloque seus números ao lado da tabela abaixo. Os números de cada esporte são regras e resultados de estudos, não metas.'],
+        ex: ['Resultado de exemplo', 'Limite de largada falsa'],
+        st: [['Reação simples', `Cinco tentativas do <a href="${to('pt', 'reaction-test')}">teste de tempo de reação</a>; fique com a média.`],
+          ['Reação de escolha', `Uma rodada do <a href="${to('pt', 'batak')}">teste Batak</a>: 8 pads acesos, o mais rápido que puder.`],
+          ['Compare', 'Veja onde você fica ao lado de cada esporte. Seu aparelho adiciona atraso, então compare sempre no mesmo.']],
+        s9: 'Tempo de reação por esporte num relance',
+        th: ['Esporte', 'Número ou regra com fonte', 'Teste do Pulse mais parecido', 'Fonte'],
+        rows: [['Atletismo (velocidade)', 'o sinal de largada', 'Abaixo de 0,100 s no bloco = possível largada falsa', `<a href="${to('pt', 'reaction-test')}">Teste de reação</a>`, 'wa'],
+          ['Goleiro de futebol', 'o pênalti', 'Salto no ritmo do pé de apoio do batedor; a informação confiável chega tarde', `<a href="${to('pt', 'batak')}">Teste Batak</a>`, 'zheng'],
+          ['Tênis', 'o saque', 'Quem devolve antecipa pelo movimento de quem saca e pelo contexto (8 profissionais entrevistados)', `<a href="${to('pt', 'batak')}">Teste Batak</a>`, 'vernon'],
+          ['Boxe, artes marciais', 'o golpe do adversário', 'Bons tempos de reação, baixa precisão numa revisão de 35 estudos', `<a href="${to('pt', 'batak')}">Teste Batak</a>`, 'delgado'],
+          ['Esports, jogos de ação', 'alvos na tela', 'Respostas de escolha 11% mais rápidas, mesma precisão', `<a href="${to('pt', 'reaction-test')}">Reação</a> + <a href="${to('pt', 'batak')}">Batak</a>`, 'dye']],
+        cap: 'Regras e resultados de grupo de cada fonte. Não são metas para ninguém em particular.' }),
+      mid: ['Teste-se com o Pulse', 'Testes de reação e Batak no Android, sem conta, funciona offline.'],
+      push: ['Acompanhe com o Pulse', 'Cinco modos no Android, sem conta, funciona offline.'],
+      after: `<p>Os dois testes estão no <a href="${to('pt', 'pulse')}">app Pulse</a>, junto com três jogos de tempo.</p>`,
+      faq: [['Qual é um bom tempo de reação para um atleta?', `Não existe um número único: depende do esporte e da tarefa. No atletismo, uma reação abaixo de 0,100 s no bloco de largada é sinalizada como possível largada falsa ${R('wa')}.`],
+        ['Atletas têm tempos de reação mais rápidos que as outras pessoas?', `Numa revisão de 2025 com 35 estudos, a maioria viu atletas se saindo melhor que não atletas em precisão e em tempo de reação ${R('delgado')}. São comparações entre grupos e não prometem nada a ninguém em particular.`],
+        ['Qual esporte exige as reações mais rápidas?', `Nenhum estudo que consultamos classifica os esportes. Numa comparação, os velocistas foram melhores que os jogadores de vôlei nos testes de reação auditiva e os de vôlei foram melhores nos de antecipação ${R('nuri')}.`],
+        ['Gamers reagem tão rápido quanto atletas?', `Nenhum estudo citado aqui os compara diretamente. Jogadores de videogames de ação responderam 11% mais rápido que não jogadores em tarefas de escolha rápida ${R('dye')}.`]],
+      band: ['Treine seus reflexos todo dia', 'Pulse para Android: sem conta, funciona offline.'] } },
   '3s-challenge': { sources: [SRC.gibbon, SRC.haigh, SRC.poppel], tips: [['m-exact', 'exact'], ['m-hidden', 'wave'], ['m-reaction', 'reaction']],
     en: { title: '3 second challenge: stop the clock at 3.00 s | Gurrulabs',
       desc: 'Can you stop the stopwatch at exactly 3.00 s? Play in your browser with a ±0.10 s window and find out why it is so hard to nail.',
@@ -2369,7 +2634,7 @@ ${header(loc, p, t)}
   </article>
   ${sourcesBlock(loc, p)}
     </div>
-    ${railBlock(loc, [...heads, ['sources', t.src_h]], again)}
+    ${railBlock(loc, [...(CONTENT[p.id].rail ? heads.map(([id], i) => [id, CONTENT[p.id].rail[loc][i] || plain(heads[i][1])]) : heads), ['sources', t.src_h]], again)}
   </div>
   <section class="blk"><h2>${guide ? t.read_h : t.keep_h}</h2>${relBlock(loc, [...PULSE_CONTENT.filter(q => q !== p).map(q => q.id), 'pulse'])}</section>
   <section class="band"><div><h2>${c.band[0]}</h2><p>${c.band[1]}</p></div><div>${play(loc, 'pulse', 'footer_band')}</div></section>

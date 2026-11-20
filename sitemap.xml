@@ -326,7 +326,7 @@
   </url>
   <url>
     <loc>https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-por-edad/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/temps-de-reaction-par-age/"/>
@@ -335,7 +335,7 @@
   </url>
   <url>
     <loc>https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-por-edad/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-por-edad/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/temps-de-reaction-par-age/"/>
@@ -344,7 +344,7 @@
   </url>
   <url>
     <loc>https://www.gurrulabs.com/fr/pulse/temps-de-reaction-par-age/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-por-edad/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/temps-de-reaction-par-age/"/>
@@ -353,7 +353,7 @@
   </url>
   <url>
     <loc>https://www.gurrulabs.com/pt/pulse/tempo-de-reacao-por-idade/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/average-reaction-time-by-age/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-por-edad/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/temps-de-reaction-par-age/"/>
@@ -467,5 +467,41 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/cafeine-temps-de-reaction/"/>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/cafeina-tempo-de-reacao/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/caffeine-reaction-time/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-en-el-deporte/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/temps-de-reaction-dans-le-sport/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/tempo-de-reacao-no-esporte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-en-el-deporte/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-en-el-deporte/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/temps-de-reaction-dans-le-sport/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/tempo-de-reacao-no-esporte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/fr/pulse/temps-de-reaction-dans-le-sport/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-en-el-deporte/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/temps-de-reaction-dans-le-sport/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/tempo-de-reacao-no-esporte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/pt/pulse/tempo-de-reacao-no-esporte/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/pulse/tiempo-de-reaccion-en-el-deporte/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/pulse/temps-de-reaction-dans-le-sport/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/pulse/tempo-de-reacao-no-esporte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/pulse/reaction-time-in-sports/"/>
   </url>
 </urlset>
