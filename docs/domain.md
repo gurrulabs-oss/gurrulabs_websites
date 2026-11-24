@@ -48,7 +48,7 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
   - `Gurrulabs Web - Game Started` on Start, props `mode` (`exact|reaction|hidden|batak|interval|case`), `page`, `locale`. "Try again" starts a new game.
   - `Gurrulabs Web - Game Finished` when a game ends, same props + `result` (`"<perfect|pass|miss> <score>"`, score in
     seconds or `false_start`; same string as the Play link's `result`). Abandoned = started − finished.
-    Mode `case` (Cyberpunk Detective mini case, T-011): Started once when the case opens; Finished on every accusation with
+    Mode `case` (Cyberpunk Detective mini case, T-011): Started once per play-through (when the case opens or restarts); Finished on every accusation with
     `result` `solved|wrong` and `tries` (accusations so far).
 - Event names, prop names and values are English and never localized: pages by id (never the translated URL), locale as
   code, modes/results/zones as English keys, never visible text. Only Mixpanel's automatic `$current_url` is the real URL.

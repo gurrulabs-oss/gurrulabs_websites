@@ -262,7 +262,7 @@
     function sScene() {
       const n = SCENE.filter(has).length, p = st.pop && clue(st.pop), next = SCENE.find(id => !has(id));
       const hs = SCENE.map(id => { const c = clue(id), f = has(id), x = c.hotspot[0] * 100, side = x > 80 ? ' r' : x < 20 ? ' l' : '';
-        return `<button class="cs-hs${f ? ' found' : ''}${id === next && !p ? ' next' : ''}${side}" style="left:${x}%;top:${c.hotspot[1] * 100}%" data-clue="${id}" aria-label="${esc(f ? fill(I.foundAria, { a: c.place, b: c.code }) : I.examine)}"><i></i>${f ? `<span class="cs-hl">${tg(c, 'f')}${esc(c.place)}</span>` : ''}</button>`; }).join('');
+        return `<button class="cs-hs${f ? ' found' : ''}${id === next && !p ? ' next' : ''}${side}" style="left:${x}%;top:${c.hotspot[1] * 100}%" data-clue="${id}" aria-label="${esc(f ? fill(I.foundAria, { a: c.place, b: c.code }) : `${I.examine} ${SCENE.indexOf(id) + 1}`)}"><i></i>${f ? `<span class="cs-hl">${tg(c, 'f')}${esc(c.place)}</span>` : ''}</button>`; }).join('');
       const pop = p ? `<div class="cs-pop" role="dialog" aria-label="${esc(I.clueFound)}"><div class="cs-popc"><p class="cs-lab cy">${tg(p, 'f')}${I.clueFound}</p><h4>${esc(p.title)}</h4><p>${esc(p.text)}</p><small>${fill(I.saved, { a: n, b: SCENE.length })}</small><button class="cs-btn ghost" data-close>${I.keepSearching}</button></div></div>` : '';
       return `<div class="cs-sceneL"><div class="cs-scene"><img src="${art('scene')}" width="1006" height="1564" alt="${esc(I.sceneAlt)}">${hs}${pop}</div>` +
         `<div><div class="cs-h"><h3 tabindex="-1">${I.sceneH}</h3><p>${I.sceneP}</p></div>` +
@@ -330,22 +330,36 @@
         (f.length ? `<ul class="cs-dl">${grp(I.fromLab, f.filter(isScene))}${grp(I.fromSusp, f.filter(c => !isScene(c)))}</ul>` : `<p class="cs-dempty">${I.dEmpty}</p>`) + '</div>';
     }
 
+    // Every render replaces innerHTML: remember what had keyboard focus (by its data-* attribute and zone) and put it back after
+    let want = null; // set by a handler to force the next focus target, e.g. the hotspot that opened a closing popup
+    const FOCUS_KEYS = ['sel', 'filter', 'pick', 'slot', 'clue', 'sus', 'go', 'si', 'hint', 'present', 'dopresent', 'solve', 'back', 'cont', 'reset', 'close', 'dclose'];
+    const focusOf = el => { if (!el || !root.contains(el)) return null;
+      const zone = el.closest('.cs-steps') ? '.cs-steps' : el.closest('.cs-diary') ? '.cs-diary' : '.cs-stage', b = el.closest('button');
+      if (!b) return el.closest('summary') ? { zone, sel: 'summary' } : null;
+      const k = FOCUS_KEYS.find(k => k in b.dataset); return k ? { zone, sel: b.dataset[k] ? `[data-${k}="${b.dataset[k]}"]` : `[data-${k}]` } : null; };
     function render() {
+      const keep = want || focusOf(document.activeElement); want = null;
       const idx = { scene: 0, suspects: 1, contra: 1, deduce: 2, solved: 3 }[st.s];
       root.classList.add('play');
       $r('.cs-steps').innerHTML = [['scene', I.stepScene], ['suspects', I.stepSuspects], ['deduce', I.stepDeduce]].map((l, i) => {
         const dis = st.s === 'solved' || (l[0] === 'deduce' && !allCaught()), done = i < idx;
         return `<li class="${i === idx ? 'on' : done ? 'done' : ''}"><button data-go="${l[0]}"${dis ? ' disabled' : ''}${i === idx ? ' aria-current="step"' : ''}><b>${done ? ico('check') : i + 1}</b><span>${l[1]}</span></button></li>`; }).join('');
-      const sb = $r('.cs-stage'), key = st.s + (st.sus || '');
+      const sb = $r('.cs-stage'), key = st.s + (st.sus || ''); let moved = false;
       sb.innerHTML = stage();
       $r('.cs-diary').innerHTML = diary();
       if (key !== lastKey) { // new screen: replay the entrance, move keyboard/screen-reader focus to its heading
         sb.classList.remove('in'); void sb.offsetWidth; sb.classList.add('in');
         sb.querySelector('h3[tabindex]')?.focus({ preventScroll: true });
-        lastKey = key;
+        lastKey = key; moved = true;
       }
       st.shake = false;
-      $r('.cs-pop .cs-btn')?.focus({ preventScroll: true });
+      const pop = $r('.cs-pop .cs-btn');
+      if (pop) pop.focus({ preventScroll: true });
+      else if (keep && !moved) {
+        const el = $r(keep.zone)?.querySelector(keep.sel);
+        if (el && !el.disabled) el.focus({ preventScroll: true });
+        else if (!sb.contains(document.activeElement)) { sb.tabIndex = -1; sb.focus({ preventScroll: true }); }
+      }
     }
     function open() { // the case opens: first time from the hero button, again after "Play again"
       if (started) return; started = true;
@@ -354,14 +368,14 @@
       root.scrollIntoView({ behavior: motion ? 'smooth' : 'auto' });
     }
 
-    addEventListener('keydown', e => { if (e.key === 'Escape' && st.pop) { st.pop = null; render(); } });
+    addEventListener('keydown', e => { if (e.key === 'Escape' && st.pop) { want = { zone: '.cs-stage', sel: `[data-clue="${st.pop}"]` }; st.pop = null; render(); } });
     root.addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b || b.disabled) return;
       const D = b.dataset;
       if (b.hasAttribute('data-dclose')) { $r('.cs-diary').open = false; return; }
       if (D.go === 'scene' && !started) open();
       if (D.clue) { if (!has(D.clue)) { st.found.push(D.clue); st.pop = D.clue; } }
-      else if (b.hasAttribute('data-close')) st.pop = null;
+      else if (b.hasAttribute('data-close')) { want = { zone: '.cs-stage', sel: `[data-clue="${st.pop}"]` }; st.pop = null; }
       else if (D.sus) { st.sus = D.sus; st.si = 0; st.present = false; st.msg = ''; }
       else if (b.hasAttribute('data-back')) { st.sus = null; st.present = false; st.msg = ''; }
       else if (D.si) { st.si = +D.si; st.present = false; st.msg = ''; }
