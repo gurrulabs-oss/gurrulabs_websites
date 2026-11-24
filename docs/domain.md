@@ -45,9 +45,11 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
     first class, e.g. `p-hero`, `blk`, `guides`, or `body`).
   - `Gurrulabs Web - Source Clicked` on an http(s) link inside `.sources`, props `page`, `locale`, `domain` (hostname).
   - `Gurrulabs Web - Language Changed` on a switcher link to another locale, props `from`, `to` (`en|es|fr|pt`), `page`.
-  - `Gurrulabs Web - Game Started` on Start, props `mode` (`exact|reaction|hidden|batak|interval`), `page`, `locale`. "Try again" starts a new game.
+  - `Gurrulabs Web - Game Started` on Start, props `mode` (`exact|reaction|hidden|batak|interval|case`), `page`, `locale`. "Try again" starts a new game.
   - `Gurrulabs Web - Game Finished` when a game ends, same props + `result` (`"<perfect|pass|miss> <score>"`, score in
     seconds or `false_start`; same string as the Play link's `result`). Abandoned = started − finished.
+    Mode `case` (Cyberpunk Detective mini case, T-011): Started once per play-through (when the case opens or restarts); Finished on every accusation with
+    `result` `solved|wrong` and `tries` (accusations so far).
 - Event names, prop names and values are English and never localized: pages by id (never the translated URL), locale as
   code, modes/results/zones as English keys, never visible text. Only Mixpanel's automatic `$current_url` is the real URL.
 - A new page declares only `<body data-page="<slug>" data-locale="<locale>">`, loads `/script.js` and gives every

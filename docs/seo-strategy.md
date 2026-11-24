@@ -53,6 +53,8 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | Reaction time in sports guide (T-027) | reaction time in sports / tiempo de reacción en el deporte / temps de réaction dans le sport / tempo de reação no esporte | en: sprint start reaction time, goalkeeper reaction time, tennis serve return, boxer reaction time, esports reaction time; es/fr/pt: the same sports in each language | wants to know / compare | no "reaction time test", "average/normal reaction time", "best reaction time app", "how to improve reaction time"/training or caffeine; training stays one paragraph linking to the improve guide; no game |
 | Caffeine guide (T-026) | caffeine and reaction time / cafeína y tiempo de reacción / caféine et temps de réaction / cafeína e tempo de reação | does coffee improve reflexes, energy drinks and reaction time, how long caffeine takes to work (and native equivalents) | wants to know | no "reaction time test" (test), "average/normal reaction time" (age guide), "best reaction time app" (comparison), "how to improve reaction time" (improve guide) or per-sport reaction time (GWEB-027); no game, links to the tests; doses only as "the study gave X", no advice |
 | Cyberpunk Detective app | cyberpunk detective game / juego de detectives cyberpunk / jeu de détective cyberpunk / jogo de detetive cyberpunk | detective mystery game Android, audio crime stories, solve a case | wants an app | no "reaction", "reflex" or "tinnitus" keywords; no overlap with Pulse rows |
+| Cyberpunk mini case (T-011) | detective game online / juego de detectives online / jeu d'enquête en ligne / jogo de detetive online | solve a murder case, detective game in the browser, whodunit, interrogate suspects (and native equivalents) | wants to play now | no "cyberpunk detective game" (app page owns it); no "riddles" (riddles page) |
+| Cyberpunk murder riddles (T-011) | murder mystery riddles / acertijos de asesinatos / énigmes policières / enigmas de assassinato | with answers, short whodunit, detective riddles (and native equivalents) | wants to read / solve | no "detective game online" (mini case); no case spoilers |
 | Lull app (coming soon) | tinnitus sleep sounds app / app de sonidos para dormir con acúfenos / application sons pour dormir acouphènes / app de sons para dormir com zumbido | sleep with tinnitus, daily check-in; email sign-up (no install CTA) | wants to know / be told at launch | no "cure/eliminate/treat/reduce" wording; no Pulse or Cyberpunk keywords |
 
 ## Clusters per app (next batches, by priority)
@@ -61,7 +63,7 @@ sources and visible dates, structured data, llms.txt + IndexNow. Decided in T-00
 | 1 | Pulse | reaction & timing tests (batch 1: test, age guide, 3 s challenge) | play now / know | playable test, guide | done | GWEB-007 |
 | 2 | Pulse | more playable tests: lights wall (Batak), "count seconds in your head" (Hidden Clock), time estimation (Interval) | play now | playable test + short guide | done (2026-11-11) | GWEB-009 |
 | 3 | Pulse | "best reaction time / reflex app for Android" | choose an app | comparison ("best app") with honest criteria | done (2026-11-06) | GWEB-010 |
-| 4 | Cyberpunk Detective | detective / mystery puzzle games, "solve a case" playable hook | play now / choose a game | playable mini case, comparison | medium (app page live since GWEB-004) | GWEB-011 |
+| 4 | Cyberpunk Detective | detective / mystery puzzle games, "solve a case" playable hook | play now / choose a game | playable mini case + riddles page (comparison → GWEB-029) | done (2026-11-24) | GWEB-011 |
 | 5 | Lull | tinnitus and sleep: educational guides (sounds for sleep, habits) | know / cope | guide with sources | low (not on Play; no install CTA) | GWEB-012 |
 | - | Raffy | none here: Raffy's SEO lives on raffyparenting.com; this site only links out | - | - | - | - |
 
@@ -90,12 +92,15 @@ mentioned and the cited gurrulabs.com or Play URL (or `-`). Put the run date abo
 | en17 | how to improve reaction time | | | | | |
 | en18 | caffeine and reaction time | | | | | |
 | en19 | reaction time in sports | | | | | |
+| en20 | detective game online free in browser | | | | | |
+| en21 | murder mystery riddles with answers | | | | | |
 | es1 | test de tiempo de reacción | | | | | |
 | es2 | tiempo de reacción medio por edad | | | | | |
 | es3 | reto de los 3 segundos cronómetro | | | | | |
 | es4 | cómo mejorar el tiempo de reacción | | | | | |
 | es5 | cafeína y tiempo de reacción | | | | | |
 | es6 | tiempo de reacción en el deporte | | | | | |
+| es7 | acertijos de asesinatos con respuesta | | | | | |
 | fr1 | test de temps de réaction | | | | | |
 | fr2 | comment améliorer son temps de réaction | | | | | |
 | fr3 | caféine et temps de réaction | | | | | |

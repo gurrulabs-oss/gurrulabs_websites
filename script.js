@@ -206,6 +206,202 @@
     tab.click(); $('#game').scrollIntoView({ behavior: motion ? 'smooth' : 'auto', block: 'center' });
   }));
 
+  // ── Cyberpunk Detective pages (mini case + riddles): neon signs, the 3 s corner stutter, the floating Download button and the playable case.
+  //    Phones (no hover, ≤ 760 px) and prefers-reduced-motion: everything still, signs simply on. The case JSON lives in #case-data; the solution
+  //    only ever sits there and in this code, never in the visible HTML.
+  if (document.body.classList.contains('mc-page')) {
+    const html = document.documentElement, still = !motion || matchMedia('(hover: none), (max-width: 760px)').matches;
+    const signs = $$('.nsign');
+    if (!still && 'IntersectionObserver' in window) { // signs power on one at a time, in the order they come into view
+      html.classList.add('js-neon');
+      const queue = []; let busy = false;
+      const next = () => { if (busy || !queue.length) return; busy = true; queue.shift().classList.add('lit'); setTimeout(() => { busy = false; next(); }, 1550); };
+      const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { io.unobserve(e.target); queue.push(e.target); } }); setTimeout(next, 350); }, { threshold: .6 });
+      signs.forEach(s => io.observe(s));
+    } else signs.forEach(s => s.classList.add('lit'));
+    // floating "Download now": appears once the header button scrolls away (always on phones, where the header one is hidden)
+    const fab = $('.dl-fab'), hb = $('header.top .dl');
+    if (fab && hb && 'IntersectionObserver' in window) new IntersectionObserver(es => fab.classList.toggle('on', !es[0].isIntersecting)).observe(hb);
+    else if (fab) fab.classList.add('on');
+    // the one ambient loop: the magenta corner light stutters every 3 s (2 dips in 0.6 s, under 3 flashes/s)
+    const fl = $('.city .flash');
+    if (fl && !still) {
+      const buzz = () => { if (document.hidden) return; fl.classList.remove('go'); html.classList.remove('buzz'); void fl.offsetWidth; fl.classList.add('go'); html.classList.add('buzz'); };
+      setInterval(buzz, 3000); setTimeout(buzz, 800);
+    }
+    const caseRoot = document.getElementById('case');
+    if (caseRoot) cyberCase(caseRoot);
+  }
+
+  function cyberCase(root) {
+    const C = JSON.parse(document.getElementById('case-data').textContent);
+    const $r = s => root.querySelector(s);
+    const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const art = n => `/assets/cyberpunk-case-${n}.webp`;
+    const P = { lock: 'M6 11h12v9H6zM9 11V8a3 3 0 016 0v3', back: 'M15 5l-7 7 7 7', next: 'M9 5l7 7-7 7', warn: 'M12 8v5M12 16h.01M10.3 4l-7.5 13a2 2 0 001.7 3h15a2 2 0 001.7-3L13.7 4a2 2 0 00-3.4 0z', check: 'M5 12l5 5 9-10' };
+    const ico = p => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${P[p]}"/></svg>`;
+    const clue = id => C.clues.find(c => c.id === id), sus = id => C.suspects.find(s => s.id === id);
+    const isScene = c => c.source === 'scene';
+    const SCENE = C.clues.filter(isScene).map(c => c.id), SLOTS = ['who', 'how', 'why'], SOL = C.deduction.solution;
+    const TPL = C.deduction.template.split(/\{(\w+)\}/); // text, slot, text, slot, …
+    const stmts = C.suspects.flatMap(s => s.statements.map(x => ({ s, x })));
+    const LIES = stmts.filter(r => r.x.brokenBy).map(r => r.x.id), lieOf = id => stmts.find(r => r.x.id === id);
+    const fresh = () => ({ s: 'scene', found: [], broken: [], sus: null, si: 0, present: false, filter: 0, sel: null, pop: null, contra: null, msg: '', slot: null, ans: {}, wrong: 0, last: -1, hint: null, shake: false });
+    let st = fresh(), started = false, lastKey = '';
+    const has = id => st.found.includes(id), caughtN = () => LIES.filter(l => st.broken.includes(l)).length, allCaught = () => caughtN() === LIES.length;
+    const tg = (c, cls = '') => `<span class="tg ${cls}">${c.code}</span>`;
+    const lab = (t, c = '') => `<p class="cs-lab ${c}">${t}</p>`;
+    const eco = key => st.hint === key ? `<p class="cs-eco"><b>ECO</b><span>${esc(C.ecoHints[key])}</span></p>` : '';
+    const hintBtn = key => st.hint === key ? '' : `<button class="cs-lnk eco" data-hint="${key}">${I.askEco}</button>`;
+    const pt = (s, w, h = w) => `<img class="cs-pt" src="${art(s.id)}" width="${w}" height="${h}" alt="${esc(fill(I.portrait, { a: s.name, b: s.role.toLowerCase() }))}">`;
+    const first = s => s.name.split(' ')[0];
+    const backBtn = (attr, label) => `<button class="cs-lnk" ${attr}>${ico('back')}${label}</button>`;
+    const cta = title => `<div class="cs-cta"><span class="ic"><img src="/assets/cyberpunk-icon.webp" width="256" height="256" alt=""></span><div><b>${title}</b><span>${I.appTagline}</span></div>` +
+      `<a class="dl" href="${I.play}" target="_blank" rel="noopener" data-cta="case_end" data-app="cyberpunk_detective"><img src="/assets/cyberpunk-icon.webp" width="256" height="256" alt=""><span><b>${I.download}</b><small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19l17-9.5z"/></svg>${I.free}</small></span></a></div>`;
+
+    function sScene() {
+      const n = SCENE.filter(has).length, p = st.pop && clue(st.pop), next = SCENE.find(id => !has(id));
+      const hs = SCENE.map(id => { const c = clue(id), f = has(id), x = c.hotspot[0] * 100, side = x > 80 ? ' r' : x < 20 ? ' l' : '';
+        return `<button class="cs-hs${f ? ' found' : ''}${id === next && !p ? ' next' : ''}${side}" style="left:${x}%;top:${c.hotspot[1] * 100}%" data-clue="${id}" aria-label="${esc(f ? fill(I.foundAria, { a: c.place, b: c.code }) : `${I.examine} ${SCENE.indexOf(id) + 1}`)}"><i></i>${f ? `<span class="cs-hl">${tg(c, 'f')}${esc(c.place)}</span>` : ''}</button>`; }).join('');
+      const pop = p ? `<div class="cs-pop" role="dialog" aria-label="${esc(I.clueFound)}"><div class="cs-popc"><p class="cs-lab cy">${tg(p, 'f')}${I.clueFound}</p><h4>${esc(p.title)}</h4><p>${esc(p.text)}</p><small>${fill(I.saved, { a: n, b: SCENE.length })}</small><button class="cs-btn ghost" data-close>${I.keepSearching}</button></div></div>` : '';
+      return `<div class="cs-sceneL"><div class="cs-scene"><img src="${art('scene')}" width="1006" height="1564" alt="${esc(I.sceneAlt)}">${hs}${pop}</div>` +
+        `<div><div class="cs-h"><h3 tabindex="-1">${I.sceneH}</h3><p>${I.sceneP}</p></div>` +
+        `<div class="cs-found"><span class="tgs">${SCENE.map(id => tg(clue(id), has(id) ? 'f' : 'e')).join('')}</span><span>${fill(I.found, { a: n, b: SCENE.length })}</span></div>${eco('scene')}` +
+        `<div class="cs-row"><button class="cs-btn" data-go="suspects">${I.toSuspects}</button>${n < SCENE.length ? hintBtn('scene') : ''}</div><p class="cs-note">${I.backAny}</p></div></div>`;
+    }
+    function sSuspects() {
+      if (st.sus) return sTalk();
+      const left = LIES.length - caughtN(), all = left === 0;
+      return `<div class="cs-h"><h3 tabindex="-1">${I.whoLying}</h3><p>${I.whoLyingP}</p></div><div class="cs-sgrid">` + C.suspects.map(s => { const caught = s.statements.some(x => st.broken.includes(x.id));
+        return `<button class="cs-sc${caught ? ' caught' : ''}" data-sus="${s.id}">${pt(s, 240, 300)}${caught ? `<span class="cs-mark">${I.lieMark}</span>` : ''}<b>${esc(s.name)}</b><small>${esc(s.role)}</small><span class="cs-st${caught ? ' mg' : ''}">${caught ? I.lieCaught : fill(I.nStatements, s.statements.length)}</span></button>`; }).join('') + '</div>' +
+        `<p class="cs-note" style="margin-top:28px">${all ? I.allCaught : fill(left === 1 ? I.liesLeft1 : I.liesLeft, left)}</p>${eco('suspects')}` +
+        `<div class="cs-row">${all ? `<button class="cs-btn" data-go="deduce">${I.solveBtn}</button>` : hintBtn('suspects')}${backBtn('data-go="scene"', I.backLab)}</div>`;
+    }
+    function sTalk() {
+      const s = sus(st.sus), i = Math.min(st.si, s.statements.length - 1), x = s.statements[i], broken = st.broken.includes(x.id);
+      const body = broken ? `<p class="cs-said struck"><span>${esc(x.text)}</span></p><div class="cs-reply" style="grid-template-columns:1fr;animation:none"><div><small class="cs-lab mg">${I.lieCaught}</small><p>${esc(x.reply)}</p></div></div>` : `<p class="cs-said">${esc(x.text)}</p>`;
+      const found = st.found.map(clue), shown = found.filter(c => st.filter === 0 || (st.filter === 1) === isScene(c)), nS = found.filter(isScene).length;
+      const sheet = `<div class="cs-sheet"><p class="cs-sq">${I.whichClue}</p><div class="cs-tabs" role="group" aria-label="${esc(I.filter)}">` +
+        [`${I.all} ${found.length}`, `${I.sceneTab} ${nS}`, `${I.testimony} ${found.length - nS}`].map((l, k) => `<button class="${st.filter === k ? 'on' : ''}" data-filter="${k}" aria-pressed="${st.filter === k}">${l}</button>`).join('') + '</div>' +
+        `<ul class="cs-pick">${shown.map(c => { const on = st.sel === c.id; return `<li><button class="cs-pk${on ? ' on' : ''}" data-sel="${c.id}" aria-pressed="${on}">${tg(c, on ? 'f' : '')}<span>${esc(c.title)}</span><i aria-hidden="true"></i></button></li>`; }).join('')}</ul>` +
+        (st.msg ? `<p class="cs-msg" role="status">${ico('warn')}${esc(st.msg)}</p>` : '') +
+        `<div class="cs-row"><button class="cs-btn" data-dopresent${st.sel ? '' : ' disabled'}>${st.sel ? `${I.present} ${tg(clue(st.sel))}` : I.pickClue}</button>${backBtn('data-back', I.allSuspects)}</div></div>`;
+      const nav = `<span class="cs-nav"><button class="cs-ib" data-si="${i - 1}"${i > 0 ? '' : ' disabled'} aria-label="${esc(I.prevS)}">${ico('back')}</button><span>${fill(I.stmtN, { a: i + 1, b: s.statements.length })}</span><button class="cs-ib" data-si="${i + 1}"${i < s.statements.length - 1 ? '' : ' disabled'} aria-label="${esc(I.nextS)}">${ico('next')}</button></span>`;
+      return `<div class="cs-room">${pt(s, 320, 400)}<div><div class="cs-roomH"><h3 tabindex="-1">${esc(s.name)}</h3>${nav}</div><span class="cs-role">${esc(s.role)}</span>${body}` +
+        (broken ? `<div class="cs-row">${backBtn('data-back', I.allSuspects)}</div>` : st.present ? sheet : `<div class="cs-row"><button class="cs-btn" data-present>${I.presentEv}</button>${backBtn('data-back', I.allSuspects)}</div>`) + '</div></div>';
+    }
+    function sContra() {
+      const { s, x } = lieOf(st.contra), c = clue(x.brokenBy), u = clue(x.unlocks);
+      return `<div class="cs-contra"><div class="cs-stamp" role="status">${I.stamp}</div>${lab(fill(I.said, first(s)))}<p class="cs-said struck"><span>${esc(x.text)}</span></p>` +
+        `<p class="cs-by">${I.brokenBy} ${tg(c, 'f')}${esc(c.title)}</p><div class="cs-reply">${pt(s, 56)}<div><small>${fill(I.nowSays, first(s))}</small><p>${esc(x.reply)}</p></div></div>` +
+        `<p class="cs-unl">${tg(u, 'n')}<span>${I.newClue} ${esc(u.title)}</span></p>` +
+        `<div class="cs-row">${allCaught() ? `<button class="cs-btn" data-go="deduce">${I.solveBtn}</button><button class="cs-lnk" data-cont>${I.notYet}</button>` : `<button class="cs-btn" data-cont>${I.backSusp}</button>`}</div></div>`;
+    }
+    function sDeduce() {
+      const filled = SLOTS.filter(k => st.ans[k]).length, opt = (k, id) => C.deduction.slots[k].find(o => o.id === id);
+      const sent = TPL.map((t, i) => { if (i % 2 === 0) return esc(t); const o = st.ans[t] && opt(t, st.ans[t]);
+        return `<button class="cs-slot${o ? ' f' : ''}${st.slot === t ? ' a' : ''}" data-slot="${t}" aria-expanded="${st.slot === t}">${esc(o ? o.text : I[t])}</button>`; }).join('');
+      const warn = st.last >= 0 ? `<div class="cs-warn" role="status"><p class="cs-wn">${fill(I.nCorrect, st.last)}</p><p>${I.wrongP}</p><p class="cs-eco"><b>ECO</b><span>${esc(C.ecoHints.solve)}</span></p></div>${st.wrong >= 2 ? cta(I.ctaWrong) : ''}` : '';
+      let list = '';
+      if (st.slot) list = `<div class="cs-pickh"><span>${I.choose} <b>${I[st.slot]}</b></span><span>${fill(I.nFilled, filled)}</span></div><ul class="cs-opts">` + C.deduction.slots[st.slot].map(o => {
+        if (o.needs && !has(o.needs)) { const nc = clue(o.needs); return `<li class="cs-opt lock">${ico('lock')}<span>${isScene(nc) ? I.lockScene : I.lockLie}</span>${tg(nc, 'e')}</li>`; }
+        return `<li><button class="cs-opt${st.ans[st.slot] === o.id ? ' on' : ''}" data-pick="${st.slot}:${o.id}">${esc(o.text)}${o.needs ? tg(clue(o.needs), 'f') : ''}</button></li>`; }).join('') + '</ul>';
+      return `<div class="cs-h"><h3 tabindex="-1">${esc(C.question)}</h3><p>${I.sentP}</p></div><p class="cs-sent${st.shake ? ' shake' : ''}">${sent}</p>${warn}${list}${st.last < 0 ? eco('solve') : ''}` +
+        `<div class="cs-row"><button class="cs-btn" data-solve${filled === 3 ? '' : ' disabled'}>${st.wrong ? I.solveAgain : I.solveBtn}</button>${st.last < 0 ? hintBtn('solve') : ''}${backBtn('data-go="suspects"', I.suspTab)}</div>` +
+        (filled < 3 ? `<p class="cs-note">${I.fillAll}</p>` : '');
+    }
+    function sSolved() {
+      const culprit = sus(SOL.who);
+      return `<div class="cs-folder"><span class="cs-ftab">${fill(I.caseFile, C.number)}</span><img src="${art('cover')}" width="600" height="750" alt="">` +
+        `<div><span class="cs-closed" role="status">${I.closed}</span>${lab(esc(C.title))}<h3 tabindex="-1">${esc(culprit.name)}</h3><p class="cs-lab">${I.culprit}</p><p class="cs-epi">${esc(C.epilogue)}</p>` +
+        `<p class="cs-stats"><span><b>${SCENE.filter(has).length}/${SCENE.length}</b>${I.sceneClues}</span><span><b>${caughtN()}/${LIES.length}</b>${I.liesCaught}</span><span><b>${st.wrong}</b>${st.wrong === 1 ? I.wrongTry : I.wrongTries}</span></p></div></div>` +
+        `${cta(I.ctaSolved)}<div class="cs-row"><button class="cs-lnk" data-reset>${I.playAgain}</button></div>`;
+    }
+    const stage = () => ({ scene: sScene, suspects: sSuspects, contra: sContra, deduce: sDeduce, solved: sSolved })[st.s]();
+
+    function diary() {
+      const f = st.found.map(clue), lies = caughtN(), nw = st.s === 'contra' && st.contra && lieOf(st.contra).x.unlocks;
+      const row = c => `<li class="cs-dr${c.id === nw ? ' is-new' : ''}" tabindex="0">${tg(c, c.id === nw ? 'n' : 'f')}<b>${esc(c.title)}</b><p>${esc(c.text)}</p></li>`;
+      const grp = (name, a) => a.length ? `<li class="cs-dg">${name}</li>${a.map(row).join('')}` : '';
+      return `<summary><span class="cs-dt">${I.diary}</span><span class="cs-dn">${fill(I.nOfM, { a: f.length, b: C.clues.length })}</span><span class="cs-chev">${ico('next')}</span></summary><div class="cs-dsheet">` +
+        `<div class="cs-dhead"><span class="cs-dt">${I.diary}</span><button class="cs-lnk" data-dclose>${I.close}</button></div>` +
+        `<div class="cs-rack">${[C.clues.filter(isScene), C.clues.filter(c => !isScene(c))].map(a => `<span class="tgs">${a.map(c => tg(c, c.id === nw ? 'n' : has(c.id) ? 'f' : 'e')).join('')}</span>`).join('')}</div>` +
+        `<p class="cs-lies">${I.liesCaught}<span>${LIES.map((_, k) => `<i class="${k < lies ? 'on' : ''}"></i>`).join('')}</span></p>` +
+        (f.length ? `<ul class="cs-dl">${grp(I.fromLab, f.filter(isScene))}${grp(I.fromSusp, f.filter(c => !isScene(c)))}</ul>` : `<p class="cs-dempty">${I.dEmpty}</p>`) + '</div>';
+    }
+
+    // Every render replaces innerHTML: remember what had keyboard focus (by its data-* attribute and zone) and put it back after
+    let want = null; // set by a handler to force the next focus target, e.g. the hotspot that opened a closing popup
+    const FOCUS_KEYS = ['sel', 'filter', 'pick', 'slot', 'clue', 'sus', 'go', 'si', 'hint', 'present', 'dopresent', 'solve', 'back', 'cont', 'reset', 'close', 'dclose'];
+    const focusOf = el => { if (!el || !root.contains(el)) return null;
+      const zone = el.closest('.cs-steps') ? '.cs-steps' : el.closest('.cs-diary') ? '.cs-diary' : '.cs-stage', b = el.closest('button');
+      if (!b) return el.closest('summary') ? { zone, sel: 'summary' } : null;
+      const k = FOCUS_KEYS.find(k => k in b.dataset); return k ? { zone, sel: b.dataset[k] ? `[data-${k}="${b.dataset[k]}"]` : `[data-${k}]` } : null; };
+    function render() {
+      const keep = want || focusOf(document.activeElement); want = null;
+      const idx = { scene: 0, suspects: 1, contra: 1, deduce: 2, solved: 3 }[st.s];
+      root.classList.add('play');
+      $r('.cs-steps').innerHTML = [['scene', I.stepScene], ['suspects', I.stepSuspects], ['deduce', I.stepDeduce]].map((l, i) => {
+        const dis = st.s === 'solved' || (l[0] === 'deduce' && !allCaught()), done = i < idx;
+        return `<li class="${i === idx ? 'on' : done ? 'done' : ''}"><button data-go="${l[0]}"${dis ? ' disabled' : ''}${i === idx ? ' aria-current="step"' : ''}><b>${done ? ico('check') : i + 1}</b><span>${l[1]}</span></button></li>`; }).join('');
+      const sb = $r('.cs-stage'), key = st.s + (st.sus || ''); let moved = false;
+      sb.innerHTML = stage();
+      $r('.cs-diary').innerHTML = diary();
+      if (key !== lastKey) { // new screen: replay the entrance, move keyboard/screen-reader focus to its heading
+        sb.classList.remove('in'); void sb.offsetWidth; sb.classList.add('in');
+        sb.querySelector('h3[tabindex]')?.focus({ preventScroll: true });
+        lastKey = key; moved = true;
+      }
+      st.shake = false;
+      const pop = $r('.cs-pop .cs-btn');
+      if (pop) pop.focus({ preventScroll: true });
+      else if (keep && !moved) {
+        const el = $r(keep.zone)?.querySelector(keep.sel);
+        if (el && !el.disabled) el.focus({ preventScroll: true });
+        else if (!sb.contains(document.activeElement)) { sb.tabIndex = -1; sb.focus({ preventScroll: true }); }
+      }
+    }
+    function open() { // the case opens: first time from the hero button, again after "Play again"
+      if (started) return; started = true;
+      track('Game Started', { mode: 'case', page: PAGE, locale: LOCALE });
+      const dia = $r('.cs-diary'); if (matchMedia('(max-width: 960px)').matches) dia.removeAttribute('open');
+      root.scrollIntoView({ behavior: motion ? 'smooth' : 'auto' });
+    }
+
+    addEventListener('keydown', e => { if (e.key === 'Escape' && st.pop) { want = { zone: '.cs-stage', sel: `[data-clue="${st.pop}"]` }; st.pop = null; render(); } });
+    root.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b || b.disabled) return;
+      const D = b.dataset;
+      if (b.hasAttribute('data-dclose')) { $r('.cs-diary').open = false; return; }
+      if (D.go === 'scene' && !started) open();
+      if (D.clue) { if (!has(D.clue)) { st.found.push(D.clue); st.pop = D.clue; } }
+      else if (b.hasAttribute('data-close')) { want = { zone: '.cs-stage', sel: `[data-clue="${st.pop}"]` }; st.pop = null; }
+      else if (D.sus) { st.sus = D.sus; st.si = 0; st.present = false; st.msg = ''; }
+      else if (b.hasAttribute('data-back')) { st.sus = null; st.present = false; st.msg = ''; }
+      else if (D.si) { st.si = +D.si; st.present = false; st.msg = ''; }
+      else if (b.hasAttribute('data-present')) { st.present = true; st.sel = null; st.filter = 0; st.msg = ''; }
+      else if (D.filter) st.filter = +D.filter;
+      else if (D.sel) { st.sel = D.sel; st.msg = ''; }
+      else if (b.hasAttribute('data-dopresent')) {
+        const x = sus(st.sus).statements[Math.min(st.si, sus(st.sus).statements.length - 1)];
+        if (x.brokenBy && st.sel === x.brokenBy) { st.present = false; st.broken.push(x.id); if (!has(x.unlocks)) st.found.push(x.unlocks); st.contra = x.id; st.s = 'contra'; st.hint = null; }
+        else { st.msg = C.ecoHints.wrong_evidence; st.sel = null; } // short shake (CSS), nothing is lost
+      }
+      else if (b.hasAttribute('data-cont')) { st.s = 'suspects'; st.sus = null; }
+      else if (D.slot) st.slot = st.slot === D.slot ? null : D.slot;
+      else if (D.pick) { const [k, id] = D.pick.split(':'); st.ans[k] = id; st.last = -1; st.slot = SLOTS.find(s => !st.ans[s]) || null; }
+      else if (b.hasAttribute('data-solve')) {
+        const ok = SLOTS.filter(k => st.ans[k] === SOL[k]).length;
+        if (ok === 3) st.s = 'solved'; else { st.wrong++; st.last = ok; st.slot = null; st.shake = true; }
+        track('Game Finished', { mode: 'case', result: ok === 3 ? 'solved' : 'wrong', tries: st.wrong + (ok === 3 ? 1 : 0), page: PAGE, locale: LOCALE });
+      }
+      else if (D.hint) st.hint = D.hint;
+      else if (b.hasAttribute('data-reset')) { st = fresh(); started = false; lastKey = ''; render(); open(); return; }
+      else if (D.go) { st.s = D.go; st.sus = null; st.present = false; st.hint = null; st.msg = ''; }
+      render();
+    });
+  }
+
   // ── The tests (Pulse pages)
   const panel = document.getElementById('game');
   if (!panel) return;

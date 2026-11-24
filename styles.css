@@ -890,3 +890,20 @@ main { counter-reset: h; } /* one count across the age guide intro and article *
   .tbl.stack td:nth-child(4) { display: block; margin-top: 2px; font-size: 11.5px; }
   .tbl.stack caption { display: block; padding: 10px 2px 0; }
 }
+/* T-011: "Try it in your browser" cards on the Cyberpunk Detective app page */
+.trybr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.trybr a { display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; background: color-mix(in srgb, var(--surface) 80%, transparent); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .16s cubic-bezier(.2,0,0,1); }
+.trybr a:hover { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--aqua) 45%, transparent); }
+.trybr .top { display: block; min-height: 0; padding: 0; height: 200px; overflow: hidden; border-bottom: 1px solid var(--line); }
+.trybr .top img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+.trybr .top ol { list-style: none; margin: 0; height: 100%; padding: 18px 22px; background: #07090D; }
+.trybr .top li { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 10px; align-items: center; height: 33px; font-size: 14.5px; color: var(--text2); border-top: 1px solid var(--line); }
+.trybr .top li span:nth-child(2) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trybr .top li:first-child { border-top: 0; } .trybr .top li span:first-child { font: 700 10px Orbitron, system-ui, sans-serif; color: var(--text3); }
+.trybr .pips { display: inline-flex; gap: 4px; } .trybr .pips i { width: 6px; height: 6px; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--line); } .trybr .pips i.on { background: var(--aqua); box-shadow: none; }
+.trybr .tx { flex: 1; display: flex; flex-direction: column; padding: 18px 22px 20px; }
+.trybr .k { font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--clue); }
+.trybr b { display: block; margin-top: 8px; font: 700 15px/1.35 Orbitron, system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; } .trybr p { margin-top: 6px; font-size: 15px; line-height: 1.55; color: var(--text2); }
+.trybr .golink { margin-top: auto; padding-top: 14px; font-size: 15px; font-weight: 500; color: var(--aqua); }
+@media (prefers-reduced-motion: reduce) { .trybr a { transition: none; } }
+@media (max-width: 760px) { .trybr { grid-template-columns: minmax(0, 1fr); } .trybr .top { height: 160px; } }
