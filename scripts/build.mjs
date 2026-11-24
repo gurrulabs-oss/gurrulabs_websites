@@ -7,6 +7,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, LOCALES, HREFLANG, PAGES, path, url } from './pages.mjs';
+import { CASE, COMMON, PAGES as CP } from './cyberpunk-content.mjs'; // Cyberpunk Detective pages: case JSON + page copy (T-011)
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const OG_LOCALE = { en: 'en_US', es: 'es_ES', fr: 'fr_FR', pt: 'pt_BR' };
@@ -270,6 +271,8 @@ const SYM = {
 const ic = id => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${SYM[id]}</svg>`;
 const byId = Object.fromEntries(PAGES.map(p => [p.id, p]));
 const to = (loc, id) => path(loc, byId[id]);
+const CYK = { 'cyberpunk-mini-case': 'case', 'cyberpunk-riddles': 'riddles' }; // Cyberpunk content pages → key in cyberpunk-content.mjs PAGES[loc]
+const CY_CONTENT = PAGES.filter(p => p.id in CYK); // registry order = footer order
 const PULSE_CONTENT = PAGES.filter(p => p.app === 'pulse' && p.slug); // Pulse's content pages in registry order (link cards, footer)
 const SRC = {
   woods: { cite: 'Woods et al., 2015', url: 'https://doi.org/10.3389/fnhum.2015.00131',
@@ -2252,7 +2255,7 @@ const APP = {
       subject: 'Lull: me avise quando lançar', mail: ['Oi! Por favor, me avise por e-mail quando o Lull estiver no Google Play.', 'Idioma: Português (Brasil)', 'enviado de'] },
   },
 };
-const meta = (loc, p) => p.id === 'home' ? { title: T[loc].home_title, desc: T[loc].home_desc }
+const meta = (loc, p) => CYK[p.id] ? { title: CP[loc][CYK[p.id]].title, desc: CP[loc][CYK[p.id]].description } : p.id === 'home' ? { title: T[loc].home_title, desc: T[loc].home_desc }
   : p.id === 'pulse' ? { title: T[loc].pulse_title, desc: T[loc].pulse_desc } : APP[p.id] ? APP[p.id][loc] : CONTENT[p.id][loc];
 
 const img = (name, alt = '') => `<img src="/assets/${name}-icon.webp" width="256" height="256" alt="${alt}">`;
@@ -2277,6 +2280,7 @@ const APP_LD = { // MobileApplication facts per app page (Lull: no url, no offer
 };
 const plain = h => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<');
 function schema(loc, p) {
+  if (CYK[p.id]) return cySchema(loc, p);
   const t = T[loc], c = CONTENT[p.id]?.[loc], me = url(loc, p);
   const org = { '@type': 'Organization', name: 'Gurrulabs', url: url(loc, byId.home), logo: `${SITE}/assets/gurrulabs-logo-512.png` };
   const out = [];
@@ -2302,7 +2306,7 @@ const FAVICON = {
 };
 function head(loc, p) {
   const { title, desc } = meta(loc, p);
-  const image = p.mode ? `${SITE}/assets/og-${p.id}.webp` : OG_IMAGE[p.app] ? `${SITE}/assets/${OG_IMAGE[p.app]}.webp` : ''; // mode test pages: 1200x630 screenshot of the game panel
+  const image = CYK[p.id] ? `${SITE}/assets/cyberpunk-case-cover.webp` : p.mode ? `${SITE}/assets/og-${p.id}.webp` : OG_IMAGE[p.app] ? `${SITE}/assets/${OG_IMAGE[p.app]}.webp` : ''; // mode test pages: 1200x630 screenshot of the game panel
   return `<!doctype html>
 <html lang="${HREFLANG[loc]}">
 <head>
@@ -2322,7 +2326,7 @@ ${alternates(p)}
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">${image ? `\n<meta name="twitter:image" content="${image}">` : ''}
 <link rel="preload" href="/assets/outfit.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css">${CYK[p.id] ? '\n<link rel="stylesheet" href="/cyberpunk.css">' : ''}
 ${FAVICON[p.app] || FAVICON.studio}
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 ${schema(loc, p).map(jsonLd).join('\n')}
@@ -2333,20 +2337,21 @@ ${PAGE_IDS}
 
 function header(loc, p, t) {
   const home = p.type === 'home';
-  const [backHref, backName] = p.app && p.type !== 'app' ? [path(loc, byId.pulse), 'Pulse'] : [`/${loc}/`, t.back]; // content pages go back to their app
+  const cy = p.id in CYK; // Cyberpunk content pages: back to the app, with the Download button
+  const [backHref, backName] = cy ? [`/${loc}/cyberpunk-detective/`, 'Cyberpunk Detective'] : p.app && p.type !== 'app' ? [path(loc, byId.pulse), 'Pulse'] : [`/${loc}/`, t.back]; // content pages go back to their app
   const gf = alt => `<img src="/assets/gurrulabs-giraffe.webp" width="200" height="204" alt="${alt}">`;
   const left = home
     ? `<a class="brand" href="/${loc}/">${gf('')}<img src="/assets/gurrulabs-wordmark.webp" width="255" height="68" alt="Gurrulabs"></a>`
     : p.type === 'app'
       ? `<a class="crumb" href="/${loc}/">${ic('back')}<b>Gurrulabs</b></a>`
-      : `<a class="crumb" href="${backHref}">${ic('back')}<span class="aic">${ICON.pulse}</span><b>${backName}</b></a>`;
+      : `<a class="crumb" href="${backHref}">${ic('back')}<span class="aic">${cy ? ICON.cyber : ICON.pulse}</span><b>${backName}</b></a>`;
   const nav = home ? `<nav class="hnav"><a href="#apps">${t.apps_h}</a><a href="#about">${t.about_h}</a></nav>` : '';
   const langs = LOCALES.map(l => `<a${l === loc ? ' class="on" aria-current="true"' : ''} href="${path(l, p)}" hreflang="${HREFLANG[l]}" lang="${HREFLANG[l]}">${l.toUpperCase()}</a>`).join('');
-  return `<header class="wrap top">${left}${nav}<nav class="langs" aria-label="Language">${langs}</nav></header>`;
+  return `<header class="wrap top">${left}${nav}${cy ? cyDl(loc, 'header', COMMON[loc].download, false) : ''}<nav class="langs" aria-label="Language">${langs}</nav></header>`;
 }
 
 // Every page links every app (internal links help search engines find the app pages); Pulse pages also list Pulse's tests and guide
-const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://www.raffyparenting.com/${loc}/">Raffy</a><a href="/${loc}/cyberpunk-detective/">Cyberpunk Detective</a><a href="/${loc}/lull/">Lull · ${t.soon}</a></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
+const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://www.raffyparenting.com/${loc}/">Raffy</a><a href="/${loc}/cyberpunk-detective/">Cyberpunk Detective</a>${p?.app === 'cyberpunk-detective' ? CY_CONTENT.map(q => `<a href="${path(loc, q)}">${CP[loc][CYK[q.id]].navName}</a>`).join('') : ''}<a href="/${loc}/lull/">Lull · ${t.soon}</a></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
 
 // ── Home
 function home(loc) {
@@ -2469,6 +2474,25 @@ const appRel = (loc, items) => `<section class="blk"><h2>${T[loc].more_h}</h2><d
 const chip = c => { const [i, s] = Array.isArray(c) ? c : ['check', c]; return `<span class="chip">${ic(i)}${s}</span>`; };
 const answerBlock = ([q, a]) => `<div class="answer"><b>${q}</b> ${a}</div>`;
 
+// T-011: "Try it in your browser" block on the Cyberpunk Detective app page (mini case + riddles cards)
+const TRY = {
+  en: ['Try it in your browser', 'No install needed for these two.', 'Mini case, 8 minutes', 'Play the case', '10 riddles, with answers', 'Read the riddles', 'Hawk Tower at night'],
+  es: ['Pruébalo en el navegador', 'Estos dos no necesitan instalación.', 'Minicaso, 8 minutos', 'Jugar el caso', '10 acertijos, con respuesta', 'Leer los acertijos', 'La Torre Halcón de noche'],
+  fr: ['Essaie-le dans ton navigateur', 'Rien à installer pour ces deux-là.', 'Mini-enquête, 8 minutes', 'Jouer l’enquête', '10 énigmes, avec réponses', 'Lire les énigmes', 'La tour Faucon de nuit'],
+  pt: ['Experimente no navegador', 'Estes dois não precisam de instalação.', 'Minicaso, 8 minutos', 'Jogar o caso', '10 enigmas, com resposta', 'Ler os enigmas', 'A Torre Falcão à noite'],
+};
+const LVL = { easy: 1, medium: 2, hard: 3 };
+function tryBlock(loc) {
+  const [h, lead, k1, go1, k2, go2, alt] = TRY[loc], c = CP[loc].case, r = CP[loc].riddles;
+  const pips = n => `<span class="pips">${[1, 2, 3].map(i => `<i${i <= n ? ' class="on"' : ''}></i>`).join('')}</span>`;
+  const list = [0, 1, 5, 8, 9].map(i => `<li><span>${String(i + 1).padStart(2, '0')}</span><span>${r.riddles[i].title}</span>${pips(LVL[r.riddles[i].level])}</li>`).join('');
+  return `<section class="blk"><h2>${h}</h2><p class="lead">${lead}</p>
+    <div class="trybr">
+      <a href="${path(loc, byId['cyberpunk-mini-case'])}"><div class="top"><img src="/assets/cyberpunk-case-cover.webp" width="1051" height="1497" loading="lazy" alt="${alt}"></div><div class="tx"><span class="k">${k1}</span><b>${CASE[loc].title}</b><p>${CASE[loc].hook}</p><span class="golink">${go1}</span></div></a>
+      <a href="${path(loc, byId['cyberpunk-riddles'])}"><div class="top" aria-hidden="true"><ol>${list}</ol></div><div class="tx"><span class="k">${k2}</span><b>${r.h1}</b><p>${r.cardSub}</p><span class="golink">${go2}</span></div></a>
+    </div>
+  </section>`;
+}
 function appPage(loc, p) {
   const t = T[loc], a = APP[p.id][loc], lull = p.id === 'lull', links = id => path(loc, byId[id]);
   const mail = lull && `mailto:${LULL_MAIL}?subject=${encodeURIComponent(a.subject)}&amp;body=${encodeURIComponent(`${a.mail[0]}\n\n${a.mail[1]}\n(${a.mail[2]} www.gurrulabs.com${path(loc, p)})`)}`;
@@ -2504,6 +2528,8 @@ function appPage(loc, p) {
     : `<section class="blk"><h2>${a.steps_h}</h2><p class="lead">${a.steps_p}</p>
     <div class="steps">${a.steps.map(([b, d]) => `<div><b>${b}</b><span>${d}</span></div>`).join('')}</div>
   </section>
+
+  ${tryBlock(loc)}
 
   <section class="blk" id="cases"><h2>${a.cases_h}</h2><p class="lead">${a.cases_p}</p>
     <div class="cases">
@@ -2646,6 +2672,257 @@ ${footer(loc, t, p)}
 `;
 }
 
+// ── Cyberpunk Detective pages (T-011): the playable mini case and the murder-mystery riddles.
+//    Page copy lives in cyberpunk-content.mjs (CASE, COMMON, PAGES); the case-engine UI labels below are shipped in the page's #i18n JSON.
+//    {a} {b} are placeholders filled by script.js. The case JSON (solution included) goes only into <script id="case-data">, never into visible HTML.
+const CASE_UI = {
+  en: {
+    askEco: 'Ask ECO for a hint', portrait: 'Portrait of {a}, {b}', foundAria: '{a}, clue {b} found', examine: 'Examine this spot', clueFound: 'Clue found',
+    saved: 'Saved to your evidence diary · {a} of {b} found', keepSearching: 'Keep searching',
+    sceneAlt: 'The lab on floor 88 after the blackout: a display case, a door with a card reader, an open electrical panel, a locker and a workshop terminal',
+    sceneH: 'Search the lab', sceneP: 'Tap the rings on the picture to examine what is there. Each clue goes into your evidence diary.', found: '<b>{a} of {b}</b> scene clues found',
+    toSuspects: 'Question the suspects', backAny: 'You can come back to the lab at any time.',
+    whoLying: 'Who is lying?', whoLyingP: 'Open a suspect, read their statements and present the clue that contradicts one.', lieMark: 'Lie', lieCaught: 'Lie caught', nStatements: '{a} statements',
+    allCaught: 'All the lies are caught. Time to solve it.', liesLeft1: '{a} lie still to catch.', liesLeft: '{a} lies still to catch.', solveBtn: 'Solve the case', backLab: 'Back to the lab',
+    whichClue: 'Which clue contradicts this statement?', filter: 'Filter clues', all: 'All', sceneTab: 'Scene', testimony: 'Testimony', present: 'Present', pickClue: 'Pick a clue',
+    prevS: 'Previous statement', nextS: 'Next statement', stmtN: 'Statement {a} of {b}', allSuspects: 'All suspects', presentEv: 'Present evidence',
+    stamp: 'Contradiction!', said: '{a} said', brokenBy: 'Broken by', nowSays: '{a} now says', newClue: 'New clue in your diary:', backSusp: 'Back to the suspects', notYet: 'Not yet',
+    who: 'who', how: 'how', why: 'why', choose: 'Choose', nFilled: '{a} of 3 filled', lockScene: 'Locked: find this clue in the lab', lockLie: 'Locked: find it by catching a lie',
+    sentP: 'Complete the sentence. Each blank opens its options.', nCorrect: '{a} of 3 correct', wrongP: 'The solution stays hidden. Change what doesn’t fit and solve again.',
+    solveAgain: 'Solve again', fillAll: 'Fill all three blanks to solve.', suspTab: 'Suspects', ctaWrong: 'Stuck? There is more practice in the app', ctaSolved: 'Liked it? There is more in the app',
+    caseFile: 'Case file #{a}', closed: 'Case closed', culprit: 'The culprit', sceneClues: 'scene clues', liesCaught: 'Lies caught', wrongTry: 'wrong try', wrongTries: 'wrong tries', playAgain: 'Play again',
+    diary: 'Evidence diary', nOfM: '{a} of {b}', close: 'Close', fromLab: 'From the lab', fromSusp: 'From the suspects', dEmpty: 'Empty for now. Clues you find in the lab land here.',
+    stepScene: 'Scene', stepSuspects: 'Suspects', stepDeduce: 'Deduction',
+    // static page labels (not shipped to script.js)
+    stepsAria: 'Case steps', railCase: 'Play the case', fairCap: 'All {a} clues of this case come before you accuse.', schematic: 'Schematic', accusation: 'Accusation',
+    srcCase: 'A case from the Cyberpunk Detective app, published by the studio that makes it.', srcRiddles: 'All riddles are original, written for this page.',
+    rxH: 'The {a} riddles', nRiddles: '{a} riddles', longerK: 'Want a longer case?', pushRiddles: 'Solved them all?' },
+  es: {
+    askEco: 'Pedir pista a ECO', portrait: 'Retrato de {a}, {b}', foundAria: '{a}, pista {b} encontrada', examine: 'Examinar este punto', clueFound: 'Pista encontrada',
+    saved: 'Guardada en tu diario de pruebas · {a} de {b} encontradas', keepSearching: 'Seguir buscando',
+    sceneAlt: 'El laboratorio de la planta 88 tras el apagón: una vitrina, una puerta con lector de tarjetas, un cuadro eléctrico abierto, una taquilla y un terminal del taller',
+    sceneH: 'Registra el laboratorio', sceneP: 'Toca los círculos de la imagen para examinar lo que hay. Cada pista va a tu diario de pruebas.', found: '<b>{a} de {b}</b> pistas de la escena encontradas',
+    toSuspects: 'Interrogar a los sospechosos', backAny: 'Puedes volver al laboratorio cuando quieras.',
+    whoLying: '¿Quién miente?', whoLyingP: 'Abre un sospechoso, lee sus declaraciones y presenta la pista que contradice una.', lieMark: 'Mentira', lieCaught: 'Mentira pillada', nStatements: '{a} declaraciones',
+    allCaught: 'Todas las mentiras pilladas. Es hora de resolverlo.', liesLeft1: 'Queda {a} mentira por pillar.', liesLeft: 'Quedan {a} mentiras por pillar.', solveBtn: 'Resolver el caso', backLab: 'Volver al laboratorio',
+    whichClue: '¿Qué pista contradice esta declaración?', filter: 'Filtrar pistas', all: 'Todas', sceneTab: 'Escena', testimony: 'Testimonios', present: 'Presentar', pickClue: 'Elige una pista',
+    prevS: 'Declaración anterior', nextS: 'Declaración siguiente', stmtN: 'Declaración {a} de {b}', allSuspects: 'Todos los sospechosos', presentEv: 'Presentar prueba',
+    stamp: '¡Contradicción!', said: '{a} dijo', brokenBy: 'Desmentida por', nowSays: '{a} ahora dice', newClue: 'Pista nueva en tu diario:', backSusp: 'Volver a los sospechosos', notYet: 'Todavía no',
+    who: 'quién', how: 'cómo', why: 'por qué', choose: 'Elige', nFilled: '{a} de 3 completados', lockScene: 'Bloqueado: encuentra esta pista en el laboratorio', lockLie: 'Bloqueado: encuéntrala pillando una mentira',
+    sentP: 'Completa la frase. Cada hueco abre sus opciones.', nCorrect: '{a} de 3 correctas', wrongP: 'La solución sigue oculta. Cambia lo que no encaje y vuelve a resolver.',
+    solveAgain: 'Resolver de nuevo', fillAll: 'Rellena los tres huecos para resolver.', suspTab: 'Sospechosos', ctaWrong: '¿Te has atascado? Hay más práctica en la app', ctaSolved: '¿Te ha gustado? Hay más en la app',
+    caseFile: 'Expediente n.º {a}', closed: 'Caso cerrado', culprit: 'El culpable', sceneClues: 'pistas de la escena', liesCaught: 'Mentiras pilladas', wrongTry: 'intento fallido', wrongTries: 'intentos fallidos', playAgain: 'Jugar otra vez',
+    diary: 'Diario de pruebas', nOfM: '{a} de {b}', close: 'Cerrar', fromLab: 'Del laboratorio', fromSusp: 'De los sospechosos', dEmpty: 'Vacío por ahora. Las pistas que encuentres en el laboratorio aparecen aquí.',
+    stepScene: 'Escena', stepSuspects: 'Sospechosos', stepDeduce: 'Deducción',
+    stepsAria: 'Pasos del caso', railCase: 'Juega el caso', fairCap: 'Las {a} pistas de este caso llegan antes de que acuses.', schematic: 'Esquema', accusation: 'Acusación',
+    srcCase: 'Un caso de la app Cyberpunk Detective, publicado por el estudio que la crea.', srcRiddles: 'Todos los acertijos son originales, escritos para esta página.',
+    rxH: 'Los {a} acertijos', nRiddles: '{a} acertijos', longerK: '¿Quieres un caso más largo?', pushRiddles: '¿Los has resuelto todos?' },
+  fr: {
+    askEco: 'Demander un indice à ECO', portrait: 'Portrait de {a}, {b}', foundAria: '{a}, indice {b} trouvé', examine: 'Examiner cet endroit', clueFound: 'Indice trouvé',
+    saved: 'Ajouté à ton carnet de preuves · {a} sur {b} trouvés', keepSearching: 'Continuer à chercher',
+    sceneAlt: 'Le labo du 88e étage après la panne : une vitrine, une porte avec lecteur de badge, un tableau électrique ouvert, un casier et un terminal d’atelier',
+    sceneH: 'Fouille le labo', sceneP: 'Touche les cercles sur l’image pour examiner ce qui s’y trouve. Chaque indice va dans ton carnet de preuves.', found: '<b>{a} sur {b}</b> indices de la scène trouvés',
+    toSuspects: 'Interroger les suspects', backAny: 'Tu peux revenir au labo quand tu veux.',
+    whoLying: 'Qui ment ?', whoLyingP: 'Ouvre un suspect, lis ses déclarations et présente l’indice qui en contredit une.', lieMark: 'Mensonge', lieCaught: 'Mensonge démasqué', nStatements: '{a} déclarations',
+    allCaught: 'Tous les mensonges sont démasqués. À toi de conclure.', liesLeft1: '{a} mensonge reste à démasquer.', liesLeft: '{a} mensonges restent à démasquer.', solveBtn: 'Résoudre l’affaire', backLab: 'Retour au labo',
+    whichClue: 'Quel indice contredit cette déclaration ?', filter: 'Filtrer les indices', all: 'Tous', sceneTab: 'Scène', testimony: 'Témoignages', present: 'Présenter', pickClue: 'Choisis un indice',
+    prevS: 'Déclaration précédente', nextS: 'Déclaration suivante', stmtN: 'Déclaration {a} sur {b}', allSuspects: 'Tous les suspects', presentEv: 'Présenter une preuve',
+    stamp: 'Contradiction !', said: '{a} a dit', brokenBy: 'Démenti par', nowSays: '{a} dit maintenant', newClue: 'Nouvel indice dans ton carnet :', backSusp: 'Retour aux suspects', notYet: 'Pas encore',
+    who: 'qui', how: 'comment', why: 'pourquoi', choose: 'Choisis', nFilled: '{a} sur 3 remplis', lockScene: 'Verrouillé : trouve cet indice dans le labo', lockLie: 'Verrouillé : trouve-le en démasquant un mensonge',
+    sentP: 'Complète la phrase. Chaque blanc ouvre ses options.', nCorrect: '{a} sur 3 corrects', wrongP: 'La solution reste cachée. Change ce qui ne colle pas et réessaie.',
+    solveAgain: 'Résoudre à nouveau', fillAll: 'Remplis les trois blancs pour résoudre.', suspTab: 'Suspects', ctaWrong: 'Bloqué ? Il y a plus à jouer dans l’appli', ctaSolved: 'Envie de plus ? Il y en a dans l’appli',
+    caseFile: 'Dossier n° {a}', closed: 'Affaire classée', culprit: 'Le coupable', sceneClues: 'indices de la scène', liesCaught: 'Mensonges démasqués', wrongTry: 'essai raté', wrongTries: 'essais ratés', playAgain: 'Rejouer',
+    diary: 'Carnet de preuves', nOfM: '{a} sur {b}', close: 'Fermer', fromLab: 'Du labo', fromSusp: 'Des suspects', dEmpty: 'Vide pour l’instant. Les indices trouvés dans le labo arrivent ici.',
+    stepScene: 'Scène', stepSuspects: 'Suspects', stepDeduce: 'Déduction',
+    stepsAria: 'Étapes de l’affaire', railCase: 'Joue l’affaire', fairCap: 'Les {a} indices de cette affaire viennent avant ton accusation.', schematic: 'Schéma', accusation: 'Accusation',
+    srcCase: 'Une affaire de l’appli Cyberpunk Detective, publiée par le studio qui la fait.', srcRiddles: 'Toutes les énigmes sont originales, écrites pour cette page.',
+    rxH: 'Les {a} énigmes', nRiddles: '{a} énigmes', longerK: 'Envie d’une affaire plus longue ?', pushRiddles: 'Tu les as tous résolus ?' },
+  pt: {
+    askEco: 'Pedir uma dica à ECO', portrait: 'Retrato de {a}, {b}', foundAria: '{a}, pista {b} encontrada', examine: 'Examinar este ponto', clueFound: 'Pista encontrada',
+    saved: 'Salva no seu diário de provas · {a} de {b} encontradas', keepSearching: 'Continuar procurando',
+    sceneAlt: 'O laboratório do andar 88 após o apagão: uma vitrine, uma porta com leitor de cartão, um quadro elétrico aberto, um armário e um terminal da oficina',
+    sceneH: 'Vasculhe o laboratório', sceneP: 'Toque nos círculos da imagem para examinar o que há ali. Cada pista vai para o seu diário de provas.', found: '<b>{a} de {b}</b> pistas da cena encontradas',
+    toSuspects: 'Interrogar os suspeitos', backAny: 'Você pode voltar ao laboratório quando quiser.',
+    whoLying: 'Quem está mentindo?', whoLyingP: 'Abra um suspeito, leia as declarações e apresente a pista que contradiz uma delas.', lieMark: 'Mentira', lieCaught: 'Mentira pega', nStatements: '{a} declarações',
+    allCaught: 'Todas as mentiras foram pegas. Hora de resolver.', liesLeft1: 'Falta {a} mentira para pegar.', liesLeft: 'Faltam {a} mentiras para pegar.', solveBtn: 'Resolver o caso', backLab: 'Voltar ao laboratório',
+    whichClue: 'Qual pista contradiz esta declaração?', filter: 'Filtrar pistas', all: 'Todas', sceneTab: 'Cena', testimony: 'Depoimentos', present: 'Apresentar', pickClue: 'Escolha uma pista',
+    prevS: 'Declaração anterior', nextS: 'Próxima declaração', stmtN: 'Declaração {a} de {b}', allSuspects: 'Todos os suspeitos', presentEv: 'Apresentar prova',
+    stamp: 'Contradição!', said: '{a} disse', brokenBy: 'Desmentida por', nowSays: '{a} agora diz', newClue: 'Nova pista no seu diário:', backSusp: 'Voltar aos suspeitos', notYet: 'Ainda não',
+    who: 'quem', how: 'como', why: 'por quê', choose: 'Escolha', nFilled: '{a} de 3 preenchidos', lockScene: 'Bloqueado: encontre esta pista no laboratório', lockLie: 'Bloqueado: descubra-a pegando uma mentira',
+    sentP: 'Complete a frase. Cada lacuna abre as suas opções.', nCorrect: '{a} de 3 corretos', wrongP: 'A solução continua escondida. Mude o que não encaixa e resolva de novo.',
+    solveAgain: 'Resolver de novo', fillAll: 'Preencha as três lacunas para resolver.', suspTab: 'Suspeitos', ctaWrong: 'Travou? Tem mais prática no app', ctaSolved: 'Gostou? Tem mais no app',
+    caseFile: 'Dossiê nº {a}', closed: 'Caso encerrado', culprit: 'O culpado', sceneClues: 'pistas da cena', liesCaught: 'Mentiras pegas', wrongTry: 'tentativa errada', wrongTries: 'tentativas erradas', playAgain: 'Jogar de novo',
+    diary: 'Diário de provas', nOfM: '{a} de {b}', close: 'Fechar', fromLab: 'Do laboratório', fromSusp: 'Dos suspeitos', dEmpty: 'Vazio por enquanto. As pistas que você achar no laboratório aparecem aqui.',
+    stepScene: 'Cena', stepSuspects: 'Suspeitos', stepDeduce: 'Dedução',
+    stepsAria: 'Etapas do caso', railCase: 'Jogue o caso', fairCap: 'As {a} pistas deste caso vêm antes de você acusar.', schematic: 'Esquema', accusation: 'Acusação',
+    srcCase: 'Um caso do app Cyberpunk Detective, publicado pelo estúdio que o faz.', srcRiddles: 'Todos os enigmas são originais, escritos para esta página.',
+    rxH: 'Os {a} enigmas', nRiddles: '{a} enigmas', longerK: 'Quer um caso mais longo?', pushRiddles: 'Resolveu todos?' },
+};
+
+const cyQ = (loc, key) => CASE_UI[loc][key];
+const cyF = (s, a) => s.replace(/\{(\w)\}/g, (_, k) => typeof a === 'object' ? a[k] : a);
+const cyDl = (loc, cta, label, small = true) => `<a class="dl${small ? '' : ' sm'}" href="${PLAY_URL('cyberpunk_detective')}" target="_blank" rel="noopener" data-cta="${cta}" data-app="cyberpunk_detective"><img src="/assets/cyberpunk-icon.webp" width="256" height="256" alt=""><span><b>${label}</b>${small ? `<small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19l17-9.5z"/></svg>${COMMON[loc].free}</small>` : ''}</span></a>`;
+const cyDates = (loc, p, extra = '') => `<p class="cs-dates"><span>${COMMON[loc].published} <b><time datetime="${p.published}">${fmtDate(loc, p.published)}</time></b></span><span>${COMMON[loc].updated} <b><time datetime="${p.modified}">${fmtDate(loc, p.modified)}</time></b></span>${extra ? `<span>${extra}</span>` : ''}</p>`;
+const cyH1 = (loc, p) => p.id === 'cyberpunk-mini-case' ? `${CP[loc].case.h1kick} ${CP[loc].case.h1}` : `${CP[loc].riddles.h1} ${CP[loc].riddles.h1sub}`; // visible <h1> text = JSON-LD name/headline
+// JSON-LD: case page = WebApplication, riddles page = Article with citation; both + BreadcrumbList + FAQPage (visible FAQ, links stripped)
+function cySchema(loc, p) {
+  const t = T[loc], c = CP[loc][CYK[p.id]], me = url(loc, p), h1 = plain(cyH1(loc, p));
+  const org = { '@type': 'Organization', name: 'Gurrulabs', url: url(loc, byId.home), logo: `${SITE}/assets/gurrulabs-logo-512.png` };
+  const about = { '@type': 'MobileApplication', name: 'Cyberpunk Detective', operatingSystem: 'Android', url: PLAY_URL('cyberpunk_detective') };
+  return [
+    p.type === 'challenge'
+      ? { '@type': 'WebApplication', name: h1, url: me, applicationCategory: 'GameApplication', browserRequirements: 'Requires JavaScript', inLanguage: HREFLANG[loc], datePublished: p.published, dateModified: p.modified, isAccessibleForFree: true, author: org, publisher: org, isBasedOn: about }
+      : { '@type': 'Article', headline: h1, url: me, inLanguage: HREFLANG[loc], datePublished: p.published, dateModified: p.modified, author: org, publisher: org, citation: c.sources.map(s => s.url), about },
+    { '@type': 'BreadcrumbList', itemListElement: [[t.back, byId.home], ['Cyberpunk Detective', byId['cyberpunk-detective']], [plain(c.navName), p]].map(([name, q], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url(loc, q) })) },
+    { '@type': 'FAQPage', mainEntity: c.faq.map(([name, text]) => ({ '@type': 'Question', name: plain(name), acceptedAnswer: { '@type': 'Answer', text: plain(text) } })) },
+  ];
+}
+const TIP_ICONS = ['M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.5-4.5', 'M5 4h11l3 3v13H5zM9 10h6M9 14h6', 'M4 7h16v12H4zM8 12h8', 'M7 11V8a5 5 0 0110 0M5 11h14v9H5z'];
+const svg24 = d => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
+const cyPage = id => PAGES.find(q => q.id === id);
+const cyTo = (loc, id) => path(loc, byId[id]);
+
+// Guide sections: heading, answer paragraph, 2 icon tips (or the 3-column step row on the riddles page)
+const cyGuide = (c, { steps = false, after = {} } = {}) => c.guide.map((g, i) => `<h2 id="${g.id}">${g.h2}</h2>
+    <p>${g.answer}</p>${after[i] || ''}
+    ${g.points.length ? (steps ? `<div class="steps3x" style="--n:${g.points.length}">${g.points.map(([b, t]) => `<div><b>${b}</b><span>${t}</span></div>`).join('')}</div>`
+      : `<div class="tips">${g.points.map(([b, t], k) => `<div class="tip"><span class="mi">${svg24(TIP_ICONS[(i * 2 + k) % 4])}</span><div><b>${b}</b><span>${t}</span></div></div>`).join('')}</div>`) : ''}`).join('\n    ');
+const cyFaq = (loc, faq) => `<h2 id="faq">${COMMON[loc].faqH}</h2>
+    <div class="faq v2">${faq.map(([q, a], i) => `<details${i < 1 ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>`;
+const cySources = (loc, c, note) => `<section class="sources" id="sources" aria-labelledby="src-h"><h2 id="src-h">${COMMON[loc].sourcesH}</h2><ol>${c.sources.map(s => `<li id="src-${s.id}"><span>${s.html} <a href="${esc(s.url)}" rel="noopener" target="_blank">${esc(s.url.replace('https://', ''))}</a></span></li>`).join('')}</ol><p class="note">${note}</p></section>`;
+const cyPush = (loc, title, text) => `<div class="push"><div class="app"><div class="ic">${ICON.cyber}</div><div><b>${title}</b><span>${text}</span></div></div>${cyDl(loc, 'article_push', COMMON[loc].download)}</div>`;
+const cyRail = (loc, heads, againId) => { const c = CP[loc][CYK[againId]];
+  return `<aside class="g-rail" aria-label="${COMMON[loc].onThisPage}"><b>${COMMON[loc].onThisPage}</b>
+      <ol>${heads.map(([id, label], i) => `<li><a${i ? '' : ' class="on"'} href="#${id}">${label}</a></li>`).join('')}</ol>
+      <a class="again" href="${cyTo(loc, againId)}"><span class="mi">${svg24(againId === 'cyberpunk-mini-case' ? 'M8 5v14l11-7z' : 'M9 9a3 3 0 115 2c-1 1-2 1.5-2 3M12 17h.01')}</span><div>${c.navName}<span>${c.cardSub}</span></div></a>
+    </aside>`; };
+const cyRel = (loc, ids) => `<section class="blk"><h2>${COMMON[loc].keepReading}</h2><div class="rel">${ids.map(id => id === 'app'
+    ? `<a href="/${loc}/cyberpunk-detective/"><span class="mi">${ICON.cyber}</span><b>${COMMON[loc].appCard[0]}</b><span>${COMMON[loc].appCard[1]}</span></a>`
+    : id === 'home' ? `<a href="/${loc}/"><span class="mi sv">${svg24('M4 11l8-7 8 7v9H4z')}</span><b>${COMMON[loc].homeCard[0]}</b><span>${COMMON[loc].homeCard[1]}</span></a>`
+    : `<a href="${cyTo(loc, id)}"><span class="mi sv">${svg24(id === 'cyberpunk-mini-case' ? 'M8 5v14l11-7z' : 'M9 9a3 3 0 115 2c-1 1-2 1.5-2 3M12 17h.01')}</span><b>${CP[loc][CYK[id]].navName}</b><span>${CP[loc][CYK[id]].cardSub}</span></a>`).join('')}</div></section>`;
+const cyBand = (loc, c, img) => `<section class="band"><img src="/assets/cyberpunk-case-${img}.webp" width="${img === 'scene' ? '1006" height="1564' : '600" height="750'}" loading="lazy" alt=""><div><h2 class="nsign y">${c.band.title}</h2><p>${c.band.text}</p></div><div>${cyDl(loc, 'footer_band', COMMON[loc].download)}</div></section>`;
+const cyCrumb = (loc, c) => `<nav class="bc" aria-label="${T[loc].bc}"><a href="${path(loc, byId.home)}">${T[loc].back}</a><span aria-hidden="true">›</span><a href="/${loc}/cyberpunk-detective/">Cyberpunk Detective</a><span aria-hidden="true">›</span><span>${c.navName}</span></nav>`;
+const cyBody = (loc, p, inner, i18nJson = '', extraJson = '') => `${head(loc, p)}
+<body class="app-cyber mc-page" data-page="${p.dataPage}" data-locale="${loc}">
+<div class="city" aria-hidden="true"><i class="flash"></i></div>
+${header(loc, p, T[loc])}
+<main class="wrap">
+  ${inner}
+</main>
+<div class="dl-fab">${cyDl(loc, 'floating', COMMON[loc].download)}</div>
+${footer(loc, T[loc], p)}
+${i18nJson ? `<script type="application/json" id="i18n">${i18nJson}</script>` : ''}${extraJson}
+</body>
+</html>
+`;
+const cyI18n = loc => JSON.stringify({ ...CASE_UI[loc], download: COMMON[loc].download, free: COMMON[loc].free, appTagline: COMMON[loc].appTagline, play: PLAY_URL('cyberpunk_detective') }).replace(/</g, '\\u003c');
+
+// ── Case page. Static: hero, the brief (case lines + the three faces), how to play, guide, FAQ, sources. The stage, steps and diary are rendered by script.js.
+function casePage(loc, p) {
+  const c = CP[loc].case, k = CASE[loc], U = CASE_UI[loc], t = T[loc], lie = k.suspects.flatMap(s => s.statements).find(x => x.brokenBy), lieClue = k.clues.find(x => x.id === lie.brokenBy), c0 = k.clues[0];
+  const brief = `<div class="cs-brief"><div>${k.brief.map(b => `<p class="cs-line"><b class="${b.speaker}">${b.speaker.toUpperCase()}</b><span>${esc(b.text)}</span></p>`).join('')}</div>
+        <div><p class="cs-q">${esc(k.question)}</p>
+        <div class="cs-trio">${k.suspects.map(s => `<figure><img class="cs-pt" src="/assets/cyberpunk-case-${s.id}.webp" width="120" height="120" alt="${esc(cyF(U.portrait, { a: s.name, b: s.role.toLowerCase() }))}"><figcaption><b>${esc(s.name)}</b><small>${esc(s.role)}</small></figcaption></figure>`).join('')}</div>
+        <noscript><p class="cs-nojs">${c.noscript}</p></noscript></div></div>`;
+  const hp = [
+    `<div class="hp-pv pv-scene" aria-hidden="true"><span class="cs-hs found"><i></i><span class="cs-hl"><span class="tg f">${c0.code}</span>${esc(c0.place)}</span></span></div>`,
+    `<div class="hp-pv pv-lie" aria-hidden="true"><div><p>“<span>${esc(lie.text)}</span>”</p><p class="pv-by"><span class="tg f">${lieClue.code}</span>${esc(lieClue.title)}</p></div></div>`,
+    `<div class="hp-pv pv-sent" aria-hidden="true"><p><span class="cs-slot f">${U.who}</span> · <span class="cs-slot">${U.how}</span> · <span class="cs-slot a">${U.why}</span></p></div>`];
+  const fair = `<figure class="fair" data-rv><div class="fair-row">${k.clues.map(x => `<span class="tg f">${x.code}</span>`).join('')}<hr><span class="fair-acc">${U.accusation}</span></div><figcaption class="fair-cap"><span>${cyF(U.fairCap, k.clues.length)}</span><span>${U.schematic}</span></figcaption></figure>`;
+  const heads = [['case', U.railCase], ...c.guide.map(g => [g.id, g.toc]), ['faq', COMMON[loc].faqH], ['sources', COMMON[loc].sourcesH]];
+  const inner = `${cyCrumb(loc, c)}
+
+  <section class="cs" id="case" data-mode="case" aria-labelledby="h1">
+    <div class="cs-cover">
+      <img src="/assets/cyberpunk-case-cover.webp" width="600" height="750" alt="" decoding="async">
+      <div class="cs-hd">
+        <h1 class="cs-h1" id="h1"><span class="k">${c.h1kick}</span> <span class="t nsign">${c.h1}</span></h1>
+        <p class="cs-hook">${c.lede}</p>
+        <div class="cs-go"><button class="cs-btn" data-go="scene">${c.openCase}</button>${cyDl(loc, 'hero', COMMON[loc].getApp)}<small>${c.meta}</small></div>
+        ${cyDates(loc, p)}
+      </div>
+      <ol class="cs-steps" aria-label="${U.stepsAria}"></ol>
+    </div>
+    <div class="cs-body"><div class="cs-stage">${brief}</div><details class="cs-diary" open></details></div>
+  </section>
+
+  <div class="say" data-rv><div class="k">${c.shortH}</div>${c.short}</div>
+
+  <section class="blk"><h2 class="nsign nbox c">${c.howH}</h2><p class="lead">${c.howSub}</p>
+    <div class="hp" data-rvk>${c.steps.map(([b, d], i) => `<div>${hp[i]}<div class="hp-tx"><span class="hp-n">0${i + 1}</span><b>${b}</b><span>${d}</span></div></div>`).join('')}</div>
+  </section>
+
+  <div class="g-grid">
+    <div>
+  <article class="prose">
+    ${cyGuide(c, { after: { 2: fair } })}
+    ${cyPush(loc, c.banner.title, c.banner.text)}
+    ${cyFaq(loc, c.faq)}
+  </article>
+  ${cySources(loc, c, U.srcCase)}
+    </div>
+    ${cyRail(loc, heads, 'cyberpunk-riddles')}
+  </div>
+
+  ${cyRel(loc, ['cyberpunk-riddles', 'app', 'home'])}
+
+  ${cyBand(loc, c, 'scene')}`;
+  const caseJson = `\n<script type="application/json" id="case-data">${JSON.stringify(k).replace(/</g, '\\u003c')}</script>`;
+  return cyBody(loc, p, inner, cyI18n(loc), caseJson);
+}
+
+// ── Riddles page: 10 riddles in 3 levels, each answer in a native <details>; the decisive detail is underlined (CSS :has) while its answer is open.
+const LEVELS = [['easy', 1, 'c'], ['medium', 2, 'a'], ['hard', 3, 'r']];
+function riddlesPage(loc, p) {
+  const c = CP[loc].riddles, U = CASE_UI[loc], pips = n => `<span class="pips"><i class="on"></i><i${n > 1 ? ' class="on"' : ''}></i><i${n > 2 ? ' class="on"' : ''}></i></span>`;
+  const lv = Object.fromEntries(LEVELS.map(([key, n]) => [key, n]));
+  const num = r => String(c.riddles.indexOf(r) + 1).padStart(2, '0');
+  const lbl = r => c.levels[r.level];
+  const rdText = r => { if (!r.text.includes(r.detail)) throw new Error(`riddle ${r.id} (${loc}): detail is not a substring of text`); return r.text.replace(r.detail, `<span class="rd-detail">${r.detail}</span>`); };
+  const eye = svg24('M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 9a3 3 0 100 6 3 3 0 000-6z');
+  const rd = r => `<article class="rd" id="${r.id}"><div><div class="rd-n orb">${num(r)}</div>${pips(lv[r.level])}</div><div><h3>${r.title}</h3><p>${rdText(r)}</p><details><summary>${eye}<span class="rd-s1">${c.showAnswer}</span><span class="rd-s2">${c.hideAnswer}</span></summary><div class="rd-ans">${r.answer}</div></details></div></article>`;
+  const longer = `<aside class="longer"><img src="/assets/cyberpunk-case-cover.webp" width="600" height="750" alt="" loading="lazy"><div><span class="cs-lab">${U.longerK}</span><h3>${c.longer.title}</h3><p>${c.longer.text}</p><div class="cs-row"><a class="cs-btn" href="${cyTo(loc, 'cyberpunk-mini-case')}">${c.longer.cta}</a></div></div></aside>`;
+  const groups = LEVELS.map(([key, , col]) => { const rs = c.riddles.filter(r => r.level === key);
+    return `<h2 class="rhead nsign ${col}" id="${key}">${c.levels[key]}<small>${cyF(U.nRiddles, rs.length)}</small></h2>
+  <div class="rl">
+    ${rs.map(rd).join('\n    ')}
+  </div>${key === 'medium' ? `\n  ${longer}` : ''}`; }).join('\n\n  ');
+  const heads = [...LEVELS.map(([key]) => [key, c.levels[key]]), ...c.guide.map(g => [g.id, g.toc]), ['faq', COMMON[loc].faqH], ['sources', COMMON[loc].sourcesH]];
+  const mins = Math.max(1, Math.round([c.lede, ...c.riddles.flatMap(r => [r.text, r.answer]), ...c.guide.flatMap(g => [g.answer, ...g.points.flat()]), ...c.faq.flat()].join(' ').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / 200));
+  const inner = `${cyCrumb(loc, c)}
+  <section class="rhero">
+    <div class="cs-hd">
+      <h1 class="cs-h1"><span class="t nsign">${c.h1}</span> <span class="k" style="margin-top:14px">${c.h1sub}</span></h1>
+      <p class="sub">${c.lede}</p>
+      ${cyDates(loc, p, T[loc].read(mins))}
+    </div>
+    <nav class="rx" aria-label="${cyF(U.rxH, c.riddles.length)}"><b>${cyF(U.rxH, c.riddles.length)}</b><ol>
+      ${c.riddles.map(r => `<li><a href="#${r.id}"><span>${num(r)}</span><span>${r.title}</span><span class="pips" aria-label="${lbl(r)}"><i class="on"></i><i${lv[r.level] > 1 ? ' class="on"' : ''}></i><i${lv[r.level] > 2 ? ' class="on"' : ''}></i></span></a></li>`).join('\n      ')}
+    </ol></nav>
+  </section>
+
+  ${c.short ? `<div class="say" data-rv><div class="k">${c.shortH || T[loc].say_k}</div>${c.short}</div>` : ''}
+
+  <div class="g-grid">
+    <div>
+  ${groups}
+
+  <article class="prose">
+    ${cyGuide(c, { steps: true, after: { 0: '' } })}
+    ${cyPush(loc, U.pushRiddles, COMMON[loc].appTagline)}
+    ${cyFaq(loc, c.faq)}
+  </article>
+  ${cySources(loc, c, U.srcRiddles)}
+    </div>
+    ${cyRail(loc, heads, 'cyberpunk-mini-case')}
+  </div>
+
+  ${cyRel(loc, ['cyberpunk-mini-case', 'app', 'home'])}
+
+  ${cyBand(loc, c, 'cover')}`;
+  return cyBody(loc, p, inner);
+}
+
 // ── Root: redirects by browser language; search engines read the hreflang links
 const rootPage = `<!doctype html>
 <html lang="en">
@@ -2681,7 +2958,7 @@ const BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'Claude-SearchBot', 'Cl
 const robots = `User-agent: *\nAllow: /\n\n${BOTS.map(b => `User-agent: ${b}`).join('\n')}\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`;
 
 // llms.txt (llmstxt.org): facts only. Lists the EN URL of every page (validator rule) and the locale roots under Optional.
-const llmsName = p => p.id === 'home' ? 'Gurrulabs' : p.id === 'pulse' ? 'Pulse' : APP[p.id] ? APP[p.id].en.name : CONTENT[p.id].en.name;
+const llmsName = p => p.id === 'home' ? 'Gurrulabs' : p.id === 'pulse' ? 'Pulse' : CYK[p.id] ? CP.en[CYK[p.id]].navName : APP[p.id] ? APP[p.id].en.name : CONTENT[p.id].en.name;
 const llmsItem = p => `- [${llmsName(p)}](${url('en', p)}): ${p.llms}`;
 const llms = `# Gurrulabs
 
@@ -2699,7 +2976,7 @@ ${PAGES.filter(p => p.app === 'pulse').map(llmsItem).join('\n')}
 ## Other apps
 
 - [Raffy](https://raffyparenting.com/): baby tracker for feeds, sleep and growth, with WHO charts.
-${['cyberpunk-detective', 'lull'].map(id => llmsItem(byId[id])).join('\n')}
+${['cyberpunk-detective', ...CY_CONTENT.map(q => q.id), 'lull'].map(id => llmsItem(byId[id])).join('\n')}
 - [Cyberpunk Detective on Google Play](${PLAY_URL('cyberpunk_detective')}): Android download page.
 
 ## Optional
@@ -2713,7 +2990,7 @@ function write(rel, content) {
   writeFileSync(file, content);
 }
 for (const loc of LOCALES) for (const p of PAGES) {
-  const html = p.type === 'home' ? home(loc) : p.type === 'app' ? (p.id === 'pulse' ? pulsePage(loc) : appPage(loc, p)) : contentPage(loc, p);
+  const html = p.type === 'home' ? home(loc) : p.type === 'app' ? (p.id === 'pulse' ? pulsePage(loc) : appPage(loc, p)) : p.id === 'cyberpunk-mini-case' ? casePage(loc, p) : p.id === 'cyberpunk-riddles' ? riddlesPage(loc, p) : contentPage(loc, p);
   write(`${path(loc, p).slice(1)}index.html`, html);
 }
 write('index.html', rootPage);

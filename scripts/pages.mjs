@@ -14,15 +14,22 @@
 export const SITE = 'https://www.gurrulabs.com';
 export const LOCALES = ['en', 'es', 'fr', 'pt'];
 export const HREFLANG = { en: 'en', es: 'es', fr: 'fr', pt: 'pt-BR' };
+import { PAGES as CP } from './cyberpunk-content.mjs'; // the Cyberpunk page slugs live with their copy (one place per locale)
+const slugs = k => Object.fromEntries(LOCALES.map(l => [l, CP[l][k].slug]));
 
+const Z = '2026-11-24'; // T-011 (Cyberpunk mini case + riddles)
 const D = '2026-11-05', N = '2026-11-11', X = '2026-11-18', Y = '2026-11-20'; // X = T-025 (improve guide + its back-links), Y = T-026 (caffeine guide) and T-027 (sports guide), each with its back-links
 export const PAGES = [
   { id: 'home', app: null, type: 'home', published: D, modified: D, dataPage: 'home',
     llms: 'Studio home: the four apps and where to get each one.' },
   { id: 'pulse', app: 'pulse', type: 'app', published: D, modified: N, dataPage: 'pulse',
     llms: 'Android game with 5 modes: Exact Time, Hidden Clock, Interval, Reaction, Batak. No account, works offline. Includes a browser version of every mode, one page each.' },
-  { id: 'cyberpunk-detective', app: 'cyberpunk-detective', type: 'app', published: D, modified: D, dataPage: 'cyberpunk-detective',
+  { id: 'cyberpunk-detective', app: 'cyberpunk-detective', type: 'app', published: D, modified: '2026-11-24', dataPage: 'cyberpunk-detective',
     llms: 'Free Android game on Google Play (ads, no in-app purchases, no account) mixing 3 detective cases you solve and 3 audio crime stories you listen to; cases work offline; game text in English, Spanish and French.' },
+  { id: 'cyberpunk-mini-case', app: 'cyberpunk-detective', type: 'challenge', mode: 'case', published: Z, modified: Z, dataPage: 'cyberpunk-mini-case', slug: slugs('case'),
+    llms: 'Browser detective game: one case, "Blackout at Hawk Tower", about 8 minutes. Search the scene for 5 clues, catch the lie of each of 3 suspects by presenting the clue that contradicts it, then complete a who, how and why sentence. A case from the Cyberpunk Detective app.' },
+  { id: 'cyberpunk-riddles', app: 'cyberpunk-detective', type: 'guide', published: Z, modified: Z, dataPage: 'cyberpunk-riddles', slug: slugs('riddles'),
+    llms: 'Guide: 10 original murder mystery riddles in three levels (easy, medium, hard), each solvable from its own text, with the answer one tap away.' },
   { id: 'lull', app: 'lull', type: 'app', published: D, modified: D, dataPage: 'lull',
     llms: 'Coming-soon Android wellness app (not a medical device) with sleep sounds tuned to your pitch and a 15-second daily check-in for people with tinnitus. Not on Google Play yet; email sign-up.' },
   { id: 'reaction-test', app: 'pulse', type: 'test', published: D, modified: Y, dataPage: 'pulse-reaction-test', card: ['reaction', 'm-reaction'],

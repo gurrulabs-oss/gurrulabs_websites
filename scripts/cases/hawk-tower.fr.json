@@ -1,0 +1,70 @@
+{
+  "id": "case_001_torre_halcon",
+  "number": 2,
+  "title": "Panne de courant à la Tour Faucon",
+  "district": "Quartier Haut",
+  "location": "Laboratoire · étage 88",
+  "hook": "Un noyau IA à 2 millions disparaît pendant une panne de quatre minutes.",
+  "minutes": 8,
+  "question": "Qui a volé le noyau Alba ?",
+  "scene": "minicase_001_scene",
+  "cover": "minicase_001_cover",
+  "brief": [
+    { "speaker": "eco", "text": "Bonsoir, inspectrice. À 23h40, le courant a été coupé au 88e étage de la Tour Faucon. Quand il est revenu, quatre minutes plus tard, le noyau IA « Alba » n’était plus dans sa vitrine." },
+    { "speaker": "noa", "text": "Un prototype à 2 millions, et personne n’a rien vu. Les caméras ont perdu le courant avec la panne. Qui était encore à l’étage ?" },
+    { "speaker": "eco", "text": "Trois personnes. L’une d’elles ment, ou plus d’une." }
+  ],
+  "goal": "Qui a volé le noyau Alba ?",
+  "clues": [
+    { "id": "grasa", "code": "E1", "source": "scene", "hotspot": [0.50, 0.46], "title": "Graisse sur la vitrine", "text": "Des traces de graisse noire d’engrenage sur la vitre. C’est celle des ascenseurs.", "place": "Vitrine" },
+    { "id": "acceso", "code": "E2", "source": "scene", "hotspot": [0.19, 0.45], "title": "Accès à 23h38", "text": "La porte du laboratoire a enregistré la carte de Lía Fenn deux minutes avant la panne.", "place": "Porte" },
+    { "id": "cuadro", "code": "E3", "source": "scene", "hotspot": [0.875, 0.26], "title": "Tableau trafiqué", "text": "La panne n’était pas accidentelle : quelqu’un a court-circuité le tableau électrique de l’ascenseur de service.", "place": "Tableau électrique" },
+    { "id": "deudas", "code": "E4", "source": "scene", "hotspot": [0.87, 0.52], "title": "Lettre dans le casier", "text": "Dans le casier de Rhea, un avis de casino : elle doit 50 000 crédits.", "place": "Casier" },
+    { "id": "kurogane", "code": "E5", "source": "scene", "hotspot": [0.12, 0.68], "title": "Message dans l’atelier", "text": "« Kurogane paie 80k pour Alba. Cette nuit. » Envoyé au terminal de l’atelier de maintenance.", "place": "Terminal" },
+    { "id": "dentro", "code": "T1", "source": "testimony", "hotspot": null, "title": "Dax est entré", "text": "Dax admet être entré dans le laboratoire vers 23h30, « pour vérifier une lumière »." },
+    { "id": "perdida", "code": "T2", "source": "testimony", "hotspot": null, "title": "Carte perdue", "text": "Lía a perdu sa carte cet après-midi… dans l’ascenseur de service." },
+    { "id": "turno", "code": "T3", "source": "testimony", "hotspot": null, "title": "Registre de contrôle", "text": "Le poste de Rhea est resté actif sans pause de 23h30 à 23h50 : pas une seule déconnexion." }
+  ],
+  "suspects": [
+    { "id": "rhea", "name": "Rhea Kato", "role": "Cheffe de la sécurité", "portrait": "minicase_001_rhea", "clears": ["turno"], "statements": [
+      { "id": "r1", "text": "Avec la panne, les caméras se sont éteintes. Je n’ai rien pu voir.", "brokenBy": null, "reply": null, "unlocks": null },
+      { "id": "r2", "text": "Je n’avais aucune raison de toucher à ce noyau.", "brokenBy": "deudas", "reply": "D’accord, je dois de l’argent. Mais regardez le registre de contrôle : je n’ai pas quitté mon poste de la nuit.", "unlocks": "turno" }
+    ] },
+    { "id": "dax", "name": "Dax Moreno", "role": "Technicien de maintenance", "portrait": "minicase_001_dax", "statements": [
+      { "id": "d1", "text": "Cette nuit, je n’ai travaillé que sur l’ascenseur de service.", "brokenBy": null, "reply": null, "unlocks": null },
+      { "id": "d2", "text": "Je ne suis pas entré dans le laboratoire. Je ne sais même pas l’ouvrir.", "brokenBy": "grasa", "reply": "…Je suis entré à 23h30, d’accord ? Une lumière était grillée. Je suis entré et ressorti.", "unlocks": "dentro" }
+    ] },
+    { "id": "lia", "name": "Lía Fenn", "role": "Directrice du laboratoire", "portrait": "minicase_001_lia", "clears": ["perdida"], "statements": [
+      { "id": "l1", "text": "Alba est l’œuvre de ma vie. Je ne lui ferais jamais de mal.", "brokenBy": null, "reply": null, "unlocks": null },
+      { "id": "l2", "text": "Je suis rentrée chez moi à 22h. Je ne suis pas revenue.", "brokenBy": "acceso", "reply": "Ma carte ? Mais je l’ai perdue cet après-midi ! Elle est tombée dans l’ascenseur de service.", "unlocks": "perdida" }
+    ] }
+  ],
+  "deduction": {
+    "template": "{who} a volé le noyau. La personne est entrée dans le laboratoire {how}, a coupé le courant depuis le tableau de l’ascenseur et l’a fait pour {why}.",
+    "slots": {
+      "who": [
+        { "id": "rhea", "text": "Rhea", "needs": null },
+        { "id": "dax", "text": "Dax", "needs": null },
+        { "id": "lia", "text": "Lía", "needs": null }
+      ],
+      "how": [
+        { "id": "propia", "text": "avec sa propre carte", "needs": null },
+        { "id": "tarjeta", "text": "avec la carte perdue de Lía", "needs": "perdida" },
+        { "id": "forzada", "text": "en forçant la porte", "needs": null }
+      ],
+      "why": [
+        { "id": "deudas", "text": "payer ses dettes de jeu", "needs": "deudas" },
+        { "id": "kurogane", "text": "le vendre à Kurogane", "needs": "kurogane" },
+        { "id": "proteger", "text": "protéger le projet", "needs": null }
+      ]
+    },
+    "solution": { "who": "dax", "how": "tarjeta", "why": "kurogane" }
+  },
+  "epilogue": "Dax Moreno a trouvé la carte de Lía dans l’ascenseur et a saisi sa chance. Il a court-circuité le tableau, est entré avec la carte et a sorti Alba dans sa caisse à outils. ECO a retracé la vente : Kurogane n’a jamais payé.",
+  "ecoHints": {
+    "scene": "Il reste des choses à examiner sur la scène. Les techniciens ne nettoient jamais leurs outils.",
+    "suspects": "Quelque chose dans leurs propos ne colle pas avec ce que vous avez vu. Montrez à chacun l’indice qui le contredit.",
+    "solve": "Celui qui a utilisé la carte perdue est d’abord passé par l’ascenseur de service. Qui y a travaillé cette nuit ?",
+    "wrong_evidence": "Hmm, ça ne le contredit pas. Essayez-en une autre."
+  }
+}

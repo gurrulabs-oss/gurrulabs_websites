@@ -101,7 +101,7 @@ for (const { p, loc, own, shown, html, alts } of pages) {
     if (!attr(a, 'data-cta') || !attr(a, 'data-app')) f(`Play link without data-cta/data-app: ${a.slice(0, 120)}`);
   if (/mixpanel/i.test(html)) f('mixpanel referenced in HTML (must live only in script.js behind the gate)');
   // p.listing: comparison page quoting Play price/ads labels; cure/eliminate/F1 stay banned there too
-  const bad = text(html).match(p.listing ? LISTING_BANNED : ['cyberpunk-detective', 'lull'].includes(p.id) ? BANNED_FREE_OK : BANNED);
+  const bad = text(html).match(p.listing ? LISTING_BANNED : ['cyberpunk-detective', 'lull'].includes(p.app) ? BANNED_FREE_OK : BANNED);
   if (bad) f(`banned claim "${bad[0]}"`);
 
   // Internal hrefs must resolve to a file or page
@@ -149,7 +149,7 @@ for (const { p, loc, own, shown, html, alts } of pages) {
     }
   }
 
-  // Content pages: sources, dates, internal links, link to the Pulse page
+  // Content pages: sources, dates, internal links, link to their app page
   if (['test', 'guide', 'challenge'].includes(p.type)) {
     const src = html.match(/<section class="sources"[\s\S]*?<\/section>/)?.[0] || '';
     const n = tags(src, /\shref="https:\/\/[^"]+"/g).length;
@@ -158,7 +158,7 @@ for (const { p, loc, own, shown, html, alts } of pages) {
     const main = html.match(/<main[\s\S]*?<\/main>/)?.[0] || '';
     const internal = new Set(hrefs(main).map(h => h.split('#')[0]).filter(h => h.endsWith('/') && h !== shown && existsSync(fileOfHref(h))));
     if (internal.size < 3) f(`content page has ${internal.size} internal links to other pages (needs ≥ 3)`);
-    if (!internal.has(`/${loc}/pulse/`)) f(`no link to /${loc}/pulse/`);
+    if (!internal.has(`/${loc}/${p.app}/`)) f(`no link to its app page /${loc}/${p.app}/`);
   }
 }
 

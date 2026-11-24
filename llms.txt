@@ -25,6 +25,8 @@
 
 - [Raffy](https://raffyparenting.com/): baby tracker for feeds, sleep and growth, with WHO charts.
 - [Cyberpunk Detective](https://www.gurrulabs.com/en/cyberpunk-detective/): Free Android game on Google Play (ads, no in-app purchases, no account) mixing 3 detective cases you solve and 3 audio crime stories you listen to; cases work offline; game text in English, Spanish and French.
+- [Detective game online](https://www.gurrulabs.com/en/cyberpunk-detective/detective-game-online/): Browser detective game: one case, "Blackout at Hawk Tower", about 8 minutes. Search the scene for 5 clues, catch the lie of each of 3 suspects by presenting the clue that contradicts it, then complete a who, how and why sentence. A case from the Cyberpunk Detective app.
+- [Murder mystery riddles](https://www.gurrulabs.com/en/cyberpunk-detective/murder-mystery-riddles/): Guide: 10 original murder mystery riddles in three levels (easy, medium, hard), each solvable from its own text, with the answer one tap away.
 - [Lull](https://www.gurrulabs.com/en/lull/): Coming-soon Android wellness app (not a medical device) with sleep sounds tuned to your pitch and a 15-second daily check-in for people with tinnitus. Not on Google Play yet; email sign-up.
 - [Cyberpunk Detective on Google Play](https://play.google.com/store/apps/details?id=com.gurrulabs.miniaicrimes): Android download page.
 
