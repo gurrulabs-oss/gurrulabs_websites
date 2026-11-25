@@ -10,11 +10,13 @@ import { SITE, LOCALES, HREFLANG, PAGES, path, url } from './pages.mjs';
 import { CASE, COMMON, PAGES as CP } from './cyberpunk-content.mjs'; // Cyberpunk Detective pages: case JSON + page copy (T-011)
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
-const OG_LOCALE = { en: 'en_US', es: 'es_ES', fr: 'fr_FR', pt: 'pt_BR' };
-const BADGE_ALT = { en: 'Get it on Google Play', es: 'Disponible en Google Play', fr: 'Disponible sur Google Play', pt: 'Disponível no Google Play' };
+const OG_LOCALE = { en: 'en_US', es: 'es_ES', fr: 'fr_FR', pt: 'pt_BR', de: 'de_DE', it: 'it_IT' };
+const BADGE_ALT = { en: 'Get it on Google Play', es: 'Disponible en Google Play', fr: 'Disponible sur Google Play', pt: 'Disponível no Google Play', de: 'Jetzt bei Google Play', it: 'Disponibile su Google Play' };
 const SHOT_ALT = { en: 'Pulse screenshot', es: 'Captura de Pulse', fr: 'Capture de Pulse', pt: 'Captura do Pulse' };
 const OG_IMAGE = { pulse: 'pulse-icon', 'cyberpunk-detective': 'cyberpunk-icon', lull: 'lull-tonight' };
-const PKG = { pulse: 'com.gurrulabs.pulse', raffy: 'com.gurrulabs.raffy', cyberpunk_detective: 'com.gurrulabs.miniaicrimes' };
+const PKG = { pulse: 'com.gurrulabs.pulse', raffy: 'com.gurrulabs.raffy', cyberpunk_detective: 'com.gurrulabs.miniaicrimes', lull: 'com.gurrulabs.lull' };
+const PLOC = p => p.locales || LOCALES; // locales of one page (Lull also ships de and it)
+const HUB = loc => LOCALES.includes(loc) ? loc : 'en'; // de/it pages link home, other apps and footer to the EN pages
 
 // ── Copy. Test strings and mode names/rules are the Pulse app's own (strings.xml); card one-liners come from the app Leads.
 //    Functions are turned into "{a}" templates for the browser (see `i18n`).
@@ -33,9 +35,8 @@ const T = {
     pulse_cta: 'Try it in your browser',
     raffy_p: 'Log feeds, sleep and growth in seconds, with WHO charts.', raffy_cta: 'View Raffy', ext: 'opens raffyparenting.com',
     cyber_p: 'Solve neon-noir crime cases and catch the culprit.', lull_p: 'Sleep sounds and a daily diary so tinnitus bothers you less.',
-    soon: 'Coming soon',
     cyber_page: 'View Cyberpunk Detective', lull_page: 'View Lull', q_h: 'Questions', more_h: 'More from Gurrulabs',
-    rel: [['All our apps', 'The Gurrulabs studio home'], ['Pulse', 'Test your reaction time in the browser'], ['Cyberpunk Detective', 'Neon-noir mystery game'], ['Lull', 'Calmer nights with tinnitus · coming soon']],
+    rel: [['All our apps', 'The Gurrulabs studio home'], ['Pulse', 'Test your reaction time in the browser'], ['Cyberpunk Detective', 'Neon-noir mystery game'], ['Lull', 'Calmer nights with tinnitus']],
     p_kicker: 'Reaction time challenge', p_h1: 'Stop the clock at exactly 3.00 s', facts: ['No account', 'Works offline'],
     t_exact: 'Exact Time', t_react: 'Reaction', start: 'Start', stop: 'Stop', stop_at: 'Stop at', of: t => `of ${t} s`,
     t_hidden: 'Hidden Clock', t_interval: 'Interval', t_batak: 'Batak', t_modes: 'Mode',
@@ -87,9 +88,8 @@ const T = {
     pulse_cta: 'Pruébalo en el navegador',
     raffy_p: 'Registra tomas, sueño y crecimiento en segundos, con curvas OMS.', raffy_cta: 'Ver Raffy', ext: 'abre raffyparenting.com',
     cyber_p: 'Resuelve crímenes en una ciudad de neón y atrapa al culpable.', lull_p: 'Sonidos para dormir y un diario para que el acúfeno moleste menos.',
-    soon: 'Próximamente',
     cyber_page: 'Ver Cyberpunk Detective', lull_page: 'Ver Lull', q_h: 'Preguntas', more_h: 'Más de Gurrulabs',
-    rel: [['Todas nuestras apps', 'La página principal de Gurrulabs'], ['Pulse', 'Mide tu tiempo de reacción en el navegador'], ['Cyberpunk Detective', 'Juego de misterio neon-noir'], ['Lull', 'Noches más tranquilas con acúfenos · próximamente']],
+    rel: [['Todas nuestras apps', 'La página principal de Gurrulabs'], ['Pulse', 'Mide tu tiempo de reacción en el navegador'], ['Cyberpunk Detective', 'Juego de misterio neon-noir'], ['Lull', 'Noches más tranquilas con acúfenos']],
     p_kicker: 'Reto de tiempo de reacción', p_h1: 'Para el reloj en 3.00 s exactos', facts: ['Sin cuenta', 'Funciona sin conexión'],
     t_exact: 'Exact Time', t_react: 'Reacción', start: 'Iniciar', stop: 'Parar', stop_at: 'Para en', of: t => `de ${t} s`,
     t_hidden: 'Hidden Clock', t_interval: 'Intervalo', t_batak: 'Batak', t_modes: 'Modo',
@@ -141,9 +141,8 @@ const T = {
     pulse_cta: 'Essaie-le dans ton navigateur',
     raffy_p: 'Note tétées, sommeil et croissance, avec les courbes de l’OMS.', raffy_cta: 'Voir Raffy', ext: 'ouvre raffyparenting.com',
     cyber_p: 'Résous des crimes dans une ville néon et trouve le coupable.', lull_p: 'Des sons pour dormir et un journal pour que l’acouphène gêne moins.',
-    soon: 'Bientôt disponible',
     cyber_page: 'Voir Cyberpunk Detective', lull_page: 'Voir Lull', q_h: 'Questions', more_h: 'Plus de Gurrulabs',
-    rel: [['Toutes nos applis', 'L’accueil du studio Gurrulabs'], ['Pulse', 'Teste ton temps de réaction dans le navigateur'], ['Cyberpunk Detective', 'Jeu d’enquête néo-noir'], ['Lull', 'Des nuits plus calmes avec les acouphènes · bientôt disponible']],
+    rel: [['Toutes nos applis', 'L’accueil du studio Gurrulabs'], ['Pulse', 'Teste ton temps de réaction dans le navigateur'], ['Cyberpunk Detective', 'Jeu d’enquête néo-noir'], ['Lull', 'Des nuits plus calmes avec les acouphènes']],
     p_kicker: 'Défi de temps de réaction', p_h1: 'Arrête le chrono pile à 3.00 s', facts: ['Sans compte', 'Fonctionne hors ligne'],
     t_exact: 'Exact Time', t_react: 'Réaction', start: 'Démarrer', stop: 'Arrêter', stop_at: 'Arrête à', of: t => `sur ${t} s`,
     t_hidden: 'Hidden Clock', t_interval: 'Intervalle', t_batak: 'Batak', t_modes: 'Mode',
@@ -195,9 +194,8 @@ const T = {
     pulse_cta: 'Experimente no navegador',
     raffy_p: 'Registre mamadas, sono e crescimento em segundos, com curvas da OMS.', raffy_cta: 'Ver Raffy', ext: 'abre raffyparenting.com',
     cyber_p: 'Resolva crimes numa cidade neon e encontre o culpado.', lull_p: 'Sons para dormir e um diário para o zumbido incomodar menos.',
-    soon: 'Em breve',
     cyber_page: 'Ver Cyberpunk Detective', lull_page: 'Ver Lull', q_h: 'Perguntas', more_h: 'Mais da Gurrulabs',
-    rel: [['Todos os nossos apps', 'A página inicial da Gurrulabs'], ['Pulse', 'Teste seu tempo de reação no navegador'], ['Cyberpunk Detective', 'Jogo de mistério neon-noir'], ['Lull', 'Noites mais tranquilas com zumbido · em breve']],
+    rel: [['Todos os nossos apps', 'A página inicial da Gurrulabs'], ['Pulse', 'Teste seu tempo de reação no navegador'], ['Cyberpunk Detective', 'Jogo de mistério neon-noir'], ['Lull', 'Noites mais tranquilas com zumbido']],
     p_kicker: 'Desafio de tempo de reação', p_h1: 'Pare o cronômetro em 3.00 s exatos', facts: ['Sem conta', 'Funciona offline'],
     t_exact: 'Exact Time', t_react: 'Reação', start: 'Iniciar', stop: 'Parar', stop_at: 'Pare em', of: t => `de ${t} s`,
     t_hidden: 'Hidden Clock', t_interval: 'Intervalo', t_batak: 'Batak', t_modes: 'Modo',
@@ -234,6 +232,18 @@ const T = {
     pulse_desc: 'Pulse é um jogo de reflexos e noção de tempo para Android: 5 modos, sem conta e funciona offline. Jogue os cinco modos no navegador.',
     guides_h: 'Testes e guias', guides_p: 'Veja o que dizem os estudos e depois se teste no navegador.', read_h: 'Continue lendo', faq_h: 'Perguntas frequentes', edu: 'Conteúdo educativo.', edu_med: 'Conteúdo educativo, não é conselho médico.',
     foot: ['Teste de reação', 'Desafio 3 s', 'Hidden Clock', 'Interval', 'Batak', 'Reação por idade', 'Melhores apps de reflexo', 'Melhorar o tempo de reação', 'Cafeína e tempo de reação', 'Tempo de reação no esporte'], pulse_card: ['O app Pulse', 'Cinco modos para treinar'], read: n => `Leitura de ${n} min`,
+  },
+  de: { // Lull page only: home, other apps and footer link to the EN pages
+    back: 'Gurrulabs', bc: 'Brotkrumennavigation', more_h: 'Mehr von Gurrulabs', q_h: 'Fragen', src_h: 'Quellen', apps_word: 'Apps', contact: 'Kontakt',
+    rel: [['Alle unsere Apps', 'Die Startseite von Gurrulabs'], ['Pulse', 'Teste deine Reaktionszeit im Browser'], ['Cyberpunk Detective', 'Neon-Noir-Rätselspiel']],
+    pub: 'Veröffentlicht', upd: 'Aktualisiert',
+    months: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'], date: (d, m, y) => `${d}. ${m} ${y}`,
+  },
+  it: { // Lull page only: home, other apps and footer link to the EN pages
+    back: 'Gurrulabs', bc: 'Percorso di navigazione', more_h: 'Altro da Gurrulabs', q_h: 'Domande', src_h: 'Fonti', apps_word: 'App', contact: 'Contatto',
+    rel: [['Tutte le nostre app', 'La home di Gurrulabs'], ['Pulse', 'Misura il tuo tempo di reazione nel browser'], ['Cyberpunk Detective', 'Gioco di mistero neon-noir']],
+    pub: 'Pubblicato', upd: 'Aggiornato',
+    months: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'], date: (d, m, y) => `${d} ${m} ${y}`,
   },
 };
 
@@ -2069,11 +2079,10 @@ const CONTENT = {
 // ── New app pages (T-004): Cyberpunk Detective and Lull. Facts ONLY from .lead/attachments/T-004/facts.md. Per app and locale.
 //    Cyberpunk: { title, desc, tag, h1, sub, chips, ans [q, a], steps_h, steps_p, steps [[b, s]], cases_h, cases_p, kick [detective, audio],
 //      cases [[teaser, tags]] (order of CASES), note, shot [prefix, alts], faq [[q, a]], band [h, p] }
-//    Lull: { title, desc, tag, pill, h1, sub, btn, fine, chips, hero_alt, ans [q, a], feat_h, feat_p, feats [[b, p, alt]], stat_h, stat, faq,
-//      disc, checked, band [h, p], subject, mail (body lines: hello, language, sent from) }
+//    Lull: { title, desc, tag, h1, sub, chips, hero_alt, ans [q, a], feat_h, feat_p, feats [[b, p, alt]], stat_h, stat, faq,
+//      disc, checked, band [h, p] }
 //    Lull wording rules (validator enforces): no cure / eliminate / treat (except the disclaimer) / reduce; never "tinnitus therapy".
 const CASES = [['vienna', 'Shadows in Vienna', 0], ['gaps', 'Gaps Along the Way', 0], ['selene', 'Cold Dust on Selene-9', 0], ['coyote', 'The Coyote and the Wind', 15], ['redline', 'Red Line', 15], ['mossleigh', 'The Echo of Mossleigh', 25]];
-const LULL_MAIL = 'gurrulabs@gmail.com';
 const S1 = '<sup><a href="#s1">[1]</a></sup>', S2 = '<sup><a href="#s2">[2]</a></sup>';
 const LULL_SRC = [
   ['Jarach CM, Lugo A, Scala M, et al. Global prevalence and incidence of tinnitus: a systematic review and meta-analysis. <i>JAMA Neurology</i> 2022;79(9):888–900.', 'https://doi.org/10.1001/jamaneurol.2022.2189'],
@@ -2165,94 +2174,120 @@ const APP = {
       band: ['O caso está aberto', 'Seis mistérios, um detetive: você.'] },
   },
   lull: {
-    en: { title: 'Lull: tinnitus sleep sounds app (coming soon) | Gurrulabs',
-      desc: 'Lull is a coming-soon tinnitus sleep sounds app for Android: sounds tuned to your tone and a 15-second daily check-in. Email me when it launches.',
-      name: 'Lull', tag: 'Sleep sounds for tinnitus · Android', pill: 'Coming soon to Android', h1: 'Calmer nights with tinnitus',
-      sub: 'Sleep sounds tuned to your tone, and a 15-second daily check-in that shows what tends to go with your better and worse days.',
-      btn: 'Email me when it launches', fine: 'Opens your email app with a ready-to-send message. We write once, when Lull is on Google Play.',
-      chips: ['Free', 'Your diary stays on your phone', 'Plays all night, screen off'],
+    en: { title: 'Lull: tinnitus sleep sounds app for Android | Gurrulabs',
+      desc: 'Lull is a tinnitus sleep sounds app for Android: sounds tuned to your tone and a 30-second daily check-in. Get it on Google Play.',
+      name: 'Lull', tag: 'Sleep sounds for tinnitus · Android', h1: 'Calmer nights with tinnitus',
+      sub: 'Sleep sounds tuned to your tone, and a 30-second daily check-in that shows what tends to go with your better and worse days.',
+      chips: ['Your diary stays on your phone', 'Plays all night, screen off'],
       hero_alt: 'Lull’s Tonight screen: play button, sleep timer and today’s check-in',
-      ans: ['What is Lull?', 'Lull is an upcoming tinnitus sleep sounds app for Android, for people whose tinnitus makes it hard to sleep: it plays sleep sounds tuned to the pitch of your ringing and keeps a short daily diary, so it bothers you less at night. It is a wellness app, not a medical device.'],
-      feat_h: 'What Lull will do', feat_p: 'Four things, all already working in the app we are testing.',
+      ans: ['What is Lull?', 'Lull is a tinnitus sleep sounds app for Android, for people whose tinnitus makes it hard to sleep: it plays sleep sounds tuned to the pitch of your ringing and keeps a short daily diary, so it bothers you less at night. It is a wellness app, not a medical device.'],
+      feat_h: 'What Lull does', feat_p: 'Four things, all in the app.',
       feats: [['Find your tone', 'Match the pitch of your ringing with headphones, so the sounds fit it. It is not a hearing test.', 'Find your tone screen'],
         ['Sleep sounds tuned to you', 'Layer sounds like rain and brown noise, tuned to your pitch. A timer fades them out, or let them play all night.', 'Sounds mixer screen'],
-        ['A 15-second check-in', 'How loud, how bothered, how you slept. It stays on your phone.', 'Daily check-in screen'],
-        ['Your patterns', 'After 14 check-ins, see what tends to go with your worse days, like short nights. Patterns, not causes.', 'Patterns screen']],
+        ['A 30-second check-in', 'How loud, how bothered, how you slept. It stays on your phone.', 'Daily check-in screen'],
+        ['Your patterns', 'After a week of check-ins, see what tends to go with your worse days, like short nights. Patterns, not causes.', 'Patterns screen']],
       stat_h: 'You are not the only one awake',
       stat: `of adults live with tinnitus, more than 740 million people worldwide; for about 2% it is severe.${S1} Research suggests a talking therapy (CBT) may ease how much tinnitus bothers people, though the evidence is low-certainty;${S2} Lull uses sound only for comfort at night.`,
-      faq: [['When does Lull launch?', 'There is no date yet. Lull is in testing; leave your email and we will write once, the day it is on Google Play.'],
+      faq: [['Where can I get Lull?', 'On Google Play, for Android phones. Use the Google Play button on this page.'],
         ['Will Lull stop my tinnitus?', 'No. Lull can’t make tinnitus go away, and no app can. It helps you sleep with sounds you like and understand your own patterns, so the ringing bothers you less.'],
-        ['Is it free?', 'Yes. Lull is free.'],
         ['Is my diary private?', 'Your check-ins are stored on your phone, not on our servers.']],
       disc: 'Lull is a wellness app, not a medical device. It doesn’t diagnose or treat tinnitus, and it isn’t a substitute for a doctor or audiologist. If something worries you, talk to your doctor.',
-      checked: 'Checked 2026-11-05.', band: ['Be first to try Lull', 'One email when it is on Google Play. Nothing else.'],
-      subject: 'Lull: tell me when it launches', mail: ['Hi! Please email me when Lull is on Google Play.', 'Language: English', 'sent from'] },
+      checked: 'Checked 2026-11-05.', band: ['Try Lull tonight', 'Get Lull on Google Play.'] },
     es: { title: 'Lull: app de sonidos para dormir con acúfenos | Gurrulabs',
-      desc: 'Lull, app de sonidos para dormir con acúfenos, llega pronto a Android: sonidos a tu tono y un registro diario de 15 segundos. Te avisamos al salir.',
-      name: 'Lull', tag: 'Sonidos para dormir con acúfenos · Android', pill: 'Próximamente en Android', h1: 'Noches más tranquilas con acúfenos',
-      sub: 'Sonidos para dormir ajustados a tu tono y un registro diario de 15 segundos que muestra qué suele acompañar a tus días mejores y peores.',
-      btn: 'Avísame cuando salga', fine: 'Se abre tu app de correo con un mensaje listo para enviar. Escribimos una sola vez, cuando Lull esté en Google Play.',
-      chips: ['Gratis', 'Tu diario se queda en tu móvil', 'Suena toda la noche, con la pantalla apagada'],
+      desc: 'Lull es una app de sonidos para dormir con acúfenos para Android: sonidos a tu tono y un registro diario de 30 segundos. Disponible en Google Play.',
+      name: 'Lull', tag: 'Sonidos para dormir con acúfenos · Android', h1: 'Noches más tranquilas con acúfenos',
+      sub: 'Sonidos para dormir ajustados a tu tono y un registro diario de 30 segundos que muestra qué suele acompañar a tus días mejores y peores.',
+      chips: ['Tu diario se queda en tu móvil', 'Suena toda la noche, con la pantalla apagada'],
       hero_alt: 'Pantalla Esta noche de Lull: botón de reproducir, temporizador de sueño y el registro de hoy',
-      ans: ['¿Qué es Lull?', 'Lull es una app de sonidos para dormir con acúfenos que llegará a Android, pensada para quienes duermen mal por el acúfeno: reproduce sonidos ajustados al tono de tu zumbido y lleva un breve diario de cada día, para que te moleste menos por la noche. Es una app de bienestar, no un dispositivo médico.'],
-      feat_h: 'Lo que hará Lull', feat_p: 'Cuatro cosas, todas ya funcionando en la app que estamos probando.',
+      ans: ['¿Qué es Lull?', 'Lull es una app de sonidos para dormir con acúfenos para Android, pensada para quienes duermen mal por el acúfeno: reproduce sonidos ajustados al tono de tu zumbido y lleva un breve diario de cada día, para que te moleste menos por la noche. Es una app de bienestar, no un dispositivo médico.'],
+      feat_h: 'Lo que hace Lull', feat_p: 'Cuatro cosas, todas en la app.',
       feats: [['Encuentra tu tono', 'Ajusta con auriculares el tono de tu zumbido para que los sonidos encajen con él. No es una prueba de audición.', 'Pantalla Encuentra tu tono'],
         ['Sonidos para dormir a tu medida', 'Combina sonidos como lluvia y ruido marrón, ajustados a tu tono. Un temporizador los va apagando, o déjalos sonar toda la noche.', 'Pantalla del mezclador de sonidos'],
-        ['Un registro de 15 segundos', 'Qué volumen, cuánta molestia, cómo dormiste. Se queda en tu móvil.', 'Pantalla del registro diario'],
-        ['Tus patrones', 'Tras 14 registros, mira qué suele acompañar a tus días peores, como las noches cortas. Patrones, no causas.', 'Pantalla de patrones']],
+        ['Un registro de 30 segundos', 'Qué volumen, cuánta molestia, cómo dormiste. Se queda en tu móvil.', 'Pantalla del registro diario'],
+        ['Tus patrones', 'Tras una semana de registros, mira qué suele acompañar a tus días peores, como las noches cortas. Patrones, no causas.', 'Pantalla de patrones']],
       stat_h: 'No eres la única persona despierta',
       stat: `de los adultos convive con acúfenos, más de 740 millones de personas en el mundo; en cerca del 2 % son graves.${S1} La investigación sugiere que la terapia cognitivo-conductual (TCC) puede aliviar cuánto molestan los acúfenos, aunque con evidencia de baja certeza;${S2} Lull usa el sonido solo para dar calma por la noche.`,
-      faq: [['¿Cuándo sale Lull?', 'Todavía no hay fecha. Lull está en pruebas; deja tu correo y te escribiremos una sola vez, el día que esté en Google Play.'],
+      faq: [['¿Dónde puedo conseguir Lull?', 'En Google Play, para móviles Android. Usa el botón de Google Play de esta página.'],
         ['¿Lull detendrá mi acúfeno?', 'No. Lull no puede hacer que el acúfeno desaparezca, y ninguna app puede. Te ayuda a dormir con sonidos que te gustan y a entender tus propios patrones, para que el zumbido te moleste menos.'],
-        ['¿Es gratis?', 'Sí. Lull es gratis.'],
         ['¿Mi diario es privado?', 'Tus registros se guardan en tu móvil, no en nuestros servidores.']],
       disc: 'Lull es una app de bienestar, no un dispositivo médico. No diagnostica ni trata el acúfeno, y no sustituye a un médico ni a un audiólogo. Si algo te preocupa, habla con tu médico.',
-      checked: 'Fuentes comprobadas el 2026-11-05.', band: ['Sé de los primeros en probar Lull', 'Un solo correo cuando esté en Google Play. Nada más.'],
-      subject: 'Lull: avísame cuando salga', mail: ['¡Hola! Escríbeme por favor cuando Lull esté en Google Play.', 'Idioma: Español', 'enviado desde'] },
+      checked: 'Fuentes comprobadas el 2026-11-05.', band: ['Prueba Lull esta noche', 'Descarga Lull en Google Play.'] },
     fr: { title: 'Lull : application sons pour dormir avec acouphènes | Gurrulabs',
-      desc: 'Lull arrive sur Android : une application de sons pour dormir avec acouphènes, des sons réglés sur ta tonalité et un bilan quotidien de 15 secondes.',
-      name: 'Lull', tag: 'Sons pour dormir avec acouphènes · Android', pill: 'Bientôt sur Android', h1: 'Des nuits plus calmes avec les acouphènes',
-      sub: 'Des sons pour dormir réglés sur ta tonalité, et un bilan quotidien de 15 secondes qui montre ce qui accompagne souvent tes meilleurs et tes pires jours.',
-      btn: 'Préviens-moi au lancement', fine: 'Ouvre ton application de messagerie avec un message prêt à envoyer. Nous écrivons une seule fois, quand Lull sera sur Google Play.',
-      chips: ['Gratuit', 'Ton journal reste sur ton téléphone', 'Joue toute la nuit, écran éteint'],
+      desc: 'Lull est une application Android de sons pour dormir avec acouphènes : des sons réglés sur ta tonalité et un bilan quotidien de 30 secondes. Sur Google Play.',
+      name: 'Lull', tag: 'Sons pour dormir avec acouphènes · Android', h1: 'Des nuits plus calmes avec les acouphènes',
+      sub: 'Des sons pour dormir réglés sur ta tonalité, et un bilan quotidien de 30 secondes qui montre ce qui accompagne souvent tes meilleurs et tes pires jours.',
+      chips: ['Ton journal reste sur ton téléphone', 'Joue toute la nuit, écran éteint'],
       hero_alt: 'Écran Ce soir de Lull : bouton de lecture, minuterie de sommeil et bilan du jour',
-      ans: ['Qu’est-ce que Lull ?', 'Lull est une future application Android de sons pour dormir avec acouphènes, pour les personnes dont les acouphènes compliquent le sommeil : elle diffuse des sons réglés sur la hauteur de ton sifflement et tient un court journal quotidien, pour que cela te gêne moins la nuit. C’est une application de bien-être, pas un dispositif médical.'],
-      feat_h: 'Ce que fera Lull', feat_p: 'Quatre choses, déjà fonctionnelles dans l’appli que nous testons.',
+      ans: ['Qu’est-ce que Lull ?', 'Lull est une application Android de sons pour dormir avec acouphènes, pour les personnes dont les acouphènes compliquent le sommeil : elle diffuse des sons réglés sur la hauteur de ton sifflement et tient un court journal quotidien, pour que cela te gêne moins la nuit. C’est une application de bien-être, pas un dispositif médical.'],
+      feat_h: 'Ce que fait Lull', feat_p: 'Quatre choses, toutes dans l’appli.',
       feats: [['Trouve ta tonalité', 'Ajuste avec un casque la hauteur de ton sifflement pour que les sons s’y accordent. Ce n’est pas un test auditif.', 'Écran Trouve ta tonalité'],
         ['Des sons pour dormir réglés sur toi', 'Superpose des sons comme la pluie et le bruit brun, réglés sur ta hauteur. Une minuterie les estompe progressivement, ou laisse-les jouer toute la nuit.', 'Écran du mélangeur de sons'],
-        ['Un bilan de 15 secondes', 'Quel volume, quelle gêne, comment tu as dormi. Tout reste sur ton téléphone.', 'Écran du bilan quotidien'],
-        ['Tes tendances', 'Après 14 bilans, vois ce qui accompagne souvent tes jours les plus difficiles, comme les nuits courtes. Des tendances, pas des causes.', 'Écran des tendances']],
+        ['Un bilan de 30 secondes', 'Quel volume, quelle gêne, comment tu as dormi. Tout reste sur ton téléphone.', 'Écran du bilan quotidien'],
+        ['Tes tendances', 'Après une semaine de bilans, vois ce qui accompagne souvent tes jours les plus difficiles, comme les nuits courtes. Des tendances, pas des causes.', 'Écran des tendances']],
       stat_h: 'Tu n’es pas seul à veiller la nuit',
       stat: `des adultes vivent avec des acouphènes, soit plus de 740 millions de personnes dans le monde ; pour environ 2 %, ils sont sévères.${S1} La recherche suggère qu’une thérapie cognitivo-comportementale (TCC) peut alléger la gêne ressentie, avec des preuves de faible certitude ;${S2} Lull n’utilise le son que pour le confort la nuit.`,
-      faq: [['Quand Lull sort-elle ?', 'Il n’y a pas encore de date. Lull est en test ; laisse ton e-mail et nous écrirons une seule fois, le jour où elle sera sur Google Play.'],
+      faq: [['Où trouver Lull ?', 'Sur Google Play, pour les téléphones Android. Utilise le bouton Google Play de cette page.'],
         ['Lull va-t-elle arrêter mes acouphènes ?', 'Non. Lull ne peut pas faire disparaître les acouphènes, et aucune appli ne le peut. Elle t’aide à dormir avec des sons que tu aimes et à comprendre tes propres tendances, pour que le sifflement te gêne moins.'],
-        ['Est-elle gratuite ?', 'Oui. Lull est gratuite.'],
         ['Mon journal est-il privé ?', 'Tes bilans sont stockés sur ton téléphone, pas sur nos serveurs.']],
       disc: 'Lull est une application de bien-être, pas un dispositif médical. Elle ne diagnostique ni ne traite les acouphènes, et ne remplace ni un médecin ni un audiologiste. Si quelque chose t’inquiète, parles-en à ton médecin.',
-      checked: 'Sources vérifiées le 2026-11-05.', band: ['Sois parmi les premiers à essayer Lull', 'Un seul e-mail quand elle sera sur Google Play. Rien d’autre.'],
-      subject: 'Lull : prévenez-moi au lancement', mail: ['Bonjour ! Merci de m’écrire quand Lull sera disponible sur Google Play.', 'Langue : Français', 'envoyé depuis'] },
+      checked: 'Sources vérifiées le 2026-11-05.', band: ['Essaie Lull ce soir', 'Télécharge Lull sur Google Play.'] },
     pt: { title: 'Lull: app de sons para dormir com zumbido | Gurrulabs',
-      desc: 'Lull chega em breve ao Android: um app de sons para dormir com zumbido, com sons ajustados ao seu tom e um registro diário de 15 segundos.',
-      name: 'Lull', tag: 'Sons para dormir com zumbido · Android', pill: 'Em breve no Android', h1: 'Noites mais tranquilas com zumbido',
-      sub: 'Sons para dormir ajustados ao seu tom e um registro diário de 15 segundos que mostra o que costuma acompanhar seus dias melhores e piores.',
-      btn: 'Me avise quando lançar', fine: 'Abre seu app de e-mail com uma mensagem pronta para enviar. Escrevemos uma única vez, quando o Lull estiver no Google Play.',
-      chips: ['Grátis', 'Seu diário fica no seu celular', 'Toca a noite toda, com a tela apagada'],
+      desc: 'Lull é um app de sons para dormir com zumbido para Android: sons ajustados ao seu tom e um registro diário de 30 segundos. Disponível no Google Play.',
+      name: 'Lull', tag: 'Sons para dormir com zumbido · Android', h1: 'Noites mais tranquilas com zumbido',
+      sub: 'Sons para dormir ajustados ao seu tom e um registro diário de 30 segundos que mostra o que costuma acompanhar seus dias melhores e piores.',
+      chips: ['Seu diário fica no seu celular', 'Toca a noite toda, com a tela apagada'],
       hero_alt: 'Tela Hoje à noite do Lull: botão de tocar, timer de sono e o registro de hoje',
-      ans: ['O que é o Lull?', 'O Lull é um app de sons para dormir com zumbido que vai chegar ao Android, feito para quem tem zumbido e dificuldade para dormir: toca sons ajustados ao tom do seu zumbido e mantém um breve diário de cada dia, para que ele incomode menos à noite. É um app de bem-estar, não um dispositivo médico.'],
-      feat_h: 'O que o Lull vai fazer', feat_p: 'Quatro coisas, todas já funcionando no app que estamos testando.',
+      ans: ['O que é o Lull?', 'O Lull é um app de sons para dormir com zumbido para Android, feito para quem tem zumbido e dificuldade para dormir: toca sons ajustados ao tom do seu zumbido e mantém um breve diário de cada dia, para que ele incomode menos à noite. É um app de bem-estar, não um dispositivo médico.'],
+      feat_h: 'O que o Lull faz', feat_p: 'Quatro coisas, todas no app.',
       feats: [['Encontre seu tom', 'Ajuste com fones de ouvido o tom do seu zumbido para que os sons combinem com ele. Não é um teste de audição.', 'Tela Encontre seu tom'],
         ['Sons para dormir ajustados a você', 'Combine sons como chuva e ruído marrom, ajustados ao seu tom. Um timer os apaga aos poucos, ou deixe tocar a noite toda.', 'Tela do mixer de sons'],
-        ['Um registro de 15 segundos', 'Que volume, quanto incômodo, como você dormiu. Fica no seu celular.', 'Tela do registro diário'],
-        ['Seus padrões', 'Depois de 14 registros, veja o que costuma acompanhar seus dias piores, como noites curtas. Padrões, não causas.', 'Tela de padrões']],
+        ['Um registro de 30 segundos', 'Que volume, quanto incômodo, como você dormiu. Fica no seu celular.', 'Tela do registro diário'],
+        ['Seus padrões', 'Depois de uma semana de registros, veja o que costuma acompanhar seus dias piores, como noites curtas. Padrões, não causas.', 'Tela de padrões']],
       stat_h: 'Você não é a única pessoa acordada',
       stat: `dos adultos convivem com zumbido, mais de 740 milhões de pessoas no mundo; para cerca de 2%, ele é intenso.${S1} A pesquisa sugere que a terapia cognitivo-comportamental (TCC) pode aliviar o quanto o zumbido incomoda, com evidência de baixa certeza;${S2} o Lull usa o som apenas para dar conforto à noite.`,
-      faq: [['Quando o Lull lança?', 'Ainda não há data. O Lull está em testes; deixe seu e-mail e escreveremos uma única vez, no dia em que ele estiver no Google Play.'],
+      faq: [['Onde consigo o Lull?', 'No Google Play, para celulares Android. Use o botão do Google Play desta página.'],
         ['O Lull vai parar meu zumbido?', 'Não. O Lull não consegue fazer o zumbido ir embora, e nenhum app consegue. Ele ajuda você a dormir com sons de que gosta e a entender seus próprios padrões, para que o zumbido incomode menos.'],
-        ['É grátis?', 'Sim. O Lull é grátis.'],
         ['Meu diário é privado?', 'Seus registros ficam no seu celular, não em nossos servidores.']],
       disc: 'O Lull é um app de bem-estar, não um dispositivo médico. Ele não diagnostica nem trata o zumbido, e não substitui um médico ou audiologista. Se algo te preocupa, converse com seu médico.',
-      checked: 'Fontes verificadas em 2026-11-05.', band: ['Seja um dos primeiros a testar o Lull', 'Um único e-mail quando ele estiver no Google Play. Nada mais.'],
-      subject: 'Lull: me avise quando lançar', mail: ['Oi! Por favor, me avise por e-mail quando o Lull estiver no Google Play.', 'Idioma: Português (Brasil)', 'enviado de'] },
+      checked: 'Fontes verificadas em 2026-11-05.', band: ['Experimente o Lull hoje à noite', 'Baixe o Lull no Google Play.'] },
+    de: { title: 'Lull: App mit Schlafklängen bei Tinnitus | Gurrulabs',
+      desc: 'Lull ist eine Android-App mit Schlafklängen bei Tinnitus: Klänge, abgestimmt auf deinen Ton, und ein täglicher Check-in in 30 Sekunden. Bei Google Play.',
+      name: 'Lull', tag: 'Schlafklänge bei Tinnitus · Android', h1: 'Ruhigere Nächte mit Tinnitus',
+      sub: 'Schlafklänge, abgestimmt auf deinen Ton, und ein täglicher Check-in in 30 Sekunden, der zeigt, was oft zu deinen besseren und schwereren Tagen gehört.',
+      chips: ['Dein Tagebuch bleibt auf deinem Telefon', 'Läuft die ganze Nacht bei ausgeschaltetem Bildschirm'],
+      hero_alt: 'Lulls Bildschirm „Heute Nacht“: Wiedergabe-Taste, Schlaf-Timer und der heutige Check-in',
+      ans: ['Was ist Lull?', 'Lull ist eine Android-App mit Schlafklängen bei Tinnitus, für Menschen, die wegen ihres Tinnitus schlecht schlafen: Sie spielt Schlafklänge, die auf die Tonhöhe deines Klingelns abgestimmt sind, und führt ein kurzes Tagebuch, damit es dich nachts weniger belastet. Sie ist eine Wellness-App, kein Medizinprodukt.'],
+      feat_h: 'Was Lull kann', feat_p: 'Vier Dinge, alle in der App.',
+      feats: [['Finde deinen Ton', 'Gleiche mit Kopfhörern die Tonhöhe deines Klingelns ab, damit die Klänge dazu passen. Es ist kein Hörtest.', 'Bildschirm „Finde deinen Ton“'],
+        ['Auf dich abgestimmte Schlafklänge', 'Mische Klänge wie Regen und braunes Rauschen, abgestimmt auf deine Tonhöhe. Ein Timer blendet sie aus, oder lass sie die ganze Nacht laufen.', 'Bildschirm Klang-Mixer'],
+        ['Ein Check-in in 30 Sekunden', 'Wie laut, wie belastend, wie du geschlafen hast. Er bleibt auf deinem Telefon.', 'Bildschirm Täglicher Check-in'],
+        ['Deine Muster', 'Nach einer Woche mit Check-ins siehst du, was oft zu deinen schwereren Tagen gehört, zum Beispiel kurze Nächte. Muster, keine Ursachen.', 'Bildschirm Muster']],
+      stat_h: 'Du bist nicht allein wach',
+      stat: `der Erwachsenen leben mit Tinnitus, weltweit mehr als 740 Millionen Menschen; bei etwa 2 % ist er stark ausgeprägt.${S1} Die Forschung legt nahe, dass eine Gesprächstherapie (KVT) die Belastung durch Tinnitus mindern kann, allerdings mit Evidenz geringer Sicherheit;${S2} Lull nutzt Klang nur für Ruhe in der Nacht.`,
+      faq: [['Wo bekomme ich Lull?', 'Bei Google Play, für Android-Telefone. Nutze dafür die Google-Play-Schaltfläche auf dieser Seite.'],
+        ['Lässt Lull meinen Tinnitus verschwinden?', 'Nein. Lull kann Tinnitus nicht verschwinden lassen, und keine App kann das. Sie hilft dir, mit Klängen zu schlafen, die du magst, und deine eigenen Muster zu verstehen, damit dich das Klingeln weniger belastet.'],
+        ['Bleibt mein Tagebuch privat?', 'Deine Check-ins werden auf deinem Telefon gespeichert, nicht auf unseren Servern.']],
+      disc: 'Lull ist eine Wellness-App, kein Medizinprodukt. Sie diagnostiziert oder behandelt keinen Tinnitus und ersetzt keine Ärztin, keinen Arzt und keine Audiologie. Wenn dich etwas beunruhigt, sprich mit deiner Arztpraxis.',
+      checked: 'Quellen geprüft am 2026-11-05.', band: ['Probier Lull heute Nacht', 'Lade Lull bei Google Play herunter.'] },
+    it: { title: 'Lull: app di suoni per dormire con acufene | Gurrulabs',
+      desc: 'Lull è un’app Android con suoni per dormire accordati al tono del tuo acufene e un diario di 30 secondi al giorno. Disponibile su Google Play.',
+      name: 'Lull', tag: 'Suoni per dormire con acufene · Android', h1: 'Notti più tranquille con l’acufene',
+      sub: 'Suoni per dormire accordati al tuo tono e un diario di 30 secondi al giorno che mostra cosa tende ad accompagnare i tuoi giorni migliori e peggiori.',
+      chips: ['Il tuo diario resta sul tuo telefono', 'Suona tutta la notte a schermo spento'],
+      hero_alt: 'Schermata Stanotte di Lull: pulsante di riproduzione, timer di spegnimento e il diario di oggi',
+      ans: ['Che cos’è Lull?', 'Lull è un’app Android con suoni per dormire con acufene, pensata per chi dorme male a causa dell’acufene: riproduce suoni accordati sul tono del tuo fischio e tiene un breve diario quotidiano, così di notte ti dà meno fastidio. È un’app per il benessere, non un dispositivo medico.'],
+      feat_h: 'Cosa fa Lull', feat_p: 'Quattro cose, tutte nell’app.',
+      feats: [['Trova il tuo tono', 'Con le cuffie, trova il tono del tuo fischio così i suoni gli si adattano. Non è un esame dell’udito.', 'Schermata Trova il tuo tono'],
+        ['Suoni per dormire accordati su di te', 'Mixa suoni come pioggia e rumore marrone, accordati sul tuo tono. Un timer li fa sfumare, oppure lasciali suonare tutta la notte.', 'Schermata del mixer dei suoni'],
+        ['Un diario di 30 secondi', 'Quanto è forte, quanto ti dà fastidio, come hai dormito. Resta sul tuo telefono.', 'Schermata del diario quotidiano'],
+        ['Le tue tendenze', 'Dopo una settimana di diario, vedi cosa tende ad accompagnare i tuoi giorni peggiori, come le notti brevi. Tendenze, non cause.', 'Schermata delle tendenze']],
+      stat_h: 'Non sei l’unica persona sveglia',
+      stat: `degli adulti convive con l’acufene, oltre 740 milioni di persone nel mondo; per circa il 2% è grave.${S1} La ricerca suggerisce che una terapia parlata (TCC) possa attenuare quanto l’acufene dà fastidio, anche se con prove di bassa certezza;${S2} Lull usa il suono solo per dare conforto di notte.`,
+      faq: [['Dove posso trovare Lull?', 'Su Google Play, per telefoni Android. Usa il pulsante Google Play di questa pagina.'],
+        ['Lull farà sparire il mio acufene?', 'No. Lull non può far sparire l’acufene, e nessuna app può. Ti aiuta a dormire con suoni che ti piacciono e a capire le tue tendenze, così il fischio ti dà meno fastidio.'],
+        ['Il mio diario è privato?', 'Le voci del tuo diario sono salvate sul tuo telefono, non sui nostri server.']],
+      disc: 'Lull è un’app per il benessere, non un dispositivo medico. Non diagnostica né tratta l’acufene e non sostituisce un medico o un audiologo. Se qualcosa ti preoccupa, parlane con il tuo medico.',
+      checked: 'Fonti verificate il 2026-11-05.', band: ['Prova Lull stanotte', 'Scarica Lull da Google Play.'] }
   },
 };
 const meta = (loc, p) => CYK[p.id] ? { title: CP[loc][CYK[p.id]].title, desc: CP[loc][CYK[p.id]].description } : p.id === 'home' ? { title: T[loc].home_title, desc: T[loc].home_desc }
@@ -2267,16 +2302,16 @@ const ICON = { pulse: img('pulse'), raffy: img('raffy'), cyber: img('cyberpunk')
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const PLAY_URL = app => `https://play.google.com/store/apps/details?id=${PKG[app]}`;
 const play = (loc, app, cta) => `<a class="gp" href="${PLAY_URL(app)}" target="_blank" rel="noopener" data-cta="${cta}" data-app="${app}"><img src="/assets/play-badge-${loc}.webp" width="594" height="198" alt="${BADGE_ALT[loc]}"></a>`;
-const alternates = p => [...LOCALES.map(l => `<link rel="alternate" hreflang="${HREFLANG[l]}" href="${url(l, p)}">`), `<link rel="alternate" hreflang="x-default" href="${url('en', p)}">`].join('\n');
+const alternates = p => [...PLOC(p).map(l => `<link rel="alternate" hreflang="${HREFLANG[l]}" href="${url(l, p)}">`), `<link rel="alternate" hreflang="x-default" href="${url('en', p)}">`].join('\n');
 // Path → page id of every page, so script.js reports internal link targets by stable English id, not translated URL
 const PAGE_IDS = `<script type="application/json" id="pages">${JSON.stringify(Object.fromEntries(PAGES.flatMap(p => LOCALES.map(l => [path(l, p), p.dataPage]))))}</script>`;
 const jsonLd = o => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', ...o }).replace(/</g, '\\u003c')}</script>`;
 
 // JSON-LD per page type. Names/headlines are the visible h1; dates are the visible <time> values (validator compares).
-const APP_LD = { // MobileApplication facts per app page (Lull: no url, no offers: not on Play)
+const APP_LD = { // MobileApplication facts per app page (Lull: url only, no offers: its Play listing text does not state a price)
   pulse: { name: 'Pulse', applicationCategory: 'GameApplication', url: PLAY_URL('pulse') },
   'cyberpunk-detective': { name: 'Cyberpunk Detective', applicationCategory: 'GameApplication', url: PLAY_URL('cyberpunk_detective'), offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
-  lull: { name: 'Lull', applicationCategory: 'LifestyleApplication' },
+  lull: { name: 'Lull', applicationCategory: 'LifestyleApplication', url: PLAY_URL('lull') },
 };
 const plain = h => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<');
 function schema(loc, p) {
@@ -2291,7 +2326,7 @@ function schema(loc, p) {
     author: org, publisher: org, citation: CONTENT[p.id].sources.map(s => s.url), about: { '@type': 'MobileApplication', name: 'Pulse', url: PLAY_URL('pulse') } });
   if (p.type !== 'home') {
     const trail = p.type === 'app' ? [[t.back, byId.home], [APP_LD[p.id].name, p]] : [[t.back, byId.home], ['Pulse', byId.pulse], [c.name, p]];
-    out.push({ '@type': 'BreadcrumbList', itemListElement: trail.map(([name, q], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url(loc, q) })) });
+    out.push({ '@type': 'BreadcrumbList', itemListElement: trail.map(([name, q], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url(q.id === 'home' ? HUB(loc) : loc, q) })) });
   }
   const faq = APP[p.id]?.[loc].faq || c?.faq; // visible FAQ; links stripped to their text
   if (faq) out.push({ '@type': 'FAQPage', mainEntity: faq.map(([name, text]) => ({ '@type': 'Question', name: plain(name), acceptedAnswer: { '@type': 'Answer', text: plain(text) } })) });
@@ -2343,15 +2378,15 @@ function header(loc, p, t) {
   const left = home
     ? `<a class="brand" href="/${loc}/">${gf('')}<img src="/assets/gurrulabs-wordmark.webp" width="255" height="68" alt="Gurrulabs"></a>`
     : p.type === 'app'
-      ? `<a class="crumb" href="/${loc}/">${ic('back')}<b>Gurrulabs</b></a>`
+      ? `<a class="crumb" href="/${HUB(loc)}/">${ic('back')}<b>Gurrulabs</b></a>`
       : `<a class="crumb" href="${backHref}">${ic('back')}<span class="aic">${cy ? ICON.cyber : ICON.pulse}</span><b>${backName}</b></a>`;
   const nav = home ? `<nav class="hnav"><a href="#apps">${t.apps_h}</a><a href="#about">${t.about_h}</a></nav>` : '';
-  const langs = LOCALES.map(l => `<a${l === loc ? ' class="on" aria-current="true"' : ''} href="${path(l, p)}" hreflang="${HREFLANG[l]}" lang="${HREFLANG[l]}">${l.toUpperCase()}</a>`).join('');
+  const langs = PLOC(p).map(l => `<a${l === loc ? ' class="on" aria-current="true"' : ''} href="${path(l, p)}" hreflang="${HREFLANG[l]}" lang="${HREFLANG[l]}">${l.toUpperCase()}</a>`).join('');
   return `<header class="wrap top">${left}${nav}${cy ? cyDl(loc, 'header', COMMON[loc].download, false) : ''}<nav class="langs" aria-label="Language">${langs}</nav></header>`;
 }
 
 // Every page links every app (internal links help search engines find the app pages); Pulse pages also list Pulse's tests and guide
-const footer = (loc, t, p) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${loc}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://www.raffyparenting.com/${loc}/">Raffy</a><a href="/${loc}/cyberpunk-detective/">Cyberpunk Detective</a>${p?.app === 'cyberpunk-detective' ? CY_CONTENT.map(q => `<a href="${path(loc, q)}">${CP[loc][CYK[q.id]].navName}</a>`).join('') : ''}<a href="/${loc}/lull/">Lull · ${t.soon}</a></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
+const footer = (loc, t, p, h = HUB(loc)) => `<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>${t.apps_word}</b><a href="/${h}/pulse/">Pulse</a>${p?.app === 'pulse' ? PULSE_CONTENT.map((q, i) => `<a href="${path(loc, q)}">${t.foot[i]}</a>`).join('') : ''}<a href="https://www.raffyparenting.com/${h}/">Raffy</a><a href="/${h}/cyberpunk-detective/">Cyberpunk Detective</a>${p?.app === 'cyberpunk-detective' ? CY_CONTENT.map(q => `<a href="${path(loc, q)}">${CP[loc][CYK[q.id]].navName}</a>`).join('') : ''}<a href="/${loc}/lull/">Lull</a></nav><span>© 2026 Gurrulabs · ${t.contact}: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>`;
 
 // ── Home
 function home(loc) {
@@ -2377,7 +2412,7 @@ function home(loc) {
     tile('cyber', 'w5 t-cyber', A(`<div class="sun"></div><div class="floor"></div><div class="bigic">${ICON.cyber}</div>`),
       ICON.cyber, t.cat[2], 'Cyberpunk Detective', t.cyber_p, `${play(loc, 'cyberpunk_detective', 'home_cyberpunk_card')}${view(`/${loc}/cyberpunk-detective/`, t.cyber_page)}`),
     tile('lull', 'w7 t-lull', A(`<div class="waves"><span></span><span></span><span></span><div class="bigic">${ICON.lull}</div></div>`),
-      ICON.lull, t.cat[3], 'Lull', t.lull_p, `${view(`/${loc}/lull/`, t.lull_page)}<span class="tag2">${t.soon}</span>`),
+      ICON.lull, t.cat[3], 'Lull', t.lull_p, `${play(loc, 'lull', 'home_lull_card')}${view(`/${loc}/lull/`, t.lull_page)}`),
   ].join('\n    ');
   const p = byId.home;
   return `${head(loc, p)}
@@ -2494,17 +2529,16 @@ function tryBlock(loc) {
   </section>`;
 }
 function appPage(loc, p) {
-  const t = T[loc], a = APP[p.id][loc], lull = p.id === 'lull', links = id => path(loc, byId[id]);
-  const mail = lull && `mailto:${LULL_MAIL}?subject=${encodeURIComponent(a.subject)}&amp;body=${encodeURIComponent(`${a.mail[0]}\n\n${a.mail[1]}\n(${a.mail[2]} www.gurrulabs.com${path(loc, p)})`)}`;
-  const cta = k => lull ? `<a class="btn" href="${mail}" data-cta="lull_${k}" data-app="lull">${a.btn}</a>` : play(loc, 'cyberpunk_detective', k);
+  const t = T[loc], a = APP[p.id][loc], lull = p.id === 'lull', links = id => path(HUB(loc), byId[id]);
+  const cta = k => play(loc, lull ? 'lull' : 'cyberpunk_detective', k);
   const hero = `<section class="p-hero">
     <div class="txt">
       <div class="head">
-        <div class="app"><div class="ic">${lull ? ICON.lull : ICON.cyber}</div><div><b>${a.name}</b><span>${a.tag}</span></div></div>${lull ? `\n        <span class="soonpill"><i></i>${a.pill}</span>` : ''}
+        <div class="app"><div class="ic">${lull ? ICON.lull : ICON.cyber}</div><div><b>${a.name}</b><span>${a.tag}</span></div></div>
         <h1>${a.h1}</h1>
         <p class="sub">${a.sub}</p>
       </div>
-      <div class="cta">${cta(lull ? 'signup' : 'hero')}${lull ? `<p class="fine">${a.fine}</p>` : ''}</div>
+      <div class="cta">${cta('hero')}</div>
       <div class="facts">${a.chips.map(chip).join('')}</div>
     </div>
     ${lull ? `<div class="orbbox"><div class="phone"><img src="/assets/lull-tonight.webp" width="540" height="1150" alt="${esc(a.hero_alt)}"></div></div>`
@@ -2542,7 +2576,7 @@ function appPage(loc, p) {
 
   ${faq}
 
-  ${appRel(loc, [[links('home'), ICON.pulse, t.rel[0]], [links('pulse'), ICON.pulse, t.rel[1]], [links('lull'), ICON.lull, t.rel[3]]])}`;
+  ${appRel(loc, [[links('home'), ICON.pulse, t.rel[0]], [links('pulse'), ICON.pulse, t.rel[1]], [path(loc, byId.lull), ICON.lull, t.rel[3]]])}`;
   return `${head(loc, p)}
 <body class="${lull ? 'app-lull' : 'app-cyber'}" data-page="${p.dataPage}" data-locale="${loc}">
 ${header(loc, p, t)}
@@ -2554,7 +2588,7 @@ ${header(loc, p, t)}
 
   ${body}
 
-  <section class="band"><div><h2>${a.band[0]}</h2><p>${a.band[1]}</p></div><div>${cta(lull ? 'signup_band' : 'footer_band')}</div></section>
+  <section class="band"><div><h2>${a.band[0]}</h2><p>${a.band[1]}</p></div><div>${cta('footer_band')}</div></section>
 </main>
 ${footer(loc, t, p)}
 </body>
@@ -2945,10 +2979,10 @@ ${FAVICON.studio}
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${PAGES.flatMap(p => LOCALES.map(loc => `  <url>
+${PAGES.flatMap(p => PLOC(p).map(loc => `  <url>
     <loc>${url(loc, p)}</loc>
     <lastmod>${p.modified}</lastmod>
-${[...LOCALES.map(l => `    <xhtml:link rel="alternate" hreflang="${HREFLANG[l]}" href="${url(l, p)}"/>`), `    <xhtml:link rel="alternate" hreflang="x-default" href="${url('en', p)}"/>`].join('\n')}
+${[...PLOC(p).map(l => `    <xhtml:link rel="alternate" hreflang="${HREFLANG[l]}" href="${url(l, p)}"/>`), `    <xhtml:link rel="alternate" hreflang="x-default" href="${url('en', p)}"/>`].join('\n')}
   </url>`)).join('\n')}
 </urlset>
 `;
@@ -2962,7 +2996,7 @@ const llmsName = p => p.id === 'home' ? 'Gurrulabs' : p.id === 'pulse' ? 'Pulse'
 const llmsItem = p => `- [${llmsName(p)}](${url('en', p)}): ${p.llms}`;
 const llms = `# Gurrulabs
 
-> Independent one-person Android app studio. Apps: Pulse (reaction time and timing game), Raffy (baby tracker), Cyberpunk Detective (detective mysteries), Lull (tinnitus sleep sounds, not on Google Play yet).
+> Independent one-person Android app studio. Apps: Pulse (reaction time and timing game), Raffy (baby tracker), Cyberpunk Detective (detective mysteries), Lull (tinnitus sleep sounds).
 
 ## Studio
 
@@ -2989,7 +3023,7 @@ function write(rel, content) {
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, content);
 }
-for (const loc of LOCALES) for (const p of PAGES) {
+for (const p of PAGES) for (const loc of PLOC(p)) {
   const html = p.type === 'home' ? home(loc) : p.type === 'app' ? (p.id === 'pulse' ? pulsePage(loc) : appPage(loc, p)) : p.id === 'cyberpunk-mini-case' ? casePage(loc, p) : p.id === 'cyberpunk-riddles' ? riddlesPage(loc, p) : contentPage(loc, p);
   write(`${path(loc, p).slice(1)}index.html`, html);
 }
@@ -2997,4 +3031,4 @@ write('index.html', rootPage);
 write('sitemap.xml', sitemap);
 write('robots.txt', robots);
 write('llms.txt', llms);
-console.log(`built ${LOCALES.length * PAGES.length} pages + index.html, sitemap.xml, robots.txt, llms.txt`);
+console.log(`built ${PAGES.reduce((n, p) => n + PLOC(p).length, 0)} pages + index.html, sitemap.xml, robots.txt, llms.txt`);

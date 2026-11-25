@@ -9,18 +9,19 @@
 //   mode      test pages: the game panel's data-mode (default: react for tests, exact for challenges)
 //   card      content pages: [icon, Pulse mode colour] of its link card; registry order = card and footer order
 //   listing   optional: the page quotes Play listings (price/ads labels), so the validator allows "free"/"no ads" words there
+//   locales   optional: this page's own locale list (default LOCALES); Lull also ships de and it
 //   llms      optional EN one-liner for /llms.txt (facts only). llms.txt lists the EN URL of every page; the validator
 //             treats a page as "in llms.txt" when its EN URL is listed (locale roots are listed under Optional).
 export const SITE = 'https://www.gurrulabs.com';
 export const LOCALES = ['en', 'es', 'fr', 'pt'];
-export const HREFLANG = { en: 'en', es: 'es', fr: 'fr', pt: 'pt-BR' };
+export const HREFLANG = { en: 'en', es: 'es', fr: 'fr', pt: 'pt-BR', de: 'de', it: 'it' };
 import { PAGES as CP } from './cyberpunk-content.mjs'; // the Cyberpunk page slugs live with their copy (one place per locale)
 const slugs = k => Object.fromEntries(LOCALES.map(l => [l, CP[l][k].slug]));
 
 const Z = '2026-11-24'; // T-011 (Cyberpunk mini case + riddles)
 const D = '2026-11-05', N = '2026-11-11', X = '2026-11-18', Y = '2026-11-20'; // X = T-025 (improve guide + its back-links), Y = T-026 (caffeine guide) and T-027 (sports guide), each with its back-links
 export const PAGES = [
-  { id: 'home', app: null, type: 'home', published: D, modified: D, dataPage: 'home',
+  { id: 'home', app: null, type: 'home', published: D, modified: '2026-11-25', dataPage: 'home',
     llms: 'Studio home: the four apps and where to get each one.' },
   { id: 'pulse', app: 'pulse', type: 'app', published: D, modified: N, dataPage: 'pulse',
     llms: 'Android game with 5 modes: Exact Time, Hidden Clock, Interval, Reaction, Batak. No account, works offline. Includes a browser version of every mode, one page each.' },
@@ -30,8 +31,8 @@ export const PAGES = [
     llms: 'Browser detective game: one case, "Blackout at Hawk Tower", about 8 minutes. Search the scene for 5 clues, catch the lie of each of 3 suspects by presenting the clue that contradicts it, then complete a who, how and why sentence. A case from the Cyberpunk Detective app.' },
   { id: 'cyberpunk-riddles', app: 'cyberpunk-detective', type: 'guide', published: Z, modified: Z, dataPage: 'cyberpunk-riddles', slug: slugs('riddles'),
     llms: 'Guide: 10 original murder mystery riddles in three levels (easy, medium, hard), each solvable from its own text, with the answer one tap away.' },
-  { id: 'lull', app: 'lull', type: 'app', published: D, modified: D, dataPage: 'lull',
-    llms: 'Coming-soon Android wellness app (not a medical device) with sleep sounds tuned to your pitch and a 15-second daily check-in for people with tinnitus. Not on Google Play yet; email sign-up.' },
+  { id: 'lull', app: 'lull', type: 'app', published: D, modified: '2026-11-25', dataPage: 'lull', locales: ['en', 'es', 'fr', 'pt', 'de', 'it'],
+    llms: 'Android wellness app (not a medical device) on Google Play with sleep sounds tuned to your pitch and a daily check-in for people with tinnitus; also in German and Italian.' },
   { id: 'reaction-test', app: 'pulse', type: 'test', published: D, modified: Y, dataPage: 'pulse-reaction-test', card: ['reaction', 'm-reaction'],
     slug: { en: 'reaction-time-test', es: 'test-tiempo-de-reaccion', fr: 'test-temps-de-reaction', pt: 'teste-tempo-de-reacao' },
     llms: 'Browser reaction time test: tap when the lights go out; the result is in seconds (perfect up to 0.30 s, pass under 0.40 s).' },

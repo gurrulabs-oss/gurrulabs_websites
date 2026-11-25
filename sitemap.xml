@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.gurrulabs.com/en/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/"/>
@@ -11,7 +11,7 @@
   </url>
   <url>
     <loc>https://www.gurrulabs.com/es/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/"/>
@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://www.gurrulabs.com/fr/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/"/>
@@ -29,7 +29,7 @@
   </url>
   <url>
     <loc>https://www.gurrulabs.com/pt/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/"/>
@@ -182,38 +182,68 @@
   </url>
   <url>
     <loc>https://www.gurrulabs.com/en/lull/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/lull/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/lull/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/lull/"/>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/lull/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gurrulabs.com/de/lull/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.gurrulabs.com/it/lull/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/lull/"/>
   </url>
   <url>
     <loc>https://www.gurrulabs.com/es/lull/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/lull/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/lull/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/lull/"/>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/lull/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gurrulabs.com/de/lull/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.gurrulabs.com/it/lull/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/lull/"/>
   </url>
   <url>
     <loc>https://www.gurrulabs.com/fr/lull/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/lull/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/lull/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/lull/"/>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/lull/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gurrulabs.com/de/lull/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.gurrulabs.com/it/lull/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/lull/"/>
   </url>
   <url>
     <loc>https://www.gurrulabs.com/pt/lull/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/lull/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/lull/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/lull/"/>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/lull/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gurrulabs.com/de/lull/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.gurrulabs.com/it/lull/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/lull/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/de/lull/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/lull/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/lull/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/lull/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/lull/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gurrulabs.com/de/lull/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.gurrulabs.com/it/lull/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/lull/"/>
+  </url>
+  <url>
+    <loc>https://www.gurrulabs.com/it/lull/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gurrulabs.com/en/lull/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.gurrulabs.com/es/lull/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.gurrulabs.com/fr/lull/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.gurrulabs.com/pt/lull/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gurrulabs.com/de/lull/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.gurrulabs.com/it/lull/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gurrulabs.com/en/lull/"/>
   </url>
   <url>
