@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lull Privacy Policy | Gurrulabs</title>
-<meta name="description" content="What the Lull Android app stores on your phone, the anonymous usage data it can send, and your choices.">
+<meta name="description" content="What the Lull Android app stores on your phone, the usage data it can send if you allow it, and your choices.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://www.gurrulabs.com/en/lull/privacy/">
 <link rel="preload" href="/assets/outfit.ttf" as="font" type="font/ttf" crossorigin>
@@ -19,16 +19,16 @@
   <nav class="bc" aria-label="Breadcrumb"><a href="/en/">Gurrulabs</a><span aria-hidden="true">›</span><a href="/en/lull/">Lull</a><span aria-hidden="true">›</span><span>Privacy policy</span></nav>
   <article class="prose">
   <h1>Lull Privacy Policy</h1>
-  <div class="dates"><span>Effective date <b><time datetime="2026-11-06">6 November 2026</time></b></span></div>
+  <div class="dates"><span>Effective date <b><time datetime="2026-11-25">25 November 2026</time></b></span></div>
 
-  <p>Lull is an Android app by Gurrulabs (“we”, “us”). This policy explains what Lull stores on your phone, the small amount of anonymous usage data it can send, and the choices you have.</p>
+  <p>Lull is an Android app by Gurrulabs (“we”, “us”). This policy explains what Lull stores on your phone, the small amount of usage data it can send if you allow it, and the choices you have.</p>
   <p><strong>Contact:</strong> <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a><br><strong>Website:</strong> <a href="https://www.gurrulabs.com">https://www.gurrulabs.com</a></p>
 
   <h2>The short version</h2>
   <ul>
-    <li>Your diary, your matched pitch, your sound mix and your settings stay on your phone. We never receive them.</li>
+    <li>Your diary, your sound mix and your settings stay on your phone. We never receive them.</li>
     <li>Lull has no account, no ads and no tracking for advertising.</li>
-    <li>Lull can send anonymous usage events (for example, “a check-in was saved”) to help us improve the app. They never include your diary, your pitch, your volume or any health information. You can turn this off in Settings.</li>
+    <li><strong>Only if you allow it</strong>, Lull sends how you use the app (for example, “a check-in was saved”) and your tinnitus pitch, linked to a random ID, to help us improve Lull for you and everyone with tinnitus. Your pitch is health information; it is sent only with your explicit consent. Lull never sends your diary, your volume or your safety answers. You can change your choice in Settings at any time.</li>
   </ul>
 
   <h2>What Lull stores on your phone</h2>
@@ -37,55 +37,70 @@
     <li><strong>Daily check-ins (your diary):</strong> the date, how loud your tinnitus was, how much it bothered you (both on a 0 to 10 scale), hours slept, any tags you ticked (for example coffee or tea, a stressful day, a loud place, alcohol, exercise, headache, late screens, a nap), and when the entry was created or edited. This is kept in a local database on your phone.</li>
     <li><strong>Your pitch:</strong> the pitch (in Hz) and the kind of sound you matched.</li>
     <li><strong>Safety check answers:</strong> what you chose in the first-run safety check (for example the kind of sound you hear and which ear), and your starting level of bother.</li>
+    <li><strong>Your program progress:</strong> which days of the program you have opened or finished, and what you wrote or chose in its exercises.</li>
     <li><strong>Your night mix and sleep timer:</strong> the level of each sound and the timer length.</li>
-    <li><strong>Settings:</strong> the daily reminder (on or off and the time), light or dark theme, whether the usage-data switch is on, and whether you have seen the low-volume notice.</li>
+    <li><strong>Settings:</strong> the daily check-in and program reminders (on or off and the time), light or dark theme, whether the “Help make Lull better” switch is on (and which version of the question you answered), and whether you have seen the low-volume notice.</li>
   </ul>
-  <p>We do not have access to any of this. It is not uploaded, synced or shared. Lull does not offer an export of your diary today.</p>
+  <p>We do not have access to any of this, except your pitch if you allow it (next section). It is not uploaded, synced or shared. Lull does not offer an export of your diary today.</p>
 
-  <h2>What Lull can send to us (anonymous usage data)</h2>
-  <p>Lull uses <strong>Mixpanel</strong> to count how the app is used. Data is sent to Mixpanel’s servers in the <strong>European Union</strong> (api-eu.mixpanel.com). Only the release version of the app sends data; test builds never do.</p>
+  <h2>What Lull can send to us (usage data and pitch, only with your consent)</h2>
+  <p>Nothing until you tap “Allow” in the “Help make Lull better?” window that opens the first time you use Lull. Before that, and if you tap “Don’t allow”, Lull sends no events at all.</p>
+  <p>If you allow it, Lull uses <strong>Mixpanel</strong> to count how the app is used. Data is sent to Mixpanel’s servers in the <strong>European Union</strong> (<code>api-eu.mixpanel.com</code>). Only the release version of the app sends data; test builds never do.</p>
   <p>The only events Lull can send are:</p>
   <div class="tbl"><table>
     <thead><tr><th>Event</th><th>When</th></tr></thead>
     <tbody>
-      <tr><td><code>onboarding_completed</code></td><td>You finish the first-run setup</td></tr>
-      <tr><td><code>match_saved</code></td><td>You save a pitch match</td></tr>
-      <tr><td><code>sound_started</code></td><td>You start the sleep sounds</td></tr>
-      <tr><td><code>timer_set</code></td><td>You set the sleep timer (this event also carries the timer length in minutes)</td></tr>
-      <tr><td><code>checkin_saved</code></td><td>You save a daily check-in</td></tr>
-      <tr><td><code>patterns_viewed</code></td><td>You open the patterns screen</td></tr>
-      <tr><td><code>reminder_enabled</code></td><td>You turn on the daily reminder</td></tr>
+      <tr><td><code>Onboarding &lt;Step&gt; - Viewed</code></td><td>You reach a step of the first-run setup (one event per step, e.g. <code>Onboarding Welcome - Viewed</code>; the step that offers support when you feel low is never reported)</td></tr>
+      <tr><td><code>Onboarding - Completed</code></td><td>You finish the first-run setup (carries whether the daily reminder ended up on or off)</td></tr>
+      <tr><td><code>Pitch Match - Saved</code></td><td>You save a pitch match, or you allow sharing when a pitch is already saved (carries <strong>your pitch in Hz</strong>, the kind of sound, tone or hiss, and where it was saved: setup, Settings or this consent)</td></tr>
+      <tr><td><code>&lt;Screen&gt; Screen - Viewed</code></td><td>You open one of the app’s main screens: Tonight, Sounds, Program, Check-in, Patterns or Settings (for Patterns, whether it is still locked, early or full)</td></tr>
+      <tr><td><code>Tonight Screen - Sound Started</code></td><td>You start the sleep sounds</td></tr>
+      <tr><td><code>Tonight Screen - Sound Stopped</code></td><td>The sleep sounds stop or pause while Lull is open (carries how many minutes they played)</td></tr>
+      <tr><td><code>Tonight Screen - Timer Set</code></td><td>You set the sleep timer (carries the timer length in minutes)</td></tr>
+      <tr><td><code>Sounds Screen - Layer Changed</code></td><td>You change one sound of your night mix (carries which sound, never its level)</td></tr>
+      <tr><td><code>Sounds Screen - Mix Reset</code>, <code>Sounds Screen - Mix Undone</code></td><td>You go back to Lull’s mix, or undo that</td></tr>
+      <tr><td><code>Check-in Screen - Saved</code></td><td>You save a daily check-in (never what you entered)</td></tr>
+      <tr><td><code>Program Screen - Session Completed</code></td><td>You finish a day of the program for the first time (carries the day number, 1 to 7)</td></tr>
+      <tr><td><code>Hard Moment Screen - Viewed</code></td><td>You open the “hard moment” screen (nothing about why)</td></tr>
+      <tr><td><code>Reminder - Enabled</code>, <code>Reminder - Disabled</code></td><td>You turn a reminder on or off (carries which reminder: daily check-in or program)</td></tr>
+      <tr><td><code>Pop Up Reminder Confirm - Viewed</code>, <code>- Turned On</code>, <code>- Dismissed</code></td><td>Lull offers to turn on a reminder, and what you chose</td></tr>
+      <tr><td><code>Pop Up Analytics Confirm - Allowed</code></td><td>You tap “Allow” in the “Help make Lull better?” window</td></tr>
+      <tr><td><code>Settings Screen - Theme Changed</code></td><td>You change the theme (carries auto, light or dark)</td></tr>
+      <tr><td><code>Privacy Policy - Opened</code></td><td>You open this policy from the app (carries from where)</td></tr>
+      <tr><td><code>$opt_in</code></td><td>You tap “Allow”, or switch “Help make Lull better” on in Settings (no extra properties; added by the Mixpanel library)</td></tr>
     </tbody>
   </table></div>
-  <p>An event says that something happened and when. It never says what you entered. In particular, <strong>we never send your diary entries, tags, pitch, volume, sleep hours, bother or loudness levels, or your answers to the safety check.</strong></p>
+  <p>An event says that something happened and when. Apart from your pitch, it never says what you entered. In particular, <strong>we never send your diary entries, tags, volume or sound levels, sleep hours, bother or loudness levels, or your answers to the safety check.</strong></p>
+  <p><strong>Your pitch is health information.</strong> It can reveal that you have tinnitus and what it sounds like. We send it only because you explicitly agreed to it in the window that names it (“your tinnitus pitch”), and we use it only for the same purpose as the usage events: to improve Lull (for example, to tune the sounds to the pitches people actually match). If you said yes in an earlier version of Lull, whose question did not mention your pitch, Lull asks you once more and does not send your pitch unless you tap “Allow” again.</p>
   <p>In addition, the Mixpanel library that Lull includes attaches the following to events by default:</p>
   <ul>
     <li>a <strong>random identifier</strong> created when you first open the app. It is not your name, email, phone number, Google account or advertising ID, and it is deleted from your phone when you uninstall Lull;</li>
-    <li>the Mixpanel library’s standard <strong>device and app properties</strong>, for example the operating system and app version, device model, screen size and carrier or network type. This list is not exhaustive; the exact set is defined by Mixpanel’s SDK (see <a href="https://docs.mixpanel.com/docs/tracking-methods/sdks/android" rel="noopener" target="_blank">docs.mixpanel.com/docs/tracking-methods/sdks/android</a>). None of it comes from your diary or settings.</li>
+    <li>Lull’s app version and the language setting of your phone, and the Mixpanel library’s standard <strong>device and app properties</strong>, for example the operating system and app version, device model, screen size and carrier or network type. This list is not exhaustive; the exact set is defined by Mixpanel’s SDK (see <a href="https://docs.mixpanel.com/docs/tracking-methods/sdks/android" rel="noopener" target="_blank">https://docs.mixpanel.com/docs/tracking-methods/sdks/android</a>). None of it comes from your diary or settings;</li>
+    <li>an <strong>approximate location</strong> (city, region and country) that Mixpanel estimates from the IP address of your connection when an event arrives. Lull does not ask for location permission and never uses GPS. Mixpanel uses the IP address only for this estimate and does not store it with the events.</li>
   </ul>
-  <p>Lull tells Mixpanel not to use the IP address of your connection to estimate your location. Like any internet connection, your IP address is visible to the servers it connects to, Mixpanel’s included, so that the data can be delivered.</p>
+  <p>This data is pseudonymous: events are tied to the random identifier above. We do not link that identifier to you, but under data protection law it can still count as personal data.</p>
   <p>We use this to answer questions such as “do people reach the first sleep sound?” and “which screens are used?”. We do not use it for advertising, we do not sell it, and we do not combine it with other data about you.</p>
-  <p><strong>You can turn this off.</strong> Go to <strong>Settings, then “Share anonymous usage data”</strong> and switch it off. Lull then tells the Mixpanel library to opt out: events it had queued but not yet uploaded are deleted, and it sends nothing more. This choice is remembered. If you switch it back on, the library sends one <code>$opt_in</code> event (no extra properties) and then resumes the events above. The switch is on by default.</p>
+  <p><strong>You choose, and you can change your mind at any time.</strong> One choice covers both your usage and your pitch. The switch is off until you tap “Allow”. To withdraw your consent, go to <strong>Settings, then “Help make Lull better”</strong> and switch it off. It takes effect at once: events Lull had queued but not yet uploaded are deleted, and it sends nothing more. Events already received stay at Mixpanel until the retention period below ends, or until you ask us to delete them (see “Your choices and rights”). This choice is remembered. If you switch it on again, the Mixpanel library sends one <code>$opt_in</code> event (no extra properties), as it does on your first “Allow”, and then resumes the events above. Withdrawing consent does not affect what was sent while it was on.</p>
 
   <h2>What Lull does not collect</h2>
   <ul>
     <li>No name, email address, account or login (Lull has none).</li>
-    <li>No location. Lull does not ask for location permission.</li>
+    <li>No precise location. Lull does not ask for location permission; only the approximate location above is estimated, and only if you allow analytics.</li>
     <li>No contacts, photos, files, microphone or camera access.</li>
     <li>No advertising ID and no ads.</li>
-    <li>No health information leaves your phone. Lull does not connect to Health Connect or any other health service.</li>
+    <li>No health information leaves your phone except your pitch, and only if you allow it. Lull does not connect to Health Connect or any other health service.</li>
   </ul>
 
   <h2>Permissions</h2>
   <p>Lull asks only for what it needs to work:</p>
   <ul>
-    <li><strong>Internet and network state:</strong> to send the optional anonymous usage events described above. The network-state permission is added by the Mixpanel library so it can tell when a connection is available.</li>
+    <li><strong>Internet and network state:</strong> to send the optional usage events described above, only if you allow them. The network-state permission is added by the Mixpanel library so it can tell when a connection is available.</li>
     <li><strong>Notifications:</strong> for the daily check-in reminder you choose to turn on.</li>
     <li><strong>Foreground service (media playback), wake lock:</strong> so the sleep sounds keep playing all night with the screen off.</li>
     <li><strong>Run at start-up:</strong> to restore your reminder after the phone restarts.</li>
     <li><strong>Vibration:</strong> for short feedback in the app.</li>
   </ul>
-  <p>Lull’s safety screens include buttons that open your phone’s dialer with an emergency or helpline number already typed in. Lull never places the call itself, and the number is not sent anywhere. Another button opens <a href="https://findahelpline.com" rel="noopener" target="_blank">findahelpline.com</a> in your browser. That website is run by a third party and has its own privacy policy.</p>
+  <p>Lull’s safety screens include buttons that open your phone’s dialer with an emergency or helpline number already typed in. Lull never places the call itself, and the number is not sent anywhere. Another button opens <a href="https://findahelpline.com" rel="noopener" target="_blank">https://findahelpline.com</a> in your browser. That website is run by a third party and has its own privacy policy.</p>
 
   <h2>Where your data is stored and for how long</h2>
   <ul>
@@ -95,14 +110,14 @@
   </ul>
 
   <h2>Who processes data for us</h2>
-  <p><strong>Mixpanel, Inc.</strong> processes the anonymous usage events for us, under our instructions, on servers in the EU. Mixpanel’s own policy is at <a href="https://mixpanel.com/legal/privacy-policy" rel="noopener" target="_blank">mixpanel.com/legal/privacy-policy</a>. We do not share the events with anyone else and do not sell data.</p>
+  <p><strong>Mixpanel, Inc.</strong> processes the usage events and your pitch for us, under our instructions, on servers in the EU. Mixpanel’s own policy is at <a href="https://mixpanel.com/legal/privacy-policy" rel="noopener" target="_blank">https://mixpanel.com/legal/privacy-policy</a>. We do not share the events with anyone else and do not sell data.</p>
 
   <h2>Your choices and rights</h2>
   <ul>
-    <li><strong>Stop usage data:</strong> switch off “Share anonymous usage data” in Settings, or uninstall the app.</li>
+    <li><strong>Stop usage data and pitch (withdraw consent):</strong> switch off “Help make Lull better” in Settings, or uninstall the app. Sending stops at once; events already received stay until the retention period ends unless you ask us to delete them.</li>
     <li><strong>Delete what is on your phone:</strong> uninstall Lull or clear its storage.</li>
     <li><strong>Delete usage data we hold:</strong> email us. Because events are tied to a random identifier that we cannot link to you, we may not be able to find yours. We will tell you if that is the case, and otherwise delete what we can find and ask Mixpanel to delete it.</li>
-    <li><strong>Other rights:</strong> depending on where you live (for example in the EU or UK) you may have rights to access, correct, delete, restrict or object to the use of your personal data, and to complain to your data protection authority. Email us to use them. Where the law asks for a legal basis, our basis for usage events is our legitimate interest in understanding and improving the app, and you can object at any time with the Settings switch.</li>
+    <li><strong>Other rights:</strong> depending on where you live (for example in the EU or UK) you may have rights to access, correct, delete, restrict or object to the use of your personal data, and to complain to your data protection authority. Email us to use them. Where the law asks for a legal basis, our basis for usage events is your <strong>consent</strong> (GDPR art. 6(1)(a)), and for your pitch, which is health data, your <strong>explicit consent</strong> (GDPR art. 9(2)(a)). You can withdraw both at any time with the Settings switch.</li>
   </ul>
 
   <h2>Children</h2>
@@ -121,6 +136,6 @@
   <p>Gurrulabs, <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a>, <a href="https://www.gurrulabs.com">https://www.gurrulabs.com</a></p>
   </article>
 </main>
-<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>Apps</b><a href="/en/pulse/">Pulse</a><a href="https://raffyparenting.com/">Raffy</a><a href="/en/cyberpunk-detective/">Cyberpunk Detective</a><a href="/en/lull/">Lull · Coming soon</a></nav><span>© 2026 Gurrulabs · Contact: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>
+<footer><div class="wrap"><div class="fbig" aria-hidden="true">gurrulabs</div><nav class="fapps"><b>Apps</b><a href="/en/pulse/">Pulse</a><a href="https://raffyparenting.com/">Raffy</a><a href="/en/cyberpunk-detective/">Cyberpunk Detective</a><a href="/en/lull/">Lull</a></nav><span>© 2026 Gurrulabs · Contact: <a href="mailto:gurrulabs@gmail.com">gurrulabs@gmail.com</a></span></div></footer>
 </body>
 </html>

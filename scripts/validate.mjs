@@ -4,14 +4,15 @@
 // Run from repo root: node scripts/validate.mjs (exit 1 on any failure). node: built-ins only.
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
-import { SITE as HOST, LOCALES as DIRS, HREFLANG, PAGES, path, url, fileOf } from './pages.mjs';
+import { SITE as HOST, LOCALES, HREFLANG, PAGES, path, url, fileOf } from './pages.mjs';
 
+const DIRS = p => p.locales || LOCALES; // locales of one page (Lull also ships de and it)
 const FREE_WORDS = 'free|gratis|gratuit\\w*|grátis|gratuito';
 const BANNED = new RegExp(`\\b(cure[sd]?|eliminat\\w*|${FREE_WORDS}|no ads|F1|sin anuncios|sans pub\\w*|sem anúncios)\\b`, 'i');
 // Cyberpunk Detective and Lull have a confirmed price (facts.md: free), so "free" is allowed there; the rest still applies
 const BANNED_FREE_OK = new RegExp(BANNED.source.replace(`${FREE_WORDS}|`, ''), 'i');
-// Lull wording rules (facts.md): never cure / eliminate / treat (outside the disclaimer) / reduce, in any locale
-const LULL_BANNED = /\b(?:cur(?:e|es|ed|ar|a)\b|elimin|reduc|reduz|r[ée]du(?:ire|it)|gu[ée]ri|trat|treat|traite)/i;
+// Lull wording rules (facts.md): never cure / eliminate / treat (outside the disclaimer, which the check below strips) / reduce / relieve, in any locale (en es fr pt de it)
+const LULL_BANNED = /\b(?:cur(?:e|es|ed|ar|are|a)\b|elimin|reduc|reduz|r[ée]du(?:ire|it)|ridu(?:rre|c|z)|gu[ée]ri|guari|trat|treat|traite|heil(?:en|t|ung)\b|beseitig|behandel|linder|allevi)/i;
 const LISTING_BANNED = /\b(cure[sd]?|eliminat\w*|F1)\b/i;
 const BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'Claude-SearchBot', 'Claude-User', 'ClaudeBot', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Bingbot'];
 
@@ -31,7 +32,7 @@ assert.equal(attr('<link rel="canonical" href="x">', 'href'), 'x');
 assert.equal(text('<p>a<script>free</script>b</p>').includes('free'), false);
 assert.ok(BANNED.test('No ads here') && BANNED.test('cures') && !BANNED.test('carefree') && !BANNED.test('freedom'));
 assert.ok(!BANNED_FREE_OK.test('Free. Gratis, gratuito') && BANNED_FREE_OK.test('No ads') && BANNED_FREE_OK.test('cure'));
-assert.ok(LULL_BANNED.test('It treats') && LULL_BANNED.test('reducir') && LULL_BANNED.test('guérir') && !LULL_BANNED.test('Patterns, not causes. Secure') && !LULL_BANNED.test('bothers you less'));
+assert.ok(LULL_BANNED.test('It treats') && LULL_BANNED.test('reducir') && LULL_BANNED.test('guérir') && LULL_BANNED.test('heilen') && LULL_BANNED.test('beseitigt') && LULL_BANNED.test('behandelt') && LULL_BANNED.test('lindert') && LULL_BANNED.test('curare') && LULL_BANNED.test('guarire') && LULL_BANNED.test('ridurre') && LULL_BANNED.test('alleviare') && LULL_BANNED.test('trattare') && !LULL_BANNED.test('Heiligabend') && !LULL_BANNED.test('Patterns, not causes. Secure') && !LULL_BANNED.test('bothers you less'));
 assert.ok(BANNED.test('Juega gratis') && BANNED.test('appli gratuite') && BANNED.test('jogo grátis') && BANNED.test('test gratuito') && BANNED.test('sin anuncios')
   && BANNED.test('sans publicité') && BANNED.test('sem anúncios') && !BANNED.test('gratitude') && !BANNED.test('anuncios de Pulse'));
 assert.equal(h1Text('<h1 class="x">A <em>b</em> &amp; c</h1>'), 'A b & c');
@@ -64,7 +65,7 @@ const read = f => readFileSync(f, 'utf8');
 
 // Parse every page once: html + its hreflang map
 const pages = [];
-for (const p of PAGES) for (const loc of DIRS) {
+for (const p of PAGES) for (const loc of DIRS(p)) {
   const file = fileOf(loc, p), own = url(loc, p), shown = path(loc, p);
   if (!existsSync(file)) { fail(shown, `page file ${file} missing`); continue; }
   const html = read(file);
@@ -80,7 +81,7 @@ for (const { p, loc, own, shown, html, alts } of pages) {
   const canon = tags(html, /<link rel="canonical"[^>]*>/g);
   if (canon.length !== 1 || attr(canon[0], 'href') !== own) f(`canonical should be ${own}`);
   // hreflang: exactly the registry set, every target exists and links back
-  const expected = Object.fromEntries([...DIRS.map(l => [HREFLANG[l], url(l, p)]), ['x-default', url('en', p)]]);
+  const expected = Object.fromEntries([...DIRS(p).map(l => [HREFLANG[l], url(l, p)]), ['x-default', url('en', p)]]);
   if (JSON.stringify(Object.entries(alts).sort()) !== JSON.stringify(Object.entries(expected).sort())) f(`hreflang set wrong: ${Object.entries(alts).map(e => e.join(' ')).join(', ')}`);
   for (const target of Object.values(alts)) {
     const t = byUrl.get(target);
@@ -131,7 +132,7 @@ for (const { p, loc, own, shown, html, alts } of pages) {
     }
   }
 
-  // New app pages: FAQPage JSON-LD = visible FAQ, ≥ 3 internal links; Lull: no Play link, sources, wording rules outside the disclaimer
+  // New app pages: FAQPage JSON-LD = visible FAQ, ≥ 3 internal links; Lull: Play link, sources, wording rules outside the disclaimer
   if (p.type === 'app' && p.id !== 'pulse') {
     const faq = of('FAQPage'), shownFaq = [...html.matchAll(/<details[^>]*><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p>/g)].map(m => [unesc(m[1]), unesc(m[2])]);
     if (!faq) f('JSON-LD FAQPage missing');
@@ -141,8 +142,7 @@ for (const { p, loc, own, shown, html, alts } of pages) {
     if (internal.size < 3) f(`app page has ${internal.size} internal links to other pages (needs ≥ 3)`);
     if (!times(html).length) f('no visible publish/update date (<time datetime>)');
     if (p.id === 'lull') {
-      if (/play\.google\.com/.test(html)) f('Lull is not on Google Play: no Play link allowed');
-      if (!/<a class="btn" href="mailto:[^"]*" data-cta="lull_signup" data-app="lull">/.test(html)) f('Lull hero sign-up mailto link missing');
+      if (!tags(html, /<a\b[^>]*play\.google\.com\/store\/apps\/details\?id=com\.gurrulabs\.lull"[^>]*>/g).some(a => attr(a, 'data-cta') && attr(a, 'data-app') === 'lull')) f('Lull Play link (com.gurrulabs.lull with data-cta and data-app="lull") missing');
       if (tags(html.match(/<section class="sources"[\s\S]*?<\/section>/)?.[0] || '', /\shref="https:\/\/doi\.org\/[^"]+"/g).length < 2) f('Lull needs its 2 doi.org sources in .sources');
       const w = text(html.replace(/<p class="disc">[\s\S]*?<\/p>/, '')).match(LULL_BANNED);
       if (w) f(`Lull wording rule: "${w[0]}" (only the disclaimer may say treat)`);
@@ -197,4 +197,4 @@ const init = js.indexOf('mixpanel.init(');
 if (inits !== 1 || gate < 0 || !(fn < gate && gate < init)) fail('script.js', 'mixpanel.init must appear once, after the exact production-host gate in initMixpanel');
 
 if (errors.length) { console.error(`${errors.join('\n')}\nvalidate: ${errors.length} error${errors.length === 1 ? '' : 's'}`); process.exit(1); }
-console.log(`validate: OK (${pages.length} pages, ${DIRS.length} locales, sitemap ${inSitemap}/${PAGES.length * DIRS.length}, llms.txt ${inLlms}/${PAGES.length} EN pages, ${hrefChecked} internal links, all tracked, analytics gate present)`);
+console.log(`validate: OK (${pages.length} pages, ${LOCALES.length} locales (Lull ${PAGES.find(p => p.locales).locales.length}), sitemap ${inSitemap}/${pages.length}, llms.txt ${inLlms}/${PAGES.length} EN pages, ${hrefChecked} internal links, all tracked, analytics gate present)`);

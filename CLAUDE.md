@@ -3,7 +3,7 @@
 Studio website for Gurrulabs (Unai's app studio): a home page with one card per app and one page per app.
 Single goal: bring people in from organic search (playable browser hooks, useful pages) and send them to each
 app on Google Play. Stage (2026-11-05): hosting live (T-003); home + Pulse page built (T-002).
-Launch apps: Pulse, Raffy (card links out to raffyparenting.com), Cyberpunk Detective, Lull (not on Play yet).
+Launch apps: Pulse, Raffy (card links out to raffyparenting.com), Cyberpunk Detective, Lull (on Play).
 
 ## Stack
 - Hand-written static HTML/CSS/vanilla JS. No framework, no bundler, no npm dependencies; Node scripts
@@ -44,7 +44,7 @@ One folder per locale with one subfolder per app (`/en/`, `/en/pulse/`), shared 
   gate on the exact production hostname in code. Never fire test events at the shared project.
 - App facts (store texts, screenshots, colours, package ids, claims allowed) come from that app's Lead or repo,
   never invented. In tickets you can ask related Leads (pulse, raffy-app, raffy-web, cyberpunk-detective, lull, ...).
-- Lull: never "cure"/"eliminate" tinnitus wording; it is not on Play yet (no install CTA until it is).
+- Lull is on Google Play (`com.gurrulabs.lull`) and its pages carry the Play CTA; never "cure"/"eliminate" tinnitus wording.
 - Health/medical claims for any app: educational, no promises.
 - Never touch: other projects' repos (read only, or ask their Lead), secrets/tokens other than the public
   Mixpanel token, `.lead/tickets/T-*.md` in commits.

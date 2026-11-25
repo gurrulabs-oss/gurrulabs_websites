@@ -15,7 +15,7 @@ https://www.gurrulabs.com (GitHub Pages; `gurrulabs.com` redirects to `www`). Se
 | Pulse | `com.gurrulabs.pulse` | live on Play | `pulse` · `~/AndroidStudioProjects/TimeMaster` | first full page (`/pulse`), browser mini-tests as hook |
 | Raffy | `com.gurrulabs.raffy` | live on Play | `raffy-app`, `raffy-web` | card linking to raffyparenting.com (its own SEO site) |
 | Cyberpunk Detective | `com.gurrulabs.miniaicrimes` | live on Play | `cyberpunk-detective` · `~/AndroidStudioProjects/miniaicrimes` | card + page |
-| Lull | `com.gurrulabs.lull` (planned) | not on Play: POC only | `lull` · `~/Desktop/Personal/lull` | card "coming soon", no install CTA |
+| Lull | `com.gurrulabs.lull` | on Play (2026-11-25) | `lull` · `~/Desktop/Personal/lull` | card + app page with the Play CTA; pages en/es/fr/pt/de/it (de/it link home, other apps and footer to the EN pages) |
 
 Not on the site: Lumen (personal TV launcher), El Feed, RadarMotor (newsletter), SantaFe, Precios.
 Play URL: `https://play.google.com/store/apps/details?id=<package>`.
@@ -37,8 +37,6 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
     even though URLs are translated), `home` for the locale root.
   - `Gurrulabs Web - Download Button Clicked` on any Play link, props `app` (`data-app`), `cta` (`data-cta`),
     `locale`, `page` (slug), `result` (only on test result links, `"<verdict> <score>"`).
-  - `Gurrulabs Web - Signup Clicked` on a `mailto:` link with `data-cta` (Lull "email me when it launches"), props `app`, `cta`
-    (`lull_signup`, `lull_signup_band`), `locale`, `page`. The href is never changed.
   - `Gurrulabs Web - Internal Link Clicked` on a link to this site (Play links excluded), props `page`, `locale`, `to`
     (target page id from the `<script id="pages">` path → id map that `build.mjs` puts in every head; same-page `#` links =
     `page`; unmapped path = `unknown`), `zone` (`header|breadcrumb|footer|game`, else the enclosing `<section>`'s id or
@@ -60,5 +58,5 @@ Play URL: `https://play.google.com/store/apps/details?id=<package>`.
 ## Copy rules
 - 4 locales: en, es, fr, pt (Brazilian Portuguese). Native, not literal translations.
 - Reuse each app's store listing texts and screenshots (ask its Lead); never invent features.
-- Lull: never "cure" or "eliminate" tinnitus; say "bother you less", "sleep better", "understand your patterns".
+- Lull is on Google Play (`com.gurrulabs.lull`), CTA = Play button. Never "cure" or "eliminate" tinnitus; say "bother you less", "sleep better", "understand your patterns".
 - Raffy and Lull touch health: educational tone, no medical promises.
