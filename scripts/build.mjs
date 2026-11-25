@@ -7,7 +7,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, LOCALES, HREFLANG, PAGES, path, url } from './pages.mjs';
-import { CASE, COMMON, PAGES as CP } from './cyberpunk-content.mjs'; // Cyberpunk Detective pages: case JSON + page copy (T-011)
+import { CASE, COMMON, LANDING, PAGES as CP } from './cyberpunk-content.mjs'; // Cyberpunk Detective pages: case JSON + page copy (T-011)
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const OG_LOCALE = { en: 'en_US', es: 'es_ES', fr: 'fr_FR', pt: 'pt_BR', de: 'de_DE', it: 'it_IT' };
@@ -2077,12 +2077,10 @@ const CONTENT = {
       band: ['Seu recorde está esperando', 'Catorze tempos ocultos, Batak e um desafio diário no app.'] } },
 };
 // ── New app pages (T-004): Cyberpunk Detective and Lull. Facts ONLY from .lead/attachments/T-004/facts.md. Per app and locale.
-//    Cyberpunk: { title, desc, tag, h1, sub, chips, ans [q, a], steps_h, steps_p, steps [[b, s]], cases_h, cases_p, kick [detective, audio],
-//      cases [[teaser, tags]] (order of CASES), note, shot [prefix, alts], faq [[q, a]], band [h, p] }
+//    Cyberpunk Detective's landing is not here: it lives in cyberpunk-content.mjs (LANDING) and cyLanding() below (T-033).
 //    Lull: { title, desc, tag, h1, sub, chips, hero_alt, ans [q, a], feat_h, feat_p, feats [[b, p, alt]], stat_h, stat, faq,
 //      disc, checked, band [h, p] }
 //    Lull wording rules (validator enforces): no cure / eliminate / treat (except the disclaimer) / reduce; never "tinnitus therapy".
-const CASES = [['vienna', 'Shadows in Vienna', 0], ['gaps', 'Gaps Along the Way', 0], ['selene', 'Cold Dust on Selene-9', 0], ['coyote', 'The Coyote and the Wind', 15], ['redline', 'Red Line', 15], ['mossleigh', 'The Echo of Mossleigh', 25]];
 const S1 = '<sup><a href="#s1">[1]</a></sup>', S2 = '<sup><a href="#s2">[2]</a></sup>';
 const LULL_SRC = [
   ['Jarach CM, Lugo A, Scala M, et al. Global prevalence and incidence of tinnitus: a systematic review and meta-analysis. <i>JAMA Neurology</i> 2022;79(9):888–900.', 'https://doi.org/10.1001/jamaneurol.2022.2189'],
@@ -2091,88 +2089,6 @@ const LULL_SRC = [
 const FEAT_ICON = ['M3 12h3l3-7 4 14 3-7h5', 'M12 3v18M8 7v10M4 10v4M16 7v10M20 10v4', 'M5 12l5 5 9-10', 'M4 18l5-6 4 3 7-9'];
 const FEAT_IMG = ['match', 'sounds', 'checkin', 'patterns'];
 const APP = {
-  'cyberpunk-detective': {
-    en: { title: 'Cyberpunk Detective Game for Android | Gurrulabs',
-      desc: 'Cyberpunk Detective is a free cyberpunk detective game for Android: gather clues, question suspects, accuse the culprit. 6 cases, no account, offline.',
-      name: 'Cyberpunk Detective', tag: 'Detective mystery game · Android', h1: 'Read the clues. <em>Catch the killer.</em>',
-      sub: 'A neon-noir cyberpunk detective game: walk the crime scene, question every suspect and name the culprit.',
-      chips: ['Free', 'No account', 'Cases work offline', '6 cases'],
-      ans: ['What is Cyberpunk Detective?', 'It is a free cyberpunk detective game for Android that mixes detective cases you solve (gather clues, question suspects, accuse the culprit) with audio crime stories you listen to, in a neon-noir world.'],
-      steps_h: 'How a case plays', steps_p: 'Three steps, one culprit.',
-      steps: [['Search the scene', 'Visit the locations and examine the evidence. Every clue goes into your clue diary.'], ['Question the suspects', 'Each interrogation has three rounds of two questions. Pick one per round: the other is gone for good.'], ['Accuse', 'Name the killer. The right call closes the case; a wrong one gets its own ending and locks the case for an hour.']],
-      cases_h: 'The cases', cases_p: 'Three detective cases you play, three audio cases you listen to.', kick: ['Detective case', 'Audio case'],
-      cases: [['In 1983 Vienna, the art world’s sharpest tongue just met its deadliest critic.', ['1983 Vienna', 'Art world']], ['A missing girl returns after five years, and her sister’s fate hides in the clues she left behind.', ['Missing person']],
-        ['A mining accident on the Moon, or the first murder off Earth?', ['The Moon', 'Sci-fi']], ['In a county where sand erases footprints, micro-clues force a killer into the light.', ['American West']],
-        ['A young man vanishes by the sea, and his family’s search unravels the truth under the waves.', ['Disappearance']], ['A rookie cop finds a face from a vanished past, and Mossleigh’s secrets rise to the surface.', ['Cold case']]],
-      note: 'More cases are on the way in the app. No dates promised.',
-      shot: ['Cyberpunk Detective screenshot: ', ['choose Detective or Podcast mode', 'crime podcasts list, solved and unsolved', 'clue diary during a case', 'audio case player with captions', 'share a solved case']],
-      faq: [['Is Cyberpunk Detective free?', 'Yes. It is free on Google Play, with ads and no in-app purchases. You don’t need an account.'],
-        ['Does it work offline?', 'Yes. Every case, its art and its audio ship inside the app, so you can play without a connection once it is installed.'],
-        ['What languages is it in?', 'The game text is in English, Spanish and French. The audio cases are narrated in English, with English captions.'],
-        ['Why does the app say "Mini AI Crimes"?', 'On phones set to Spanish or French, the app’s icon may read Mini AI Crimes. It is the same game.'],
-        ['How long is a case?', 'Audio cases run 15 to 25 minutes. Detective cases have no set length: you play at your own pace.']],
-      band: ['The case is open', 'Six mysteries, one detective: you.'] },
-    es: { title: 'Juego de detectives cyberpunk para Android | Gurrulabs',
-      desc: 'Cyberpunk Detective, juego de detectives cyberpunk gratis para Android: reúne pistas, interroga a sospechosos y acusa al culpable. 6 casos, sin cuenta.',
-      name: 'Cyberpunk Detective', tag: 'Juego de detectives · Android', h1: 'Lee las pistas. <em>Atrapa al asesino.</em>',
-      sub: 'Un juego de detectives cyberpunk de estilo neon-noir: recorre la escena del crimen, interroga a cada sospechoso y señala al culpable.',
-      chips: ['Gratis', 'Sin cuenta', 'Los casos funcionan sin conexión', '6 casos'],
-      ans: ['¿Qué es Cyberpunk Detective?', 'Es un juego de detectives cyberpunk gratuito para Android que combina casos de detective que resuelves tú (reúne pistas, interroga a los sospechosos y acusa al culpable) con historias de crímenes en audio que escuchas, en un mundo neon-noir.'],
-      steps_h: 'Cómo se juega un caso', steps_p: 'Tres pasos, un culpable.',
-      steps: [['Investiga la escena', 'Visita los lugares y examina las pruebas. Cada pista se guarda en tu diario de pistas.'], ['Interroga a los sospechosos', 'Cada interrogatorio tiene tres rondas de dos preguntas. Elige una por ronda: la otra se pierde para siempre.'], ['Acusa', 'Señala al asesino. Si aciertas, el caso se cierra; si fallas, tiene su propio final y el caso se bloquea durante una hora.']],
-      cases_h: 'Los casos', cases_p: 'Tres casos de detective que juegas y tres casos en audio que escuchas.', kick: ['Caso de detective', 'Caso en audio'],
-      cases: [['En la Viena de 1983, la lengua más afilada del mundo del arte acaba de conocer a su crítico más letal.', ['Viena 1983', 'Mundo del arte']], ['Una niña desaparecida regresa tras cinco años, y el destino de su hermana está oculto en las pistas que dejó.', ['Persona desaparecida']],
-        ['Un accidente minero en la Luna, ¿o el primer asesinato fuera de la Tierra?', ['La Luna', 'Ciencia ficción']], ['En un condado donde la arena borra las huellas, las micropistas obligan a un asesino a salir a la luz.', ['Oeste americano']],
-        ['Un joven desaparece junto al mar y la búsqueda de su familia desvela la verdad que yace bajo las olas.', ['Desaparición']], ['Un policía novato reconoce un rostro de un pasado desaparecido, y los secretos de Mossleigh salen a la superficie.', ['Caso sin resolver']]],
-      note: 'Habrá más casos en la app. Sin fechas prometidas.',
-      shot: ['Captura de Cyberpunk Detective: ', ['elegir el modo Detective o Pódcast', 'lista de pódcasts de crímenes, resueltos y sin resolver', 'diario de pistas durante un caso', 'reproductor de caso en audio con subtítulos', 'compartir un caso resuelto']],
-      faq: [['¿Cyberpunk Detective es gratis?', 'Sí. Es gratis en Google Play, con anuncios y sin compras dentro de la app. No necesitas cuenta.'],
-        ['¿Funciona sin conexión?', 'Sí. Cada caso, su arte y su audio vienen dentro de la app, así que puedes jugar sin conexión una vez instalada.'],
-        ['¿En qué idiomas está?', 'El texto del juego está en inglés, español y francés. Los casos en audio están narrados en inglés, con subtítulos en inglés.'],
-        ['¿Por qué la app se llama "Mini AI Crimes"?', 'En móviles configurados en español o francés, el icono de la app puede mostrar Mini AI Crimes. Es el mismo juego.'],
-        ['¿Cuánto dura un caso?', 'Los casos en audio duran de 15 a 25 minutos. Los casos de detective no tienen duración fija: juegas a tu ritmo.']],
-      band: ['El caso está abierto', 'Seis misterios, un detective: tú.'] },
-    fr: { title: 'Jeu de détective cyberpunk pour Android | Gurrulabs',
-      desc: 'Cyberpunk Detective : jeu de détective cyberpunk gratuit pour Android. Rassemble les indices, interroge les suspects, accuse le coupable. Sans compte.',
-      name: 'Cyberpunk Detective', tag: 'Jeu de détective · Android', h1: 'Lis les indices. <em>Attrape le tueur.</em>',
-      sub: 'Un jeu de détective cyberpunk néo-noir : parcours la scène de crime, interroge chaque suspect et désigne le coupable.',
-      chips: ['Gratuit', 'Sans compte', 'Les enquêtes fonctionnent hors ligne', '6 enquêtes'],
-      ans: ['Qu’est-ce que Cyberpunk Detective ?', 'C’est un jeu de détective cyberpunk gratuit sur Android qui mêle des enquêtes à résoudre (rassemble les indices, interroge les suspects, accuse le coupable) et des histoires criminelles audio à écouter, dans un monde néo-noir.'],
-      steps_h: 'Comment se déroule une enquête', steps_p: 'Trois étapes, un coupable.',
-      steps: [['Fouille la scène', 'Visite les lieux et examine les preuves. Chaque indice rejoint ton carnet d’indices.'], ['Interroge les suspects', 'Chaque interrogatoire compte trois tours de deux questions. Choisis-en une par tour : l’autre est perdue pour de bon.'], ['Accuse', 'Désigne le tueur. Si tu as raison, l’enquête est close ; sinon, elle a sa propre fin et se verrouille pendant une heure.']],
-      cases_h: 'Les enquêtes', cases_p: 'Trois enquêtes à mener toi-même, trois enquêtes audio à écouter.', kick: ['Enquête de détective', 'Enquête audio'],
-      cases: [['Dans la Vienne de 1983, la langue la plus acérée du monde de l’art vient de rencontrer son critique le plus redoutable.', ['Vienne 1983', 'Monde de l’art']], ['Une jeune fille disparue revient après cinq ans, et le sort de sa sœur se cache dans les indices qu’elle a laissés.', ['Personne disparue']],
-        ['Un accident minier sur la Lune, ou le premier meurtre hors de la Terre ?', ['La Lune', 'Science-fiction']], ['Dans un comté où le sable efface les empreintes, des micro-indices forcent un tueur à sortir de l’ombre.', ['Ouest américain']],
-        ['Un jeune homme disparaît au bord de la mer, et les recherches de sa famille révèlent la vérité cachée sous les vagues.', ['Disparition']], ['Un jeune policier reconnaît un visage d’un passé révolu, et les secrets enfouis de Mossleigh remontent à la surface.', ['Affaire non résolue']]],
-      note: 'D’autres enquêtes arrivent dans l’appli. Aucune date promise.',
-      shot: ['Capture de Cyberpunk Detective : ', ['choix du mode Détective ou Podcast', 'liste des podcasts criminels, résolus et non résolus', 'carnet d’indices pendant une enquête', 'lecteur d’enquête audio avec sous-titres', 'partage d’une enquête résolue']],
-      faq: [['Cyberpunk Detective est-il gratuit ?', 'Oui. Il est gratuit sur Google Play, avec des publicités et sans achats intégrés. Aucun compte n’est nécessaire.'],
-        ['Fonctionne-t-il hors ligne ?', 'Oui. Chaque enquête, ses images et son audio sont inclus dans l’appli : tu peux jouer sans connexion une fois l’appli installée.'],
-        ['Dans quelles langues est-il disponible ?', 'Le texte du jeu est en anglais, en espagnol et en français. Les enquêtes audio sont racontées en anglais, avec des sous-titres anglais.'],
-        ['Pourquoi l’appli s’appelle-t-elle "Mini AI Crimes" ?', 'Sur un téléphone réglé en espagnol ou en français, l’icône de l’appli peut afficher Mini AI Crimes. C’est le même jeu.'],
-        ['Combien de temps dure une enquête ?', 'Les enquêtes audio durent de 15 à 25 minutes. Les enquêtes de détective n’ont pas de durée fixe : tu joues à ton rythme.']],
-      band: ['L’enquête est ouverte', 'Six mystères, un détective : toi.'] },
-    pt: { title: 'Jogo de detetive cyberpunk para Android | Gurrulabs',
-      desc: 'Cyberpunk Detective: jogo de detetive cyberpunk grátis para Android. Reúna pistas, interrogue suspeitos e acuse o culpado. 6 casos, sem conta.',
-      name: 'Cyberpunk Detective', tag: 'Jogo de detetive · Android', h1: 'Leia as pistas. <em>Pegue o assassino.</em>',
-      sub: 'Um jogo de detetive cyberpunk neon-noir: examine a cena do crime, interrogue cada suspeito e aponte o culpado.',
-      chips: [['globe', 'Jogo em inglês, espanhol e francês'], 'Grátis', 'Sem conta', 'Os casos funcionam offline', '6 casos'],
-      ans: ['O que é o Cyberpunk Detective?', 'É um jogo de detetive cyberpunk gratuito para Android que mistura casos de detetive que você resolve (reúna pistas, interrogue suspeitos e acuse o culpado) com histórias de crime em áudio que você ouve, num mundo neon-noir.'],
-      steps_h: 'Como funciona um caso', steps_p: 'Três passos, um culpado.',
-      steps: [['Vasculhe a cena', 'Visite os locais e examine as provas. Cada pista vai para o seu diário de pistas.'], ['Interrogue os suspeitos', 'Cada interrogatório tem três rodadas de duas perguntas. Escolha uma por rodada: a outra se perde para sempre.'], ['Acuse', 'Aponte o assassino. Acertou, o caso é encerrado; errou, tem um final próprio e o caso fica bloqueado por uma hora.']],
-      cases_h: 'Os casos', cases_p: 'Três casos de detetive para jogar e três casos em áudio para ouvir.', kick: ['Caso de detetive', 'Caso em áudio'],
-      cases: [['Na Viena de 1983, a língua mais afiada do mundo da arte acaba de encontrar seu crítico mais mortal.', ['Viena, 1983', 'Mundo da arte']], ['Uma menina desaparecida volta depois de cinco anos, e o destino da irmã dela está escondido nas pistas que deixou.', ['Pessoa desaparecida']],
-        ['Um acidente de mineração na Lua, ou o primeiro assassinato fora da Terra?', ['A Lua', 'Ficção científica']], ['Num condado onde a areia apaga as pegadas, micropistas forçam um assassino a vir à luz.', ['Oeste americano']],
-        ['Um jovem desaparece à beira-mar, e a busca da família revela a verdade escondida sob as ondas.', ['Desaparecimento']], ['Um policial novato descobre um rosto de um passado desaparecido, e os segredos enterrados de Mossleigh vêm à tona.', ['Caso arquivado']]],
-      note: 'Mais casos chegam ao app. Sem datas prometidas.',
-      shot: ['Captura do Cyberpunk Detective: ', ['escolha do modo Detetive ou Podcast', 'lista de podcasts de crimes, resolvidos e não resolvidos', 'diário de pistas durante um caso', 'player de caso em áudio com legendas', 'compartilhar um caso resolvido']],
-      faq: [['O Cyberpunk Detective é grátis?', 'Sim. É grátis no Google Play, com anúncios e sem compras no app. Você não precisa de conta.'],
-        ['Funciona offline?', 'Sim. Cada caso, sua arte e seu áudio vêm dentro do app, então você joga sem conexão depois de instalar.'],
-        ['Em quais idiomas está o jogo?', 'Ainda não em português. O texto do jogo está em inglês, espanhol e francês. Os casos em áudio são narrados em inglês, com legendas em inglês.'],
-        ['Por que o app aparece como "Mini AI Crimes"?', 'Em celulares configurados em espanhol ou francês, o ícone do app pode mostrar Mini AI Crimes. É o mesmo jogo.'],
-        ['Quanto dura um caso?', 'Os casos em áudio duram de 15 a 25 minutos. Os casos de detetive não têm duração fixa: você joga no seu ritmo.']],
-      band: ['O caso está aberto', 'Seis mistérios, um detetive: você.'] },
-  },
   lull: {
     en: { title: 'Lull: tinnitus sleep sounds app for Android | Gurrulabs',
       desc: 'Lull is a tinnitus sleep sounds app for Android: sounds tuned to your tone and a 30-second daily check-in. Get it on Google Play.',
@@ -2290,7 +2206,7 @@ const APP = {
       checked: 'Fonti verificate il 2026-11-05.', band: ['Prova Lull stanotte', 'Scarica Lull da Google Play.'] }
   },
 };
-const meta = (loc, p) => CYK[p.id] ? { title: CP[loc][CYK[p.id]].title, desc: CP[loc][CYK[p.id]].description } : p.id === 'home' ? { title: T[loc].home_title, desc: T[loc].home_desc }
+const meta = (loc, p) => p.id === 'cyberpunk-detective' ? { title: LANDING[loc].title, desc: LANDING[loc].desc } : CYK[p.id] ? { title: CP[loc][CYK[p.id]].title, desc: CP[loc][CYK[p.id]].description } : p.id === 'home' ? { title: T[loc].home_title, desc: T[loc].home_desc }
   : p.id === 'pulse' ? { title: T[loc].pulse_title, desc: T[loc].pulse_desc } : APP[p.id] ? APP[p.id][loc] : CONTENT[p.id][loc];
 
 const img = (name, alt = '') => `<img src="/assets/${name}-icon.webp" width="256" height="256" alt="${alt}">`;
@@ -2314,6 +2230,7 @@ const APP_LD = { // MobileApplication facts per app page (Lull: url only, no off
   lull: { name: 'Lull', applicationCategory: 'LifestyleApplication', url: PLAY_URL('lull') },
 };
 const plain = h => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<');
+const LANDING_FAQ = (p, loc) => p.id === 'cyberpunk-detective' ? LANDING[loc].faq : null;
 function schema(loc, p) {
   if (CYK[p.id]) return cySchema(loc, p);
   const t = T[loc], c = CONTENT[p.id]?.[loc], me = url(loc, p);
@@ -2328,7 +2245,7 @@ function schema(loc, p) {
     const trail = p.type === 'app' ? [[t.back, byId.home], [APP_LD[p.id].name, p]] : [[t.back, byId.home], ['Pulse', byId.pulse], [c.name, p]];
     out.push({ '@type': 'BreadcrumbList', itemListElement: trail.map(([name, q], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url(q.id === 'home' ? HUB(loc) : loc, q) })) });
   }
-  const faq = APP[p.id]?.[loc].faq || c?.faq; // visible FAQ; links stripped to their text
+  const faq = LANDING_FAQ(p, loc) || APP[p.id]?.[loc].faq || c?.faq; // visible FAQ; links stripped to their text
   if (faq) out.push({ '@type': 'FAQPage', mainEntity: faq.map(([name, text]) => ({ '@type': 'Question', name: plain(name), acceptedAnswer: { '@type': 'Answer', text: plain(text) } })) });
   return out;
 }
@@ -2361,7 +2278,7 @@ ${alternates(p)}
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">${image ? `\n<meta name="twitter:image" content="${image}">` : ''}
 <link rel="preload" href="/assets/outfit.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/styles.css">${CYK[p.id] ? '\n<link rel="stylesheet" href="/cyberpunk.css">' : ''}
+<link rel="stylesheet" href="/styles.css">${CYK[p.id] || p.id === 'cyberpunk-detective' ? '\n<link rel="stylesheet" href="/cyberpunk.css">' : ''}
 ${FAVICON[p.app] || FAVICON.studio}
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 ${schema(loc, p).map(jsonLd).join('\n')}
@@ -2382,7 +2299,7 @@ function header(loc, p, t) {
       : `<a class="crumb" href="${backHref}">${ic('back')}<span class="aic">${cy ? ICON.cyber : ICON.pulse}</span><b>${backName}</b></a>`;
   const nav = home ? `<nav class="hnav"><a href="#apps">${t.apps_h}</a><a href="#about">${t.about_h}</a></nav>` : '';
   const langs = PLOC(p).map(l => `<a${l === loc ? ' class="on" aria-current="true"' : ''} href="${path(l, p)}" hreflang="${HREFLANG[l]}" lang="${HREFLANG[l]}">${l.toUpperCase()}</a>`).join('');
-  return `<header class="wrap top">${left}${nav}${cy ? cyDl(loc, 'header', COMMON[loc].download, false) : ''}<nav class="langs" aria-label="Language">${langs}</nav></header>`;
+  return `<header class="wrap top">${left}${nav}${cy || p.id === 'cyberpunk-detective' ? cyDl(loc, 'header', COMMON[loc].download, false) : ''}<nav class="langs" aria-label="Language">${langs}</nav></header>`;
 }
 
 // Every page links every app (internal links help search engines find the app pages); Pulse pages also list Pulse's tests and guide
@@ -2521,7 +2438,7 @@ function tryBlock(loc) {
   const [h, lead, k1, go1, k2, go2, alt] = TRY[loc], c = CP[loc].case, r = CP[loc].riddles;
   const pips = n => `<span class="pips">${[1, 2, 3].map(i => `<i${i <= n ? ' class="on"' : ''}></i>`).join('')}</span>`;
   const list = [0, 1, 5, 8, 9].map(i => `<li><span>${String(i + 1).padStart(2, '0')}</span><span>${r.riddles[i].title}</span>${pips(LVL[r.riddles[i].level])}</li>`).join('');
-  return `<section class="blk"><h2>${h}</h2><p class="lead">${lead}</p>
+  return `<section class="blk"><h2 class="nsign y">${h}</h2><p class="lead">${lead}</p>
     <div class="trybr">
       <a href="${path(loc, byId['cyberpunk-mini-case'])}"><div class="top"><img src="/assets/cyberpunk-case-cover.webp" width="1051" height="1497" loading="lazy" alt="${alt}"></div><div class="tx"><span class="k">${k1}</span><b>${CASE[loc].title}</b><p>${CASE[loc].hook}</p><span class="golink">${go1}</span></div></a>
       <a href="${path(loc, byId['cyberpunk-riddles'])}"><div class="top" aria-hidden="true"><ol>${list}</ol></div><div class="tx"><span class="k">${k2}</span><b>${r.h1}</b><p>${r.cardSub}</p><span class="golink">${go2}</span></div></a>
@@ -2529,6 +2446,7 @@ function tryBlock(loc) {
   </section>`;
 }
 function appPage(loc, p) {
+  if (p.id === 'cyberpunk-detective') return cyLanding(loc, p);
   const t = T[loc], a = APP[p.id][loc], lull = p.id === 'lull', links = id => path(HUB(loc), byId[id]);
   const cta = k => play(loc, lull ? 'lull' : 'cyberpunk_detective', k);
   const hero = `<section class="p-hero">
@@ -2559,24 +2477,7 @@ function appPage(loc, p) {
   <section class="sources"><h2>${t.src_h}</h2><ol>${LULL_SRC.map(([ref, u], i) => `<li id="s${i + 1}">${ref} <a href="${u}" rel="noopener" target="_blank">${u.replace('https://', '')}</a></li>`).join('')}</ol><p class="note">${a.checked}</p></section>
 
   ${appRel(loc, [[links('home'), ICON.raffy, t.rel[0]], [links('pulse'), ICON.pulse, t.rel[1]], [links('cyberpunk-detective'), ICON.cyber, t.rel[2]]])}`
-    : `<section class="blk"><h2>${a.steps_h}</h2><p class="lead">${a.steps_p}</p>
-    <div class="steps">${a.steps.map(([b, d]) => `<div><b>${b}</b><span>${d}</span></div>`).join('')}</div>
-  </section>
-
-  ${tryBlock(loc)}
-
-  <section class="blk" id="cases"><h2>${a.cases_h}</h2><p class="lead">${a.cases_p}</p>
-    <div class="cases">
-      ${CASES.map(([id, name, min], i) => `<div class="neon"><div class="case"><img src="/assets/case-${id}.webp" width="600" height="600" loading="lazy" alt="${name}"><div class="tx"><span class="k">${min ? `${a.kick[1]} · ${min} min` : a.kick[0]}</span><b>${name}</b><p>${a.cases[i][0]}</p><div class="tags">${a.cases[i][1].map(g => `<span>${g}</span>`).join('')}</div></div></div></div>`).join('\n      ')}
-    </div>
-    <p class="soon">${a.note}</p>
-  </section>
-
-  <section class="blk"><h2>${t.shots_h}</h2><div class="shots">${a.shot[1].map((alt, i) => `<img class="shot" src="/assets/cyber-shot-${i + 1}.webp" width="540" height="960" loading="lazy" alt="${a.shot[0]}${alt}">`).join('')}</div></section>
-
-  ${faq}
-
-  ${appRel(loc, [[links('home'), ICON.pulse, t.rel[0]], [links('pulse'), ICON.pulse, t.rel[1]], [path(loc, byId.lull), ICON.lull, t.rel[3]]])}`;
+    : '';
   return `${head(loc, p)}
 <body class="${lull ? 'app-lull' : 'app-cyber'}" data-page="${p.dataPage}" data-locale="${loc}">
 ${header(loc, p, t)}
@@ -2851,17 +2752,23 @@ ${i18nJson ? `<script type="application/json" id="i18n">${i18nJson}</script>` : 
 `;
 const cyI18n = loc => JSON.stringify({ ...CASE_UI[loc], download: COMMON[loc].download, free: COMMON[loc].free, appTagline: COMMON[loc].appTagline, play: PLAY_URL('cyberpunk_detective') }).replace(/</g, '\\u003c');
 
+// The three "how a case plays" previews, built from the case data (case page and landing)
+function cyHp(loc, k) {
+  const U = CASE_UI[loc], lie = k.suspects.flatMap(s => s.statements).find(x => x.brokenBy), lieClue = k.clues.find(x => x.id === lie.brokenBy), c0 = k.clues[0];
+  return [
+    `<div class="hp-pv pv-scene" aria-hidden="true"><span class="cs-hs found"><i></i><span class="cs-hl"><span class="tg f">${c0.code}</span>${esc(c0.place)}</span></span></div>`,
+    `<div class="hp-pv pv-lie" aria-hidden="true"><div><p>“<span>${esc(lie.text)}</span>”</p><p class="pv-by"><span class="tg f">${lieClue.code}</span>${esc(lieClue.title)}</p></div></div>`,
+    `<div class="hp-pv pv-sent" aria-hidden="true"><p><span class="cs-slot f">${U.who}</span> · <span class="cs-slot">${U.how}</span> · <span class="cs-slot a">${U.why}</span></p></div>`];
+}
+
 // ── Case page. Static: hero, the brief (case lines + the three faces), how to play, guide, FAQ, sources. The stage, steps and diary are rendered by script.js.
 function casePage(loc, p) {
-  const c = CP[loc].case, k = CASE[loc], U = CASE_UI[loc], t = T[loc], lie = k.suspects.flatMap(s => s.statements).find(x => x.brokenBy), lieClue = k.clues.find(x => x.id === lie.brokenBy), c0 = k.clues[0];
+  const c = CP[loc].case, k = CASE[loc], U = CASE_UI[loc], t = T[loc];
   const brief = `<div class="cs-brief"><div>${k.brief.map(b => `<p class="cs-line"><b class="${b.speaker}">${b.speaker.toUpperCase()}</b><span>${esc(b.text)}</span></p>`).join('')}</div>
         <div><p class="cs-q">${esc(k.question)}</p>
         <div class="cs-trio">${k.suspects.map(s => `<figure><img class="cs-pt" src="/assets/cyberpunk-case-${s.id}.webp" width="120" height="120" alt="${esc(cyF(U.portrait, { a: s.name, b: s.role.toLowerCase() }))}"><figcaption><b>${esc(s.name)}</b><small>${esc(s.role)}</small></figcaption></figure>`).join('')}</div>
         <noscript><p class="cs-nojs">${c.noscript}</p></noscript></div></div>`;
-  const hp = [
-    `<div class="hp-pv pv-scene" aria-hidden="true"><span class="cs-hs found"><i></i><span class="cs-hl"><span class="tg f">${c0.code}</span>${esc(c0.place)}</span></span></div>`,
-    `<div class="hp-pv pv-lie" aria-hidden="true"><div><p>“<span>${esc(lie.text)}</span>”</p><p class="pv-by"><span class="tg f">${lieClue.code}</span>${esc(lieClue.title)}</p></div></div>`,
-    `<div class="hp-pv pv-sent" aria-hidden="true"><p><span class="cs-slot f">${U.who}</span> · <span class="cs-slot">${U.how}</span> · <span class="cs-slot a">${U.why}</span></p></div>`];
+  const hp = cyHp(loc, k);
   const fair = `<figure class="fair" data-rv><div class="fair-row">${k.clues.map(x => `<span class="tg f">${x.code}</span>`).join('')}<hr><span class="fair-acc">${U.accusation}</span></div><figcaption class="fair-cap"><span>${cyF(U.fairCap, k.clues.length)}</span><span>${U.schematic}</span></figcaption></figure>`;
   const heads = [['case', U.railCase], ...c.guide.map(g => [g.id, g.toc]), ['faq', COMMON[loc].faqH], ['sources', COMMON[loc].sourcesH]];
   const inner = `${cyCrumb(loc, c)}
@@ -2957,6 +2864,74 @@ function riddlesPage(loc, p) {
   return cyBody(loc, p, inner);
 }
 
+// ── Cyberpunk Detective landing (T-033): the case-page skin (cyberpunk.css, cyBody, Download buttons) with its own sections. Copy: LANDING in cyberpunk-content.mjs.
+const LP_IMG = { 'cyberpunk-case-cover': [1051, 1497], 'cyber-cover-lake': [600, 855], 'cyber-cover-vault': [600, 840], 'cyber-cover-academy': [600, 935], 'cyber-cover-cradle': [600, 840] };
+function cyLanding(loc, p) {
+  const L = LANDING[loc], t = T[loc], sl = loc === 'pt' ? 'en' : loc, hub = id => path(HUB(loc), byId[id]);
+  const playA = (cls, cta, inner) => `<a class="${cls}" href="${PLAY_URL('cyberpunk_detective')}" target="_blank" rel="noopener" data-cta="${cta}" data-app="cyberpunk_detective">${inner}</a>`;
+  const tick = svg24('M5 12l5 5 9-10');
+  const mini = L.cases.map(([title, hook, min, img, alt], i) => {
+    const web = i === 0, [w, h] = LP_IMG[img];
+    const inner = `<img src="/assets/${img}.webp" width="${w}" height="${h}" loading="lazy" alt="${esc(alt)}"><div class="tx"><span class="k">${web ? L.kWeb : L.kMini} · ${min} ${L.min}</span><b>${title}</b><p>${hook}</p><span class="lp-go">${web ? L.goWeb : L.goApp}</span></div>`;
+    return web ? `<a class="lp-case web" href="${path(loc, byId['cyberpunk-mini-case'])}">${inner}</a>` : playA('lp-case', 'case_card', inner);
+  }).join('\n      ');
+  const classics = L.classics.map(([name, text, img]) => playA('lp-case', 'classic_card', `<img src="/assets/case-${img}.webp" width="600" height="600" loading="lazy" alt="${esc(name)}"><div class="tx"><span class="k">${L.kClassic}</span><b>${name}</b><p>${text}</p></div>`)).join('\n      ');
+  const shots = [1, 2, 3, 4, 5, 6, 7, 8].map(n => `<img src="/assets/cyber-play-${sl}-0${n}.webp" width="540" height="960" loading="lazy" alt="${L.shotAlt} ${n}">`).join('');
+  const more = [['r-home', 'gurrulabs-giraffe.webp', 200, 204, hub('home'), t.rel[0]], ['r-pulse', 'pulse-icon.webp', 256, 256, hub('pulse'), t.rel[1]], ['r-lull', 'lull-favicon.svg', 64, 64, path(loc, byId.lull), t.rel[3]]]
+    .map(([cls, ic, w, h, href, [b, sub]], i) => `<a href="${href}" class="${cls}"><span class="mi"><img src="/assets/${ic}" width="${w}" height="${h}" alt=""></span><b>${b}</b><span>${sub}</span><span class="rl-go">${L.more[i]}</span></a>`).join('');
+  const inner = `<nav class="bc" aria-label="${t.bc}"><a href="${hub('home')}">${t.back}</a><span aria-hidden="true">›</span><span>Cyberpunk Detective</span></nav>
+
+  <section class="cs lp-hero">
+    <div class="cs-cover">
+      <img src="/assets/cyber-hero.webp" width="1060" height="1484" fetchpriority="high" decoding="async" alt="${esc(L.heroAlt)}">
+      <div class="cs-hd">
+        <h1 class="cs-h1"><span class="k lp-h1k">${ICON.cyber}<span>${L.kick}</span></span> <span class="t nsign">${L.h1}</span></h1>
+        <p class="cs-hook">${L.hook}</p>
+        <div class="cs-go">${cyDl(loc, 'hero', COMMON[loc].download)}</div>
+        <div class="lp-facts"><span><b>${L.facts[0]}</b></span><span>${tick}${L.facts[1]}</span><span>${tick}${L.facts[2]}</span><span>${tick}EN · ES · FR</span></div>
+        ${cyDates(loc, p)}
+      </div>
+      <div class="lp-phone"><img src="/assets/cyber-play-${sl}-04.webp" width="540" height="960" alt="${esc(L.phoneAlt)}"></div>
+    </div>
+  </section>
+
+  <div class="say lp-ans" data-rv><span class="k">${L.shortH}</span><b>Cyberpunk Detective</b> ${L.ans}</div>
+
+  <section class="blk"><h2 class="nsign c">${L.howH}</h2><p class="lead">${L.howSub}</p>
+    <div class="hp" data-rvk>${cyHp(loc, CASE[loc]).map((pv, i) => `<div>${pv}<div class="hp-tx"><span class="hp-n">0${i + 1}</span><b>${L.steps[i][0]}</b><span>${L.steps[i][1]}</span></div></div>`).join('')}</div>
+  </section>
+
+  <section class="blk" id="cases"><h2 class="nsign">${L.casesH}</h2><p class="lead">${L.casesLead}</p>
+    <h3 class="rhead">${L.miniH} <small>· ${L.miniSmall}</small></h3>
+    <div class="lp-cases">
+      ${mini}
+    </div>
+    <h3 class="rhead">${L.classicsH} <small>· ${L.classicsSmall}</small></h3>
+    <div class="lp-cases n3">
+      ${classics}
+    </div>
+  </section>
+
+  <section class="blk"><h2 class="nsign c">${L.insideH}</h2><p class="lead">${L.insideLead}</p>
+    <div class="lp-shots" tabindex="0" role="region" aria-label="${L.shotsAria}">${shots}</div>
+  </section>
+
+  ${tryBlock(loc)}
+
+  <section class="blk"><h2 class="nsign c">${t.q_h}</h2>
+    <div class="faq v2">${L.faq.map(([q, a], i) => `<details${i < 1 ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
+  </section>
+
+  <section class="band">
+    <img src="/assets/cyber-cover-lake.webp" width="600" height="855" loading="lazy" alt="">
+    <div><h2 class="nsign">${L.bandTitle}</h2><p>${L.bandText}</p></div>
+    <div>${cyDl(loc, 'footer_band', COMMON[loc].download)}</div>
+  </section>
+
+  <section class="blk" id="more"><h2 class="nsign c">${t.more_h}</h2><div class="rel">${more}</div></section>`;
+  return cyBody(loc, p, inner);
+}
+
 // ── Root: redirects by browser language; search engines read the hreflang links
 const rootPage = `<!doctype html>
 <html lang="en">
@@ -2992,7 +2967,7 @@ const BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'Claude-SearchBot', 'Cl
 const robots = `User-agent: *\nAllow: /\n\n${BOTS.map(b => `User-agent: ${b}`).join('\n')}\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`;
 
 // llms.txt (llmstxt.org): facts only. Lists the EN URL of every page (validator rule) and the locale roots under Optional.
-const llmsName = p => p.id === 'home' ? 'Gurrulabs' : p.id === 'pulse' ? 'Pulse' : CYK[p.id] ? CP.en[CYK[p.id]].navName : APP[p.id] ? APP[p.id].en.name : CONTENT[p.id].en.name;
+const llmsName = p => p.id === 'home' ? 'Gurrulabs' : p.id === 'pulse' ? 'Pulse' : CYK[p.id] ? CP.en[CYK[p.id]].navName : p.id === 'cyberpunk-detective' ? 'Cyberpunk Detective' : APP[p.id] ? APP[p.id].en.name : CONTENT[p.id].en.name;
 const llmsItem = p => `- [${llmsName(p)}](${url('en', p)}): ${p.llms}`;
 const llms = `# Gurrulabs
 
